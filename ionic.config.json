@@ -1,0 +1,7 @@
+{
+  "name": "transapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
