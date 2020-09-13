@@ -1,10 +1,17 @@
 import React from "react";
 import "./MyText.css";
-import { throws } from "assert";
-
-import { IonButton, IonIcon, IonContent, IonPage } from "@ionic/react";
+import {
+  IonButton,
+  IonContent,
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonIcon,
+} from "@ionic/react";
 
 import { RouteComponentProps } from "react-router-dom";
+import { arrowBackOutline } from "ionicons/icons";
 
 interface MyTextProps
   extends RouteComponentProps<{
@@ -91,6 +98,15 @@ class MyText extends React.Component<
     }
     return (
       <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonButton href="/mainmenu">
+                <IonIcon slot="start" icon={arrowBackOutline} />
+              </IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonHeader>
         <IonContent>
           <div>
             <h2>
