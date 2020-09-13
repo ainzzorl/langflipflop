@@ -1,7 +1,22 @@
-import React from 'react';
-import './MainMenu.css';
+import React from "react";
+import "./MainMenu.css";
 
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonMenu, IonLabel, IonItem, IonList, IonRouterOutlet, IonButtons, IonButton, IonListHeader, IonMenuToggle } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonMenu,
+  IonLabel,
+  IonItem,
+  IonList,
+  IonRouterOutlet,
+  IonButtons,
+  IonButton,
+  IonListHeader,
+  IonMenuToggle,
+} from "@ionic/react";
 
 class MainMenu extends React.Component<{}, {}> {
   constructor(props: any) {
@@ -12,18 +27,18 @@ class MainMenu extends React.Component<{}, {}> {
     return (
       <IonPage>
         <IonContent>
-            <IonList>
-              <IonItem routerLink="/texts/hufflepuff-common-room">
-                <IonLabel>Hufflepuff Common Room</IonLabel>
-              </IonItem>
-              <IonItem routerLink="/texts/some-other-stuff">
-                <IonLabel>Some Other Stuff</IonLabel>
-              </IonItem>
-            </IonList>
-    </IonContent>
-    </IonPage>
-);
-    }
+          <IonList>
+            <IonItem routerLink="/texts/hufflepuff-common-room">
+              <IonLabel>Hufflepuff Common Room</IonLabel>
+            </IonItem>
+            <IonItem routerLink="/texts/some-other-stuff">
+              <IonLabel>Some Other Stuff</IonLabel>
+            </IonItem>
+          </IonList>
+        </IonContent>
+      </IonPage>
+    );
+  }
 }
 
 export default MainMenu;

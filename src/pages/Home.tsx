@@ -1,8 +1,14 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import React from "react";
 //import MyText from './MyText';
-import MainMenu from './MainMenu';
-import './Home.css';
+import MainMenu from "./MainMenu";
+import "./Home.css";
 
 // const Home: React.FC = () => {
 //   return (
