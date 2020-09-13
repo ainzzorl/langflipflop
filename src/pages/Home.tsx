@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
 import MyText from '../components/MyText';
+import MainMenu from '../components/MainMenu';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
             <IonTitle size="large">Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-        {/* <ExploreContainer /> */}
+        <MainMenu/>
         <MyText id="hufflepuff-common-room"/>
       </IonContent>
     </IonPage>
