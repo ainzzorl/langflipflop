@@ -13,10 +13,10 @@ class MainMenu extends React.Component<{}, {}> {
       <IonPage>
         <IonContent>
             <IonList>
-              <IonItem routerLink="/text/hufflepuff-common-room">
+              <IonItem routerLink="/texts/hufflepuff-common-room">
                 <IonLabel>Hufflepuff Common Room</IonLabel>
               </IonItem>
-              <IonItem routerLink="/text/some-other-stuff">
+              <IonItem routerLink="/texts/some-other-stuff">
                 <IonLabel>Some Other Stuff</IonLabel>
               </IonItem>
             </IonList>

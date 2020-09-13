@@ -2,11 +2,19 @@ import React from 'react';
 import './MyText.css';
 import { throws } from 'assert';
 
-import { IonButton, IonIcon, IonContent } from '@ionic/react';
+import { IonButton, IonIcon, IonContent, IonPage } from '@ionic/react';
 
-class MyText extends React.Component<{id: string}, { lang: string, texts: any, sentenceIndex: number, title: String }> {
+import { RouteComponentProps } from "react-router-dom";
+
+interface MyTextProps extends RouteComponentProps<{
+  id: string;
+}> {}
+
+class MyText extends React.Component<MyTextProps, { lang: string, texts: any, sentenceIndex: number, title: String }> {
   constructor(props: any) {
     super(props);
+    console.log("### MyProps: ");
+    console.log(this.props);
     this.state = {
       lang: 'en',
       texts: {},
@@ -18,7 +26,7 @@ class MyText extends React.Component<{id: string}, { lang: string, texts: any, s
         return text.split("\n").filter(s => s.length > 0);
     }
 
-    fetch("assets/data/texts/" + this.props.id + "/en.txt")
+    fetch("assets/data/texts/" + this.props.match.params.id + "/en.txt")
     .then(function(response) {
       return response.text();
     }).then(res=>{
@@ -30,7 +38,7 @@ class MyText extends React.Component<{id: string}, { lang: string, texts: any, s
       });
     });
 
-    fetch("assets/data/texts/" + this.props.id + "/es.txt")
+    fetch("assets/data/texts/" + this.props.match.params.id + "/es.txt")
     .then(function(response) {
       return response.text();
     }).then(res=>{
@@ -70,7 +78,9 @@ class MyText extends React.Component<{id: string}, { lang: string, texts: any, s
     if (this.state.texts['en'].length !== this.state.texts['es'].length) {
     return <div>Texts length mismatch! en={this.state.texts['en'].length} vs es={this.state.texts['es'].length}</div>
     }
-    return <div>
+    return <IonPage>
+    <IonContent>
+      <div>
         <h2>Sentence #{this.state.sentenceIndex + 1 }/{this.state.texts['en'].length}</h2>
         <p onClick={ () => {
           console.log('Old lang: ' + this.state.lang);
@@ -91,7 +101,7 @@ class MyText extends React.Component<{id: string}, { lang: string, texts: any, s
         </p>
         <IonButton disabled={this.state.sentenceIndex === 0} color="primary" onClick={this.goToPrevious}>  Previous </IonButton>
         <IonButton disabled={this.state.sentenceIndex === this.state.texts['en'].length - 1} color="secondary" onClick={this.goToNext}>  Next </IonButton>
-      </div>;
+      </div></IonContent></IonPage>;
   }
 }
 
