@@ -71,7 +71,7 @@ class MyText extends React.Component<{id: string}, { lang: string, texts: any, s
     return <div>Texts length mismatch! en={this.state.texts['en'].length} vs es={this.state.texts['es'].length}</div>
     }
     return <div>
-        <h2>Text # {this.state.sentenceIndex + 1 } / {this.state.texts['en'].length}</h2>
+        <h2>Sentence #{this.state.sentenceIndex + 1 }/{this.state.texts['en'].length}</h2>
         <p onClick={ () => {
           console.log('Old lang: ' + this.state.lang);
           let newLang;
