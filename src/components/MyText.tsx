@@ -11,25 +11,38 @@ class MyText extends React.Component<{}, { lang: string, texts: any, sentenceInd
     super(props);
     this.state = {
       lang: 'en',
-      texts:
-        [
-          {
-            'en': 'Durmstrang once had the darkest reputation of all eleven wizarding schools, though this was never entirely merited.',
-            'es': 'Durmstrang alguna vez tuvo la reputación más oscura de las once escuelas mágicas, aunque esto nunca fue completamente merecido.'
-          },
-          {
-            'en': 'It is true that Durmstrang, which has turned out many truly great witches and wizards, has twice in its history fallen under the stewardship of wizards of dubious allegiance or nefarious intent, and that it has one infamous ex-pupil.',
-            'es': 'Es cierto que Durmstrang, que ha resultado ser muchas brujas y magos verdaderamente grandiosos, ha caído dos veces en su historia bajo la dirección de magos de dudosa lealtad o nefastas intenciones, y que tiene un exalumno infame.'
-          },
-          {
-            'en': 'The first of these unhappy men, Harfang Munter, took over the school shortly after the mysterious death of its founder, the great Bulgarian witch Nerida Vulchanova.',
-            'es': 'El primero de estos infelices hombres, Harfang Munter, se hizo cargo de la escuela poco después de la misteriosa muerte de su fundadora, la gran bruja búlgara Nerida Vulchanova.'
-          }
-        ]
-      ,
+      texts: {},
       sentenceIndex: 0,
       title: 'Durmstrang'
     };
+
+    function toSentences(text: string) {
+        return text.split("\n").filter(s => s.length > 0);
+    }
+
+    fetch("assets/data/texts/hufflepuff-common-room/en.txt")
+    .then(function(response) {
+      return response.text();
+    }).then(res=>{
+      console.log("### Read texts en")
+      this.setState(state => {
+        let nt = this.state.texts;
+        nt['en'] = toSentences(res);
+        return nt;
+      });
+    });
+
+    fetch("assets/data/texts/hufflepuff-common-room/es.txt")
+    .then(function(response) {
+      return response.text();
+    }).then(res=>{
+      console.log("### Read texts es")
+      this.setState(state => {
+        let nt = this.state.texts;
+        nt['es'] = toSentences(res);
+        return nt;
+      });
+    });
 
     this.goToNext = this.goToNext.bind(this);
     this.goToPrevious = this.goToPrevious.bind(this);
@@ -53,8 +66,14 @@ class MyText extends React.Component<{}, { lang: string, texts: any, sentenceInd
   }
 
   render() {
+    if (!this.state.texts['en'] || !this.state.texts['es']) {
+      return <div>Loading...</div>
+    }
+    if (this.state.texts['en'].length !== this.state.texts['es'].length) {
+    return <div>Texts length mismatch! en={this.state.texts['en'].length} vs es={this.state.texts['es'].length}</div>
+    }
     return <div>
-        <h2>Text # {this.state.sentenceIndex}</h2>
+        <h2>Text # {this.state.sentenceIndex + 1 } / {this.state.texts['en'].length}</h2>
         <p onClick={ () => {
           console.log('Old lang: ' + this.state.lang);
           let newLang;
@@ -70,10 +89,10 @@ class MyText extends React.Component<{}, { lang: string, texts: any, sentenceInd
           });
           }
         }>
-          {this.state.texts[this.state.sentenceIndex][this.state.lang]}
+          {this.state.texts[this.state.lang][this.state.sentenceIndex]}
         </p>
-        <IonButton color="primary" onClick={this.goToPrevious}>  Previous </IonButton>
-        <IonButton color="secondary" onClick={this.goToNext}>  Next </IonButton>
+        <IonButton disabled={this.state.sentenceIndex === 0} color="primary" onClick={this.goToPrevious}>  Previous </IonButton>
+        <IonButton disabled={this.state.sentenceIndex === this.state.texts['en'].length - 1} color="secondary" onClick={this.goToNext}>  Next </IonButton>
       </div>;
   }
 }
