@@ -4,9 +4,7 @@ import { throws } from 'assert';
 
 import { IonButton, IonIcon, IonContent } from '@ionic/react';
 
-interface ContainerProps { }
-
-class MyText extends React.Component<{}, { lang: string, texts: any, sentenceIndex: number, title: String }> {
+class MyText extends React.Component<{id: string}, { lang: string, texts: any, sentenceIndex: number, title: String }> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -20,7 +18,7 @@ class MyText extends React.Component<{}, { lang: string, texts: any, sentenceInd
         return text.split("\n").filter(s => s.length > 0);
     }
 
-    fetch("assets/data/texts/hufflepuff-common-room/en.txt")
+    fetch("assets/data/texts/" + this.props.id + "/en.txt")
     .then(function(response) {
       return response.text();
     }).then(res=>{
@@ -32,7 +30,7 @@ class MyText extends React.Component<{}, { lang: string, texts: any, sentenceInd
       });
     });
 
-    fetch("assets/data/texts/hufflepuff-common-room/es.txt")
+    fetch("assets/data/texts/" + this.props.id + "/es.txt")
     .then(function(response) {
       return response.text();
     }).then(res=>{

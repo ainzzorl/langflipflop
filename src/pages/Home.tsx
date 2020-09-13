@@ -19,7 +19,7 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         {/* <ExploreContainer /> */}
-        <MyText />
+        <MyText id="hufflepuff-common-room"/>
       </IonContent>
     </IonPage>
   );
