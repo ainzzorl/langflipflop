@@ -32,10 +32,10 @@ class MyText extends React.Component<
     };
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
-      .then(res=>res.json())
+      .then((res) => res.json())
       .then((res) => {
         this.setState((state) => ({
-          texts: res
+          texts: res,
         }));
       });
 
@@ -60,29 +60,33 @@ class MyText extends React.Component<
   }
 
   render() {
-    if (!this.state.texts['en']) {
+    if (!this.state.texts["en"]) {
       return <div>Loading...</div>;
     }
     return (
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonButtons slot="start">
-              <IonButton href="/mainmenu">
-                <IonIcon slot="start" icon={arrowBackOutline} />
-              </IonButton>
-            </IonButtons>
+            <div>
+              <IonButtons slot="start">
+                <IonButton href="/mainmenu">
+                  <IonIcon slot="start" icon={arrowBackOutline} />
+                </IonButton>
+                <span>{this.state.texts[this.state.lang].title}</span>
+              </IonButtons>
+            </div>
+            <div>
+              <span>
+                Sentence #{this.state.sentenceIndex + 1}/
+                {this.state.texts["en"].sentences.length}
+              </span>
+            </div>
           </IonToolbar>
         </IonHeader>
         <IonContent>
           <div>
-            <h2>
-              Sentence #{this.state.sentenceIndex + 1}/
-              {this.state.texts["en"].sentences.length}
-            </h2>
             <p
               onClick={() => {
-                console.log("Old lang: " + this.state.lang);
                 let newLang;
                 if (this.state.lang === "en") {
                   newLang = "es";
@@ -96,7 +100,11 @@ class MyText extends React.Component<
                 });
               }}
             >
-              {this.state.texts[this.state.lang].sentences[this.state.sentenceIndex]}
+              {
+                this.state.texts[this.state.lang].sentences[
+                  this.state.sentenceIndex
+                ]
+              }
             </p>
             <IonButton
               disabled={this.state.sentenceIndex === 0}
@@ -108,7 +116,8 @@ class MyText extends React.Component<
             </IonButton>
             <IonButton
               disabled={
-                this.state.sentenceIndex === this.state.texts["en"].sentences.length - 1
+                this.state.sentenceIndex ===
+                this.state.texts["en"].sentences.length - 1
               }
               color="secondary"
               onClick={this.goToNext}
