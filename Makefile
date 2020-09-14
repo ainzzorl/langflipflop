@@ -5,3 +5,7 @@ fix :
 .PHONY: serve
 serve :
 			 ionic serve
+
+.PHONY: generate-data
+generate-data :
+			 ruby data-scripts/ionic.rb

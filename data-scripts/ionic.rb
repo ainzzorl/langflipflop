@@ -1,34 +1,35 @@
 require 'json'
 
-def paragraphs(s)
-  s
-    .strip()
-    .split("\n")
-    .map { |p| p.strip }
-    .reject { |p| p.empty? }
-end
-
 def process(lang)
-  input = File.read "./data/in/#{lang}.txt"
+  input = File.read "./data-scripts/in/#{lang}.txt"
 
   sentences = input.strip()
-              .split("\.|\n")
+              .split(/\.|\n/)
               .map { |p| p.strip }
               .reject { |p| p.empty? }
 
-  output = sentences.join("\\n")
+  title, *sentences = sentences
 
-  File.open("data/out/#{lang}.txt", "w") do |f|
-    f.write(output)
-  end
-  sentences.length
+  {
+    'title': title,
+    'sentences': sentences
+  }
 end
 
-len_en = process('en')
-len_es = process('es')
+en = process('en')
+es = process('es')
 
-if len_en != len_es then
-  raise "Length mismatch: en=#{len_en} vs es=#{len_es}"
+if en[:sentences].length != es[:sentences].length then
+  raise "Length mismatch: en=#{en[:sentences].length} vs es=#{es[:sentences].length}"
 else
   puts "Everything's fine"
+end
+
+final = {
+  'en': en,
+  'es': es
+}
+
+File.open("public/assets/data/texts/hufflepuff-common-room.json","w") do |f|
+  f.write(JSON.pretty_generate(final))
 end
