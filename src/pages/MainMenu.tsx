@@ -34,6 +34,15 @@ class MainMenu extends React.Component<{}, {}> {
             <IonItem routerLink="/texts/owls">
               <IonLabel>Owls</IonLabel>
             </IonItem>
+            <IonItem routerLink="/texts/daily-prophet">
+              <IonLabel>Daily Prophet</IonLabel>
+            </IonItem>
+            <IonItem routerLink="/texts/every-country-has-ninjas">
+              <IonLabel>Every Country Has Ninjas</IonLabel>
+            </IonItem>
+            <IonItem routerLink="/texts/platform-9">
+              <IonLabel>Platform 9 3/4</IonLabel>
+            </IonItem>
           </IonList>
         </IonContent>
       </IonPage>

@@ -32,7 +32,7 @@ class MyText extends React.Component<
     };
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
-      .then((res) => res.json())
+    .then((res) => res.json())
       .then((res) => {
         this.setState((state) => ({
           texts: res,
