@@ -24,8 +24,6 @@ class MyText extends React.Component<
 > {
   constructor(props: any) {
     super(props);
-    console.log("### MyProps: ");
-    console.log(this.props);
     this.state = {
       lang: "en",
       texts: {},
@@ -33,34 +31,12 @@ class MyText extends React.Component<
       title: "Durmstrang",
     };
 
-    function toSentences(text: string) {
-      return text.split("\n").filter((s) => s.length > 0);
-    }
-
-    fetch("assets/data/texts/" + this.props.match.params.id + "/en.txt")
-      .then(function (response) {
-        return response.text();
-      })
+    fetch("assets/data/texts/" + this.props.match.params.id + ".json")
+      .then(res=>res.json())
       .then((res) => {
-        console.log("### Read texts en");
-        this.setState((state) => {
-          let nt = this.state.texts;
-          nt["en"] = toSentences(res);
-          return nt;
-        });
-      });
-
-    fetch("assets/data/texts/" + this.props.match.params.id + "/es.txt")
-      .then(function (response) {
-        return response.text();
-      })
-      .then((res) => {
-        console.log("### Read texts es");
-        this.setState((state) => {
-          let nt = this.state.texts;
-          nt["es"] = toSentences(res);
-          return nt;
-        });
+        this.setState((state) => ({
+          texts: res
+        }));
       });
 
     this.goToNext = this.goToNext.bind(this);
@@ -68,7 +44,6 @@ class MyText extends React.Component<
   }
 
   goToNext() {
-    console.log("### Going to next!");
     this.setState((state) => ({
       lang: state.lang,
       texts: state.texts,
@@ -85,16 +60,8 @@ class MyText extends React.Component<
   }
 
   render() {
-    if (!this.state.texts["en"] || !this.state.texts["es"]) {
+    if (!this.state.texts['en']) {
       return <div>Loading...</div>;
-    }
-    if (this.state.texts["en"].length !== this.state.texts["es"].length) {
-      return (
-        <div>
-          Texts length mismatch! en={this.state.texts["en"].length} vs es=
-          {this.state.texts["es"].length}
-        </div>
-      );
     }
     return (
       <IonPage>
@@ -111,7 +78,7 @@ class MyText extends React.Component<
           <div>
             <h2>
               Sentence #{this.state.sentenceIndex + 1}/
-              {this.state.texts["en"].length}
+              {this.state.texts["en"].sentences.length}
             </h2>
             <p
               onClick={() => {
@@ -129,7 +96,7 @@ class MyText extends React.Component<
                 });
               }}
             >
-              {this.state.texts[this.state.lang][this.state.sentenceIndex]}
+              {this.state.texts[this.state.lang].sentences[this.state.sentenceIndex]}
             </p>
             <IonButton
               disabled={this.state.sentenceIndex === 0}
@@ -141,7 +108,7 @@ class MyText extends React.Component<
             </IonButton>
             <IonButton
               disabled={
-                this.state.sentenceIndex === this.state.texts["en"].length - 1
+                this.state.sentenceIndex === this.state.texts["en"].sentences.length - 1
               }
               color="secondary"
               onClick={this.goToNext}
