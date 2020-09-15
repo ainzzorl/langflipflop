@@ -45,7 +45,7 @@ class MyText extends React.Component<
 
   goToNext() {
     this.setState((state) => ({
-      lang: state.lang,
+      lang: 'en',
       texts: state.texts,
       sentenceIndex: state.sentenceIndex + 1,
     }));
@@ -53,7 +53,7 @@ class MyText extends React.Component<
 
   goToPrevious() {
     this.setState((state) => ({
-      lang: state.lang,
+      lang: 'en',
       texts: state.texts,
       sentenceIndex: state.sentenceIndex - 1,
     }));
