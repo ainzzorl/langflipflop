@@ -24,7 +24,7 @@ interface MyTextProps
 
 class MyText extends React.Component<
   MyTextProps,
-  { lang: string; texts: any; sentenceIndex: number; title: String }
+  { lang: string; texts: any; sentenceIndex: number }
 > {
   constructor(props: any) {
     super(props);
@@ -32,7 +32,6 @@ class MyText extends React.Component<
       lang: "en",
       texts: {},
       sentenceIndex: -1,
-      title: "Durmstrang",
     };
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
