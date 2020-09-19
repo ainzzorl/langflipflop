@@ -13,6 +13,10 @@ import {
 import { RouteComponentProps } from "react-router-dom";
 import { arrowBackOutline } from "ionicons/icons";
 
+import { Plugins } from "@capacitor/core";
+
+const { Storage } = Plugins;
+
 interface MyTextProps
   extends RouteComponentProps<{
     id: string;
@@ -27,40 +31,72 @@ class MyText extends React.Component<
     this.state = {
       lang: "en",
       texts: {},
-      sentenceIndex: 0,
+      sentenceIndex: -1,
       title: "Durmstrang",
     };
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((res) => {
         this.setState((state) => ({
           texts: res,
         }));
       });
 
+    Storage.get({ key: "text-data." + this.props.match.params.id }).then(
+      (value) => {
+        const s = value.value;
+        if (s !== null) {
+          let ps = JSON.parse(s);
+          this.setState((state) => ({
+            sentenceIndex: ps["sentenceIndex"],
+          }));
+        } else {
+          this.setState((state) => ({
+            sentenceIndex: 0,
+          }));
+        }
+      }
+    );
+
     this.goToNext = this.goToNext.bind(this);
     this.goToPrevious = this.goToPrevious.bind(this);
+    this.persist = this.persist.bind(this);
+  }
+
+  persist() {
+    Storage.set({
+      key: "text-data." + this.props.match.params.id,
+      value: JSON.stringify({
+        sentenceIndex: this.state.sentenceIndex,
+      }),
+    });
   }
 
   goToNext() {
-    this.setState((state) => ({
-      lang: 'en',
-      texts: state.texts,
-      sentenceIndex: state.sentenceIndex + 1,
-    }));
+    this.setState(
+      (state) => ({
+        lang: "en",
+        texts: state.texts,
+        sentenceIndex: state.sentenceIndex + 1,
+      }),
+      this.persist
+    );
   }
 
   goToPrevious() {
-    this.setState((state) => ({
-      lang: 'en',
-      texts: state.texts,
-      sentenceIndex: state.sentenceIndex - 1,
-    }));
+    this.setState(
+      (state) => ({
+        lang: "en",
+        texts: state.texts,
+        sentenceIndex: state.sentenceIndex - 1,
+      }),
+      this.persist
+    );
   }
 
   render() {
-    if (!this.state.texts["en"]) {
+    if (!this.state.texts["en"] || this.state.sentenceIndex < 0) {
       return <div>Loading...</div>;
     }
     return (
