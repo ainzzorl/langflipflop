@@ -15,6 +15,8 @@ import { arrowBackOutline } from "ionicons/icons";
 
 import { Plugins } from "@capacitor/core";
 
+import Hammer from "hammerjs";
+
 const { Storage } = Plugins;
 
 interface MyTextProps
@@ -24,7 +26,12 @@ interface MyTextProps
 
 class MyText extends React.Component<
   MyTextProps,
-  { lang: string; texts: any; sentenceIndex: number }
+  {
+    lang: string;
+    texts: any;
+    sentenceIndex: number;
+    gesturesInitialized: boolean;
+  }
 > {
   constructor(props: any) {
     super(props);
@@ -32,6 +39,7 @@ class MyText extends React.Component<
       lang: "en",
       texts: {},
       sentenceIndex: -1,
+      gesturesInitialized: false,
     };
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
@@ -63,6 +71,22 @@ class MyText extends React.Component<
     this.persist = this.persist.bind(this);
   }
 
+  componentDidUpdate() {
+    const element = document.getElementById("my-div");
+    if (element !== null && !this.state.gesturesInitialized) {
+      const hammertime = new Hammer(element);
+      hammertime.on("swipeleft", (e) => {
+        this.goToNext();
+      });
+      hammertime.on("swiperight", (e) => {
+        this.goToPrevious();
+      });
+      this.setState((state) => ({
+        gesturesInitialized: true,
+      }));
+    }
+  }
+
   persist() {
     Storage.set({
       key: "text-data." + this.props.match.params.id,
@@ -73,6 +97,12 @@ class MyText extends React.Component<
   }
 
   goToNext() {
+    if (
+      this.state.sentenceIndex >=
+      this.state.texts["en"].sentences.length - 1
+    ) {
+      return;
+    }
     this.setState(
       (state) => ({
         lang: "en",
@@ -84,6 +114,9 @@ class MyText extends React.Component<
   }
 
   goToPrevious() {
+    if (this.state.sentenceIndex <= 0) {
+      return;
+    }
     this.setState(
       (state) => ({
         lang: "en",
@@ -119,7 +152,7 @@ class MyText extends React.Component<
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <div>
+          <div id="my-div">
             <p
               onClick={() => {
                 let newLang;
