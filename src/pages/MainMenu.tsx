@@ -28,6 +28,9 @@ class MainMenu extends React.Component<{}, {}> {
             <IonItem routerLink="/texts/platform-9">
               <IonLabel>Platform 9 3/4</IonLabel>
             </IonItem>
+            <IonItem routerLink="/texts/funny-dialogs">
+              <IonLabel>Funny Dialogs</IonLabel>
+            </IonItem>
           </IonList>
         </IonContent>
       </IonPage>

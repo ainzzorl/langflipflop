@@ -15,7 +15,10 @@ def process(lang, id):
     else:
       raise f"Unsupported language: {lang}"
 
-    sentences = tokenizer.tokenize(body)
+    paragraphs = [p for p in body.split('\n') if p]
+    sentences = []
+    for paragraph in paragraphs:
+        sentences += tokenizer.tokenize(paragraph)
 
   return {
     'title': title,
@@ -30,9 +33,8 @@ for id in os.listdir('./data-scripts/in/'):
   if len(en['sentences']) != len(es['sentences']):
     minlen = min(len(en['sentences']), len(es['sentences']))
     for i in range(minlen):
-      print(f"{en['sentences'][i]} <=> {es['sentences'][i]}\n\n")
-    end
-    raise f"Length mismatch: en={len(en['sentences'])} vs es={len(es['sentences'])}"
+      print(f"{en['sentences'][i]}\n<=>\n{es['sentences'][i]}\n\n-------------------------------")
+    raise Exception(f"Length mismatch: en={len(en['sentences'])} vs es={len(es['sentences'])}")
   else:
     print("Everything's fine")
 
