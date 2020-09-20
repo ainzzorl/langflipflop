@@ -1,22 +1,7 @@
 import React from "react";
 import "./MainMenu.css";
 
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonMenu,
-  IonLabel,
-  IonItem,
-  IonList,
-  IonRouterOutlet,
-  IonButtons,
-  IonButton,
-  IonListHeader,
-  IonMenuToggle,
-} from "@ionic/react";
+import { IonContent, IonPage, IonLabel, IonItem, IonList } from "@ionic/react";
 
 class MainMenu extends React.Component<{}, {}> {
   constructor(props: any) {
