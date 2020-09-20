@@ -3,6 +3,7 @@ import "./MyText.css";
 import {
   IonButton,
   IonContent,
+  IonFooter,
   IonPage,
   IonHeader,
   IonToolbar,
@@ -152,49 +153,49 @@ class MyText extends React.Component<
           </IonToolbar>
         </IonHeader>
         <IonContent id="my-div">
-          <div>
-            <p
-              onClick={() => {
-                let newLang;
-                if (this.state.lang === "en") {
-                  newLang = "es";
-                } else {
-                  newLang = "en";
-                }
-                this.setState({
-                  lang: newLang,
-                  texts: this.state.texts,
-                  sentenceIndex: this.state.sentenceIndex,
-                });
-              }}
-            >
-              {
-                this.state.texts[this.state.lang].sentences[
-                  this.state.sentenceIndex
-                ]
+          <p
+            onClick={() => {
+              let newLang;
+              if (this.state.lang === "en") {
+                newLang = "es";
+              } else {
+                newLang = "en";
               }
-            </p>
-            <IonButton
-              disabled={this.state.sentenceIndex === 0}
-              color="primary"
-              onClick={this.goToPrevious}
-            >
-              {" "}
-              Previous{" "}
-            </IonButton>
-            <IonButton
-              disabled={
-                this.state.sentenceIndex ===
-                this.state.texts["en"].sentences.length - 1
-              }
-              color="secondary"
-              onClick={this.goToNext}
-            >
-              {" "}
-              Next{" "}
-            </IonButton>
-          </div>
+              this.setState({
+                lang: newLang,
+                texts: this.state.texts,
+                sentenceIndex: this.state.sentenceIndex,
+              });
+            }}
+          >
+            {
+              this.state.texts[this.state.lang].sentences[
+                this.state.sentenceIndex
+              ]
+            }
+          </p>
         </IonContent>
+        <IonFooter>
+          <IonButton
+            disabled={this.state.sentenceIndex === 0}
+            color="primary"
+            onClick={this.goToPrevious}
+          >
+            {" "}
+            Previous{" "}
+          </IonButton>
+          <IonButton
+            disabled={
+              this.state.sentenceIndex ===
+              this.state.texts["en"].sentences.length - 1
+            }
+            color="secondary"
+            onClick={this.goToNext}
+          >
+            {" "}
+            Next{" "}
+          </IonButton>
+        </IonFooter>
       </IonPage>
     );
   }
