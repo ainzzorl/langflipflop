@@ -151,8 +151,8 @@ class MyText extends React.Component<
             </div>
           </IonToolbar>
         </IonHeader>
-        <IonContent>
-          <div id="my-div">
+        <IonContent id="my-div">
+          <div>
             <p
               onClick={() => {
                 let newLang;
