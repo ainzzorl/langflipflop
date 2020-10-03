@@ -25,15 +25,36 @@ def process(lang, id):
     'sentences': sentences
   }
 
+def printdiff(lh, rh):
+  SCREEN_WIDTH = 80
+  PADDING = 2
+  TEXT_WIDTH = int(SCREEN_WIDTH / 2) - 1 - PADDING
+  PSTR = ' ' * PADDING
+
+  def tochunks(s):
+    return [s[i:i+TEXT_WIDTH] for i in range(0, len(s), TEXT_WIDTH)]
+
+  def pad(s):
+    return s + ' ' * (TEXT_WIDTH - len(s))
+
+  minlen = min(len(lh), len(rh))
+  for i in range(minlen):
+    lchunks = tochunks(lh[i])
+    rchunks = tochunks(rh[i])
+    maxchunks = max(len(lchunks), len(rchunks))
+    for i in range(maxchunks):
+      l = pad(lchunks[i] if i < len(lchunks) else '')
+      r = pad(rchunks[i] if i < len(rchunks) else '')
+      print(f"{l}{PSTR}||{PSTR}{r}")
+    print('-' * SCREEN_WIDTH)
+
 for id in os.listdir('./data-scripts/in/'):
   print(id)
   en = process('en', id)
   es = process('es', id)
 
   if len(en['sentences']) != len(es['sentences']):
-    minlen = min(len(en['sentences']), len(es['sentences']))
-    for i in range(minlen):
-      print(f"{en['sentences'][i]}\n<=>\n{es['sentences'][i]}\n\n-------------------------------")
+    printdiff(en['sentences'], es['sentences'])
     raise Exception(f"Length mismatch: en={len(en['sentences'])} vs es={len(es['sentences'])}")
   else:
     print("Everything's fine")

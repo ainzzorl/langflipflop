@@ -7,7 +7,8 @@ Luego, un terrorista le dice al otro : "Mira, te dije que a nadie le importan la
 
 David: La amo tanto
 Richard: Ella solo tiene 14 años y tú 28
-David: La edad es solo un número Richard: Y la cárcel es solo una habitación
+David: La edad es solo un número
+Richard: Y la cárcel es solo una habitación
 
 Entrenador: Si un anciano y un niño se acercan a su automóvil, ¿qué golpearán?
 Niña: Viejo.
@@ -43,7 +44,7 @@ Chico: ¡ Dos chicas se pelean por mí!
 911: ¿Cuál es tu emergencia?
 Chico: El feo está ganando.
 
-Vendedora: Señor. No fumar en la tienda.
+Vendedora: Señor, No fumar en la tienda.
 Hombre: Pero compré cigarrillos en su tienda.
 Vendedora: Señor, también vendemos condones.
 
@@ -116,8 +117,7 @@ Chico: mira esto, mi reloj puede brillar en la oscuridad
 
 Esposa: Mira a ese borracho.
 Esposo: ¿Quién es?
-Esposa: Hace 10 años me propuso y yo lo
-rechacé. Esposo: Dios mío. Todavía está celebrando.
+Esposa: Hace 10 años me propuso y yo lo rechacé. Esposo: Dios mío. Todavía está celebrando.
 
 John: Hermano, he invitado a 17 personas a ver una película, ¿vendrías?
 Hermano: ok John, pero ¿por qué tanta gente?
