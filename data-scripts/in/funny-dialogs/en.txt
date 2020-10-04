@@ -75,7 +75,7 @@ New Teacher: All students introduce your name and hobbies
 2nd boy: My name is Dave and hobby is watching the moon.
 3rd boy: My name is Patrick & my hobby is watching the moon.
 (All boys told their different names but the hobby was same)
-New Teacher: Good, all boys have the same hobby, Now its girl’s turn.
+New Teacher: Good, all boys have the same hobby. Now its girl’s turn.
 1st girl: Hi, my name is moon…
 
 SAVAGE

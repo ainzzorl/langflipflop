@@ -78,8 +78,9 @@ Maestro nuevo: Todos los estudiantes presentan su nombre y pasatiempos
 Maestro nuevo: Bien, todos los niños tienen el mismo pasatiempo. Ahora es el turno de las niñas.
 Primera niña: Hola, mi nombre es luna ...
 
+SALVAJE
 
-Pariente SALVAJE : Hijo, ¿qué edad tienes?
+Pariente : Hijo, ¿qué edad tienes?
 Chico: 25
 Pariente: es la edad del matrimonio, hijo. ¿Cuándo te casarás?
 Guy: Muy pronto. ¿Y cuál es tu edad, tío?

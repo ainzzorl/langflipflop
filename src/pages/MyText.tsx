@@ -142,9 +142,11 @@ class MyText extends React.Component<
                 <IonIcon slot="start" icon={arrowBackOutline} />
               </IonButton>
               <IonTitle>
-                {this.state.texts[this.state.lang].title} (
-                {this.state.sentenceIndex + 1}/
-                {this.state.texts["en"].sentences.length})
+                <div id="my-wrap">
+                  {this.state.texts[this.state.lang].title} (
+                  {this.state.sentenceIndex + 1}/
+                  {this.state.texts["en"].sentences.length})
+                </div>
               </IonTitle>
             </IonButtons>
           </IonToolbar>
