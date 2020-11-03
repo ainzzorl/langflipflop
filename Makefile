@@ -8,7 +8,7 @@ serve :
 
 .PHONY: generate-data
 generate-data :
-			 ruby data-scripts/ionic.rb
+			 python data-scripts/import.py
 
 .PHONY: android
 android :
