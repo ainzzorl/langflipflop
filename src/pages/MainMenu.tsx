@@ -4,10 +4,6 @@ import "./MainMenu.css";
 import { IonContent, IonPage, IonLabel, IonItem, IonList } from "@ionic/react";
 
 class MainMenu extends React.Component<{}, {}> {
-  constructor(props: any) {
-    super(props);
-  }
-
   render() {
     return (
       <IonPage>
