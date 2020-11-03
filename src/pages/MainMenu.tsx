@@ -13,6 +13,9 @@ class MainMenu extends React.Component<{}, {}> {
       <IonPage>
         <IonContent>
           <IonList>
+            <IonItem routerLink="/texts/kaufmann-my-language-learning-technique">
+              <IonLabel>Kaufmann - My Language Learning Technique</IonLabel>
+            </IonItem>
             <IonItem routerLink="/texts/hufflepuff-common-room">
               <IonLabel>Hufflepuff Common Room</IonLabel>
             </IonItem>
