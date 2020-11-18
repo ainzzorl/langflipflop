@@ -9,6 +9,9 @@ class MainMenu extends React.Component<{}, {}> {
       <IonPage>
         <IonContent>
           <IonList>
+            <IonItem routerLink="/texts/louis-ck-01">
+              <IonLabel>Louis CK - 01</IonLabel>
+            </IonItem>
             <IonItem routerLink="/texts/kaufmann-my-language-learning-technique">
               <IonLabel>Kaufmann - My Language Learning Technique</IonLabel>
             </IonItem>
