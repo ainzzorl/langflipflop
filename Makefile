@@ -15,3 +15,7 @@ android :
 			 ionic build
 			 ionic capacitor copy android
 			 (cd android && gradle installDebug)
+
+.PHONY: android-deploy
+android-deploy :
+			 (cd android && gradle installDebug)
