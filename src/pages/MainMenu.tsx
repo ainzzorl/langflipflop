@@ -1,7 +1,23 @@
 import React from "react";
 import "./MainMenu.css";
 
-import { IonContent, IonPage, IonLabel, IonItem, IonList } from "@ionic/react";
+import {
+  IonContent,
+  IonPage,
+  IonLabel,
+  IonItem,
+  IonList,
+  IonFooter,
+  IonToolbar,
+  IonIcon,
+  IonButtons,
+  IonButton,
+  IonRow,
+  IonCol,
+  IonGrid,
+} from "@ionic/react";
+
+import { home, bookmark, settings } from "ionicons/icons";
 
 class MainMenu extends React.Component<{}, {}> {
   render() {
@@ -35,6 +51,31 @@ class MainMenu extends React.Component<{}, {}> {
             </IonItem>
           </IonList>
         </IonContent>
+        <IonFooter>
+          <IonToolbar>
+            <IonButtons>
+              <IonGrid>
+                <IonRow>
+                  <IonCol class="ion-text-center">
+                    <IonButton fill="clear">
+                      <IonIcon icon={home} size="large" />
+                    </IonButton>
+                  </IonCol>
+                  <IonCol class="ion-text-center">
+                    <IonButton fill="clear">
+                      <IonIcon icon={bookmark} size="large" />
+                    </IonButton>
+                  </IonCol>
+                  <IonCol class="ion-text-center">
+                    <IonButton fill="clear">
+                      <IonIcon icon={settings} size="large" />
+                    </IonButton>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
+            </IonButtons>
+          </IonToolbar>
+        </IonFooter>
       </IonPage>
     );
   }
