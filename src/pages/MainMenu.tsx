@@ -16,12 +16,22 @@ import {
 } from "@ionic/react";
 
 import { home, bookmark, settings } from "ionicons/icons";
+import MyLibrary from "./MyLibrary";
 
-class MainMenu extends React.Component<{}, {}> {
+class MainMenu extends React.Component<{}, { subview: string }> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      subview: "library",
+    };
+  }
+
   render() {
     return (
       <IonPage>
-        <LibraryMenu />
+        {this.state.subview === "library" && <LibraryMenu />}
+
+        {this.state.subview === "my-library" && <MyLibrary />}
 
         <IonFooter>
           <IonToolbar>
@@ -30,7 +40,14 @@ class MainMenu extends React.Component<{}, {}> {
                 <IonRow>
                   <IonCol class="ion-text-center">
                     <div>
-                      <IonButton fill="clear">
+                      <IonButton
+                        fill="clear"
+                        onClick={() => {
+                          this.setState({
+                            subview: "library",
+                          });
+                        }}
+                      >
                         <IonIcon icon={home} size="large" />
                       </IonButton>
                       <br />
@@ -39,7 +56,14 @@ class MainMenu extends React.Component<{}, {}> {
                   </IonCol>
                   <IonCol class="ion-text-center">
                     <div>
-                      <IonButton fill="clear">
+                      <IonButton
+                        fill="clear"
+                        onClick={() => {
+                          this.setState({
+                            subview: "my-library",
+                          });
+                        }}
+                      >
                         <IonIcon icon={bookmark} size="large" />
                       </IonButton>
                       <br />
@@ -48,7 +72,14 @@ class MainMenu extends React.Component<{}, {}> {
                   </IonCol>
                   <IonCol class="ion-text-center">
                     <div>
-                      <IonButton fill="clear">
+                      <IonButton
+                        fill="clear"
+                        onClick={() => {
+                          this.setState({
+                            subview: "settings",
+                          });
+                        }}
+                      >
                         <IonIcon icon={settings} size="large" />
                       </IonButton>
                       <br />
