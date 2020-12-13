@@ -54,6 +54,7 @@ for id in os.listdir('./data-scripts/in/'):
   es = process('es', id)
   with open(f"./data-scripts/in/{id}/meta.json") as f:
     meta = json.load(f)
+  meta['id'] = id
 
   if len(en['sentences']) != len(es['sentences']):
     printdiff(en['sentences'], es['sentences'])

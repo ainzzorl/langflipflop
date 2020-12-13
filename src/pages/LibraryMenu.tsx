@@ -10,126 +10,80 @@ import {
   IonCardContent,
 } from "@ionic/react";
 
-class LibraryMenu extends React.Component<{}, {}> {
+class TextMeta {
+  id: string;
+  title: string;
+  difficulty: number;
+  categories: Array<string>;
+
+  constructor(data: any) {
+    this.title = data["en"]["title"];
+    this.id = data["meta"]["id"];
+    this.difficulty = data["meta"]["difficulty"];
+    this.categories = data["meta"]["categories"];
+  }
+}
+
+class LibraryMenu extends React.Component<{}, { texts?: Array<TextMeta> }> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      texts: undefined,
+    };
+
+    fetch("assets/data/texts.json")
+      .then((res) => res.json())
+      .then((res) => {
+        let textList = res["texts"];
+        return Promise.all(
+          textList.map((textId: string) => {
+            return fetch(
+              "assets/data/texts/" + textId + ".json"
+            ).then((value) => value.json());
+          })
+        );
+      })
+      .then((textDatas: Array<any>) => {
+        let textMetas = textDatas.map((data) => {
+          return new TextMeta(data);
+        });
+        this.setState((state) => ({
+          texts: textMetas,
+        }));
+      });
+  }
+
   render() {
-    return (
-      <IonContent>
-        <IonCard button routerLink="/texts/louis-ck-01">
-          <IonCardHeader>
-            <IonCardTitle>
-              <IonLabel>Louis CK - 01</IonLabel>
-            </IonCardTitle>
-          </IonCardHeader>
+    if (!this.state.texts) {
+      return (
+        <IonContent>
+          <div>Loading...</div>
+        </IonContent>
+      );
+    }
 
-          <IonCardContent>
-            <p>Difficulty: Foo</p>
-            <p>Category: Bar</p>
-            <p>Length: Car</p>
-          </IonCardContent>
-        </IonCard>
+    let textCards = this.state.texts.map((textMeta, idx) => {
+      let routerLink = "/texts/" + textMeta.id;
+      return (
+        <li key={idx}>
+          <IonCard button routerLink={routerLink}>
+            <IonCardHeader>
+              <IonCardTitle>
+                <IonLabel>{textMeta.title}</IonLabel>
+              </IonCardTitle>
+            </IonCardHeader>
 
-        <IonCard
-          button
-          routerLink="/texts/kaufmann-my-language-learning-technique"
-        >
-          <IonCardHeader>
-            <IonCardTitle>
-              <IonLabel>Kaufmann - My Language Learning Technique</IonLabel>
-            </IonCardTitle>
-          </IonCardHeader>
+            <IonCardContent>
+              <p>Difficulty: {textMeta.difficulty}</p>
+              <p>Categories: {textMeta.categories.join(", ")}</p>
+              <p>Length: Car</p>
+            </IonCardContent>
+          </IonCard>
+        </li>
+      );
+    });
 
-          <IonCardContent>
-            <p>Difficulty: Foo</p>
-            <p>Category: Bar</p>
-            <p>Length: Car</p>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard button routerLink="/texts/hufflepuff-common-room">
-          <IonCardHeader>
-            <IonCardTitle>
-              <IonLabel>Hufflepuff Common Room</IonLabel>
-            </IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            <p>Difficulty: Foo</p>
-            <p>Category: Bar</p>
-            <p>Length: Car</p>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard button routerLink="/texts/owls">
-          <IonCardHeader>
-            <IonCardTitle>
-              <IonLabel>Owls</IonLabel>
-            </IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            <p>Difficulty: Foo</p>
-            <p>Category: Bar</p>
-            <p>Length: Car</p>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard button routerLink="/texts/daily-prophet">
-          <IonCardHeader>
-            <IonCardTitle>
-              <IonLabel>Daily Prophet</IonLabel>
-            </IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            <p>Difficulty: Foo</p>
-            <p>Category: Bar</p>
-            <p>Length: Car</p>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard button routerLink="/texts/every-country-has-ninjas">
-          <IonCardHeader>
-            <IonCardTitle>
-              <IonLabel>Every Country Has Ninjas</IonLabel>
-            </IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            <p>Difficulty: Foo</p>
-            <p>Category: Bar</p>
-            <p>Length: Car</p>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard button routerLink="/texts/platform-9">
-          <IonCardHeader>
-            <IonCardTitle>
-              <IonLabel>Platform 9 3/4</IonLabel>
-            </IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            <p>Difficulty: Foo</p>
-            <p>Category: Bar</p>
-            <p>Length: Car</p>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard button routerLink="/texts/funny-dialogs">
-          <IonCardHeader>
-            <IonCardTitle>
-              <IonLabel>Funny Dialogs</IonLabel>
-            </IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            <p>Difficulty: Foo</p>
-            <p>Category: Bar</p>
-            <p>Length: Car</p>
-          </IonCardContent>
-        </IonCard>
-      </IonContent>
-    );
+    return <IonContent>{textCards}</IonContent>;
   }
 }
 
