@@ -1,6 +1,8 @@
 import React from "react";
+import ReactDOMServer from "react-dom/server";
 import "./MyText.css";
 import {
+  IonAlert,
   IonButton,
   IonContent,
   IonFooter,
@@ -10,6 +12,7 @@ import {
   IonButtons,
   IonTitle,
   IonIcon,
+  IonicSafeString,
 } from "@ionic/react";
 
 import { RouteComponentProps } from "react-router-dom";
@@ -18,6 +21,8 @@ import { arrowBackOutline } from "ionicons/icons";
 import { Plugins } from "@capacitor/core";
 
 import Hammer from "hammerjs";
+
+import { information } from "ionicons/icons";
 
 const { Storage } = Plugins;
 
@@ -33,6 +38,7 @@ class MyText extends React.Component<
     texts: any;
     sentenceIndex: number;
     gesturesInitialized: boolean;
+    showInfoAlert: boolean;
   }
 > {
   constructor(props: any) {
@@ -42,6 +48,7 @@ class MyText extends React.Component<
       texts: {},
       sentenceIndex: -1,
       gesturesInitialized: false,
+      showInfoAlert: false,
     };
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
@@ -71,6 +78,7 @@ class MyText extends React.Component<
     this.goToNext = this.goToNext.bind(this);
     this.goToPrevious = this.goToPrevious.bind(this);
     this.persist = this.persist.bind(this);
+    this.setShowInfoAlert = this.setShowInfoAlert.bind(this);
   }
 
   componentDidUpdate() {
@@ -96,6 +104,12 @@ class MyText extends React.Component<
         sentenceIndex: this.state.sentenceIndex,
       }),
     });
+  }
+
+  setShowInfoAlert(value: boolean) {
+    this.setState((state) => ({
+      showInfoAlert: value,
+    }));
   }
 
   goToNext() {
@@ -133,6 +147,15 @@ class MyText extends React.Component<
     if (!this.state.texts["en"] || this.state.sentenceIndex < 0) {
       return <div>Loading...</div>;
     }
+
+    let infoMessage = new IonicSafeString(
+      ReactDOMServer.renderToString(
+        <div>
+          <p>Difficulty: {this.state.texts.meta["difficulty"]}</p>
+          <p>Categories: {this.state.texts.meta["categories"].join(", ")}</p>
+        </div>
+      )
+    );
     return (
       <IonPage>
         <IonHeader>
@@ -197,7 +220,20 @@ class MyText extends React.Component<
                 Next{" "}
               </IonButton>
             </IonButtons>
+            <IonButtons slot="end">
+              <IonButton onClick={() => this.setShowInfoAlert(true)}>
+                <IonIcon icon={information} size="large" />
+              </IonButton>
+            </IonButtons>
           </IonToolbar>
+
+          <IonAlert
+            isOpen={this.state.showInfoAlert}
+            onDidDismiss={() => this.setShowInfoAlert(false)}
+            header={"Text Info"}
+            message={infoMessage}
+            buttons={["OK"]}
+          />
         </IonFooter>
       </IonPage>
     );
