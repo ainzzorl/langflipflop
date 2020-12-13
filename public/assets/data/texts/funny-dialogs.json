@@ -376,5 +376,13 @@
       "Entrevistador: \u00bfEst\u00e1 bromeando?",
       "Chico: No, es mi primo y estoy bromeando."
     ]
+  },
+  "meta": {
+    "difficulty": 4,
+    "categories": [
+      "reddit",
+      "humor",
+      "jokes"
+    ]
   }
 }

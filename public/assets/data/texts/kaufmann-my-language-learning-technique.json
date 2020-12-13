@@ -650,5 +650,13 @@
       "solo ve por disfrutar y mejorar",
       "adi\u00f3s por ahora"
     ]
+  },
+  "meta": {
+    "difficulty": 3,
+    "categories": [
+      "languages",
+      "education",
+      "youtube"
+    ]
   }
 }

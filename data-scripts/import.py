@@ -52,6 +52,8 @@ for id in os.listdir('./data-scripts/in/'):
   print(id)
   en = process('en', id)
   es = process('es', id)
+  with open(f"./data-scripts/in/{id}/meta.json") as f:
+    meta = json.load(f)
 
   if len(en['sentences']) != len(es['sentences']):
     printdiff(en['sentences'], es['sentences'])
@@ -61,7 +63,8 @@ for id in os.listdir('./data-scripts/in/'):
 
   final = {
     'en': en,
-    'es': es
+    'es': es,
+    'meta': meta
   }
 
   with open(f"public/assets/data/texts/{id}.json", 'w') as outfile:

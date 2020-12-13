@@ -18,5 +18,12 @@
       "El n\u00famero nueve y tres cuartos se present\u00f3 sin pensarlo mucho, y me gust\u00f3 tanto que lo tom\u00e9 de inmediato.",
       "Son las 'tres cuartas partes' las que lo hacen, por supuesto."
     ]
+  },
+  "meta": {
+    "difficulty": 3,
+    "categories": [
+      "harry potter",
+      "article"
+    ]
   }
 }
