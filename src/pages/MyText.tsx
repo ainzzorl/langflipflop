@@ -161,7 +161,7 @@ class MyText extends React.Component<
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonButton href="/mainmenu">
+              <IonButton href="/">
                 <IonIcon slot="start" icon={arrowBackOutline} />
               </IonButton>
               <IonTitle>
