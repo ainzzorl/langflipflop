@@ -1,0 +1,44 @@
+{
+  "en": {
+    "title": "The Ugly Duckling",
+    "sentences": [
+      "It was so beautiful in the country.",
+      "It was the summer time.",
+      "The wheat fields were golden, the oats were green, and the hay stood in great stacks in the green meadows.",
+      "The stork paraded about among them on his long red legs, chattering away in Egyptian, the language he had learned from his lady mother.",
+      "All around the meadows and cornfields grew thick woods, and in the midst of the forest was a deep lake.",
+      "Yes, it was beautiful, it was delightful in the country.",
+      "In a sunny spot stood a pleasant old farmhouse circled all about with deep canals; and from the walls down to the water's edge grew great burdocks, so high that under the tallest of them a little child might stand upright.",
+      "The[31] spot was as wild as if it had been in the very center of the thick wood.",
+      "In this snug retreat sat a duck upon her nest, watching for her young brood to hatch; but the pleasure she had felt at first was almost gone; she had begun to think it a wearisome task, for the little ones were so long coming out of their shells, and she seldom had visitors.",
+      "The other ducks liked much better to swim about in the canals than to climb the slippery banks and sit under the burdock leaves to have a gossip with her.",
+      "It was a long time to stay so much by herself.",
+      "At length, however, one shell cracked, and soon another, and from each came a living creature that lifted its head and cried \"Peep, peep.\""
+    ]
+  },
+  "es": {
+    "title": "El patito feo",
+    "sentences": [
+      "Era tan hermoso en el campo.",
+      "Era el horario de verano.",
+      "Los campos de trigo eran dorados, la avena verde y el heno se amontonaba en grandes pilas en los prados verdes.",
+      "La cig\u00fce\u00f1a desfilaba entre ellos sobre sus largas patas rojas, parloteando en egipcio, el idioma que hab\u00eda aprendido de su se\u00f1ora madre.",
+      "Alrededor de los prados y los campos de ma\u00edz crec\u00edan espesos bosques, y en medio del bosque hab\u00eda un lago profundo.",
+      "S\u00ed, era hermoso, era delicioso en el campo.",
+      "En un lugar soleado se alzaba una agradable y antigua granja rodeada por profundos canales; y desde las paredes hasta la orilla del agua crec\u00edan grandes bardanas, tan altas que debajo del m\u00e1s alto de ellas un ni\u00f1o peque\u00f1o pod\u00eda estar de pie.",
+      "El lugar [31] era tan salvaje como si hubiera estado en el centro mismo de la espesa madera.",
+      "En este acogedor refugio se sentaba un pato en su nido, esperando a que su cr\u00eda naciera; pero el placer que hab\u00eda sentido al principio casi hab\u00eda desaparecido; hab\u00eda empezado a pensar que era una tarea tediosa, porque los peque\u00f1os tardaban tanto en salir de sus caparazones y rara vez ten\u00eda visitas.",
+      "A los otros patos les gustaba mucho m\u00e1s nadar en los canales que trepar por las orillas resbaladizas y sentarse bajo las hojas de bardana para charlar con ella.",
+      "Fue mucho tiempo para quedarse tanto sola.",
+      "Al final, sin embargo, una concha se rompi\u00f3 y pronto otra, y de cada una sali\u00f3 una criatura viviente que levant\u00f3 la cabeza y grit\u00f3: \"\u00a1Pip!"
+    ]
+  },
+  "meta": {
+    "difficulty": 3,
+    "categories": [
+      "fairy-tale",
+      "public-domain"
+    ],
+    "id": "patito-feo"
+  }
+}
