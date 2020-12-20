@@ -19,6 +19,7 @@ def process(lang, id):
     sentences = []
     for paragraph in paragraphs:
         sentences += tokenizer.tokenize(paragraph)
+    sentences = [s for s in sentences if s != '".']
 
   return {
     'title': title,
