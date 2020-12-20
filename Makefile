@@ -19,3 +19,7 @@ android :
 .PHONY: android-deploy
 android-deploy :
 			 (cd android && gradle installDebug)
+
+.PHONY: translate
+translate :
+			 python data-scripts/translate.py $(ARGS)
