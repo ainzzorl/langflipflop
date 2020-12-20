@@ -24,6 +24,8 @@ import Hammer from "hammerjs";
 
 import { information } from "ionicons/icons";
 
+import ReactCardFlip from "react-card-flip";
+
 const { Storage } = Plugins;
 
 interface MyTextProps
@@ -79,6 +81,7 @@ class MyText extends React.Component<
     this.goToPrevious = this.goToPrevious.bind(this);
     this.persist = this.persist.bind(this);
     this.setShowInfoAlert = this.setShowInfoAlert.bind(this);
+    this.onFlip = this.onFlip.bind(this);
   }
 
   componentDidUpdate() {
@@ -110,6 +113,20 @@ class MyText extends React.Component<
     this.setState((state) => ({
       showInfoAlert: value,
     }));
+  }
+
+  onFlip() {
+    let newLang;
+    if (this.state.lang === "en") {
+      newLang = "es";
+    } else {
+      newLang = "en";
+    }
+    this.setState({
+      lang: newLang,
+      texts: this.state.texts,
+      sentenceIndex: this.state.sentenceIndex,
+    });
   }
 
   goToNext() {
@@ -175,27 +192,17 @@ class MyText extends React.Component<
           </IonToolbar>
         </IonHeader>
         <IonContent id="my-div" class="ion-padding">
-          <p
-            onClick={() => {
-              let newLang;
-              if (this.state.lang === "en") {
-                newLang = "es";
-              } else {
-                newLang = "en";
-              }
-              this.setState({
-                lang: newLang,
-                texts: this.state.texts,
-                sentenceIndex: this.state.sentenceIndex,
-              });
-            }}
+          <ReactCardFlip
+            isFlipped={this.state.lang === "es"}
+            flipDirection="horizontal"
           >
-            {
-              this.state.texts[this.state.lang].sentences[
-                this.state.sentenceIndex
-              ]
-            }
-          </p>
+            <p onClick={() => this.onFlip()}>
+              {this.state.texts["en"].sentences[this.state.sentenceIndex]}
+            </p>
+            <p onClick={() => this.onFlip()}>
+              {this.state.texts["es"].sentences[this.state.sentenceIndex]}
+            </p>
+          </ReactCardFlip>
         </IonContent>
         <IonFooter>
           <IonToolbar>
