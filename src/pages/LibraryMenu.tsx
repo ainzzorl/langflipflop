@@ -20,12 +20,14 @@ class TextMeta {
   title: string;
   difficulty: number;
   categories: Array<string>;
+  numSentences: number;
 
   constructor(data: any) {
     this.title = data["en"]["title"];
     this.id = data["meta"]["id"];
     this.difficulty = data["meta"]["difficulty"];
     this.categories = data["meta"]["categories"];
+    this.numSentences = data["meta"]["numSentences"];
   }
 }
 
@@ -113,7 +115,7 @@ class LibraryMenu extends React.Component<
               <IonCardContent>
                 <p>Difficulty: {textMeta.difficulty}</p>
                 <p>Categories: {textMeta.categories.join(", ")}</p>
-                <p>Length: Car</p>
+                <p>Length: {textMeta.numSentences}</p>
               </IonCardContent>
             </IonCard>
           </li>
