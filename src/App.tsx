@@ -31,9 +31,9 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import MyText from "./pages/MyText";
 import LibraryMenu from "./pages/LibraryMenu";
-import MyLibrary from "./pages/MyLibrary";
+import Recent from "./pages/Recent";
 
-import { home, bookmark } from "ionicons/icons";
+import { home, time } from "ionicons/icons";
 
 const App: React.FC = () => (
   <IonApp>
@@ -52,20 +52,16 @@ const App: React.FC = () => (
                     component={LibraryMenu}
                     exact={true}
                   />
-                  <Route
-                    path="/tabs/my-library"
-                    component={MyLibrary}
-                    exact={true}
-                  />
+                  <Route path="/tabs/recent" component={Recent} exact={true} />
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
                   <IonTabButton tab="library" href="/tabs/library">
                     <IonIcon icon={home} />
                     <IonLabel>Home</IonLabel>
                   </IonTabButton>
-                  <IonTabButton tab="my-library" href="/tabs/my-library">
-                    <IonIcon icon={bookmark} />
-                    <IonLabel>My Texts</IonLabel>
+                  <IonTabButton tab="recent" href="/tabs/recent">
+                    <IonIcon icon={time} />
+                    <IonLabel>Recent</IonLabel>
                   </IonTabButton>
                 </IonTabBar>
               </IonTabs>
