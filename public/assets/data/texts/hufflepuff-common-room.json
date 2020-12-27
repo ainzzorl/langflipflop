@@ -1,6 +1,7 @@
 {
   "en": {
     "title": "Hufflepuff Common Room",
+    "description": "Hufflepuff Common Room - description",
     "sentences": [
       "The Hufflepuff common room is entered from the same corridor as the Hogwarts kitchens.",
       "Proceeding past the large still life that forms the entrance to the latter, a pile of large barrels is to be found stacked in a shadowy stone recess on the right-hand side of the corridor.",
@@ -24,6 +25,7 @@
   },
   "es": {
     "title": "Sala com\u00fan de Hufflepuff",
+    "description": "Sala com\u00fan de Hufflepuff - descripci\u00f3n",
     "sentences": [
       "A la sala com\u00fan de Hufflepuff se ingresa desde el mismo pasillo que las cocinas de Hogwarts.",
       "Pasando el gran bodeg\u00f3n que forma la entrada a este \u00faltimo, se encuentra una pila de grandes barriles apilados en un oscuro hueco de piedra en el lado derecho del pasillo.",

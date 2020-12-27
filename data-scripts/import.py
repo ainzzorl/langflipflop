@@ -6,7 +6,7 @@ def process(lang, id):
   with open(f"./data-scripts/in/{id}/{lang}.txt") as file:
     data = file.read()
 
-    title, body = data.split("\n", maxsplit=1)
+    title, description, body = data.split("\n", maxsplit=2)
 
     if lang == 'en':
       tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
@@ -23,6 +23,7 @@ def process(lang, id):
 
   return {
     'title': title,
+    'description': description,
     'sentences': sentences
   }
 

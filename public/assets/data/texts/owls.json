@@ -1,6 +1,7 @@
 {
   "en": {
     "title": "Owls",
+    "description": "Owls - description",
     "sentences": [
       "The old British superstition that it is unlucky to see owls flying by daylight is readily explained, for when wizards break cover to send messages by day, something dramatic must be afoot in the magical world.",
       "Muggles may subsequently experience the unpleasant aftershocks, without any idea of their cause.",
@@ -35,6 +36,7 @@
   },
   "es": {
     "title": "B\u00fahos",
+    "description": "B\u00fahos - descripci\u00f3n",
     "sentences": [
       "La vieja superstici\u00f3n brit\u00e1nica de que es desafortunado ver b\u00fahos volando a la luz del d\u00eda se explica f\u00e1cilmente, porque cuando los magos rompen la cobertura para enviar mensajes durante el d\u00eda, algo dram\u00e1tico debe estar sucediendo en el mundo m\u00e1gico.",
       "Los muggles pueden experimentar posteriormente las desagradables r\u00e9plicas, sin tener idea de su causa.",

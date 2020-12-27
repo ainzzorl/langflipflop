@@ -1,6 +1,7 @@
 {
   "en": {
     "title": "The Daily Prophet",
+    "description": "The Daily Prophet - description",
     "sentences": [
       "There is only one wizarding newspaper in Britain, discounting such small circulation publications such as *The Quibbler*.",
       "The *Daily Prophet*, whose headquarters are in Diagon Alley, is delivered by owl on a daily basis to nearly every wizarding household in Britain.",
@@ -17,6 +18,7 @@
   },
   "es": {
     "title": "El diario profeta",
+    "description": "The Daily Prophet - descripci\u00f3n",
     "sentences": [
       "Aqu\u00ed hay solo un peri\u00f3dico m\u00e1gico en Gran Breta\u00f1a, descontando publicaciones de tan peque\u00f1a circulaci\u00f3n como * The Quibbler *.",
       "El * Daily Prophet *, cuya sede se encuentra en el Callej\u00f3n Diagon, es entregado por b\u00faho a diario a casi todos los hogares m\u00e1gicos en Gran Breta\u00f1a.",

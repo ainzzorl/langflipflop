@@ -1,6 +1,7 @@
 {
   "en": {
     "title": "Funny Dialogues between Two Persons",
+    "description": "Funny Dialogues between Two Persons - description",
     "sentences": [
       "Two terrorists having discussion in a bar,",
       "The waiter asks them what the discussion was about.",
@@ -190,6 +191,7 @@
   },
   "es": {
     "title": "M\u00e1s de 25 di\u00e1logos muy divertidos entre dos personas",
+    "description": "M\u00e1s de 25 di\u00e1logos muy divertidos entre dos personas - descripci\u00f3n",
     "sentences": [
       "Dos terroristas discutiendo en un bar,",
       "el camarero les pregunta de qu\u00e9 se trataba la discusi\u00f3n.",

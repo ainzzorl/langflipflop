@@ -1,6 +1,7 @@
 {
   "en": {
     "title": "The Ugly Duckling",
+    "description": "The Ugly Duckling - description",
     "sentences": [
       "It was so beautiful in the country.",
       "It was the summer time.",
@@ -18,6 +19,7 @@
   },
   "es": {
     "title": "El patito feo",
+    "description": "El patito feo - descripci\u00f3n",
     "sentences": [
       "Era tan hermoso en el campo.",
       "Era el horario de verano.",

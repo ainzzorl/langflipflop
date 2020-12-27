@@ -1,6 +1,7 @@
 {
   "en": {
     "title": "My Language Learning Technique",
+    "description": "My Language Learning Technique - description",
     "sentences": [
       "hi there steve kaufman here just",
       "finishing off on apple",
@@ -327,6 +328,7 @@
   },
   "es": {
     "title": "Mi t\u00e9cnica de aprendizaje de idiomas",
+    "description": "Mi t\u00e9cnica de aprendizaje de idiomas - descripti\u00f3n",
     "sentences": [
       "hola steve kaufman aqu\u00ed solo",
       "terminando en manzana",

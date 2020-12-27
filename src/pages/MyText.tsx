@@ -196,6 +196,7 @@ class MyText extends React.Component<
         <div>
           <p>Difficulty: {this.state.texts.meta["difficulty"]}</p>
           <p>Categories: {this.state.texts.meta["categories"].join(", ")}</p>
+          <p>{this.state.texts[this.state.lang]["description"]}</p>
         </div>
       )
     );
