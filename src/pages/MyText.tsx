@@ -82,6 +82,9 @@ class MyText extends React.Component<
     this.persist = this.persist.bind(this);
     this.setShowInfoAlert = this.setShowInfoAlert.bind(this);
     this.onFlip = this.onFlip.bind(this);
+    this.saveOpenedTimestamp = this.saveOpenedTimestamp.bind(this);
+
+    this.saveOpenedTimestamp();
   }
 
   componentDidUpdate() {
@@ -101,11 +104,34 @@ class MyText extends React.Component<
   }
 
   persist() {
+    // TODO: move to the shared storage
     Storage.set({
       key: "text-data." + this.props.match.params.id,
       value: JSON.stringify({
         sentenceIndex: this.state.sentenceIndex,
       }),
+    });
+  }
+
+  saveOpenedTimestamp() {
+    let textId = this.props.match.params.id;
+    Storage.get({ key: "text-data" }).then((value) => {
+      const s = value.value;
+      let textsData;
+      if (s !== null) {
+        textsData = JSON.parse(s);
+      } else {
+        textsData = {};
+      }
+      if (!textsData[textId]) {
+        textsData[textId] = {};
+      }
+      textsData[textId]["lastOpenedTimestamp"] = Date.now();
+
+      Storage.set({
+        key: "text-data",
+        value: JSON.stringify(textsData),
+      });
     });
   }
 
