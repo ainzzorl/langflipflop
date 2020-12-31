@@ -37,6 +37,7 @@ class LibraryMenu extends React.Component<
     texts?: Array<TextMeta>;
     allCategories: Array<String>;
     categoryFilter?: string;
+    difficultyFilter?: string;
   }
 > {
   constructor(props: any) {
@@ -44,6 +45,7 @@ class LibraryMenu extends React.Component<
     this.state = {
       texts: undefined,
       categoryFilter: undefined,
+      difficultyFilter: undefined,
       allCategories: [],
     };
 
@@ -77,11 +79,18 @@ class LibraryMenu extends React.Component<
       });
 
     this.setCategoryFilter = this.setCategoryFilter.bind(this);
+    this.setDifficultyFilter = this.setDifficultyFilter.bind(this);
   }
 
   setCategoryFilter(value: string) {
     this.setState((state) => ({
       categoryFilter: value,
+    }));
+  }
+
+  setDifficultyFilter(value: string) {
+    this.setState((state) => ({
+      difficultyFilter: value,
     }));
   }
 
@@ -99,6 +108,12 @@ class LibraryMenu extends React.Component<
         return (
           !this.state.categoryFilter ||
           textMeta.categories.includes(this.state.categoryFilter)
+        );
+      })
+      .filter((textMeta, _idx) => {
+        return (
+          !this.state.difficultyFilter ||
+          textMeta.difficulty.includes(this.state.difficultyFilter)
         );
       })
       .map((textMeta, idx) => {
@@ -128,6 +143,18 @@ class LibraryMenu extends React.Component<
         </IonSelectOption>
       );
     });
+    let difficultyOptions = ["Easy", "Medium", "Hard"].map(
+      (difficulty, _idx) => {
+        return (
+          <IonSelectOption
+            value={difficulty}
+            key={"selector-difficulty-" + difficulty}
+          >
+            {difficulty}
+          </IonSelectOption>
+        );
+      }
+    );
 
     return (
       <IonPage>
@@ -144,6 +171,19 @@ class LibraryMenu extends React.Component<
                   Any
                 </IonSelectOption>
                 {categoryOptions}
+              </IonSelect>
+            </IonItem>
+            <IonItem>
+              <IonLabel>Difficulty</IonLabel>
+              <IonSelect
+                value={this.state.difficultyFilter}
+                placeholder="Any"
+                onIonChange={(e) => this.setDifficultyFilter(e.detail.value)}
+              >
+                <IonSelectOption value="" key={"selector-category-any"}>
+                  Any
+                </IonSelectOption>
+                {difficultyOptions}
               </IonSelect>
             </IonItem>
           </IonList>
