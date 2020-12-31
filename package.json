@@ -50,6 +50,8 @@
   },
   "devDependencies": {
     "@capacitor/cli": "2.4.0",
+    "fetch-mock-jest": "^1.5.1",
+    "node-fetch": "^2.6.1",
     "prettier": "2.1.1",
     "react-scripts": "3.4.0"
   },

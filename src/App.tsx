@@ -1,14 +1,5 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
-import {
-  IonApp,
-  IonRouterOutlet,
-  IonTabs,
-  IonTabBar,
-  IonTabButton,
-  IonIcon,
-  IonLabel,
-} from "@ionic/react";
+import { IonApp } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
 /* Core CSS required for Ionic components to work properly */
@@ -29,46 +20,13 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import MyText from "./pages/MyText";
-import LibraryMenu from "./pages/LibraryMenu";
-import Recent from "./pages/Recent";
 
-import { home, time } from "ionicons/icons";
+import MainCompinent from "./MainComponent";
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/" render={() => <Redirect to="/tabs/library" />} />
-        <Route path="/texts/:id" component={MyText} />
-        <Route
-          path="/tabs"
-          render={() => {
-            return (
-              <IonTabs>
-                <IonRouterOutlet>
-                  <Route
-                    path="/tabs/library"
-                    component={LibraryMenu}
-                    exact={true}
-                  />
-                  <Route path="/tabs/recent" component={Recent} exact={true} />
-                </IonRouterOutlet>
-                <IonTabBar slot="bottom">
-                  <IonTabButton tab="library" href="/tabs/library">
-                    <IonIcon icon={home} />
-                    <IonLabel>Home</IonLabel>
-                  </IonTabButton>
-                  <IonTabButton tab="recent" href="/tabs/recent">
-                    <IonIcon icon={time} />
-                    <IonLabel>Recent</IonLabel>
-                  </IonTabButton>
-                </IonTabBar>
-              </IonTabs>
-            );
-          }}
-        />
-      </IonRouterOutlet>
+      <MainCompinent />
     </IonReactRouter>
   </IonApp>
 );

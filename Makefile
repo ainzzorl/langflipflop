@@ -23,3 +23,7 @@ android-deploy :
 .PHONY: translate
 translate :
 			 python data-scripts/translate.py $(ARGS)
+
+.PHONY: test
+test :
+			 npm test -- a --watchAll=false
