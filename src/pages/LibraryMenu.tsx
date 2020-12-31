@@ -18,7 +18,7 @@ import {
 class TextMeta {
   id: string;
   title: string;
-  difficulty: number;
+  difficulty: string;
   categories: Array<string>;
   numSentences: number;
 
