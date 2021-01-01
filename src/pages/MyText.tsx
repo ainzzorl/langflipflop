@@ -195,6 +195,7 @@ class MyText extends React.Component<
       ReactDOMServer.renderToString(
         <div>
           <p>Difficulty: {this.state.texts.meta["difficulty"]}</p>
+          {/* TODO: fix, use "pretty" */}
           <p>Categories: {this.state.texts.meta["categories"].join(", ")}</p>
           <p>{this.state.texts[this.state.lang]["description"]}</p>
         </div>

@@ -20,8 +20,11 @@ test("Rendering Library Menu", async () => {
     </MemoryRouter>
   );
 
-  let card = await (await screen.findByText("The Ugly Duckling")).closest('ion-card');
+  let card = await (await screen.findByText("The Ugly Duckling")).closest(
+    "ion-card"
+  );
 
-  await within(card!).findByText('Difficulty: Medium');
-  await within(card!).findByText('Length: 225');
+  await within(card!).findByText("Difficulty: Medium");
+  await within(card!).findByText("Length: 225");
+  await within(card!).findByText("Categories: Children's, Fairy Tale");
 });

@@ -15,6 +15,15 @@ import {
   IonSelectOption,
 } from "@ionic/react";
 
+const CATEGORY_MAP: Map<string, string> = new Map([
+  ["children", "Children's"],
+  ["fairy-tale", "Fairy Tale"],
+  ["adult", "Adult"],
+]);
+
+// ORDERED list of categories.
+const CATEGORIES = ["children", "fairy-tale", "adult"];
+
 class TextMeta {
   id: string;
   title: string;
@@ -29,13 +38,18 @@ class TextMeta {
     this.categories = data["meta"]["categories"];
     this.numSentences = data["meta"]["numSentences"];
   }
+
+  public prettyCategories(): string {
+    return CATEGORIES.filter((c) => this.categories.includes(c))
+      .map((c) => CATEGORY_MAP.get(c))
+      .join(", ");
+  }
 }
 
 class LibraryMenu extends React.Component<
   {},
   {
     texts?: Array<TextMeta>;
-    allCategories: Array<String>;
     categoryFilter?: string;
     difficultyFilter?: string;
   }
@@ -46,7 +60,6 @@ class LibraryMenu extends React.Component<
       texts: undefined,
       categoryFilter: undefined,
       difficultyFilter: undefined,
-      allCategories: [],
     };
 
     fetch("assets/data/texts.json")
@@ -65,16 +78,8 @@ class LibraryMenu extends React.Component<
         let textMetas = textDatas.map((data) => {
           return new TextMeta(data);
         });
-        let allc = new Set<string>();
-        textMetas.forEach((textMeta) => {
-          textMeta.categories.forEach((c) => {
-            allc.add(c);
-          });
-        });
-        let allCategories = Array.from(allc).sort();
         this.setState((state) => ({
           texts: textMetas,
-          allCategories: allCategories,
         }));
       });
 
@@ -129,14 +134,14 @@ class LibraryMenu extends React.Component<
 
               <IonCardContent>
                 <p>Difficulty: {textMeta.difficulty}</p>
-                <p>Categories: {textMeta.categories.join(", ")}</p>
+                <p>Categories: {textMeta.prettyCategories()}</p>
                 <p>Length: {textMeta.numSentences}</p>
               </IonCardContent>
             </IonCard>
           </li>
         );
       });
-    let categoryOptions = this.state.allCategories.map((category, _idx) => {
+    let categoryOptions = CATEGORIES.map((category, _idx) => {
       return (
         <IonSelectOption value={category} key={"selector-category-" + category}>
           {category}
