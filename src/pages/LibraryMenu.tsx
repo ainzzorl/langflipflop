@@ -1,50 +1,20 @@
 import React from "react";
 import "./LibraryMenu.css";
 
+import TextMeta from "../common/TextMeta";
+
+import TextCard from "../components/TextCard";
+import { CATEGORIES } from "../common/Categories";
+
 import {
   IonContent,
   IonLabel,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
   IonPage,
   IonList,
   IonItem,
   IonSelect,
   IonSelectOption,
 } from "@ionic/react";
-
-const CATEGORY_MAP: Map<string, string> = new Map([
-  ["children", "Children's"],
-  ["fairy-tale", "Fairy Tale"],
-  ["adult", "Adult"],
-]);
-
-// ORDERED list of categories.
-const CATEGORIES = ["children", "fairy-tale", "adult"];
-
-class TextMeta {
-  id: string;
-  title: string;
-  difficulty: string;
-  categories: Array<string>;
-  numSentences: number;
-
-  constructor(data: any) {
-    this.title = data["en"]["title"];
-    this.id = data["meta"]["id"];
-    this.difficulty = data["meta"]["difficulty"];
-    this.categories = data["meta"]["categories"];
-    this.numSentences = data["meta"]["numSentences"];
-  }
-
-  public prettyCategories(): string {
-    return CATEGORIES.filter((c) => this.categories.includes(c))
-      .map((c) => CATEGORY_MAP.get(c))
-      .join(", ");
-  }
-}
 
 class LibraryMenu extends React.Component<
   {},
@@ -122,22 +92,9 @@ class LibraryMenu extends React.Component<
         );
       })
       .map((textMeta, idx) => {
-        let routerLink = "/texts/" + textMeta.id;
         return (
           <li key={idx}>
-            <IonCard button routerLink={routerLink}>
-              <IonCardHeader>
-                <IonCardTitle>
-                  <IonLabel>{textMeta.title}</IonLabel>
-                </IonCardTitle>
-              </IonCardHeader>
-
-              <IonCardContent>
-                <p>Difficulty: {textMeta.difficulty}</p>
-                <p>Categories: {textMeta.prettyCategories()}</p>
-                <p>Length: {textMeta.numSentences}</p>
-              </IonCardContent>
-            </IonCard>
+            <TextCard textMeta={textMeta} />
           </li>
         );
       });

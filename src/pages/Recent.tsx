@@ -2,34 +2,13 @@ import React from "react";
 import "./Recent.css";
 
 import { Plugins } from "@capacitor/core";
-import {
-  IonContent,
-  IonLabel,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonPage,
-} from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
+
+import TextMeta from "../common/TextMeta";
+
+import TextCard from "../components/TextCard";
 
 const { Storage } = Plugins;
-
-// TODO: move to shared file
-class TextMeta {
-  id: string;
-  title: string;
-  difficulty: string;
-  categories: Array<string>;
-  numSentences: number;
-
-  constructor(data: any) {
-    this.title = data["en"]["title"];
-    this.id = data["meta"]["id"];
-    this.difficulty = data["meta"]["difficulty"];
-    this.categories = data["meta"]["categories"];
-    this.numSentences = data["meta"]["numSentences"];
-  }
-}
 
 // TODO: move to shared file
 class TextPersistentData {
@@ -131,22 +110,9 @@ class Recent extends React.Component<
     // TODO: refactor duplication with LibraryMenu
 
     let textCards = this.state.sortedTexts.map((textMeta, idx) => {
-      let routerLink = "/texts/" + textMeta.id;
       return (
         <li key={idx}>
-          <IonCard button routerLink={routerLink}>
-            <IonCardHeader>
-              <IonCardTitle>
-                <IonLabel>{textMeta.title}</IonLabel>
-              </IonCardTitle>
-            </IonCardHeader>
-
-            <IonCardContent>
-              <p>Difficulty: {textMeta.difficulty}</p>
-              <p>Categories: {textMeta.categories.join(", ")}</p>
-              <p>Length: {textMeta.numSentences}</p>
-            </IonCardContent>
-          </IonCard>
+          <TextCard textMeta={textMeta} />
         </li>
       );
     });
