@@ -110,11 +110,7 @@ class Recent extends React.Component<
     // TODO: refactor duplication with LibraryMenu
 
     let textCards = this.state.sortedTexts.map((textMeta, idx) => {
-      return (
-        <li key={idx}>
-          <TextCard textMeta={textMeta} />
-        </li>
-      );
+      return <TextCard textMeta={textMeta} />;
     });
     return (
       <IonPage>

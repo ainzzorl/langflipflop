@@ -92,11 +92,7 @@ class LibraryMenu extends React.Component<
         );
       })
       .map((textMeta, idx) => {
-        return (
-          <li key={idx}>
-            <TextCard textMeta={textMeta} />
-          </li>
-        );
+        return <TextCard textMeta={textMeta} />;
       });
     let categoryOptions = CATEGORIES.map((category, _idx) => {
       return (
