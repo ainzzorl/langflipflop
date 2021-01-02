@@ -41,16 +41,23 @@ class MyText extends React.Component<
     sentenceIndex: number;
     gesturesInitialized: boolean;
     showInfoAlert: boolean;
+    sideOneText: string;
+    sideTwoText: string;
+    flipped: boolean;
   }
 > {
   constructor(props: any) {
     super(props);
+    let initialLang = "en";
     this.state = {
-      lang: "en",
+      lang: initialLang,
       texts: {},
       sentenceIndex: -1,
       gesturesInitialized: false,
       showInfoAlert: false,
+      sideOneText: "",
+      sideTwoText: "",
+      flipped: false,
     };
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
@@ -59,23 +66,24 @@ class MyText extends React.Component<
         this.setState((state) => ({
           texts: res,
         }));
-      });
-
-    Storage.get({ key: "text-data." + this.props.match.params.id }).then(
-      (value) => {
+        return Storage.get({ key: "text-data." + this.props.match.params.id });
+      })
+      .then((value) => {
         const s = value.value;
+        let sentenceIndex: number;
         if (s !== null) {
           let ps = JSON.parse(s);
-          this.setState((state) => ({
-            sentenceIndex: ps["sentenceIndex"],
-          }));
+          sentenceIndex = ps["sentenceIndex"];
         } else {
-          this.setState((state) => ({
-            sentenceIndex: 0,
-          }));
+          sentenceIndex = 0;
         }
-      }
-    );
+        this.setState((state) => ({
+          sentenceIndex: sentenceIndex,
+          sideOneText: state.texts[initialLang].sentences[sentenceIndex],
+          sideTwoText:
+            state.texts[this.otherLang(initialLang)].sentences[sentenceIndex],
+        }));
+      });
 
     this.goToNext = this.goToNext.bind(this);
     this.goToPrevious = this.goToPrevious.bind(this);
@@ -85,6 +93,10 @@ class MyText extends React.Component<
     this.saveOpenedTimestamp = this.saveOpenedTimestamp.bind(this);
 
     this.saveOpenedTimestamp();
+  }
+
+  otherLang(lang: string): string {
+    return lang === "en" ? "es" : "en";
   }
 
   componentDidUpdate() {
@@ -142,17 +154,16 @@ class MyText extends React.Component<
   }
 
   onFlip() {
-    let newLang;
+    let newLang: string;
     if (this.state.lang === "en") {
       newLang = "es";
     } else {
       newLang = "en";
     }
-    this.setState({
+    this.setState((state) => ({
       lang: newLang,
-      texts: this.state.texts,
-      sentenceIndex: this.state.sentenceIndex,
-    });
+      flipped: !this.state.flipped,
+    }));
   }
 
   goToNext() {
@@ -167,6 +178,12 @@ class MyText extends React.Component<
         lang: "en",
         texts: state.texts,
         sentenceIndex: state.sentenceIndex + 1,
+        sideOneText: state.flipped
+          ? state.texts["es"].sentences[state.sentenceIndex + 1]
+          : state.texts["en"].sentences[state.sentenceIndex + 1],
+        sideTwoText: state.flipped
+          ? state.texts["en"].sentences[state.sentenceIndex + 1]
+          : state.texts["es"].sentences[state.sentenceIndex + 1],
       }),
       this.persist
     );
@@ -181,6 +198,12 @@ class MyText extends React.Component<
         lang: "en",
         texts: state.texts,
         sentenceIndex: state.sentenceIndex - 1,
+        sideOneText: state.flipped
+          ? state.texts["es"].sentences[state.sentenceIndex - 1]
+          : state.texts["en"].sentences[state.sentenceIndex - 1],
+        sideTwoText: state.flipped
+          ? state.texts["en"].sentences[state.sentenceIndex - 1]
+          : state.texts["es"].sentences[state.sentenceIndex - 1],
       }),
       this.persist
     );
@@ -221,15 +244,11 @@ class MyText extends React.Component<
         </IonHeader>
         <IonContent id="my-div" class="ion-padding">
           <ReactCardFlip
-            isFlipped={this.state.lang === "es"}
+            isFlipped={this.state.flipped}
             flipDirection="horizontal"
           >
-            <p onClick={() => this.onFlip()}>
-              {this.state.texts["en"].sentences[this.state.sentenceIndex]}
-            </p>
-            <p onClick={() => this.onFlip()}>
-              {this.state.texts["es"].sentences[this.state.sentenceIndex]}
-            </p>
+            <p onClick={() => this.onFlip()}>{this.state.sideOneText}</p>
+            <p onClick={() => this.onFlip()}>{this.state.sideTwoText}</p>
           </ReactCardFlip>
         </IonContent>
         <IonFooter>
