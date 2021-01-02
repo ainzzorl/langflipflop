@@ -4,7 +4,7 @@ import "./LibraryMenu.css";
 import TextMeta from "../common/TextMeta";
 
 import TextCard from "../components/TextCard";
-import { CATEGORIES } from "../common/Categories";
+import { CATEGORIES, CATEGORY_MAP } from "../common/Categories";
 
 import {
   IonContent,
@@ -97,7 +97,7 @@ class LibraryMenu extends React.Component<
     let categoryOptions = CATEGORIES.map((category, _idx) => {
       return (
         <IonSelectOption value={category} key={"selector-category-" + category}>
-          {category}
+          {CATEGORY_MAP.get(category)}
         </IonSelectOption>
       );
     });
