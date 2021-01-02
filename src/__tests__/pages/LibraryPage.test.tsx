@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import MainComponent from "./MainComponent";
+import MainComponent from "./../../MainComponent";
 import fs from "fs";
 
 const fetchMock = require("fetch-mock-jest");
