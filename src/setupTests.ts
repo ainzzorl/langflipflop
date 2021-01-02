@@ -3,3 +3,18 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom/extend-expect";
+
+import fs from "fs";
+
+const fetchMock = require("fetch-mock-jest");
+
+fetchMock.mock(
+  () => true,
+  (url: string, _options: any) => {
+    return fs.readFileSync("./public/" + url, "utf8");
+  }
+);
+
+beforeEach(() => {
+  jest.resetAllMocks();
+});

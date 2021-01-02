@@ -26,4 +26,8 @@ translate :
 
 .PHONY: test
 test :
-			 npm test -- a --watchAll=false
+			 npm test -- a --watchAll=false $(ARGS)
+
+.PHONY: test-args
+test-args :
+			 npm test -- --watchAll=false $(ARGS)

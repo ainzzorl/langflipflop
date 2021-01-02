@@ -1,24 +1,9 @@
-import React from "react";
-import { render, screen, within } from "@testing-library/react";
-import { MemoryRouter } from "react-router";
-import MainComponent from "./../../MainComponent";
-import fs from "fs";
+import { screen, within } from "@testing-library/react";
 
-const fetchMock = require("fetch-mock-jest");
-
-fetchMock.mock(
-  () => true,
-  (url: string, _options: any) => {
-    return fs.readFileSync("./public/" + url, "utf8");
-  }
-);
+import { renderWithRoute } from "../../test-common";
 
 test("Rendering Library Menu", async () => {
-  render(
-    <MemoryRouter initialEntries={["/"]}>
-      <MainComponent />
-    </MemoryRouter>
-  );
+  renderWithRoute("/");
 
   let card = await (await screen.findByText("The Ugly Duckling")).closest(
     "ion-card"
