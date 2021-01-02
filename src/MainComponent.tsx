@@ -30,8 +30,9 @@ import "./theme/variables.css";
 import MyText from "./pages/MyText";
 import LibraryMenu from "./pages/LibraryMenu";
 import Recent from "./pages/Recent";
+import InfoPage from "./pages/InfoPage";
 
-import { home, time } from "ionicons/icons";
+import { home, time, informationCircle } from "ionicons/icons";
 
 const MainCompinent: React.FC = () => (
   <IonRouterOutlet>
@@ -49,6 +50,7 @@ const MainCompinent: React.FC = () => (
                 exact={true}
               />
               <Route path="/tabs/recent" component={Recent} exact={true} />
+              <Route path="/tabs/info" component={InfoPage} exact={true} />
             </IonRouterOutlet>
             <IonTabBar slot="bottom">
               <IonTabButton tab="library" href="/tabs/library">
@@ -58,6 +60,10 @@ const MainCompinent: React.FC = () => (
               <IonTabButton tab="recent" href="/tabs/recent">
                 <IonIcon icon={time} />
                 <IonLabel>Recent</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="info" href="/tabs/info">
+                <IonIcon icon={informationCircle} />
+                <IonLabel>Info</IonLabel>
               </IonTabButton>
             </IonTabBar>
           </IonTabs>
