@@ -108,7 +108,7 @@ class Recent extends React.Component<
     }
 
     let textCards = this.state.sortedTexts.map((textMeta, idx) => {
-      return <TextCard textMeta={textMeta} />;
+      return <TextCard textMeta={textMeta} key={idx} />;
     });
     return (
       <IonPage>
