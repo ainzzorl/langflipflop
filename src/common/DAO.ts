@@ -6,9 +6,11 @@ export class PersistentTextData {
   id: string;
   lastOpenedTimestamp?: number;
   maxOpenedIndex?: number;
+  currentIndex: number;
 
   constructor(id: string) {
     this.id = id;
+    this.currentIndex = 0;
   }
 }
 
@@ -23,10 +25,7 @@ export class DAO {
     }
   }
 
-  static async updateTextStamps(
-    textId: string,
-    maxOpenedIndex: number
-  ): Promise<void> {
+  static async updateTextStamps(textId: string, index: number): Promise<void> {
     let data = await this.getAllTextData();
     let textData: PersistentTextData;
     if (data.has(textId)) {
@@ -37,10 +36,11 @@ export class DAO {
     textData.lastOpenedTimestamp = Date.now();
     if (
       textData.maxOpenedIndex === undefined ||
-      textData.maxOpenedIndex < maxOpenedIndex
+      textData.maxOpenedIndex < index
     ) {
-      textData.maxOpenedIndex = maxOpenedIndex;
+      textData.maxOpenedIndex = index;
     }
+    textData.currentIndex = index;
 
     data.set(textId, textData);
     let jsonObject: any = {};

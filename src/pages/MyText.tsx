@@ -18,16 +18,12 @@ import {
 import { RouteComponentProps } from "react-router-dom";
 import { arrowBackOutline } from "ionicons/icons";
 
-import { Plugins } from "@capacitor/core";
-
 import Hammer from "hammerjs";
 
 import { information } from "ionicons/icons";
 
 import ReactCardFlip from "react-card-flip";
 import { DAO } from "../common/DAO";
-
-const { Storage } = Plugins;
 
 interface MyTextProps
   extends RouteComponentProps<{
@@ -63,7 +59,6 @@ class MyText extends React.Component<
 
     this.goToNext = this.goToNext.bind(this);
     this.goToPrevious = this.goToPrevious.bind(this);
-    this.persist = this.persist.bind(this);
     this.setShowInfoAlert = this.setShowInfoAlert.bind(this);
     this.onFlip = this.onFlip.bind(this);
     this.updateTextStamps = this.updateTextStamps.bind(this);
@@ -74,14 +69,13 @@ class MyText extends React.Component<
         this.setState((state) => ({
           texts: res,
         }));
-        return Storage.get({ key: "text-data." + this.props.match.params.id });
+        return DAO.getAllTextData();
       })
-      .then((value) => {
-        const s = value.value;
+      .then((persistentData) => {
         let sentenceIndex: number;
-        if (s !== null) {
-          let ps = JSON.parse(s);
-          sentenceIndex = ps["sentenceIndex"];
+        if (persistentData.has(this.props.match.params.id)) {
+          sentenceIndex = persistentData.get(this.props.match.params.id)!
+            .currentIndex;
         } else {
           sentenceIndex = 0;
         }
@@ -91,7 +85,7 @@ class MyText extends React.Component<
           sideTwoText:
             state.texts[this.otherLang(initialLang)].sentences[sentenceIndex],
         }));
-        this.updateTextStamps(sentenceIndex);
+        this.updateTextStamps();
       });
   }
 
@@ -115,20 +109,9 @@ class MyText extends React.Component<
     }
   }
 
-  persist() {
-    // TODO: move to the shared storage
-    Storage.set({
-      key: "text-data." + this.props.match.params.id,
-      value: JSON.stringify({
-        sentenceIndex: this.state.sentenceIndex,
-      }),
-    });
-    this.updateTextStamps(this.state.sentenceIndex);
-  }
-
-  updateTextStamps(sentenceIndex: number) {
+  updateTextStamps() {
     let textId = this.props.match.params.id;
-    DAO.updateTextStamps(textId, sentenceIndex);
+    DAO.updateTextStamps(textId, this.state.sentenceIndex);
   }
 
   setShowInfoAlert(value: boolean) {
@@ -169,7 +152,7 @@ class MyText extends React.Component<
           ? state.texts["en"].sentences[state.sentenceIndex + 1]
           : state.texts["es"].sentences[state.sentenceIndex + 1],
       }),
-      this.persist
+      this.updateTextStamps
     );
   }
 
@@ -189,7 +172,7 @@ class MyText extends React.Component<
           ? state.texts["en"].sentences[state.sentenceIndex - 1]
           : state.texts["es"].sentences[state.sentenceIndex - 1],
       }),
-      this.persist
+      this.updateTextStamps
     );
   }
 
