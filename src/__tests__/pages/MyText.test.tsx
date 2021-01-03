@@ -6,6 +6,44 @@ async function getCardByText(text: string) {
   return await screen.findByText(text);
 }
 
+async function goToNext() {
+  fireEvent(
+    (await screen.findByText("Next"))!,
+    new MouseEvent("click", {
+      bubbles: true,
+    })
+  )
+}
+
+async function flip() {
+  fireEvent(
+    window.document.querySelector('.react-card-flip p')!,
+    new MouseEvent("click", {
+      bubbles: true,
+    })
+  )
+}
+
+function otherLang(lang: string): string {
+  return lang === "en" ? "es" : "en";
+}
+
+async function assertOnPage(index: number, language: string) {
+  let texts: any = [
+    {
+      'en': 'It was so beautiful in the country.',
+      'es': 'Era tan hermoso en el campo.'
+    },
+    {
+      'en': 'It was the summer time.',
+      'es': 'Era el horario de verano.'
+    }
+  ];
+
+  expect(await getCardByText(texts[index][language])).toBeOnVisibleCardSide();
+  expect(await getCardByText(texts[index][otherLang(language)])).not.toBeOnVisibleCardSide();
+}
+
 declare global {
   namespace jest {
     interface Matchers<R> {
@@ -32,38 +70,25 @@ expect.extend({
 test("Rendering Text", async () => {
   renderWithRoute("/texts/patito-feo");
 
-  expect(
-    await getCardByText("It was so beautiful in the country.")
-  ).toBeOnVisibleCardSide();
-  expect(
-    await getCardByText("Era tan hermoso en el campo.")
-  ).not.toBeOnVisibleCardSide();
+  await assertOnPage(0, 'en');
 
-  fireEvent(
-    (await getCardByText("It was so beautiful in the country."))!,
-    new MouseEvent("click", {
-      bubbles: true,
-    })
-  );
+  flip();
 
-  expect(
-    await getCardByText("It was so beautiful in the country.")
-  ).not.toBeOnVisibleCardSide();
-  expect(
-    await getCardByText("Era tan hermoso en el campo.")
-  ).toBeOnVisibleCardSide();
+  await assertOnPage(0, 'es');
 
-  fireEvent(
-    (await screen.findByText("Next"))!,
-    new MouseEvent("click", {
-      bubbles: true,
-    })
-  );
+  await goToNext();
 
-  expect(
-    await getCardByText("It was the summer time.")
-  ).toBeOnVisibleCardSide();
-  expect(
-    await getCardByText("Era el horario de verano.")
-  ).not.toBeOnVisibleCardSide();
+  await assertOnPage(1, 'en');
+});
+
+test("Persisting Position", async () => {
+  renderWithRoute("/texts/patito-feo");
+
+  await assertOnPage(0, 'en');
+  await goToNext();
+  await assertOnPage(1, 'en');
+
+  renderWithRoute("/texts/patito-feo");
+
+  await assertOnPage(1, 'en');
 });

@@ -6,6 +6,10 @@ import "@testing-library/jest-dom/extend-expect";
 
 import fs from "fs";
 
+import { Plugins } from "@capacitor/core";
+
+const { Storage } = Plugins;
+
 const fetchMock = require("fetch-mock-jest");
 
 fetchMock.mock(
@@ -16,5 +20,6 @@ fetchMock.mock(
 );
 
 beforeEach(() => {
+  Storage.clear();
   jest.resetAllMocks();
 });
