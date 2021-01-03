@@ -1,31 +1,19 @@
 import React from "react";
 import "./Recent.css";
 
-import { Plugins } from "@capacitor/core";
 import { IonContent, IonPage } from "@ionic/react";
 
 import TextMeta from "../common/TextMeta";
 
 import TextCard from "../components/TextCard";
 
-const { Storage } = Plugins;
-
-// TODO: move to shared file
-class TextPersistentData {
-  id: string;
-  lastOpenedTimestamp: number;
-
-  constructor(id: string, data: any) {
-    this.id = id;
-    this.lastOpenedTimestamp = data["lastOpenedTimestamp"];
-  }
-}
+import { DAO, PersistentTextData } from "../common/DAO";
 
 class Recent extends React.Component<
   {},
   {
     texts?: Array<TextMeta>;
-    textsPersistentData?: Map<string, TextPersistentData>;
+    textsPersistentData?: Map<string, PersistentTextData>;
     sortedTexts?: Array<TextMeta>;
   }
 > {
@@ -63,17 +51,9 @@ class Recent extends React.Component<
         this.setState((state) => ({
           texts: textMetas,
         }));
-        return Storage.get({ key: "text-data" });
+        return DAO.getAllTextData();
       })
-      .then((value) => {
-        const s = value.value;
-        let textsData: Map<string, TextPersistentData> = new Map<
-          string,
-          TextPersistentData
-        >();
-        if (s !== null) {
-          textsData = new Map(Object.entries(JSON.parse(s)));
-        }
+      .then((textsData) => {
         let openedTexts: Array<TextMeta> = this.state.texts!.filter(
           (textMeta) => {
             return (
@@ -84,8 +64,8 @@ class Recent extends React.Component<
         );
         openedTexts.sort(
           (t1: TextMeta, t2: TextMeta) =>
-            textsData.get(t2.id)!.lastOpenedTimestamp -
-            textsData.get(t1.id)!.lastOpenedTimestamp
+            textsData.get(t2.id)!.lastOpenedTimestamp! -
+            textsData.get(t1.id)!.lastOpenedTimestamp!
         );
         this.setState((state) => ({
           textsPersistentData: textsData,
@@ -112,7 +92,10 @@ class Recent extends React.Component<
     });
     return (
       <IonPage>
-        <IonContent>{textCards}</IonContent>
+        <IonContent>
+          {textCards}
+          <div data-testid="rendered-indicator" />
+        </IonContent>
       </IonPage>
     );
   }

@@ -25,6 +25,7 @@ import Hammer from "hammerjs";
 import { information } from "ionicons/icons";
 
 import ReactCardFlip from "react-card-flip";
+import { DAO } from "../common/DAO";
 
 const { Storage } = Plugins;
 
@@ -127,24 +128,7 @@ class MyText extends React.Component<
 
   saveOpenedTimestamp() {
     let textId = this.props.match.params.id;
-    Storage.get({ key: "text-data" }).then((value) => {
-      const s = value.value;
-      let textsData;
-      if (s !== null) {
-        textsData = JSON.parse(s);
-      } else {
-        textsData = {};
-      }
-      if (!textsData[textId]) {
-        textsData[textId] = {};
-      }
-      textsData[textId]["lastOpenedTimestamp"] = Date.now();
-
-      Storage.set({
-        key: "text-data",
-        value: JSON.stringify(textsData),
-      });
-    });
+    DAO.updateTextLastOpened(textId);
   }
 
   setShowInfoAlert(value: boolean) {
