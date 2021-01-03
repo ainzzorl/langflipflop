@@ -16,12 +16,12 @@ test("Rendering Recent", async () => {
   expect(screen.queryByText("The Ugly Duckling")).toBeFalsy();
 
   // Update timestamp and re-render.
-  await DAO.updateTextLastOpened("patito-feo");
+  await DAO.updateTextStamps("patito-feo", 0);
   renderWithRoute("/tabs/recent");
 
   let card = await findTextCard("The Ugly Duckling");
 
   await within(card!).findByText("Difficulty: Medium");
-  await within(card!).findByText("Length: 225");
+  await within(card!).findByText("Length: 225 (Read: 1%)");
   await within(card!).findByText("Categories: Children's, Fairy Tale");
 });

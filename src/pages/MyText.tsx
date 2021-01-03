@@ -61,6 +61,13 @@ class MyText extends React.Component<
       flipped: false,
     };
 
+    this.goToNext = this.goToNext.bind(this);
+    this.goToPrevious = this.goToPrevious.bind(this);
+    this.persist = this.persist.bind(this);
+    this.setShowInfoAlert = this.setShowInfoAlert.bind(this);
+    this.onFlip = this.onFlip.bind(this);
+    this.updateTextStamps = this.updateTextStamps.bind(this);
+
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
       .then((res) => res.json())
       .then((res) => {
@@ -84,16 +91,8 @@ class MyText extends React.Component<
           sideTwoText:
             state.texts[this.otherLang(initialLang)].sentences[sentenceIndex],
         }));
+        this.updateTextStamps(sentenceIndex);
       });
-
-    this.goToNext = this.goToNext.bind(this);
-    this.goToPrevious = this.goToPrevious.bind(this);
-    this.persist = this.persist.bind(this);
-    this.setShowInfoAlert = this.setShowInfoAlert.bind(this);
-    this.onFlip = this.onFlip.bind(this);
-    this.saveOpenedTimestamp = this.saveOpenedTimestamp.bind(this);
-
-    this.saveOpenedTimestamp();
   }
 
   otherLang(lang: string): string {
@@ -124,11 +123,12 @@ class MyText extends React.Component<
         sentenceIndex: this.state.sentenceIndex,
       }),
     });
+    this.updateTextStamps(this.state.sentenceIndex);
   }
 
-  saveOpenedTimestamp() {
+  updateTextStamps(sentenceIndex: number) {
     let textId = this.props.match.params.id;
-    DAO.updateTextLastOpened(textId);
+    DAO.updateTextStamps(textId, sentenceIndex);
   }
 
   setShowInfoAlert(value: boolean) {

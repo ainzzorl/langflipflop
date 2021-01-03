@@ -15,6 +15,7 @@ import {
   IonSelect,
   IonSelectOption,
 } from "@ionic/react";
+import { DAO, PersistentTextData } from "../common/DAO";
 
 class LibraryMenu extends React.Component<
   {},
@@ -22,6 +23,7 @@ class LibraryMenu extends React.Component<
     texts?: Array<TextMeta>;
     categoryFilter?: string;
     difficultyFilter?: string;
+    persistentData?: Map<string, PersistentTextData>;
   }
 > {
   constructor(props: any) {
@@ -30,6 +32,7 @@ class LibraryMenu extends React.Component<
       texts: undefined,
       categoryFilter: undefined,
       difficultyFilter: undefined,
+      persistentData: undefined,
     };
 
     fetch("assets/data/texts.json")
@@ -51,6 +54,12 @@ class LibraryMenu extends React.Component<
         this.setState((state) => ({
           texts: textMetas,
         }));
+        return DAO.getAllTextData();
+      })
+      .then((persistentData) => {
+        this.setState(() => ({
+          persistentData: persistentData,
+        }));
       });
 
     this.setCategoryFilter = this.setCategoryFilter.bind(this);
@@ -70,14 +79,13 @@ class LibraryMenu extends React.Component<
   }
 
   render() {
-    if (!this.state.texts) {
+    if (!this.state.texts || !this.state.persistentData) {
       return (
         <IonContent>
           <div>Loading...</div>
         </IonContent>
       );
     }
-
     let textCards = this.state.texts
       .filter((textMeta, _idx) => {
         return (
@@ -92,7 +100,17 @@ class LibraryMenu extends React.Component<
         );
       })
       .map((textMeta, idx) => {
-        return <TextCard textMeta={textMeta} key={idx} />;
+        return (
+          <TextCard
+            textMeta={textMeta}
+            key={idx}
+            persistentData={
+              this.state.persistentData!.has(textMeta.id)
+                ? this.state.persistentData!.get(textMeta.id)!
+                : new PersistentTextData(textMeta.id)
+            }
+          />
+        );
       });
     let categoryOptions = CATEGORIES.map((category, _idx) => {
       return (
