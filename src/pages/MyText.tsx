@@ -1,8 +1,6 @@
 import React from "react";
-import ReactDOMServer from "react-dom/server";
 import "./MyText.css";
 import {
-  IonAlert,
   IonButton,
   IonContent,
   IonFooter,
@@ -12,7 +10,6 @@ import {
   IonButtons,
   IonTitle,
   IonIcon,
-  IonicSafeString,
 } from "@ionic/react";
 
 import { RouteComponentProps } from "react-router-dom";
@@ -215,16 +212,6 @@ class MyText extends React.Component<
       return <div>Loading...</div>;
     }
 
-    let infoMessage = new IonicSafeString(
-      ReactDOMServer.renderToString(
-        <div>
-          <p>Difficulty: {this.state.texts.meta["difficulty"]}</p>
-          {/* TODO: fix, use "pretty" */}
-          <p>Categories: {this.state.texts.meta["categories"].join(", ")}</p>
-          <p>{this.state.texts[this.state.lang]["description"]}</p>
-        </div>
-      )
-    );
     return (
       <IonPage>
         <IonHeader>
@@ -276,19 +263,11 @@ class MyText extends React.Component<
               </IonButton>
             </IonButtons>
             <IonButtons slot="end">
-              <IonButton onClick={() => this.setShowInfoAlert(true)}>
+              <IonButton href={"/text-infos/" + this.props.match.params.id}>
                 <IonIcon icon={information} size="large" />
               </IonButton>
             </IonButtons>
           </IonToolbar>
-
-          <IonAlert
-            isOpen={this.state.showInfoAlert}
-            onDidDismiss={() => this.setShowInfoAlert(false)}
-            header={"Text Info"}
-            message={infoMessage}
-            buttons={["OK"]}
-          />
         </IonFooter>
       </IonPage>
     );

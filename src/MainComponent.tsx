@@ -34,11 +34,13 @@ import InfoPage from "./pages/InfoPage";
 import SettingsPage from "./pages/SettingsPage";
 
 import { home, time, informationCircle, settings } from "ionicons/icons";
+import TextInfoPage from "./pages/TextInfoPage";
 
 const MainCompinent: React.FC = () => (
   <IonRouterOutlet>
     <Route exact path="/" render={() => <Redirect to="/tabs/library" />} />
     <Route path="/texts/:id" component={MyText} />
+    <Route path="/text-infos/:id" component={TextInfoPage} />
     <Route
       path="/tabs"
       render={() => {
