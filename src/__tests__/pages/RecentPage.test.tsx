@@ -1,11 +1,6 @@
-import React from "react";
-import MainComponent from "../../MainComponent";
-
-import { screen, within, cleanup, render } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 
 import { renderWithRoute, findTextCard } from "../../test-common";
-
-import { MemoryRouter } from "react-router";
 
 import { DAO } from "../../common/DAO";
 

@@ -14,6 +14,14 @@ export class PersistentTextData {
   }
 }
 
+export class Settings {
+  translationDirection: string;
+
+  constructor() {
+    this.translationDirection = "en-es";
+  }
+}
+
 export class DAO {
   static async getAllTextData(): Promise<Map<string, PersistentTextData>> {
     const value = await Storage.get({ key: "text-data" });
@@ -50,6 +58,23 @@ export class DAO {
     return await Storage.set({
       key: "text-data",
       value: JSON.stringify(jsonObject),
+    });
+  }
+
+  static async getSettings(): Promise<Settings> {
+    const value = await Storage.get({ key: "settings" });
+    const s = value.value;
+    if (s !== null) {
+      return JSON.parse(s);
+    } else {
+      return new Settings();
+    }
+  }
+
+  static async setSettings(settings: Settings): Promise<void> {
+    return await Storage.set({
+      key: "settings",
+      value: JSON.stringify(settings),
     });
   }
 }
