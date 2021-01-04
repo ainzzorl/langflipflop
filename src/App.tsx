@@ -20,8 +20,6 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-//import "./theme/css/ionic.material-design-lite.css";
-//import "./theme/js/ionic.material-design-lite.js";
 
 import MainCompinent from "./MainComponent";
 

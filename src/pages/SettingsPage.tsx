@@ -36,8 +36,18 @@ class SettingsPage extends React.Component<
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(translationDirection: string) {
+  setTranslationDirection(translationDirection: string) {
     this.state.settings!.translationDirection = translationDirection;
+    this.onChange();
+  }
+
+  setTheme(theme: string) {
+    this.state.settings!.theme = theme;
+    document.body.classList.toggle("dark", theme === "dark");
+    this.onChange();
+  }
+
+  onChange() {
     this.setState(
       () => ({
         isUpdating: true,
@@ -68,7 +78,7 @@ class SettingsPage extends React.Component<
           <IonList>
             <IonRadioGroup
               value={this.state.settings.translationDirection}
-              onIonChange={(e) => this.onChange(e.detail.value)}
+              onIonChange={(e) => this.setTranslationDirection(e.detail.value)}
             >
               <IonListHeader>
                 <IonLabel>Languages</IonLabel>
@@ -82,6 +92,24 @@ class SettingsPage extends React.Component<
               <IonItem>
                 <IonLabel>Spanish &#8594; English</IonLabel>
                 <IonRadio slot="start" value="es-en" />
+              </IonItem>
+            </IonRadioGroup>
+            <IonRadioGroup
+              value={this.state.settings.theme}
+              onIonChange={(e) => this.setTheme(e.detail.value)}
+            >
+              <IonListHeader>
+                <IonLabel>Theme</IonLabel>
+              </IonListHeader>
+
+              <IonItem>
+                <IonLabel>Light</IonLabel>
+                <IonRadio slot="start" value="light" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>Dark</IonLabel>
+                <IonRadio slot="start" value="dark" />
               </IonItem>
             </IonRadioGroup>
           </IonList>

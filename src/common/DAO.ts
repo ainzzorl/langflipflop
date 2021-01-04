@@ -16,9 +16,11 @@ export class PersistentTextData {
 
 export class Settings {
   translationDirection: string;
+  theme: string;
 
   constructor() {
     this.translationDirection = "en-es";
+    this.theme = "dark";
   }
 }
 
@@ -65,7 +67,11 @@ export class DAO {
     const value = await Storage.get({ key: "settings" });
     const s = value.value;
     if (s !== null) {
-      return JSON.parse(s);
+      let settings: Settings = JSON.parse(s);
+      if (!settings.theme) {
+        settings.theme = "dark";
+      }
+      return settings;
     } else {
       return new Settings();
     }
