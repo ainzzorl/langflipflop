@@ -145,59 +145,30 @@ class MyText extends React.Component<
   }
 
   goToNext() {
+    this.goToIndex(this.state.sentenceIndex + 1);
+  }
+
+  goToPrevious() {
+    this.goToIndex(this.state.sentenceIndex - 1);
+  }
+
+  goToIndex(index: number) {
     if (
-      this.state.sentenceIndex >=
-      this.state.texts["en"].sentences.length - 1
+      this.state.sentenceIndex < 0 ||
+      this.state.sentenceIndex >= this.state.texts["en"].sentences.length
     ) {
       return;
     }
     this.setState(
       (state) => ({
         lang: state.initialLanguage,
-        texts: state.texts,
-        sentenceIndex: state.sentenceIndex + 1,
+        sentenceIndex: index,
         sideOneText: state.flipped
-          ? state.texts[this.otherLang(state.initialLanguage)].sentences[
-              state.sentenceIndex + 1
-            ]
-          : state.texts[state.initialLanguage].sentences[
-              state.sentenceIndex + 1
-            ],
+          ? state.texts[this.otherLang(state.initialLanguage)].sentences[index]
+          : state.texts[state.initialLanguage].sentences[index],
         sideTwoText: state.flipped
-          ? state.texts[state.initialLanguage].sentences[
-              state.sentenceIndex + 1
-            ]
-          : state.texts[this.otherLang(state.initialLanguage)].sentences[
-              state.sentenceIndex + 1
-            ],
-      }),
-      this.updateTextStamps
-    );
-  }
-
-  goToPrevious() {
-    if (this.state.sentenceIndex <= 0) {
-      return;
-    }
-    this.setState(
-      (state) => ({
-        lang: state.initialLanguage,
-        texts: state.texts,
-        sentenceIndex: state.sentenceIndex - 1,
-        sideOneText: state.flipped
-          ? state.texts[this.otherLang(state.initialLanguage)].sentences[
-              state.sentenceIndex - 1
-            ]
-          : state.texts[state.initialLanguage].sentences[
-              state.sentenceIndex - 1
-            ],
-        sideTwoText: state.flipped
-          ? state.texts[state.initialLanguage].sentences[
-              state.sentenceIndex - 1
-            ]
-          : state.texts[this.otherLang(state.initialLanguage)].sentences[
-              state.sentenceIndex - 1
-            ],
+          ? state.texts[state.initialLanguage].sentences[index]
+          : state.texts[this.otherLang(state.initialLanguage)].sentences[index],
       }),
       this.updateTextStamps
     );
