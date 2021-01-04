@@ -31,11 +31,11 @@ if len(sys.argv) != 2:
 
 text_id = sys.argv[1]
 
-with open(f"./data-scripts/in/{text_id}/en.txt") as file:
+with open(f"./data/in/{text_id}/en.txt") as file:
     source_text = file.read()
 
 translated_texts = translate_text(text=source_text)
 translated_text = '\n'.join(translated_texts)
 
-with open(f"./data-scripts/in/{text_id}/es.txt", 'w') as f:
+with open(f"./data/in/{text_id}/es.txt", 'w') as f:
     f.write(translated_text)

@@ -15,7 +15,7 @@ serve :
 
 .PHONY: generate-data
 generate-data :
-			 python data-scripts/import.py
+			 python data/import.py
 
 .PHONY: android
 android :
@@ -29,7 +29,7 @@ android-deploy :
 
 .PHONY: translate
 translate :
-			 python data-scripts/translate.py $(ARGS)
+			 python data/translate.py $(ARGS)
 
 .PHONY: test
 test :

@@ -3,7 +3,7 @@ import nltk
 import json
 
 def process(lang, id):
-  with open(f"./data-scripts/in/{id}/{lang}.txt") as file:
+  with open(f"./data/in/{id}/{lang}.txt") as file:
     data = file.read()
 
     title, description, body = data.split("\n", maxsplit=2)
@@ -50,11 +50,11 @@ def printdiff(lh, rh):
       print(f"{l}{PSTR}||{PSTR}{r}")
     print('-' * SCREEN_WIDTH)
 
-for id in os.listdir('./data-scripts/in/'):
+for id in os.listdir('./data/in/'):
   print(id)
   en = process('en', id)
   es = process('es', id)
-  with open(f"./data-scripts/in/{id}/meta.json") as f:
+  with open(f"./data/in/{id}/meta.json") as f:
     meta = json.load(f)
   meta['id'] = id
   meta['numSentences'] = len(en['sentences'])
