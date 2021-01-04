@@ -1,6 +1,13 @@
+.PHONY: verify
+verify : lint test
+			 
 .PHONY: fix
 fix :
 			 npx prettier --write .
+
+.PHONY: lint
+lint :
+			 ./node_modules/eslint/bin/eslint.js src/
 
 .PHONY: serve
 serve :
