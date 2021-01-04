@@ -23,7 +23,7 @@ import Hammer from "hammerjs";
 import { information } from "ionicons/icons";
 
 import ReactCardFlip from "react-card-flip";
-import { DAO } from "../common/DAO";
+import { DAO, Settings } from "../common/DAO";
 
 interface MyTextProps
   extends RouteComponentProps<{
@@ -34,6 +34,7 @@ class MyText extends React.Component<
   MyTextProps,
   {
     lang: string;
+    initialLanguage: string;
     texts: any;
     sentenceIndex: number;
     gesturesInitialized: boolean;
@@ -41,6 +42,7 @@ class MyText extends React.Component<
     sideOneText: string;
     sideTwoText: string;
     flipped: boolean;
+    settings?: Settings;
   }
 > {
   constructor(props: any) {
@@ -48,6 +50,7 @@ class MyText extends React.Component<
     let initialLang = "en";
     this.state = {
       lang: initialLang,
+      initialLanguage: initialLang,
       texts: {},
       sentenceIndex: -1,
       gesturesInitialized: false,
@@ -55,6 +58,7 @@ class MyText extends React.Component<
       sideOneText: "",
       sideTwoText: "",
       flipped: false,
+      settings: undefined,
     };
 
     this.goToNext = this.goToNext.bind(this);
@@ -79,13 +83,29 @@ class MyText extends React.Component<
         } else {
           sentenceIndex = 0;
         }
-        this.setState((state) => ({
+        this.setState(() => ({
           sentenceIndex: sentenceIndex,
-          sideOneText: state.texts[initialLang].sentences[sentenceIndex],
-          sideTwoText:
-            state.texts[this.otherLang(initialLang)].sentences[sentenceIndex],
         }));
         this.updateTextStamps();
+        return DAO.getSettings();
+      })
+      .then((settings) => {
+        let initialLang: string = "";
+        if (settings.translationDirection === "en-es") {
+          initialLang = "en";
+        } else {
+          initialLang = "es";
+        }
+        this.setState((state) => ({
+          settings: settings,
+          lang: initialLang,
+          initialLanguage: initialLang,
+          sideOneText: state.texts[initialLang].sentences[state.sentenceIndex],
+          sideTwoText:
+            state.texts[this.otherLang(initialLang)].sentences[
+              state.sentenceIndex
+            ],
+        }));
       });
   }
 
@@ -121,14 +141,8 @@ class MyText extends React.Component<
   }
 
   onFlip() {
-    let newLang: string;
-    if (this.state.lang === "en") {
-      newLang = "es";
-    } else {
-      newLang = "en";
-    }
     this.setState((state) => ({
-      lang: newLang,
+      lang: this.otherLang(this.state.lang),
       flipped: !this.state.flipped,
     }));
   }
@@ -142,15 +156,23 @@ class MyText extends React.Component<
     }
     this.setState(
       (state) => ({
-        lang: "en",
+        lang: state.initialLanguage,
         texts: state.texts,
         sentenceIndex: state.sentenceIndex + 1,
         sideOneText: state.flipped
-          ? state.texts["es"].sentences[state.sentenceIndex + 1]
-          : state.texts["en"].sentences[state.sentenceIndex + 1],
+          ? state.texts[this.otherLang(state.initialLanguage)].sentences[
+              state.sentenceIndex + 1
+            ]
+          : state.texts[state.initialLanguage].sentences[
+              state.sentenceIndex + 1
+            ],
         sideTwoText: state.flipped
-          ? state.texts["en"].sentences[state.sentenceIndex + 1]
-          : state.texts["es"].sentences[state.sentenceIndex + 1],
+          ? state.texts[state.initialLanguage].sentences[
+              state.sentenceIndex + 1
+            ]
+          : state.texts[this.otherLang(state.initialLanguage)].sentences[
+              state.sentenceIndex + 1
+            ],
       }),
       this.updateTextStamps
     );
@@ -162,22 +184,34 @@ class MyText extends React.Component<
     }
     this.setState(
       (state) => ({
-        lang: "en",
+        lang: state.initialLanguage,
         texts: state.texts,
         sentenceIndex: state.sentenceIndex - 1,
         sideOneText: state.flipped
-          ? state.texts["es"].sentences[state.sentenceIndex - 1]
-          : state.texts["en"].sentences[state.sentenceIndex - 1],
+          ? state.texts[this.otherLang(state.initialLanguage)].sentences[
+              state.sentenceIndex - 1
+            ]
+          : state.texts[state.initialLanguage].sentences[
+              state.sentenceIndex - 1
+            ],
         sideTwoText: state.flipped
-          ? state.texts["en"].sentences[state.sentenceIndex - 1]
-          : state.texts["es"].sentences[state.sentenceIndex - 1],
+          ? state.texts[state.initialLanguage].sentences[
+              state.sentenceIndex - 1
+            ]
+          : state.texts[this.otherLang(state.initialLanguage)].sentences[
+              state.sentenceIndex - 1
+            ],
       }),
       this.updateTextStamps
     );
   }
 
   render() {
-    if (!this.state.texts["en"] || this.state.sentenceIndex < 0) {
+    if (
+      !this.state.texts["en"] ||
+      this.state.sentenceIndex < 0 ||
+      !this.state.settings
+    ) {
       return <div>Loading...</div>;
     }
 
