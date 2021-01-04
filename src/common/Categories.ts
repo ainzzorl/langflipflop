@@ -6,14 +6,18 @@ export const CATEGORY_MAP: Map<string, string> = new Map([
   ["article", "Article"],
   ["news", "News"],
   ["casual-phrases", "Casual Phrases"],
+  ["fiction", "Fiction"],
+  ["classics", "Classics"],
 ]);
 
 // ORDERED list of categories.
 export const CATEGORIES = [
-  "children",
-  "fairy-tale",
-  "sport",
   "article",
-  "news",
   "casual-phrases",
+  "children",
+  "classics",
+  "fairy-tale",
+  "fiction",
+  "news",
+  "sport",
 ];
