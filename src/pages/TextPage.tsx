@@ -35,7 +35,6 @@ class RecentPage extends React.Component<
     texts: any;
     sentenceIndex: number;
     gesturesInitialized: boolean;
-    showInfoAlert: boolean;
     sideOneText: string;
     sideTwoText: string;
     flipped: boolean;
@@ -51,7 +50,6 @@ class RecentPage extends React.Component<
       texts: {},
       sentenceIndex: -1,
       gesturesInitialized: false,
-      showInfoAlert: false,
       sideOneText: "",
       sideTwoText: "",
       flipped: false,
@@ -60,7 +58,6 @@ class RecentPage extends React.Component<
 
     this.goToNext = this.goToNext.bind(this);
     this.goToPrevious = this.goToPrevious.bind(this);
-    this.setShowInfoAlert = this.setShowInfoAlert.bind(this);
     this.onFlip = this.onFlip.bind(this);
     this.updateTextStamps = this.updateTextStamps.bind(this);
 
@@ -129,12 +126,6 @@ class RecentPage extends React.Component<
   updateTextStamps() {
     let textId = this.props.match.params.id;
     DAO.updateTextStamps(textId, this.state.sentenceIndex);
-  }
-
-  setShowInfoAlert(value: boolean) {
-    this.setState((state) => ({
-      showInfoAlert: value,
-    }));
   }
 
   onFlip() {
@@ -216,8 +207,7 @@ class RecentPage extends React.Component<
                 color="primary"
                 onClick={this.goToPrevious}
               >
-                {" "}
-                Previous{" "}
+                Previous
               </IonButton>
               <IonButton
                 disabled={
@@ -227,8 +217,7 @@ class RecentPage extends React.Component<
                 color="secondary"
                 onClick={this.goToNext}
               >
-                {" "}
-                Next{" "}
+                Next
               </IonButton>
             </IonButtons>
             <IonButtons slot="end">
