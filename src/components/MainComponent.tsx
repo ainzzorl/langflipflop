@@ -26,15 +26,15 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import "./theme/variables.css";
-import TextPage from "./pages/TextPage";
-import LibraryPage from "./pages/LibraryPage";
-import RecentPage from "./pages/RecentPage";
-import InfoPage from "./pages/InfoPage";
-import SettingsPage from "./pages/SettingsPage";
+import "../theme/variables.css";
+import TextPage from "../pages/TextPage";
+import LibraryPage from "../pages/LibraryPage";
+import RecentPage from "../pages/RecentPage";
+import InfoPage from "../pages/InfoPage";
+import SettingsPage from "../pages/SettingsPage";
+import TextInfoPage from "../pages/TextInfoPage";
 
 import { home, time, informationCircle, settings } from "ionicons/icons";
-import TextInfoPage from "./pages/TextInfoPage";
 
 const MainCompinent: React.FC = () => (
   <IonRouterOutlet>

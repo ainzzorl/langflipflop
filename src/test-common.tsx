@@ -1,7 +1,7 @@
 import React from "react";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import MainComponent from "./MainComponent";
+import MainComponent from "./components/MainComponent";
 
 export function renderWithRoute(route: string) {
   cleanup();

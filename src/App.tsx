@@ -21,7 +21,7 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-import MainCompinent from "./MainComponent";
+import MainCompinent from "./components/MainComponent";
 import BackButtonListener from "./components/BackButtonListener";
 
 const App: React.FC = () => (
