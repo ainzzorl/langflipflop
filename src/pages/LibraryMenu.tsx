@@ -141,6 +141,7 @@ class LibraryMenu extends React.Component<
               <IonSelect
                 value={this.state.categoryFilter}
                 placeholder="Any"
+                interface="popover"
                 onIonChange={(e) => this.setCategoryFilter(e.detail.value)}
               >
                 <IonSelectOption value="" key={"selector-category-any"}>
@@ -154,6 +155,7 @@ class LibraryMenu extends React.Component<
               <IonSelect
                 value={this.state.difficultyFilter}
                 placeholder="Any"
+                interface="popover"
                 onIonChange={(e) => this.setDifficultyFilter(e.detail.value)}
               >
                 <IonSelectOption value="" key={"selector-category-any"}>
