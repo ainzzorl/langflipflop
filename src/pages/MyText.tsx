@@ -1,6 +1,7 @@
 import React from "react";
 import "./MyText.css";
 import {
+  IonBackButton,
   IonButton,
   IonContent,
   IonFooter,
@@ -13,7 +14,6 @@ import {
 } from "@ionic/react";
 
 import { RouteComponentProps } from "react-router-dom";
-import { arrowBackOutline } from "ionicons/icons";
 
 import Hammer from "hammerjs";
 
@@ -217,9 +217,7 @@ class MyText extends React.Component<
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonButton href="/">
-                <IonIcon slot="start" icon={arrowBackOutline} />
-              </IonButton>
+              <IonBackButton defaultHref="/" />
               <IonTitle>
                 <div id="my-wrap">
                   {this.state.texts[this.state.lang].title} (

@@ -1,18 +1,16 @@
 import React from "react";
 import "./MyText.css";
 import {
-  IonButton,
+  IonBackButton,
   IonContent,
   IonPage,
   IonHeader,
   IonToolbar,
   IonButtons,
   IonTitle,
-  IonIcon,
 } from "@ionic/react";
 
 import { RouteComponentProps } from "react-router-dom";
-import { arrowBackOutline } from "ionicons/icons";
 
 import TextMeta from "../common/TextMeta";
 
@@ -53,9 +51,9 @@ class TextInfoPage extends React.Component<
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonButton href={"/texts/" + this.props.match.params.id}>
-                <IonIcon slot="start" icon={arrowBackOutline} />
-              </IonButton>
+              <IonBackButton
+                defaultHref={"/texts/" + this.props.match.params.id}
+              />
               <IonTitle>{this.state.text["en"]["title"]}</IonTitle>
             </IonButtons>
           </IonToolbar>
