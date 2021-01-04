@@ -19,7 +19,7 @@ export async function findTextCard(text: string) {
 declare global {
   namespace jest {
     interface Matchers<R> {
-      toBeOnVisibleCardSide(): CustomMatcherResult;
+      toBeOnVisibleCardSide(): CustomMatcherResult<R>;
     }
   }
 }

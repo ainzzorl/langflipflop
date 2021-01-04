@@ -1,7 +1,6 @@
-import { fireEvent, screen } from "@testing-library/react";
-import { DAO, Settings } from "../../common/DAO";
+import { screen } from "@testing-library/react";
 
-import { renderWithRoute, MyTextPageActions } from "../../test-common";
+import { renderWithRoute } from "../../test-common";
 
 test("Rendering Text Info", async () => {
   renderWithRoute("/text-infos/patito-feo");
@@ -12,5 +11,4 @@ test("Rendering Text Info", async () => {
   );
   await screen.findByText("Difficulty: Medium.");
   await screen.findByText("Categories: Children's, Fairy Tale, Fiction.");
-  // TODO: source
 });
