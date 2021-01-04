@@ -49,6 +49,15 @@ export class MyTextPageActions {
     );
   }
 
+  static async goToPrevious() {
+    fireEvent(
+      (await screen.findByText("Previous"))!,
+      new MouseEvent("click", {
+        bubbles: true,
+      })
+    );
+  }
+
   static async assertOnPage(index: number, language: string) {
     let texts: any = [
       {

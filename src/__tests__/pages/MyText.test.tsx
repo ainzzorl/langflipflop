@@ -12,18 +12,21 @@ async function flip() {
   );
 }
 
-test("Rendering Text", async () => {
+test("Rendering Text and Navigating", async () => {
   renderWithRoute("/texts/patito-feo");
-
   await MyTextPageActions.assertOnPage(0, "en");
 
   flip();
-
   await MyTextPageActions.assertOnPage(0, "es");
 
   await MyTextPageActions.goToNext();
-
   await MyTextPageActions.assertOnPage(1, "en");
+
+  flip();
+  await MyTextPageActions.assertOnPage(1, "es");
+
+  await MyTextPageActions.goToPrevious();
+  await MyTextPageActions.assertOnPage(0, "en");
 });
 
 test("Different Translation Direction", async () => {
