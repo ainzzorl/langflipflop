@@ -1,5 +1,4 @@
 import React from "react";
-import "./MyText.css";
 import {
   IonBackButton,
   IonContent,

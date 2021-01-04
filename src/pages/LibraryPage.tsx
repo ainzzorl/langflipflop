@@ -1,5 +1,5 @@
 import React from "react";
-import "./LibraryMenu.css";
+import "./LibraryPage.css";
 
 import TextMeta from "../common/TextMeta";
 
@@ -17,7 +17,7 @@ import {
 } from "@ionic/react";
 import { DAO, PersistentTextData } from "../common/DAO";
 
-class LibraryMenu extends React.Component<
+class LibraryPage extends React.Component<
   {},
   {
     texts?: Array<TextMeta>;
@@ -172,4 +172,4 @@ class LibraryMenu extends React.Component<
   }
 }
 
-export default LibraryMenu;
+export default LibraryPage;

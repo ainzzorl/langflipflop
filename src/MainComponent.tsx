@@ -27,9 +27,9 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import MyText from "./pages/MyText";
-import LibraryMenu from "./pages/LibraryMenu";
-import Recent from "./pages/Recent";
+import TextPage from "./pages/TextPage";
+import LibraryPage from "./pages/LibraryPage";
+import RecentPage from "./pages/RecentPage";
 import InfoPage from "./pages/InfoPage";
 import SettingsPage from "./pages/SettingsPage";
 
@@ -39,7 +39,7 @@ import TextInfoPage from "./pages/TextInfoPage";
 const MainCompinent: React.FC = () => (
   <IonRouterOutlet>
     <Route exact path="/" render={() => <Redirect to="/tabs/library" />} />
-    <Route path="/texts/:id" component={MyText} />
+    <Route path="/texts/:id" component={TextPage} />
     <Route path="/text-infos/:id" component={TextInfoPage} />
     <Route
       path="/tabs"
@@ -49,10 +49,10 @@ const MainCompinent: React.FC = () => (
             <IonRouterOutlet>
               <Route
                 path="/tabs/library"
-                component={LibraryMenu}
+                component={LibraryPage}
                 exact={true}
               />
-              <Route path="/tabs/recent" component={Recent} exact={true} />
+              <Route path="/tabs/recent" component={RecentPage} exact={true} />
               <Route
                 path="/tabs/settings"
                 component={SettingsPage}

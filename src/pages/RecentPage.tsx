@@ -1,5 +1,5 @@
 import React from "react";
-import "./Recent.css";
+import "./RecentPage.css";
 
 import { IonContent, IonPage } from "@ionic/react";
 
@@ -9,7 +9,7 @@ import TextCard from "../components/TextCard";
 
 import { DAO, PersistentTextData } from "../common/DAO";
 
-class Recent extends React.Component<
+class RecentPage extends React.Component<
   {},
   {
     texts?: Array<TextMeta>;
@@ -111,4 +111,4 @@ class Recent extends React.Component<
   }
 }
 
-export default Recent;
+export default RecentPage;

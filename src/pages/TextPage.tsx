@@ -1,5 +1,5 @@
 import React from "react";
-import "./MyText.css";
+import "./TextPage.css";
 import {
   IonBackButton,
   IonButton,
@@ -27,7 +27,7 @@ interface MyTextProps
     id: string;
   }> {}
 
-class MyText extends React.Component<
+class RecentPage extends React.Component<
   MyTextProps,
   {
     lang: string;
@@ -243,4 +243,4 @@ class MyText extends React.Component<
   }
 }
 
-export default MyText;
+export default RecentPage;

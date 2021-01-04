@@ -1,5 +1,4 @@
 import React from "react";
-import "./Recent.css";
 
 import { IonContent, IonPage } from "@ionic/react";
 

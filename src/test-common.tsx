@@ -18,8 +18,9 @@ export async function findTextCard(text: string) {
 
 declare global {
   namespace jest {
+    // eslint-disable-next-line
     interface Matchers<R> {
-      toBeOnVisibleCardSide(): CustomMatcherResult<R>;
+      toBeOnVisibleCardSide(): CustomMatcherResult;
     }
   }
 }
