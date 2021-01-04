@@ -20,6 +20,7 @@ const BackButtonListener: React.FC<BackButtonListenerProps> = (props) => {
         }
       });
     });
+    // eslint-disable-next-line
   }, []);
   return <>{props.children}</>;
 };
