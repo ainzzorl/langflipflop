@@ -64,6 +64,15 @@ class TextInfoPage extends React.Component<
           <p>{this.state.text["en"]["description"]}</p>
           <p>Difficulty: {this.state.text.meta.difficulty}.</p>
           <p>Categories: {this.state.meta.prettyCategories()}.</p>
+          {this.state.meta.sourceLink && this.state.meta.sourceText && (
+            <p>
+              Source:{" "}
+              <a href={this.state.meta.sourceLink}>
+                {this.state.meta.sourceText}
+              </a>
+              .
+            </p>
+          )}
         </IonContent>
       </IonPage>
     );

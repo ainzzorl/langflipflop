@@ -6,6 +6,8 @@ export default class TextMeta {
   difficulty: string;
   categories: Array<string>;
   numSentences: number;
+  sourceLink?: string;
+  sourceText?: string;
 
   constructor(data: any) {
     this.title = data["en"]["title"];
@@ -13,6 +15,8 @@ export default class TextMeta {
     this.difficulty = data["meta"]["difficulty"];
     this.categories = data["meta"]["categories"];
     this.numSentences = data["meta"]["numSentences"];
+    this.sourceLink = data["meta"]["sourceLink"];
+    this.sourceText = data["meta"]["sourceText"];
   }
 
   public prettyCategories(): string {
