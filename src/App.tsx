@@ -22,11 +22,14 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import MainCompinent from "./MainComponent";
+import BackButtonListener from "./components/BackButtonListener";
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <MainCompinent />
+      <BackButtonListener>
+        <MainCompinent />
+      </BackButtonListener>
     </IonReactRouter>
   </IonApp>
 );
