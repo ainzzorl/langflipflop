@@ -18,5 +18,5 @@ test("Rendering Recent", async () => {
 
   await within(card!).findByText("Difficulty: Medium");
   await within(card!).findByText("Length: 225 (Read: 1%)");
-  await within(card!).findByText("Categories: Children's, Fairy Tale");
+  await within(card!).findByText("Categories: Children's, Fairy Tale, Fiction");
 });

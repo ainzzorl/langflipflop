@@ -13,7 +13,7 @@ test("Rendering Library Menu", async () => {
 
   await within(card!).findByText("Difficulty: Medium");
   await within(card!).findByText("Length: 225");
-  await within(card!).findByText("Categories: Children's, Fairy Tale");
+  await within(card!).findByText("Categories: Children's, Fairy Tale, Fiction");
 });
 
 test("Showing Progress", async () => {

@@ -11,6 +11,6 @@ test("Rendering Text Info", async () => {
     '"The Ugly Duckling" is a literary fairy tale by Danish poet and author Hans Christian Andersen.'
   );
   await screen.findByText("Difficulty: Medium.");
-  await screen.findByText("Categories: Children's, Fairy Tale.");
+  await screen.findByText("Categories: Children's, Fairy Tale, Fiction.");
   // TODO: source
 });
