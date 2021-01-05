@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOMServer from "react-dom/server";
 import "./TextPage.css";
 import {
   IonBackButton,
@@ -11,6 +12,8 @@ import {
   IonButtons,
   IonTitle,
   IonIcon,
+  IonAlert,
+  IonicSafeString,
 } from "@ionic/react";
 
 import { RouteComponentProps } from "react-router-dom";
@@ -20,7 +23,7 @@ import Hammer from "hammerjs";
 import { information } from "ionicons/icons";
 
 import ReactCardFlip from "react-card-flip";
-import { DAO, Settings } from "../common/DAO";
+import { DAO, Settings, User } from "../common/DAO";
 
 interface MyTextProps
   extends RouteComponentProps<{
@@ -39,6 +42,7 @@ class RecentPage extends React.Component<
     sideTwoText: string;
     flipped: boolean;
     settings?: Settings;
+    showFtue: boolean;
   }
 > {
   constructor(props: any) {
@@ -54,12 +58,14 @@ class RecentPage extends React.Component<
       sideTwoText: "",
       flipped: false,
       settings: undefined,
+      showFtue: false,
     };
 
     this.goToNext = this.goToNext.bind(this);
     this.goToPrevious = this.goToPrevious.bind(this);
     this.onFlip = this.onFlip.bind(this);
     this.updateTextStamps = this.updateTextStamps.bind(this);
+    this.completeFtue = this.completeFtue.bind(this);
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
       .then((res) => res.json())
@@ -81,6 +87,12 @@ class RecentPage extends React.Component<
           sentenceIndex: sentenceIndex,
         }));
         this.updateTextStamps();
+        return DAO.getUser();
+      })
+      .then((user) => {
+        this.setState({
+          showFtue: !user.completedTextFtue,
+        });
         return DAO.getSettings();
       })
       .then((settings) => {
@@ -143,6 +155,12 @@ class RecentPage extends React.Component<
     this.goToIndex(this.state.sentenceIndex - 1);
   }
 
+  completeFtue() {
+    let user = new User();
+    user.completedTextFtue = true;
+    DAO.setUser(user);
+  }
+
   goToIndex(index: number) {
     if (
       this.state.sentenceIndex < 0 ||
@@ -174,6 +192,16 @@ class RecentPage extends React.Component<
       return <div>Loading...</div>;
     }
 
+    let ftueMessage = new IonicSafeString(
+      ReactDOMServer.renderToString(
+        <div>
+          <p>Tap the text to see the translation.</p>
+          <p>Swipe left to go to the next sentence.</p>
+          <p>Swipe right to go to the previous sentence.</p>
+        </div>
+      )
+    );
+
     return (
       <IonPage className="text-page">
         <IonHeader>
@@ -198,6 +226,13 @@ class RecentPage extends React.Component<
             <p onClick={() => this.onFlip()}>{this.state.sideOneText}</p>
             <p onClick={() => this.onFlip()}>{this.state.sideTwoText}</p>
           </ReactCardFlip>
+
+          <IonAlert
+            isOpen={this.state.showFtue}
+            onDidDismiss={() => this.completeFtue()}
+            message={ftueMessage}
+            buttons={["OK"]}
+          />
         </IonContent>
         <IonFooter>
           <IonToolbar>

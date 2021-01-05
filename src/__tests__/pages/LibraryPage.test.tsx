@@ -9,7 +9,7 @@ import {
 
 async function setCompletedFtue() {
   let user = new User();
-  user.completedFtue = true;
+  user.completedMainFtue = true;
   DAO.setUser(user);
 }
 

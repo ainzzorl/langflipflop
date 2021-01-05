@@ -25,10 +25,12 @@ export class Settings {
 }
 
 export class User {
-  completedFtue: boolean;
+  completedMainFtue: boolean;
+  completedTextFtue: boolean;
 
   constructor() {
-    this.completedFtue = false;
+    this.completedMainFtue = false;
+    this.completedTextFtue = false;
   }
 }
 

@@ -50,7 +50,7 @@ class MainCompinent extends React.Component<{}, { user?: User }> {
     if (!this.state.user) {
       return <IonRouterOutlet></IonRouterOutlet>;
     }
-    let mainRedirect = this.state.user!.completedFtue
+    let mainRedirect = this.state.user!.completedMainFtue
       ? "/tabs/library"
       : "/ftue";
     return (
