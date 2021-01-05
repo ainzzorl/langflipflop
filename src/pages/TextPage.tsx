@@ -23,7 +23,7 @@ import Hammer from "hammerjs";
 import { information } from "ionicons/icons";
 
 import ReactCardFlip from "react-card-flip";
-import { DAO, Settings, User } from "../common/DAO";
+import { DAO, Settings } from "../common/DAO";
 
 interface MyTextProps
   extends RouteComponentProps<{
@@ -156,9 +156,10 @@ class RecentPage extends React.Component<
   }
 
   completeFtue() {
-    let user = new User();
-    user.completedTextFtue = true;
-    DAO.setUser(user);
+    DAO.getUser().then((user) => {
+      user.completedTextFtue = true;
+      DAO.setUser(user);
+    });
   }
 
   goToIndex(index: number) {
