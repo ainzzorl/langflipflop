@@ -8,6 +8,7 @@ test("Rendering Recent", async () => {
   renderWithRoute("/tabs/recent");
 
   await screen.findByTestId("rendered-indicator");
+  await screen.findByText("No recently opened texts.");
   expect(screen.queryByText("The Ugly Duckling")).toBeFalsy();
 
   // Update timestamp and re-render.

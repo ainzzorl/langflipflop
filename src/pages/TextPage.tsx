@@ -175,7 +175,7 @@ class RecentPage extends React.Component<
     }
 
     return (
-      <IonPage className='text-page'>
+      <IonPage className="text-page">
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">

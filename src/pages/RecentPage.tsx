@@ -1,7 +1,13 @@
 import React from "react";
 import "./RecentPage.css";
 
-import { IonContent, IonPage } from "@ionic/react";
+import {
+  IonContent,
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+} from "@ionic/react";
 
 import TextMeta from "../common/TextMeta";
 
@@ -81,29 +87,41 @@ class RecentPage extends React.Component<
       !this.state.sortedTexts
     ) {
       return (
-        <IonContent>
-          <div>Loading...</div>
-        </IonContent>
+        <IonPage>
+          <IonContent></IonContent>{" "}
+        </IonPage>
       );
     }
 
-    let textCards = this.state.sortedTexts.map((textMeta, idx) => {
-      return (
-        <TextCard
-          textMeta={textMeta}
-          key={idx}
-          persistentData={
-            this.state.textsPersistentData!.has(textMeta.id)
-              ? this.state.textsPersistentData!.get(textMeta.id)!
-              : new PersistentTextData(textMeta.id)
-          }
-        />
-      );
-    });
+    let content;
+
+    if (this.state.sortedTexts!.length > 0) {
+      content = this.state.sortedTexts.map((textMeta, idx) => {
+        return (
+          <TextCard
+            textMeta={textMeta}
+            key={idx}
+            persistentData={
+              this.state.textsPersistentData!.has(textMeta.id)
+                ? this.state.textsPersistentData!.get(textMeta.id)!
+                : new PersistentTextData(textMeta.id)
+            }
+          />
+        );
+      });
+    } else {
+      content = <p>No recently opened texts.</p>;
+    }
+
     return (
       <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Recent</IonTitle>
+          </IonToolbar>
+        </IonHeader>
         <IonContent>
-          {textCards}
+          {content}
           <div data-testid="rendered-indicator" />
         </IonContent>
       </IonPage>
