@@ -1,4 +1,5 @@
-import { within } from "@testing-library/react";
+import { within, screen } from "@testing-library/react";
+import { DAO, User } from "../../common/DAO";
 
 import {
   renderWithRoute,
@@ -6,7 +7,15 @@ import {
   MyTextPageActions,
 } from "../../test-common";
 
+async function setCompletedFtue() {
+  let user = new User();
+  user.completedFtue = true;
+  DAO.setUser(user);
+}
+
 test("Rendering Library Menu", async () => {
+  await setCompletedFtue();
+
   renderWithRoute("/");
 
   let card = await findTextCard("The Ugly Duckling");
@@ -17,6 +26,8 @@ test("Rendering Library Menu", async () => {
 });
 
 test("Showing Progress", async () => {
+  await setCompletedFtue();
+
   renderWithRoute("/");
   let card = await findTextCard("The Ugly Duckling");
   await within(card!).findByText("Length: 225");
@@ -38,4 +49,9 @@ test("Showing Progress", async () => {
   renderWithRoute("/");
   card = await findTextCard("The Ugly Duckling");
   await within(card!).findByText("Length: 225 (Read: 2%)");
+});
+
+test("FTUE", async () => {
+  renderWithRoute("/");
+  await screen.findByText("Welcome");
 });

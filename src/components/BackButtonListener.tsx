@@ -14,7 +14,8 @@ const BackButtonListener: React.FC<BackButtonListenerProps> = (props) => {
         if (
           !router.canGoBack() &&
           (window.location.pathname === "/" ||
-            window.location.pathname === "/tabs/library")
+            window.location.pathname === "/tabs/library" ||
+            window.location.pathname === "/ftue")
         ) {
           App.exitApp();
         }

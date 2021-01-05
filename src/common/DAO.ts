@@ -24,6 +24,14 @@ export class Settings {
   }
 }
 
+export class User {
+  completedFtue: boolean;
+
+  constructor() {
+    this.completedFtue = false;
+  }
+}
+
 export class DAO {
   static async getAllTextData(): Promise<Map<string, PersistentTextData>> {
     const value = await Storage.get({ key: "text-data" });
@@ -81,6 +89,23 @@ export class DAO {
     return await Storage.set({
       key: "settings",
       value: JSON.stringify(settings),
+    });
+  }
+
+  static async getUser(): Promise<User> {
+    const value = await Storage.get({ key: "user" });
+    const s = value.value;
+    if (s !== null) {
+      return JSON.parse(s);
+    } else {
+      return new User();
+    }
+  }
+
+  static async setUser(user: User): Promise<void> {
+    return await Storage.set({
+      key: "user",
+      value: JSON.stringify(user),
     });
   }
 }

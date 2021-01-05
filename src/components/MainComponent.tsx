@@ -35,54 +35,78 @@ import SettingsPage from "../pages/SettingsPage";
 import TextInfoPage from "../pages/TextInfoPage";
 
 import { home, time, informationCircle, settings } from "ionicons/icons";
+import FtuePage from "../pages/FtuePage";
 
-const MainCompinent: React.FC = () => (
-  <IonRouterOutlet>
-    <Route exact path="/" render={() => <Redirect to="/tabs/library" />} />
-    <Route path="/texts/:id" component={TextPage} />
-    <Route path="/text-infos/:id" component={TextInfoPage} />
-    <Route
-      path="/tabs"
-      render={() => {
-        return (
-          <IonTabs>
-            <IonRouterOutlet>
-              <Route
-                path="/tabs/library"
-                component={LibraryPage}
-                exact={true}
-              />
-              <Route path="/tabs/recent" component={RecentPage} exact={true} />
-              <Route
-                path="/tabs/settings"
-                component={SettingsPage}
-                exact={true}
-              />
-              <Route path="/tabs/info" component={InfoPage} exact={true} />
-            </IonRouterOutlet>
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="library" href="/tabs/library">
-                <IonIcon icon={home} />
-                <IonLabel>Home</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="recent" href="/tabs/recent">
-                <IonIcon icon={time} />
-                <IonLabel>Recent</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="settings" href="/tabs/settings">
-                <IonIcon icon={settings} />
-                <IonLabel>Settings</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="info" href="/tabs/info">
-                <IonIcon icon={informationCircle} />
-                <IonLabel>Info</IonLabel>
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
-        );
-      }}
-    />
-  </IonRouterOutlet>
-);
+import { DAO, User } from "../common/DAO";
+
+class MainCompinent extends React.Component<{}, { user?: User }> {
+  constructor(props: any) {
+    super(props);
+    this.state = { user: undefined };
+    DAO.getUser().then((user) => this.setState({ user: user }));
+  }
+
+  render() {
+    if (!this.state.user) {
+      return <IonRouterOutlet></IonRouterOutlet>;
+    }
+    let mainRedirect = this.state.user!.completedFtue
+      ? "/tabs/library"
+      : "/ftue";
+    return (
+      <IonRouterOutlet>
+        <Route exact path="/" render={() => <Redirect to={mainRedirect} />} />
+        <Route path="/texts/:id" component={TextPage} />
+        <Route path="/text-infos/:id" component={TextInfoPage} />
+        <Route path="/ftue" component={FtuePage} />
+        <Route
+          path="/tabs"
+          render={() => {
+            return (
+              <IonTabs>
+                <IonRouterOutlet>
+                  <Route
+                    path="/tabs/library"
+                    component={LibraryPage}
+                    exact={true}
+                  />
+                  <Route
+                    path="/tabs/recent"
+                    component={RecentPage}
+                    exact={true}
+                  />
+                  <Route
+                    path="/tabs/settings"
+                    component={SettingsPage}
+                    exact={true}
+                  />
+                  <Route path="/tabs/info" component={InfoPage} exact={true} />
+                </IonRouterOutlet>
+                <IonTabBar slot="bottom">
+                  <IonTabButton tab="library" href="/tabs/library">
+                    <IonIcon icon={home} />
+                    <IonLabel>Home</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="recent" href="/tabs/recent">
+                    <IonIcon icon={time} />
+                    <IonLabel>Recent</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="settings" href="/tabs/settings">
+                    <IonIcon icon={settings} />
+                    <IonLabel>Settings</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="info" href="/tabs/info">
+                    <IonIcon icon={informationCircle} />
+                    <IonLabel>Info</IonLabel>
+                  </IonTabButton>
+                </IonTabBar>
+              </IonTabs>
+            );
+          }}
+        />
+      </IonRouterOutlet>
+    );
+  }
+}
 
 export default MainCompinent;
