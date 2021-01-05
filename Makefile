@@ -7,7 +7,8 @@ fix :
 
 .PHONY: lint
 lint :
-			 ./node_modules/eslint/bin/eslint.js src/
+			 npx eslint src/
+			 npx prettier -c src/
 
 .PHONY: serve
 serve :
