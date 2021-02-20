@@ -1,5 +1,4 @@
 import os
-import nltk
 import json
 
 def process(lang, id):
@@ -8,18 +7,9 @@ def process(lang, id):
 
     title, description, body = data.split("\n", maxsplit=2)
 
-    if lang == 'en':
-      tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
-    elif lang == 'es':
-      tokenizer = nltk.data.load('tokenizers/punkt/spanish.pickle')
-    else:
-      raise f"Unsupported language: {lang}"
-
-    paragraphs = [p for p in body.split('\n') if p]
-    sentences = []
-    for paragraph in paragraphs:
-        sentences += tokenizer.tokenize(paragraph)
-    sentences = [s for s in sentences if s != '".']
+    sentences = body.split("\n")
+    sentences = [s.strip() for s in sentences]
+    sentences = [s.strip() for s in sentences if s]
 
   return {
     'title': title,
