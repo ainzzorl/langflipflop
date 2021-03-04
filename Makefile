@@ -32,6 +32,11 @@ android-deploy :
 translate :
 			 python data/translate.py $(ARGS)
 
+# make shuffle ARGS=text-id
+.PHONY: shuffle
+shuffle :
+			 python data/shuffle.py $(ARGS)
+
 .PHONY: test
 test :
 			 npm test -- a --watchAll=false $(ARGS)
