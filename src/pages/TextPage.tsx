@@ -20,7 +20,7 @@ import { RouteComponentProps } from "react-router-dom";
 
 import Hammer from "hammerjs";
 
-import { information } from "ionicons/icons";
+import { information, help } from "ionicons/icons";
 
 import ReactCardFlip from "react-card-flip";
 import { DAO, Settings } from "../common/DAO";
@@ -66,6 +66,7 @@ class RecentPage extends React.Component<
     this.onFlip = this.onFlip.bind(this);
     this.updateTextStamps = this.updateTextStamps.bind(this);
     this.completeFtue = this.completeFtue.bind(this);
+    this.onHelpClicked = this.onHelpClicked.bind(this);
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
       .then((res) => res.json())
@@ -156,10 +157,19 @@ class RecentPage extends React.Component<
   }
 
   completeFtue() {
+    this.setState(() => ({
+      showFtue: false,
+    }));
     DAO.getUser().then((user) => {
       user.completedTextFtue = true;
       DAO.setUser(user);
     });
+  }
+
+  onHelpClicked() {
+    this.setState(() => ({
+      showFtue: true,
+    }));
   }
 
   goToIndex(index: number) {
@@ -259,6 +269,9 @@ class RecentPage extends React.Component<
             <IonButtons slot="end">
               <IonButton href={"/text-infos/" + this.props.match.params.id}>
                 <IonIcon icon={information} size="large" />
+              </IonButton>
+              <IonButton onClick={this.onHelpClicked}>
+                <IonIcon icon={help} size="large" />
               </IonButton>
             </IonButtons>
           </IonToolbar>
