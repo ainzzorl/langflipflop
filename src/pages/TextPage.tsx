@@ -173,10 +173,7 @@ class RecentPage extends React.Component<
   }
 
   goToIndex(index: number) {
-    if (
-      this.state.sentenceIndex < 0 ||
-      this.state.sentenceIndex >= this.state.texts["en"].sentences.length
-    ) {
+    if (index < 0 || index >= this.state.texts["en"].sentences.length) {
       return;
     }
     this.setState(

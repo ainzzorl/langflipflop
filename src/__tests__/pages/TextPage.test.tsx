@@ -27,6 +27,17 @@ test("Rendering Text and Navigating", async () => {
 
   await MyTextPageActions.goToPrevious();
   await MyTextPageActions.assertOnPage(0, "en");
+
+  for (var i = 0; i < 224; i++) {
+    await MyTextPageActions.assertOnPage(i, "en");
+    await MyTextPageActions.goToNext();
+  }
+
+  // Last page
+  await MyTextPageActions.assertOnPage(224, "en");
+  await MyTextPageActions.goToNext();
+  // Didn't move anywhere
+  await MyTextPageActions.assertOnPage(224, "en");
 });
 
 test("Different Translation Direction", async () => {

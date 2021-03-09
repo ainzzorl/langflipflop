@@ -2,6 +2,7 @@ import React from "react";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import MainComponent from "./components/MainComponent";
+import { assert } from "console";
 
 export function renderWithRoute(route: string) {
   cleanup();
@@ -76,13 +77,24 @@ export class MyTextPageActions {
           "Los campos de trigo eran dorados, la avena verde y el heno se amontonaba en grandes pilas en los prados verdes.",
       },
     ];
+    let titles: any = {
+      en: "The Ugly Duckling",
+      es: "El patito feo",
+    };
 
-    expect(
-      await this.getCardByText(texts[index][language])
-    ).toBeOnVisibleCardSide();
-    expect(
-      await this.getCardByText(texts[index][this.otherLang(language)])
-    ).not.toBeOnVisibleCardSide();
+    if (index < texts.length) {
+      // Just don't have the values for other indexes here.
+      expect(
+        await this.getCardByText(texts[index][language])
+      ).toBeOnVisibleCardSide();
+      expect(
+        await this.getCardByText(texts[index][this.otherLang(language)])
+      ).not.toBeOnVisibleCardSide();
+    }
+
+    expect(document.querySelector("ion-title")!.textContent).toEqual(
+      `${titles[language]} (${index + 1}/225)`
+    );
   }
 
   private static otherLang(lang: string): string {
