@@ -1,0 +1,74 @@
+{
+  "en": {
+    "title": "Family and friends",
+    "description": "Casual phrases about family and friends.",
+    "sentences": [
+      "My family consists of five people: my wife, daughter, two sons, and me.",
+      "I have twelve cousins.",
+      "The kids love their grandparents.",
+      "The boy resembles his grandfather.",
+      "I wish our grandchildren visited us more often.",
+      "Sister of my mother is my aunt; brother of my mother is my uncle.",
+      "Daughter of my brother is my niece; son of my brother is my nephew.",
+      "Mother of my husband is my mother-in-law; father of my husband is my father-in-law.",
+      "He is my best friend. We know each other since we were five.",
+      "She is friendly.",
+      "Thank you for making me company.",
+      "I spend a lot of time with this company.",
+      "We don\u2019t know them very well. We met them yesterday.",
+      "I\u2019m not very social and I don\u2019t have many friends.",
+      "Your friendship is very important to me.",
+      "I\u2019m having fun with them.",
+      "We have a lot in common with these people.",
+      "Let\u2019s stay in touch?",
+      "She is my significant other.",
+      "You are my girlfriend and I\u2019m your boyfriend.",
+      "We are partners.",
+      "She is the love of my life.",
+      "It\u2019s our first date.",
+      "We\u2019ve been dating for three years.",
+      "Do you remember how we first met?"
+    ]
+  },
+  "es": {
+    "title": "Familia y amigos",
+    "description": "Frases casuales sobre familia y amigos.",
+    "sentences": [
+      "Mi familia est\u00e1 formada por cinco personas: mi mujer, mi hija, mis dos hijos y yo.",
+      "Tengo doce primos.",
+      "Los ni\u00f1os adoran a sus abuelos.",
+      "El ni\u00f1o se parece a su abuelo.",
+      "Me gustar\u00eda que nuestros nietos nos visitaran m\u00e1s a menudo.",
+      "La hermana de mi madre es mi t\u00eda; el hermano de mi madre es mi t\u00edo.",
+      "La hija de mi hermano es mi sobrina; el hijo de mi hermano es mi sobrino.",
+      "La madre de mi marido es mi suegra; el padre de mi marido es mi suegro.",
+      "\u00c9l es mi mejor amigo. Nos conocemos desde los cinco a\u00f1os.",
+      "Es amigable.",
+      "Gracias por hacerme compa\u00f1\u00eda.",
+      "Paso mucho tiempo con esta compa\u00f1\u00eda.",
+      "No los conocemos muy bien. Los conocimos ayer.",
+      "No soy muy sociable y no tengo muchos amigos.",
+      "Tu amistad es muy importante para m\u00ed.",
+      "Me divierto con ellos.",
+      "Tenemos mucho en com\u00fan con estas personas.",
+      "\u00bfSeguimos en contacto?",
+      "Ella es mi pareja.",
+      "Es mi novia y yo soy su novio.",
+      "Somos pareja.",
+      "Ella es el amor de mi vida.",
+      "Es nuestra primera cita.",
+      "Llevamos tres a\u00f1os saliendo.",
+      "\u00bfRecuerdas c\u00f3mo nos conocimos?"
+    ]
+  },
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases",
+      "family",
+      "friends"
+    ],
+    "id": "casual-phrases-family-and-friends",
+    "numSentences": 25
+  }
+}
