@@ -2,7 +2,6 @@ import React from "react";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import MainComponent from "./components/MainComponent";
-import { assert } from "console";
 
 export function renderWithRoute(route: string) {
   cleanup();
