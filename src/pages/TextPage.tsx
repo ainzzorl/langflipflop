@@ -203,9 +203,9 @@ class RecentPage extends React.Component<
     let ftueMessage = new IonicSafeString(
       ReactDOMServer.renderToString(
         <div>
-          <p>Tap the text to see the translation.</p>
-          <p>Swipe left to go to the next sentence.</p>
-          <p>Swipe right to go to the previous sentence.</p>
+          <p>Try translating the text you see on the screen, and then tap the text to see a possible translation.</p>
+          <p>Swipe left or tap NEXT to go to the next sentence.</p>
+          <p>Swipe right or tap PREVIOUS to go to the previous sentence.</p>
         </div>
       )
     );
