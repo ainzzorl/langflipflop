@@ -55,7 +55,7 @@ class FtuePage extends React.Component<
 
   render() {
     return (
-      <IonPage>
+      <IonPage id="ftue-page">
         <IonHeader>
           <IonToolbar>
             <IonHeader>Setup</IonHeader>

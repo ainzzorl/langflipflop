@@ -97,7 +97,7 @@ class MainCompinent extends React.Component<{}, { user?: User }> {
                   </IonTabButton>
                   <IonTabButton tab="info" href="/tabs/info">
                     <IonIcon icon={informationCircle} />
-                    <IonLabel>Info</IonLabel>
+                    <IonLabel>About</IonLabel>
                   </IonTabButton>
                 </IonTabBar>
               </IonTabs>

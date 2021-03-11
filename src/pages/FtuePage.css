@@ -1,7 +1,3 @@
-ion-toolbar {
-  --padding-start: 10px;
-}
-
-ion-content p {
+#ftue-page ion-toolbar {
   --padding-start: 10px;
 }
