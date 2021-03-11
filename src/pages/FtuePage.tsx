@@ -1,5 +1,5 @@
 import React from "react";
-import "./LibraryPage.css";
+import "./FtuePage.css";
 
 import {
   IonContent,
@@ -58,13 +58,10 @@ class FtuePage extends React.Component<
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonHeader>Welcome</IonHeader>
+            <IonHeader>Setup</IonHeader>
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <p>Welcome to our App.</p>
-          <p>Use it so and so.</p>
-
           <IonList>
             <IonRadioGroup
               value={this.state.settings.translationDirection}

@@ -53,5 +53,5 @@ test("Showing Progress", async () => {
 
 test("FTUE", async () => {
   renderWithRoute("/");
-  await screen.findByText("Welcome");
+  await screen.findByText("Setup");
 });

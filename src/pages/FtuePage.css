@@ -1,0 +1,7 @@
+ion-toolbar {
+  --padding-start: 10px;
+}
+
+ion-content p {
+  --padding-start: 10px;
+}
