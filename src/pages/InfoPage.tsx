@@ -31,9 +31,9 @@ class InfoPage extends React.Component<{}, {}> {
             than one correct translation.
           </p>
           <p>
-            We won't <i>gamify</i> your practice, won't ask you to register, won't
-            collect any personal information, and won't bother you with push
-            notification. Enjoy practicing your favorite language!
+            We won't <i>gamify</i> your practice, won't ask you to register,
+            won't collect any personal information, and won't bother you with
+            push notification. Enjoy practicing your favorite language!
           </p>
         </IonContent>
       </IonPage>
