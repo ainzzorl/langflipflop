@@ -1,7 +1,7 @@
 {
   "en": {
-    "title": "Mysterious Metallic Monolith Found in Remote Utah",
-    "description": "News article about a mysterious object found in Utah.",
+    "title": "Mysterious Metallic Monolith Found in Remote Utah ",
+    "description": "Mysterious Metallic Monolith Found in Remote Utah.",
     "sentences": [
       "In a scene that could have been taken from the science fiction classic \u201c2001: A Space Odyssey,\u201d officials in Utah have discovered a mysterious metallic monolith in the remote southeastern part of the state.",
       "Public safety workers spotted the object November 18 from a helicopter while conducting a count of bighorn sheep, according to a news statement.",
@@ -13,23 +13,23 @@
     ]
   },
   "es": {
-    "title": "Misterioso monolito met\u00e1lico encontrado en Utah remoto",
-    "description": "Art\u00edculo de noticias sobre un objeto misterioso encontrado en Utah.",
+    "title": "Monolito Misteriosos [TODO: misterioso?] encontrado en partes Remotas de Utah ",
+    "description": "Monolito Misteriosos [TODO: misterioso?] encontrado en partes Remotas de Utah ",
     "sentences": [
-      "En una escena que podr\u00eda haber sido tomada del cl\u00e1sico de ciencia ficci\u00f3n \"2001: A Space Odyssey\", los funcionarios de Utah han descubierto un misterioso monolito met\u00e1lico en la remota parte sureste del estado.",
-      "Los trabajadores de seguridad p\u00fablica vieron el objeto el 18 de noviembre desde un helic\u00f3ptero mientras realizaban un conteo de borrego cimarr\u00f3n, seg\u00fan un comunicado de prensa.",
-      "Hasta ahora, no hay indicios de qui\u00e9n pudo haber colocado el monolito de 3 a 3,6 metros de altura en ese lugar.",
-      "\"Es ilegal instalar estructuras o obras de arte sin autorizaci\u00f3n en terrenos p\u00fablicos administrados por el gobierno federal, sin importar de qu\u00e9 planeta sea\", dijo el Departamento de Seguridad P\u00fablica de Utah en un comunicado.",
-      "\"Eso ha sido lo m\u00e1s extra\u00f1o que me he encontrado en todos mis a\u00f1os de vuelo\", dijo el piloto Bret Hutchings a KSL-TV.",
-      "Agreg\u00f3 que el objeto parec\u00eda ser hecho por el hombre y probablemente no ten\u00eda ning\u00fan prop\u00f3sito cient\u00edfico, y lo llam\u00f3 \"m\u00e1s una forma de arte que cualquier tipo de forma de vida extraterrestre\".",
-      "Por ahora, los funcionarios no est\u00e1n revelando la ubicaci\u00f3n exacta del monolito y est\u00e1n tratando de determinar si se necesita m\u00e1s investigaci\u00f3n."
+      "En una escena que podr\u00eda ser tomada del cl\u00e1sico de ciencia ficci\u00f3n \u201c2001: Una Odisea Espacial\u201d, los oficiales en Utah han descubierto un monolito met\u00e1lico misterioso en la parte m\u00e1s remota del sureste del estado.",
+      "Los trabajadores de la seguridad p\u00fablica detectaron el objeto el 18 de Noviembre desde un helic\u00f3ptero mientras conduc\u00edan un conteo de carneros, seg\u00fan una declaraci\u00f3n de las noticias.",
+      "Hasta ahora, no hay indicativos de qui\u00e9n pudo haber colocado el monolito de 3 a 3.6 metros en esa ubicaci\u00f3n.",
+      "\u201cEs ilegal instalar estructuras o arte sin autorizaci\u00f3n en terrenos p\u00fablicos administrados federalmente, sin importar de qu\u00e9 planetas seas,\u201d dijo el Departamento de Seguridad P\u00fablica de Utah en una declaraci\u00f3n.",
+      "\u201cEsto ha sido lo m\u00e1s extra\u00f1o que me he encontrado en todos mis a\u00f1os de vuelo\u201d, el piloto Bret Hutchings le dijo a KSL-TV.",
+      "\u00c9l a\u00f1adi\u00f3 que el objeto parec\u00eda ser hecho por hombre y no tienen ning\u00fan prop\u00f3sito cient\u00edfico, llam\u00e1ndolo \u201cm\u00e1s una forma de arte que cualquier tipo de forma alien\u00edgena\u201d.",
+      "Por ahora, los oficiales no han revelado la ubicaci\u00f3n exacta del monolito y est\u00e1n tratando de determinar si es necesaria una futura investigaci\u00f3n."
     ]
   },
   "meta": {
     "difficulty": "Medium",
     "categories": [
-      "news",
-      "article"
+      "article",
+      "news"
     ],
     "sourceLink": "https://www.voanews.com/usa/mysterious-metallic-monolith-found-remote-utah",
     "sourceText": "Voice of America (VOA)",
