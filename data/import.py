@@ -40,6 +40,12 @@ def printdiff(lh, rh):
       print(f"{l}{PSTR}||{PSTR}{r}")
     print('-' * SCREEN_WIDTH)
 
+TARGET_DIR = 'public/assets/data/texts'
+print(f"Cleaning up old texts under {TARGET_DIR}")
+for fn in os.listdir(TARGET_DIR):
+    file_path = os.path.join(TARGET_DIR, fn)
+    os.unlink(file_path)
+
 for id in os.listdir('./data/in/'):
   print(id)
   en = process('en', id)
