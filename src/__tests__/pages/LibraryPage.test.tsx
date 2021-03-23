@@ -18,28 +18,28 @@ test("Rendering Library Menu", async () => {
 
   renderWithRoute("/");
 
-  let card = await findTextCard("The Ugly Duckling");
+  let card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
 
   await within(card!).findByText("Difficulty: Medium");
-  await within(card!).findByText("Length: 225");
-  await within(card!).findByText("Categories: Children's, Fairy Tale, Fiction");
+  await within(card!).findByText("Length: 7");
+  await within(card!).findByText("Categories: Article, News");
 });
 
 test("Showing Progress", async () => {
   await setCompletedFtue();
 
   renderWithRoute("/");
-  let card = await findTextCard("The Ugly Duckling");
-  await within(card!).findByText("Length: 225");
+  let card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
+  await within(card!).findByText("Length: 7");
 
-  renderWithRoute("/texts/patito-feo");
+  renderWithRoute("/texts/mysterious-monolith");
   await MyTextPageActions.assertOnPage(0, "en");
 
   renderWithRoute("/");
-  card = await findTextCard("The Ugly Duckling");
-  await within(card!).findByText("Length: 225 (Read: 1%)");
+  card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
+  await within(card!).findByText("Length: 7 (Read: 15%)");
 
-  renderWithRoute("/texts/patito-feo");
+  renderWithRoute("/texts/mysterious-monolith");
   await MyTextPageActions.assertOnPage(0, "en");
   await MyTextPageActions.goToNext();
   await MyTextPageActions.assertOnPage(1, "en");
@@ -47,8 +47,8 @@ test("Showing Progress", async () => {
   await MyTextPageActions.assertOnPage(2, "en");
 
   renderWithRoute("/");
-  card = await findTextCard("The Ugly Duckling");
-  await within(card!).findByText("Length: 225 (Read: 2%)");
+  card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
+  await within(card!).findByText("Length: 7 (Read: 43%)");
 });
 
 test("FTUE", async () => {

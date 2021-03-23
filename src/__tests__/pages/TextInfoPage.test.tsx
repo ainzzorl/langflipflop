@@ -3,12 +3,12 @@ import { screen } from "@testing-library/react";
 import { renderWithRoute } from "../../test-common";
 
 test("Rendering Text Info", async () => {
-  renderWithRoute("/text-infos/patito-feo");
+  renderWithRoute("/text-infos/mysterious-monolith");
 
-  await screen.findByText("The Ugly Duckling");
+  await screen.findByText("Mysterious Metallic Monolith Found in Remote Utah");
   await screen.findByText(
-    '"The Ugly Duckling" is a literary fairy tale by Danish poet and author Hans Christian Andersen.'
+    "Mysterious Metallic Monolith Found in Remote Utah."
   );
   await screen.findByText("Difficulty: Medium.");
-  await screen.findByText("Categories: Children's, Fairy Tale, Fiction.");
+  await screen.findByText("Categories: Article, News.");
 });

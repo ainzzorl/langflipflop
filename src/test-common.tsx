@@ -62,23 +62,23 @@ export class MyTextPageActions {
   static async assertOnPage(index: number, language: string) {
     let texts: any = [
       {
-        en: "It was so beautiful in the country.",
-        es: "Era tan hermoso en el campo.",
+        en: "In a scene that could have been taken from the science fiction classic “2001: A Space Odyssey,” officials in Utah have discovered a mysterious metallic monolith in the remote southeastern part of the state.",
+        es: "En una escena que podría ser tomada del clásico de ciencia ficción “2001: Una Odisea Espacial”, los oficiales en Utah han descubierto un monolito metálico misterioso en la parte más remota del sureste del estado.",
       },
       {
-        en: "It was the summer time.",
-        es: "Era el horario de verano.",
+        en: "Public safety workers spotted the object November 18 from a helicopter while conducting a count of bighorn sheep, according to a news statement.",
+        es: "Los trabajadores de la seguridad pública detectaron el objeto el 18 de Noviembre desde un helicóptero mientras conducían un conteo de carneros, según una declaración de las noticias.",
       },
       {
         en:
-          "The wheat fields were golden, the oats were green, and the hay stood in great stacks in the green meadows.",
+          "So far, there is no indication of who could have placed the 3- to 3.6-meter-tall monolith in that location.",
         es:
-          "Los campos de trigo eran dorados, la avena verde y el heno se amontonaba en grandes pilas en los prados verdes.",
+          "Hasta ahora, no hay indicativos de quién pudo haber colocado el monolito de 3 a 3.6 metros en esa ubicación.",
       },
     ];
     let titles: any = {
-      en: "The Ugly Duckling",
-      es: "El patito feo",
+      en: "Mysterious Metallic Monolith Found in Remote Utah",
+      es: "Misterioso Monolito Metálico Encontrado en Partes Remotas de Utah",
     };
 
     if (index < texts.length) {
@@ -92,7 +92,7 @@ export class MyTextPageActions {
     }
 
     expect(document.querySelector("ion-title")!.textContent).toEqual(
-      `${titles[language]} (${index + 1}/225)`
+      `${titles[language]} (${index + 1}/7)`
     );
   }
 
