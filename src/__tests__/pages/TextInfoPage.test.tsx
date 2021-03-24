@@ -8,5 +8,5 @@ test("Rendering Text Info", async () => {
   await screen.findByText("Mysterious Metallic Monolith Found in Remote Utah");
   await screen.findByText("Mysterious Metallic Monolith Found in Remote Utah.");
   await screen.findByText("Difficulty: Medium.");
-  await screen.findByText("Categories: Article, News.");
+  await screen.findByText("Categories: News.");
 });

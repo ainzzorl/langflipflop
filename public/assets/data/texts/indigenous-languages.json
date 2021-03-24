@@ -42,7 +42,8 @@
   "meta": {
     "difficulty": "Medium",
     "categories": [
-      "article"
+      "news",
+      "culture"
     ],
     "sourceLink": "https://www.voanews.com/east-asia-pacific/australia-showcases-diverse-indigenous-languages",
     "sourceText": "Voice of America (VOA)",

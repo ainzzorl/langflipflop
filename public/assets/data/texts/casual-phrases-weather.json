@@ -90,8 +90,7 @@
   "meta": {
     "difficulty": "Easy",
     "categories": [
-      "casual-phrases",
-      "weather"
+      "casual-phrases"
     ],
     "id": "casual-phrases-weather",
     "numSentences": 38

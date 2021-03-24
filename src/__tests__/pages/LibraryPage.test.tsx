@@ -24,7 +24,7 @@ test("Rendering Library Menu", async () => {
 
   await within(card!).findByText("Difficulty: Medium");
   await within(card!).findByText("Length: 7");
-  await within(card!).findByText("Categories: Article, News");
+  await within(card!).findByText("Categories: News");
 });
 
 test("Showing Progress", async () => {
