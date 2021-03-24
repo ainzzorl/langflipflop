@@ -44,3 +44,7 @@ test :
 .PHONY: test-args
 test-args :
 			 npm test -- --watchAll=false $(ARGS)
+
+.PHONY: export-android-to-dropbox
+export-android-to-dropbox :
+			 cp android/app/build/outputs/apk/debug/app-debug.apk ~/Dropbox/tmp/
