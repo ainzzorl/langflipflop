@@ -220,7 +220,7 @@ class RecentPage extends React.Component<
             <IonButtons slot="start">
               <IonBackButton defaultHref="/" />
               <IonTitle>
-                <div id="my-wrap">
+                <div className="my-wrap">
                   {this.state.texts[this.state.lang].title} (
                   {this.state.sentenceIndex + 1}/
                   {this.state.texts["en"].sentences.length})

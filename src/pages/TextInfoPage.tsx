@@ -53,7 +53,9 @@ class TextInfoPage extends React.Component<
               <IonBackButton
                 defaultHref={"/texts/" + this.props.match.params.id}
               />
-              <IonTitle>{this.state.text["en"]["title"]}</IonTitle>
+              <IonTitle>
+                <div className="my-wrap">{this.state.text["en"]["title"]}</div>
+              </IonTitle>
             </IonButtons>
           </IonToolbar>
         </IonHeader>
