@@ -9,13 +9,17 @@ test("Rendering Recent", async () => {
 
   await screen.findByTestId("rendered-indicator");
   await screen.findByText("No recently opened texts.");
-  expect(screen.queryByText("Mysterious Metallic Monolith Found in Remote Utah")).toBeFalsy();
+  expect(
+    screen.queryByText("Mysterious Metallic Monolith Found in Remote Utah")
+  ).toBeFalsy();
 
   // Update timestamp and re-render.
   await DAO.updateTextStamps("mysterious-monolith", 0);
   renderWithRoute("/tabs/recent");
 
-  let card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
+  let card = await findTextCard(
+    "Mysterious Metallic Monolith Found in Remote Utah"
+  );
 
   await within(card!).findByText("Difficulty: Medium");
   await within(card!).findByText("Length: 7 (Read: 15%)");

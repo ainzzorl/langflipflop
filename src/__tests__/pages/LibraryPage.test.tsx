@@ -18,7 +18,9 @@ test("Rendering Library Menu", async () => {
 
   renderWithRoute("/");
 
-  let card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
+  let card = await findTextCard(
+    "Mysterious Metallic Monolith Found in Remote Utah"
+  );
 
   await within(card!).findByText("Difficulty: Medium");
   await within(card!).findByText("Length: 7");
@@ -29,14 +31,18 @@ test("Showing Progress", async () => {
   await setCompletedFtue();
 
   renderWithRoute("/");
-  let card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
+  let card = await findTextCard(
+    "Mysterious Metallic Monolith Found in Remote Utah"
+  );
   await within(card!).findByText("Length: 7");
 
   renderWithRoute("/texts/mysterious-monolith");
   await MyTextPageActions.assertOnPage(0, "en");
 
   renderWithRoute("/");
-  card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
+  card = await findTextCard(
+    "Mysterious Metallic Monolith Found in Remote Utah"
+  );
   await within(card!).findByText("Length: 7 (Read: 15%)");
 
   renderWithRoute("/texts/mysterious-monolith");
@@ -47,7 +53,9 @@ test("Showing Progress", async () => {
   await MyTextPageActions.assertOnPage(2, "en");
 
   renderWithRoute("/");
-  card = await findTextCard("Mysterious Metallic Monolith Found in Remote Utah");
+  card = await findTextCard(
+    "Mysterious Metallic Monolith Found in Remote Utah"
+  );
   await within(card!).findByText("Length: 7 (Read: 43%)");
 });
 

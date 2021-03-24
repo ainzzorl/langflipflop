@@ -62,12 +62,16 @@ export class MyTextPageActions {
   static async assertOnPage(index: number, language: string) {
     let texts: any = [
       {
-        en: "In a scene that could have been taken from the science fiction classic “2001: A Space Odyssey,” officials in Utah have discovered a mysterious metallic monolith in the remote southeastern part of the state.",
-        es: "En una escena que podría ser tomada del clásico de ciencia ficción “2001: Una Odisea Espacial”, los oficiales en Utah han descubierto un monolito metálico misterioso en la parte más remota del sureste del estado.",
+        en:
+          "In a scene that could have been taken from the science fiction classic “2001: A Space Odyssey,” officials in Utah have discovered a mysterious metallic monolith in the remote southeastern part of the state.",
+        es:
+          "En una escena que podría ser tomada del clásico de ciencia ficción “2001: Una Odisea Espacial”, los oficiales en Utah han descubierto un monolito metálico misterioso en la parte más remota del sureste del estado.",
       },
       {
-        en: "Public safety workers spotted the object November 18 from a helicopter while conducting a count of bighorn sheep, according to a news statement.",
-        es: "Los trabajadores de la seguridad pública detectaron el objeto el 18 de Noviembre desde un helicóptero mientras conducían un conteo de carneros, según una declaración de las noticias.",
+        en:
+          "Public safety workers spotted the object November 18 from a helicopter while conducting a count of bighorn sheep, according to a news statement.",
+        es:
+          "Los trabajadores de la seguridad pública detectaron el objeto el 18 de Noviembre desde un helicóptero mientras conducían un conteo de carneros, según una declaración de las noticias.",
       },
       {
         en:
