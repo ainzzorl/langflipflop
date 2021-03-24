@@ -229,13 +229,17 @@ class RecentPage extends React.Component<
             </IonButtons>
           </IonToolbar>
         </IonHeader>
-        <IonContent id="my-div" class="ion-padding">
+        <IonContent
+          id="my-div"
+          class="ion-padding"
+          onClick={() => this.onFlip()}
+        >
           <ReactCardFlip
             isFlipped={this.state.flipped}
             flipDirection="horizontal"
           >
-            <p onClick={() => this.onFlip()}>{this.state.sideOneText}</p>
-            <p onClick={() => this.onFlip()}>{this.state.sideTwoText}</p>
+            <p>{this.state.sideOneText}</p>
+            <p>{this.state.sideTwoText}</p>
           </ReactCardFlip>
 
           <IonAlert
