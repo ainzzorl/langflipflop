@@ -1,4 +1,4 @@
-import { fireEvent } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { DAO, Settings } from "../../common/DAO";
 
 import { renderWithRoute, MyTextPageActions } from "../../test-common";
@@ -35,9 +35,6 @@ test("Rendering Text and Navigating", async () => {
 
   // Last page
   await MyTextPageActions.assertOnPage(6, "en");
-  await MyTextPageActions.goToNext();
-  // Didn't move anywhere
-  await MyTextPageActions.assertOnPage(6, "en");
 });
 
 test("Different Translation Direction", async () => {
@@ -68,4 +65,22 @@ test("Persisting Position", async () => {
   renderWithRoute("/texts/mysterious-monolith");
 
   await MyTextPageActions.assertOnPage(1, "en");
+});
+
+test("End-of-text", async () => {
+  renderWithRoute("/texts/mysterious-monolith");
+  await MyTextPageActions.assertOnPage(0, "en");
+
+  for (var i = 0; i < 6; i++) {
+    await MyTextPageActions.assertOnPage(i, "en");
+    await MyTextPageActions.goToNext();
+  }
+
+  // Last page
+  await MyTextPageActions.assertOnPage(6, "en");
+
+  expect(screen.queryByText("The End")).not.toBeInTheDocument();
+
+  await MyTextPageActions.goToNext();
+  await screen.findByText("The End");
 });
