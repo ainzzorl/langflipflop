@@ -8,6 +8,8 @@ import fs from "fs";
 
 import { Plugins } from "@capacitor/core";
 
+import { mockController } from "./mocks/mockController";
+
 const { Storage } = Plugins;
 
 const fetchMock = require("fetch-mock-jest");
@@ -18,6 +20,23 @@ fetchMock.mock(
     return fs.readFileSync("./public/" + url, "utf8");
   }
 );
+
+// Borrowed from https://github.com/ionic-team/ionic-react-test-utils/blob/master/src/mocks/mockIonicReact.ts
+jest.mock("@ionic/react", () => {
+  const rest = jest.requireActual("@ionic/react");
+  return {
+    ...rest,
+    IonActionSheet: mockController,
+    // Doesn't work with FTUE alert (yet)
+    //IonAlert: mockController,
+    IonDatetime: mockController,
+    IonLoading: mockController,
+    IonPicker: mockController,
+    IonPopover: mockController,
+    IonToast: mockController,
+    IonModal: mockController,
+  };
+});
 
 beforeEach(() => {
   Storage.clear();
