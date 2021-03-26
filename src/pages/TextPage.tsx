@@ -13,7 +13,6 @@ import {
   IonTitle,
   IonIcon,
   IonAlert,
-  IonModal,
   IonicSafeString,
 } from "@ionic/react";
 
@@ -44,7 +43,7 @@ class RecentPage extends React.Component<
     flipped: boolean;
     settings?: Settings;
     showFtue: boolean;
-    showEndOfTextModal: boolean;
+    showEndOfTextAlert: boolean;
   }
 > {
   constructor(props: any) {
@@ -61,7 +60,7 @@ class RecentPage extends React.Component<
       flipped: false,
       settings: undefined,
       showFtue: false,
-      showEndOfTextModal: false,
+      showEndOfTextAlert: false,
     };
 
     this.goToNext = this.goToNext.bind(this);
@@ -70,7 +69,7 @@ class RecentPage extends React.Component<
     this.updateTextStamps = this.updateTextStamps.bind(this);
     this.completeFtue = this.completeFtue.bind(this);
     this.onHelpClicked = this.onHelpClicked.bind(this);
-    this.setShowEndOfTextModal = this.setShowEndOfTextModal.bind(this);
+    this.setShowEndOfTextAlert = this.setShowEndOfTextAlert.bind(this);
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
       .then((res) => res.json())
@@ -170,9 +169,9 @@ class RecentPage extends React.Component<
     });
   }
 
-  setShowEndOfTextModal(value: boolean) {
+  setShowEndOfTextAlert(value: boolean) {
     this.setState(() => ({
-      showEndOfTextModal: value,
+      showEndOfTextAlert: value,
     }));
   }
 
@@ -187,7 +186,7 @@ class RecentPage extends React.Component<
       return;
     }
     if (index >= this.state.texts["en"].sentences.length) {
-      this.setShowEndOfTextModal(true);
+      this.setShowEndOfTextAlert(true);
       return;
     }
     this.setState(
@@ -248,12 +247,35 @@ class RecentPage extends React.Component<
           class="ion-padding"
           onClick={() => this.onFlip()}
         >
-          <IonModal isOpen={this.state.showEndOfTextModal}>
-            <p>The End</p>
-            <IonButton onClick={() => this.setShowEndOfTextModal(false)}>
-              Close Modal
-            </IonButton>
-          </IonModal>
+          <IonAlert
+            isOpen={this.state.showEndOfTextAlert}
+            onDidDismiss={() => this.setShowEndOfTextAlert(false)}
+            header="The End"
+            buttons={[
+              {
+                text: "Library",
+                cssClass: "primary",
+                handler: () => {
+                  this.props.history.push("/tabs/library");
+                },
+              },
+              {
+                text: "Close",
+                role: "cancel",
+                cssClass: "secondary",
+              },
+              {
+                text: "About Text",
+                cssClass: "secondary",
+                handler: () => {
+                  this.props.history.push(
+                    "/text-infos/" + this.props.match.params.id
+                  );
+                },
+              },
+            ]}
+          />
+
           <ReactCardFlip
             isFlipped={this.state.flipped}
             flipDirection="horizontal"

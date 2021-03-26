@@ -12,7 +12,7 @@ const MockControllerInner: React.FC<{
   header?: string;
   leaveAnimation?: any;
   mode?: "ios" | "md";
-  message?: string;
+  message?: any;
   subHeader?: string;
   buttons?: AlertButton[];
   translucent?: boolean;
@@ -40,6 +40,10 @@ const MockControllerInner: React.FC<{
       onDidDismiss && onDidDismiss();
     }
   }, [isOpen, open, onDidDismiss]);
+
+  if (message && message.constructor.name === "IonicSafeString") {
+    message = message["value"];
+  }
 
   return isOpen ? (
     <div {...rest} ref={forwardedRef}>

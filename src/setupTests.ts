@@ -27,8 +27,7 @@ jest.mock("@ionic/react", () => {
   return {
     ...rest,
     IonActionSheet: mockController,
-    // Doesn't work with FTUE alert (yet)
-    //IonAlert: mockController,
+    IonAlert: mockController,
     IonDatetime: mockController,
     IonLoading: mockController,
     IonPicker: mockController,
