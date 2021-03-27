@@ -69,7 +69,7 @@ class FtuePage extends React.Component<
             >
               <IonListHeader>
                 <IonLabel>
-                  Please select the translation you want to practice.
+                  Please select the translation you'd like to practice.
                 </IonLabel>
               </IonListHeader>
 
@@ -89,7 +89,7 @@ class FtuePage extends React.Component<
           <IonToolbar>
             <IonButtons slot="start">
               <IonButton color="primary" onClick={this.completeFtue}>
-                Let's go
+                Start
               </IonButton>
             </IonButtons>
           </IonToolbar>
