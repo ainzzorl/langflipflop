@@ -28,6 +28,13 @@ android :
 android-deploy :
 			 (cd android && gradle installDebug)
 
+# Writes to android/app/build/outputs/apk/release/
+.PHONY: android-release
+android-release :
+			 ionic build
+			 ionic capacitor copy android --prod
+			 (cd android && gradle assembleRelease)
+
 .PHONY: translate
 translate :
 			 python data/translate.py $(ARGS)
