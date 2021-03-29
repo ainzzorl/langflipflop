@@ -15,6 +15,8 @@ import TextCard from "../components/TextCard";
 
 import { DAO, PersistentTextData } from "../common/DAO";
 
+import deepEqual from "fast-deep-equal/es6";
+
 class RecentPage extends React.Component<
   {},
   {
@@ -58,26 +60,48 @@ class RecentPage extends React.Component<
           texts: textMetas,
         }));
         return DAO.getAllTextData();
-      })
-      .then((textsData) => {
-        let openedTexts: Array<TextMeta> = this.state.texts!.filter(
-          (textMeta) => {
-            return (
-              textsData.has(textMeta.id) &&
-              textsData.get(textMeta.id)?.lastOpenedTimestamp
-            );
-          }
-        );
-        openedTexts.sort(
-          (t1: TextMeta, t2: TextMeta) =>
-            textsData.get(t2.id)!.lastOpenedTimestamp! -
-            textsData.get(t1.id)!.lastOpenedTimestamp!
-        );
+      });
+
+    this.loadPersistentData = this.loadPersistentData.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadPersistentData();
+  }
+
+  componentDidUpdate() {
+    this.loadPersistentData();
+  }
+
+  loadPersistentData() {
+    if (!this.state.texts) {
+      return;
+    }
+    DAO.getAllTextData().then((textsData) => {
+      let openedTexts: Array<TextMeta> = this.state.texts!.filter(
+        (textMeta) => {
+          return (
+            textsData.has(textMeta.id) &&
+            textsData.get(textMeta.id)?.lastOpenedTimestamp
+          );
+        }
+      );
+      openedTexts.sort(
+        (t1: TextMeta, t2: TextMeta) =>
+          textsData.get(t2.id)!.lastOpenedTimestamp! -
+          textsData.get(t1.id)!.lastOpenedTimestamp!
+      );
+
+      if (
+        !deepEqual(this.state.textsPersistentData, textsData) ||
+        !deepEqual(this.state.sortedTexts, openedTexts)
+      ) {
         this.setState((state) => ({
           textsPersistentData: textsData,
           sortedTexts: openedTexts,
         }));
-      });
+      }
+    });
   }
 
   render() {

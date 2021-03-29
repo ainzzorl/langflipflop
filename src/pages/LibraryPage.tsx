@@ -17,6 +17,8 @@ import {
 } from "@ionic/react";
 import { DAO, PersistentTextData } from "../common/DAO";
 
+import deepEqual from "fast-deep-equal/es6";
+
 class LibraryPage extends React.Component<
   {},
   {
@@ -54,16 +56,11 @@ class LibraryPage extends React.Component<
         this.setState((state) => ({
           texts: textMetas,
         }));
-        return DAO.getAllTextData();
-      })
-      .then((persistentData) => {
-        this.setState(() => ({
-          persistentData: persistentData,
-        }));
       });
 
     this.setCategoryFilter = this.setCategoryFilter.bind(this);
     this.setDifficultyFilter = this.setDifficultyFilter.bind(this);
+    this.loadPersistentData = this.loadPersistentData.bind(this);
   }
 
   setCategoryFilter(value: string) {
@@ -76,6 +73,24 @@ class LibraryPage extends React.Component<
     this.setState((state) => ({
       difficultyFilter: value,
     }));
+  }
+
+  componentDidMount() {
+    this.loadPersistentData();
+  }
+
+  componentDidUpdate() {
+    this.loadPersistentData();
+  }
+
+  loadPersistentData() {
+    DAO.getAllTextData().then((persistentData) => {
+      if (!deepEqual(this.state.persistentData, persistentData)) {
+        this.setState(() => ({
+          persistentData: persistentData,
+        }));
+      }
+    });
   }
 
   render() {
