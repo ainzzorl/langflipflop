@@ -16,12 +16,12 @@ class InfoPage extends React.Component<{}, {}> {
       <IonPage id="info-page">
         <IonHeader>
           <IonToolbar>
-            <IonTitle>About Transapp</IonTitle>
+            <IonTitle>About LangFlipFlop</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
           <p>
-            Transapp is a minimalistic app to practice translating from one
+            LangFlipFlop is a minimalistic app to practice translating from one
             language to another.
           </p>
           <p>
