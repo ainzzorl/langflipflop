@@ -21,9 +21,9 @@ class InfoPage extends React.Component<{}, {}> {
         </IonHeader>
         <IonContent>
           <p>
-            LangFlipFlop is a minimalistic app to practice translating from one
+            LangFlipFlop is a lightweight app to practice translating from one
             language to another. Select a text from the list and read it one
-            small fragment at a time. Try translating it in your head, and then
+            small fragment at a time. Try translating it in your head and then
             tap the text to compare your translation to ours. It's OK if the
             translation you had in mind doesn't match the suggestion - there can
             be more than one correct translation.
