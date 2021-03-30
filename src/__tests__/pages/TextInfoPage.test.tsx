@@ -9,6 +9,8 @@ test("Rendering Text Info", async () => {
   await screen.findByText(
     "An article about a mysterious monolith found in remote Utah."
   );
-  await screen.findByText("Difficulty: Medium.");
-  await screen.findByText("Categories: News.");
+  await screen.findByText("Difficulty:");
+  await screen.findByText("Medium");
+  await screen.findByText("Categories:");
+  await screen.findByText("News");
 });
