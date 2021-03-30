@@ -253,7 +253,7 @@ class RecentPage extends React.Component<
             header="The End"
             buttons={[
               {
-                text: "Library",
+                text: "Home",
                 cssClass: "primary",
                 handler: () => {
                   this.props.history.push("/tabs/library");
