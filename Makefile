@@ -62,3 +62,7 @@ test-args :
 .PHONY: export-android-to-dropbox
 export-android-to-dropbox :
 			 cp android/app/build/outputs/apk/debug/app-debug.apk ~/Dropbox/tmp/
+
+.PHONY: generate-android-splash
+generate-android-splash :
+			 cordova-res android --type splash --fit contain --copy
