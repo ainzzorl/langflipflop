@@ -250,7 +250,7 @@ class RecentPage extends React.Component<
           <IonAlert
             isOpen={this.state.showEndOfTextAlert}
             onDidDismiss={() => this.setShowEndOfTextAlert(false)}
-            header="The End"
+            header="End of Text"
             buttons={[
               {
                 text: "Home",
@@ -260,11 +260,6 @@ class RecentPage extends React.Component<
                 },
               },
               {
-                text: "Close",
-                role: "cancel",
-                cssClass: "secondary",
-              },
-              {
                 text: "About Text",
                 cssClass: "secondary",
                 handler: () => {
@@ -272,6 +267,11 @@ class RecentPage extends React.Component<
                     "/text-infos/" + this.props.match.params.id
                   );
                 },
+              },
+              {
+                text: "Close",
+                role: "cancel",
+                cssClass: "secondary",
               },
             ]}
           />

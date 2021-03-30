@@ -79,8 +79,8 @@ test("End-of-text", async () => {
   // Last page
   await MyTextPageActions.assertOnPage(6, "en");
 
-  expect(screen.queryByText("The End")).not.toBeInTheDocument();
+  expect(screen.queryByText("End of Text")).not.toBeInTheDocument();
 
   await MyTextPageActions.goToNext();
-  await screen.findByText("The End");
+  await screen.findByText("End of Text");
 });
