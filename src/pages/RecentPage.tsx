@@ -134,7 +134,7 @@ class RecentPage extends React.Component<
         );
       });
     } else {
-      content = <p>No recently opened texts.</p>;
+      content = <p id="no-recent-texts">No recently opened texts.</p>;
     }
 
     return (
