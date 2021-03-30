@@ -217,7 +217,7 @@ class RecentPage extends React.Component<
       ReactDOMServer.renderToString(
         <div>
           <p>
-            Try translating the text you see on the screen, and then tap the
+            Try translating the text you see on the screen and then tap the
             text to see a possible translation.
           </p>
           <p>Swipe left or tap NEXT to go to the next screen.</p>
@@ -232,7 +232,7 @@ class RecentPage extends React.Component<
           <IonToolbar>
             <IonButtons slot="start">
               <IonBackButton defaultHref="/" />
-              <IonTitle>
+              <IonTitle color="medium">
                 <div className="my-wrap">
                   {this.state.texts[this.state.lang].title} (
                   {this.state.sentenceIndex + 1}/
