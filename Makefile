@@ -31,11 +31,15 @@ android-deploy :
 # Writes to android/app/build/outputs/apk/release/
 .PHONY: android-release-signed
 android-release-signed :
+			 ionic build
+			 ionic capacitor copy --prod android
 			 (cd android && gradle assembleRelease -Pandroid.injected.signing.store.file="$(KEYFILE)" -Pandroid.injected.signing.store.password="$(STORE_PASSWORD)" -Pandroid.injected.signing.key.alias="$(KEY_ALIAS)" -Pandroid.injected.signing.key.password="$(KEY_PASSWORD)")
 
 # Writes to android/app/build/outputs/apk/release/
 .PHONY: android-release-unsigned
 android-release-unsigned :
+			 ionic build
+			 ionic capacitor copy --prod android
 			 (cd android && gradle assembleRelease)
 
 .PHONY: translate
