@@ -217,8 +217,8 @@ class RecentPage extends React.Component<
       ReactDOMServer.renderToString(
         <div>
           <p>
-            Try translating the text you see on the screen and then tap the
-            text to see a possible translation.
+            Try translating the text you see on the screen and then tap the text
+            to see a possible translation.
           </p>
           <p>Swipe left or tap NEXT to go to the next screen.</p>
           <p>Swipe right or tap PREVIOUS to go to the previous screen.</p>

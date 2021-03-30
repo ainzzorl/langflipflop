@@ -7,6 +7,7 @@ import {
   IonToolbar,
   IonButtons,
   IonTitle,
+  IonText,
 } from "@ionic/react";
 
 import { RouteComponentProps } from "react-router-dom";
@@ -61,15 +62,20 @@ class TextInfoPage extends React.Component<
         </IonHeader>
         <IonContent class="ion-padding">
           <p>{this.state.text["en"]["description"]}</p>
-          <p>Difficulty: {this.state.text.meta.difficulty}.</p>
-          <p>Categories: {this.state.meta.prettyCategories()}.</p>
+          <p>
+            <IonText color="medium">Difficulty: </IonText>
+            <IonText>{this.state.text.meta.difficulty}</IonText>
+          </p>
+          <p>
+            <IonText color="medium">Categories: </IonText>
+            <IonText>{this.state.meta.prettyCategories()}</IonText>
+          </p>
           {this.state.meta.sourceLink && this.state.meta.sourceText && (
             <p>
-              Source:{" "}
+              <IonText color="medium">Source: </IonText>
               <a href={this.state.meta.sourceLink}>
                 {this.state.meta.sourceText}
               </a>
-              .
             </p>
           )}
         </IonContent>
