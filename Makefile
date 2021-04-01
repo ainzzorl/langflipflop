@@ -66,3 +66,10 @@ export-android-to-dropbox :
 .PHONY: generate-android-splash
 generate-android-splash :
 			 cordova-res android --type splash --fit contain --copy
+
+.PHONY: clean
+clean:
+			 rm -rf build/
+			 rm -rf android/build/
+			 rm -rf android/app/build/
+			 rm -rf android/app/release/
