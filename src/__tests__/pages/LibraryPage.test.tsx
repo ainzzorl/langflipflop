@@ -5,6 +5,7 @@ import {
   renderWithRoute,
   findTextCard,
   MyTextPageActions,
+  TEST_FIXTURES,
 } from "../../test-common";
 
 async function setCompletedFtue() {
@@ -18,34 +19,32 @@ test("Rendering Library Menu", async () => {
 
   renderWithRoute("/");
 
-  let card = await findTextCard(
-    "Mysterious Metallic Monolith Found in Remote Utah"
-  );
+  let card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
 
-  await within(card!).findByText("Difficulty: Medium");
-  await within(card!).findByText("Length: 7");
-  await within(card!).findByText("Categories: News");
+  await within(card!).findByText(TEST_FIXTURES.TEST_TEXT_DIFFICULTY_STR);
+  await within(card!).findByText(TEST_FIXTURES.TEST_TEXT_LENGTH_STR);
+  await within(card!).findByText(TEST_FIXTURES.TEST_TEXT_CATEGORIES_STR);
 });
 
 test("Showing Progress", async () => {
   await setCompletedFtue();
 
   renderWithRoute("/");
-  let card = await findTextCard(
-    "Mysterious Metallic Monolith Found in Remote Utah"
-  );
-  await within(card!).findByText("Length: 7");
+  let card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
+  await within(card!).findByText(TEST_FIXTURES.TEST_TEXT_LENGTH_STR);
 
-  renderWithRoute("/texts/mysterious-monolith");
+  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
   await MyTextPageActions.assertOnPage(0, "en");
 
   renderWithRoute("/");
-  card = await findTextCard(
-    "Mysterious Metallic Monolith Found in Remote Utah"
+  card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
+  await within(card!).findByText(
+    TEST_FIXTURES.TEST_TEXT_LENGTH_STR +
+      " " +
+      TEST_FIXTURES.TEST_TEXT_READ_AFTER_1_STR
   );
-  await within(card!).findByText("Length: 7 (Read: 15%)");
 
-  renderWithRoute("/texts/mysterious-monolith");
+  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
   await MyTextPageActions.assertOnPage(0, "en");
   await MyTextPageActions.goToNext();
   await MyTextPageActions.assertOnPage(1, "en");
@@ -53,10 +52,12 @@ test("Showing Progress", async () => {
   await MyTextPageActions.assertOnPage(2, "en");
 
   renderWithRoute("/");
-  card = await findTextCard(
-    "Mysterious Metallic Monolith Found in Remote Utah"
+  card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
+  await within(card!).findByText(
+    TEST_FIXTURES.TEST_TEXT_LENGTH_STR +
+      " " +
+      TEST_FIXTURES.TEST_TEXT_READ_AFTER_3_STR
   );
-  await within(card!).findByText("Length: 7 (Read: 43%)");
 });
 
 test("FTUE", async () => {

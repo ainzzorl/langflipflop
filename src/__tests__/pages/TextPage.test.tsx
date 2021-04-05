@@ -1,7 +1,11 @@
 import { fireEvent, screen } from "@testing-library/react";
 import { DAO, Settings } from "../../common/DAO";
 
-import { renderWithRoute, MyTextPageActions } from "../../test-common";
+import {
+  renderWithRoute,
+  MyTextPageActions,
+  TEST_FIXTURES,
+} from "../../test-common";
 
 async function flip() {
   fireEvent(
@@ -13,7 +17,7 @@ async function flip() {
 }
 
 test("Rendering Text and Navigating", async () => {
-  renderWithRoute("/texts/mysterious-monolith");
+  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
   await MyTextPageActions.assertOnPage(0, "en");
 
   flip();
@@ -42,7 +46,7 @@ test("Different Translation Direction", async () => {
   settings.translationDirection = "es-en";
   await DAO.setSettings(settings);
 
-  renderWithRoute("/texts/mysterious-monolith");
+  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
 
   await MyTextPageActions.assertOnPage(0, "es");
 
@@ -56,19 +60,19 @@ test("Different Translation Direction", async () => {
 });
 
 test("Persisting Position", async () => {
-  renderWithRoute("/texts/mysterious-monolith");
+  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
 
   await MyTextPageActions.assertOnPage(0, "en");
   await MyTextPageActions.goToNext();
   await MyTextPageActions.assertOnPage(1, "en");
 
-  renderWithRoute("/texts/mysterious-monolith");
+  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
 
   await MyTextPageActions.assertOnPage(1, "en");
 });
 
 test("End-of-text", async () => {
-  renderWithRoute("/texts/mysterious-monolith");
+  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
   await MyTextPageActions.assertOnPage(0, "en");
 
   for (var i = 0; i < 6; i++) {
