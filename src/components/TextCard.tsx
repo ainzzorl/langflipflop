@@ -8,14 +8,21 @@ import {
 } from "@ionic/react";
 
 import TextMeta from "../common/TextMeta";
-import { PersistentTextData } from "../common/DAO";
+import { PersistentTextData, Settings } from "../common/DAO";
 
 class TextCard extends React.Component<
-  { textMeta: TextMeta; persistentData: PersistentTextData },
+  {
+    textMeta: TextMeta;
+    persistentData: PersistentTextData;
+    settings: Settings;
+  },
   {}
 > {
   render() {
-    let routerLink = "/texts/" + this.props.textMeta.id;
+    let directionParts = this.props.settings.translationDirection.split("-");
+    let lang1 = directionParts[0];
+    let lang2 = directionParts[1];
+    let routerLink = `/texts/${this.props.textMeta.id}?lang1=${lang1}&lang2=${lang2}`;
     let lengthStr = this.props.textMeta.numSentences.toString();
     if (this.props.persistentData.maxOpenedIndex !== undefined) {
       let percent = Math.ceil(

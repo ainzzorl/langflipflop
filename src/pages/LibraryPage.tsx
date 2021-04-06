@@ -15,7 +15,7 @@ import {
   IonSelect,
   IonSelectOption,
 } from "@ionic/react";
-import { DAO, PersistentTextData } from "../common/DAO";
+import { DAO, PersistentTextData, Settings } from "../common/DAO";
 
 import deepEqual from "fast-deep-equal/es6";
 
@@ -26,6 +26,7 @@ class LibraryPage extends React.Component<
     categoryFilter?: string;
     difficultyFilter?: string;
     persistentData?: Map<string, PersistentTextData>;
+    settings?: Settings;
   }
 > {
   constructor(props: any) {
@@ -35,6 +36,7 @@ class LibraryPage extends React.Component<
       categoryFilter: undefined,
       difficultyFilter: undefined,
       persistentData: undefined,
+      settings: undefined,
     };
 
     fetch("assets/data/texts.json")
@@ -85,16 +87,26 @@ class LibraryPage extends React.Component<
 
   loadPersistentData() {
     DAO.getAllTextData().then((persistentData) => {
-      if (!deepEqual(this.state.persistentData, persistentData)) {
-        this.setState(() => ({
-          persistentData: persistentData,
-        }));
-      }
+      DAO.getSettings().then((settings) => {
+        if (
+          !deepEqual(this.state.persistentData, persistentData) ||
+          !deepEqual(this.state.settings, settings)
+        ) {
+          this.setState(() => ({
+            persistentData: persistentData,
+            settings: settings,
+          }));
+        }
+      });
     });
   }
 
   render() {
-    if (!this.state.texts || !this.state.persistentData) {
+    if (
+      !this.state.texts ||
+      !this.state.persistentData ||
+      !this.state.settings
+    ) {
       return (
         <IonContent>
           <div>Loading...</div>
@@ -124,6 +136,7 @@ class LibraryPage extends React.Component<
                 ? this.state.persistentData!.get(textMeta.id)!
                 : new PersistentTextData(textMeta.id)
             }
+            settings={this.state.settings!}
           />
         );
       });

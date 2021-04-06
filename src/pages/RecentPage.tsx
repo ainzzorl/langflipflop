@@ -13,7 +13,7 @@ import TextMeta from "../common/TextMeta";
 
 import TextCard from "../components/TextCard";
 
-import { DAO, PersistentTextData } from "../common/DAO";
+import { DAO, PersistentTextData, Settings } from "../common/DAO";
 
 import deepEqual from "fast-deep-equal/es6";
 
@@ -23,6 +23,7 @@ class RecentPage extends React.Component<
     texts?: Array<TextMeta>;
     textsPersistentData?: Map<string, PersistentTextData>;
     sortedTexts?: Array<TextMeta>;
+    settings?: Settings;
   }
 > {
   constructor(props: any) {
@@ -31,6 +32,7 @@ class RecentPage extends React.Component<
       texts: undefined,
       textsPersistentData: undefined,
       sortedTexts: undefined,
+      settings: undefined,
     };
 
     // TODO: refactor duplication with LibraryMenu
@@ -59,7 +61,6 @@ class RecentPage extends React.Component<
         this.setState((state) => ({
           texts: textMetas,
         }));
-        return DAO.getAllTextData();
       });
 
     this.loadPersistentData = this.loadPersistentData.bind(this);
@@ -77,30 +78,34 @@ class RecentPage extends React.Component<
     if (!this.state.texts) {
       return;
     }
-    DAO.getAllTextData().then((textsData) => {
-      let openedTexts: Array<TextMeta> = this.state.texts!.filter(
-        (textMeta) => {
-          return (
-            textsData.has(textMeta.id) &&
-            textsData.get(textMeta.id)?.lastOpenedTimestamp
-          );
-        }
-      );
-      openedTexts.sort(
-        (t1: TextMeta, t2: TextMeta) =>
-          textsData.get(t2.id)!.lastOpenedTimestamp! -
-          textsData.get(t1.id)!.lastOpenedTimestamp!
-      );
+    DAO.getSettings().then((settings) => {
+      DAO.getAllTextData().then((textsData) => {
+        let openedTexts: Array<TextMeta> = this.state.texts!.filter(
+          (textMeta) => {
+            return (
+              textsData.has(textMeta.id) &&
+              textsData.get(textMeta.id)?.lastOpenedTimestamp
+            );
+          }
+        );
+        openedTexts.sort(
+          (t1: TextMeta, t2: TextMeta) =>
+            textsData.get(t2.id)!.lastOpenedTimestamp! -
+            textsData.get(t1.id)!.lastOpenedTimestamp!
+        );
 
-      if (
-        !deepEqual(this.state.textsPersistentData, textsData) ||
-        !deepEqual(this.state.sortedTexts, openedTexts)
-      ) {
-        this.setState((state) => ({
-          textsPersistentData: textsData,
-          sortedTexts: openedTexts,
-        }));
-      }
+        if (
+          !deepEqual(this.state.textsPersistentData, textsData) ||
+          !deepEqual(this.state.sortedTexts, openedTexts) ||
+          !deepEqual(this.state.settings, settings)
+        ) {
+          this.setState(() => ({
+            textsPersistentData: textsData,
+            sortedTexts: openedTexts,
+            settings: settings,
+          }));
+        }
+      });
     });
   }
 
@@ -108,7 +113,8 @@ class RecentPage extends React.Component<
     if (
       !this.state.texts ||
       !this.state.textsPersistentData ||
-      !this.state.sortedTexts
+      !this.state.sortedTexts ||
+      !this.state.settings
     ) {
       return (
         <IonPage>
@@ -130,6 +136,7 @@ class RecentPage extends React.Component<
                 ? this.state.textsPersistentData!.get(textMeta.id)!
                 : new PersistentTextData(textMeta.id)
             }
+            settings={this.state.settings!}
           />
         );
       });

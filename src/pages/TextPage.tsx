@@ -23,7 +23,9 @@ import Hammer from "hammerjs";
 import { information, help } from "ionicons/icons";
 
 import ReactCardFlip from "react-card-flip";
-import { DAO, Settings } from "../common/DAO";
+import { DAO } from "../common/DAO";
+
+import queryString from "query-string";
 
 interface MyTextProps
   extends RouteComponentProps<{
@@ -34,31 +36,34 @@ class RecentPage extends React.Component<
   MyTextProps,
   {
     lang: string;
-    initialLanguage: string;
+    lang1: string;
+    lang2: string;
     texts: any;
     sentenceIndex: number;
     gesturesInitialized: boolean;
     sideOneText: string;
     sideTwoText: string;
     flipped: boolean;
-    settings?: Settings;
     showFtue: boolean;
     showEndOfTextAlert: boolean;
   }
 > {
   constructor(props: any) {
     super(props);
-    let initialLang = "en";
+
+    let url = this.props.location.search;
+    let params = queryString.parse(url);
+
     this.state = {
-      lang: initialLang,
-      initialLanguage: initialLang,
+      lang: (params["lang1"] as string) || "",
+      lang1: (params["lang1"] as string) || "",
+      lang2: (params["lang2"] as string) || "",
       texts: {},
       sentenceIndex: -1,
       gesturesInitialized: false,
       sideOneText: "",
       sideTwoText: "",
       flipped: false,
-      settings: undefined,
       showFtue: false,
       showEndOfTextAlert: false,
     };
@@ -87,8 +92,10 @@ class RecentPage extends React.Component<
         } else {
           sentenceIndex = 0;
         }
-        this.setState(() => ({
+        this.setState((state) => ({
           sentenceIndex: sentenceIndex,
+          sideOneText: this.state.texts[state.lang1].sentences[sentenceIndex],
+          sideTwoText: this.state.texts[state.lang2].sentences[sentenceIndex],
         }));
         this.updateTextStamps();
         return DAO.getUser();
@@ -97,28 +104,10 @@ class RecentPage extends React.Component<
         this.setState({
           showFtue: !user.completedTextFtue,
         });
-        return DAO.getSettings();
-      })
-      .then((settings) => {
-        let initialLang: string = "";
-        if (settings.translationDirection === "en-es") {
-          initialLang = "en";
-        } else {
-          initialLang = "es";
-        }
-        this.setState((state) => ({
-          settings: settings,
-          lang: initialLang,
-          initialLanguage: initialLang,
-          sideOneText: state.texts[initialLang].sentences[state.sentenceIndex],
-          sideTwoText:
-            state.texts[this.otherLang(initialLang)].sentences[
-              state.sentenceIndex
-            ],
-        }));
       });
   }
 
+  // TODO: generalize
   otherLang(lang: string): string {
     return lang === "en" ? "es" : "en";
   }
@@ -191,25 +180,21 @@ class RecentPage extends React.Component<
     }
     this.setState(
       (state) => ({
-        lang: state.initialLanguage,
+        lang: state.lang1,
         sentenceIndex: index,
         sideOneText: state.flipped
-          ? state.texts[this.otherLang(state.initialLanguage)].sentences[index]
-          : state.texts[state.initialLanguage].sentences[index],
+          ? state.texts[state.lang2].sentences[index]
+          : state.texts[state.lang1].sentences[index],
         sideTwoText: state.flipped
-          ? state.texts[state.initialLanguage].sentences[index]
-          : state.texts[this.otherLang(state.initialLanguage)].sentences[index],
+          ? state.texts[state.lang1].sentences[index]
+          : state.texts[state.lang2].sentences[index],
       }),
       this.updateTextStamps
     );
   }
 
   render() {
-    if (
-      !this.state.texts["en"] ||
-      this.state.sentenceIndex < 0 ||
-      !this.state.settings
-    ) {
+    if (!this.state.texts["en"] || this.state.sentenceIndex < 0) {
       return <div>Loading...</div>;
     }
 

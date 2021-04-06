@@ -33,7 +33,7 @@ test("Showing Progress", async () => {
   let card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
   await within(card!).findByText(TEST_FIXTURES.TEST_TEXT_LENGTH_STR);
 
-  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
   await MyTextPageActions.assertOnPage(0, "en");
 
   renderWithRoute("/");
@@ -44,7 +44,7 @@ test("Showing Progress", async () => {
       TEST_FIXTURES.TEST_TEXT_READ_AFTER_1_STR
   );
 
-  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
   await MyTextPageActions.assertOnPage(0, "en");
   await MyTextPageActions.goToNext();
   await MyTextPageActions.assertOnPage(1, "en");

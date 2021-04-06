@@ -1,5 +1,4 @@
 import { fireEvent, screen } from "@testing-library/react";
-import { DAO, Settings } from "../../common/DAO";
 
 import {
   renderWithRoute,
@@ -17,7 +16,7 @@ async function flip() {
 }
 
 test("Rendering Text and Navigating", async () => {
-  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
   await MyTextPageActions.assertOnPage(0, "en");
 
   flip();
@@ -42,11 +41,7 @@ test("Rendering Text and Navigating", async () => {
 });
 
 test("Different Translation Direction", async () => {
-  let settings = new Settings();
-  settings.translationDirection = "es-en";
-  await DAO.setSettings(settings);
-
-  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=es&lang2=en`);
 
   await MyTextPageActions.assertOnPage(0, "es");
 
@@ -60,19 +55,19 @@ test("Different Translation Direction", async () => {
 });
 
 test("Persisting Position", async () => {
-  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
 
   await MyTextPageActions.assertOnPage(0, "en");
   await MyTextPageActions.goToNext();
   await MyTextPageActions.assertOnPage(1, "en");
 
-  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
 
   await MyTextPageActions.assertOnPage(1, "en");
 });
 
 test("End-of-text", async () => {
-  renderWithRoute("/texts/" + TEST_FIXTURES.TEST_TEXT_ID);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
   await MyTextPageActions.assertOnPage(0, "en");
 
   for (var i = 0; i < 6; i++) {
