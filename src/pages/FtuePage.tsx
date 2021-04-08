@@ -49,7 +49,7 @@ class FtuePage extends React.Component<
     user.completedMainFtue = true;
     this.setTranslationDirection(this.state.settings.translationDirection);
     DAO.setUser(user).then(() => {
-      this.props.history.push("/tabs/library");
+      this.props.history.push("/t/texts");
     });
   }
 

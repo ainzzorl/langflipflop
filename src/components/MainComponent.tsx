@@ -51,7 +51,7 @@ class MainCompinent extends React.Component<{}, { user?: User }> {
       return <IonRouterOutlet></IonRouterOutlet>;
     }
     let mainRedirect = this.state.user!.completedMainFtue
-      ? "/tabs/library"
+      ? "/t/texts"
       : "/ftue";
     return (
       <IonRouterOutlet>
@@ -60,42 +60,34 @@ class MainCompinent extends React.Component<{}, { user?: User }> {
         <Route path="/text-infos/:id" component={TextInfoPage} />
         <Route path="/ftue" component={FtuePage} />
         <Route
-          path="/tabs"
+          path="/t"
           render={() => {
             return (
               <IonTabs>
                 <IonRouterOutlet>
+                  <Route path="/t/texts" component={LibraryPage} exact={true} />
+                  <Route path="/t/recent" component={RecentPage} exact={true} />
                   <Route
-                    path="/tabs/library"
-                    component={LibraryPage}
-                    exact={true}
-                  />
-                  <Route
-                    path="/tabs/recent"
-                    component={RecentPage}
-                    exact={true}
-                  />
-                  <Route
-                    path="/tabs/settings"
+                    path="/t/settings"
                     component={SettingsPage}
                     exact={true}
                   />
-                  <Route path="/tabs/info" component={InfoPage} exact={true} />
+                  <Route path="/t/about" component={InfoPage} exact={true} />
                 </IonRouterOutlet>
                 <IonTabBar slot="bottom">
-                  <IonTabButton tab="library" href="/tabs/library">
+                  <IonTabButton tab="library" href="/t/texts">
                     <IonIcon icon={home} />
                     <IonLabel>Home</IonLabel>
                   </IonTabButton>
-                  <IonTabButton tab="recent" href="/tabs/recent">
+                  <IonTabButton tab="recent" href="/t/recent">
                     <IonIcon icon={time} />
                     <IonLabel>Recent</IonLabel>
                   </IonTabButton>
-                  <IonTabButton tab="settings" href="/tabs/settings">
+                  <IonTabButton tab="settings" href="/t/settings">
                     <IonIcon icon={settings} />
                     <IonLabel>Settings</IonLabel>
                   </IonTabButton>
-                  <IonTabButton tab="info" href="/tabs/info">
+                  <IonTabButton tab="about" href="/t/about">
                     <IonIcon icon={informationCircle} />
                     <IonLabel>About</IonLabel>
                   </IonTabButton>

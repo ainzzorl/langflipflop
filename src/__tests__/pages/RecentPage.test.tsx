@@ -9,7 +9,7 @@ import {
 import { DAO } from "../../common/DAO";
 
 test("Rendering Recent", async () => {
-  renderWithRoute("/tabs/recent");
+  renderWithRoute("/t/recent");
 
   await screen.findByTestId("rendered-indicator");
   await screen.findByText("No recently opened texts.");
@@ -17,7 +17,7 @@ test("Rendering Recent", async () => {
 
   // Update timestamp and re-render.
   await DAO.updateTextStamps(TEST_FIXTURES.TEST_TEXT_ID, 0);
-  renderWithRoute("/tabs/recent");
+  renderWithRoute("/t/recent");
 
   let card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
 
