@@ -19,6 +19,8 @@ import { DAO, PersistentTextData, Settings } from "../common/DAO";
 
 import deepEqual from "fast-deep-equal/es6";
 
+import queryString from "query-string";
+
 class LibraryPage extends React.Component<
   {},
   {
@@ -31,10 +33,13 @@ class LibraryPage extends React.Component<
 > {
   constructor(props: any) {
     super(props);
+
+    let queryParams = queryString.parse(window.location.search);
+
     this.state = {
       texts: undefined,
-      categoryFilter: undefined,
-      difficultyFilter: undefined,
+      categoryFilter: (queryParams["category"] as string) || undefined,
+      difficultyFilter: (queryParams["difficulty"] as string) || undefined,
       persistentData: undefined,
       settings: undefined,
     };
@@ -69,12 +74,32 @@ class LibraryPage extends React.Component<
     this.setState((state) => ({
       categoryFilter: value,
     }));
+    if (window.history.replaceState) {
+      let searchParams = new URLSearchParams(window.location.search);
+      searchParams.set("category", value);
+      var newURL =
+        window.location.origin +
+        window.location.pathname +
+        "?" +
+        searchParams.toString();
+      window.history.replaceState({ path: newURL }, "", newURL);
+    }
   }
 
   setDifficultyFilter(value: string) {
     this.setState((state) => ({
       difficultyFilter: value,
     }));
+    if (window.history.replaceState) {
+      let searchParams = new URLSearchParams(window.location.search);
+      searchParams.set("difficulty", value);
+      var newURL =
+        window.location.origin +
+        window.location.pathname +
+        "?" +
+        searchParams.toString();
+      window.history.replaceState({ path: newURL }, "", newURL);
+    }
   }
 
   componentDidMount() {
