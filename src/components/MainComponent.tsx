@@ -56,8 +56,8 @@ class MainCompinent extends React.Component<{}, { user?: User }> {
     return (
       <IonRouterOutlet>
         <Route exact path="/" render={() => <Redirect to={mainRedirect} />} />
-        <Route path="/texts/:id" component={TextPage} />
-        <Route path="/text-infos/:id" component={TextInfoPage} />
+        <Route path="/texts/:id/info" component={TextInfoPage} exact={true} />
+        <Route path="/texts/:id" component={TextPage} exact={true} />
         <Route path="/ftue" component={FtuePage} />
         <Route
           path="/t"

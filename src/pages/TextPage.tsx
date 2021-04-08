@@ -241,7 +241,7 @@ class RecentPage extends React.Component<
                 text: "Home",
                 cssClass: "primary",
                 handler: () => {
-                  this.props.history.push("/tabs/library");
+                  this.props.history.push("/t/texts");
                 },
               },
               {
@@ -249,7 +249,7 @@ class RecentPage extends React.Component<
                 cssClass: "secondary",
                 handler: () => {
                   this.props.history.push(
-                    "/text-infos/" + this.props.match.params.id
+                    `/texts/${this.props.match.params.id}/info${this.props.location.search}`
                   );
                 },
               },
@@ -298,7 +298,9 @@ class RecentPage extends React.Component<
               </IonButton>
             </IonButtons>
             <IonButtons slot="end">
-              <IonButton href={"/text-infos/" + this.props.match.params.id}>
+              <IonButton
+                href={`/texts/${this.props.match.params.id}/info${this.props.location.search}`}
+              >
                 <IonIcon icon={information} size="large" />
               </IonButton>
               <IonButton onClick={this.onHelpClicked}>
