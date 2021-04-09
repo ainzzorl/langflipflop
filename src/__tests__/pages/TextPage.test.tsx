@@ -16,7 +16,7 @@ async function flip() {
 }
 
 test("Rendering Text and Navigating", async () => {
-  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
   await MyTextPageActions.assertOnPage(0, "en");
 
   flip();
@@ -41,7 +41,7 @@ test("Rendering Text and Navigating", async () => {
 });
 
 test("Different Translation Direction", async () => {
-  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=es&lang2=en`);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=es&lang2=en&i=1`);
 
   await MyTextPageActions.assertOnPage(0, "es");
 
@@ -54,20 +54,22 @@ test("Different Translation Direction", async () => {
   await MyTextPageActions.assertOnPage(1, "es");
 });
 
+// Makes little sense since indexes are now encoded in URLs.
+// TODO: test it some other way.
 test("Persisting Position", async () => {
-  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
 
   await MyTextPageActions.assertOnPage(0, "en");
   await MyTextPageActions.goToNext();
   await MyTextPageActions.assertOnPage(1, "en");
 
-  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=2`);
 
   await MyTextPageActions.assertOnPage(1, "en");
 });
 
 test("End-of-text", async () => {
-  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es`);
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
   await MyTextPageActions.assertOnPage(0, "en");
 
   for (var i = 0; i < 6; i++) {

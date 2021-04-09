@@ -22,7 +22,8 @@ class TextCard extends React.Component<
     let directionParts = this.props.settings.translationDirection.split("-");
     let lang1 = directionParts[0];
     let lang2 = directionParts[1];
-    let routerLink = `/texts/${this.props.textMeta.id}?lang1=${lang1}&lang2=${lang2}`;
+    let index = this.props.persistentData.currentIndex + 1;
+    let routerLink = `/texts/${this.props.textMeta.id}?lang1=${lang1}&lang2=${lang2}&i=${index}`;
     let lengthStr = this.props.textMeta.numSentences.toString();
     if (this.props.persistentData.maxOpenedIndex !== undefined) {
       let percent = Math.ceil(

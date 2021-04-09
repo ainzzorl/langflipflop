@@ -59,7 +59,7 @@ class RecentPage extends React.Component<
       lang1: (params["lang1"] as string) || "",
       lang2: (params["lang2"] as string) || "",
       texts: {},
-      sentenceIndex: -1,
+      sentenceIndex: parseInt(params["i"] as string) - 1,
       gesturesInitialized: false,
       sideOneText: "",
       sideTwoText: "",
@@ -78,24 +78,11 @@ class RecentPage extends React.Component<
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
       .then((res) => res.json())
-      .then((res) => {
-        this.setState((_state) => ({
-          texts: res,
-        }));
-        return DAO.getAllTextData();
-      })
-      .then((persistentData) => {
-        let sentenceIndex: number;
-        if (persistentData.has(this.props.match.params.id)) {
-          sentenceIndex = persistentData.get(this.props.match.params.id)!
-            .currentIndex;
-        } else {
-          sentenceIndex = 0;
-        }
+      .then((texts) => {
         this.setState((state) => ({
-          sentenceIndex: sentenceIndex,
-          sideOneText: this.state.texts[state.lang1].sentences[sentenceIndex],
-          sideTwoText: this.state.texts[state.lang2].sentences[sentenceIndex],
+          texts: texts,
+          sideOneText: texts[state.lang1].sentences[state.sentenceIndex],
+          sideTwoText: texts[state.lang2].sentences[state.sentenceIndex],
         }));
         this.updateTextStamps();
         return DAO.getUser();
@@ -191,6 +178,16 @@ class RecentPage extends React.Component<
       }),
       this.updateTextStamps
     );
+    if (window.history.replaceState) {
+      let searchParams = new URLSearchParams(window.location.search);
+      searchParams.set("i", (index + 1).toString());
+      var newURL =
+        window.location.origin +
+        window.location.pathname +
+        "?" +
+        searchParams.toString();
+      window.history.replaceState({ path: newURL }, "", newURL);
+    }
   }
 
   render() {
@@ -249,7 +246,7 @@ class RecentPage extends React.Component<
                 cssClass: "secondary",
                 handler: () => {
                   this.props.history.push(
-                    `/texts/${this.props.match.params.id}/info${this.props.location.search}`
+                    `/texts/${this.props.match.params.id}/info${window.location.search}`
                   );
                 },
               },
@@ -299,7 +296,7 @@ class RecentPage extends React.Component<
             </IonButtons>
             <IonButtons slot="end">
               <IonButton
-                href={`/texts/${this.props.match.params.id}/info${this.props.location.search}`}
+                href={`/texts/${this.props.match.params.id}/info${window.location.search}`}
               >
                 <IonIcon icon={information} size="large" />
               </IonButton>
