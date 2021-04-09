@@ -105,9 +105,12 @@ export class DAO {
   }
 
   static async setUser(user: User): Promise<void> {
+    this.globalUser = user;
     return await Storage.set({
       key: "user",
       value: JSON.stringify(user),
     });
   }
+
+  static globalUser: User = new User();
 }

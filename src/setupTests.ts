@@ -9,6 +9,7 @@ import fs from "fs";
 import { Plugins } from "@capacitor/core";
 
 import { mockController } from "./mocks/mockController";
+import { DAO } from "./common/DAO";
 
 const { Storage } = Plugins;
 
@@ -40,4 +41,6 @@ jest.mock("@ionic/react", () => {
 beforeEach(() => {
   Storage.clear();
   jest.resetAllMocks();
+  // Prevent FTUE screen fronting every page.
+  DAO.globalUser.completedMainFtue = true;
 });

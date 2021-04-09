@@ -61,6 +61,7 @@ test("Showing Progress", async () => {
 });
 
 test("FTUE", async () => {
+  DAO.globalUser.completedMainFtue = false;
   renderWithRoute("/");
   await screen.findByText("Setup");
 });

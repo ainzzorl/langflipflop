@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, RouteComponentProps } from "react-router-dom";
 import {
   IonRouterOutlet,
   IonTabs,
@@ -8,6 +8,8 @@ import {
   IonIcon,
   IonLabel,
 } from "@ionic/react";
+
+import { matchPath, withRouter } from "react-router";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -39,7 +41,10 @@ import FtuePage from "../pages/FtuePage";
 
 import { DAO, User } from "../common/DAO";
 
-class MainCompinent extends React.Component<{}, { user?: User }> {
+class MainCompinent extends React.Component<
+  RouteComponentProps<{}>,
+  { user?: User }
+> {
   constructor(props: any) {
     super(props);
     this.state = { user: undefined };
@@ -50,12 +55,16 @@ class MainCompinent extends React.Component<{}, { user?: User }> {
     if (!this.state.user) {
       return <IonRouterOutlet></IonRouterOutlet>;
     }
-    let mainRedirect = this.state.user!.completedMainFtue
-      ? "/t/texts"
-      : "/ftue";
+    if (
+      !this.state.user!.completedMainFtue &&
+      !DAO.globalUser.completedMainFtue &&
+      !matchPath(this.props.location.pathname, "/ftue")
+    ) {
+      return <Redirect to={"/ftue"} />;
+    }
     return (
       <IonRouterOutlet>
-        <Route exact path="/" render={() => <Redirect to={mainRedirect} />} />
+        <Route exact path="/" render={() => <Redirect to={"/t/texts"} />} />
         <Route path="/texts/:id/info" component={TextInfoPage} exact={true} />
         <Route path="/texts/:id" component={TextPage} exact={true} />
         <Route path="/ftue" component={FtuePage} />
@@ -101,4 +110,4 @@ class MainCompinent extends React.Component<{}, { user?: User }> {
   }
 }
 
-export default MainCompinent;
+export default withRouter(MainCompinent);
