@@ -55,6 +55,8 @@ shuffle :
 test :
 			 npm test -- a --watchAll=false $(ARGS)
 
+# E.g.
+# make test-args ARGS=src/__tests__/pages/TextPage.test.tsx
 .PHONY: test-args
 test-args :
 			 npm test -- --watchAll=false $(ARGS)
