@@ -20,16 +20,22 @@ import { DAO, Settings, User } from "../common/DAO";
 
 import { RouteComponentProps, StaticContext, withRouter } from "react-router";
 
+import queryString from "query-string";
+
 class FtuePage extends React.Component<
   RouteComponentProps<any, StaticContext, unknown>,
-  { settings: Settings }
+  { settings: Settings; redirect: string }
 > {
   constructor(props: any) {
     super(props);
+    this.completeFtue = this.completeFtue.bind(this);
+
+    let queryParams = queryString.parse(this.props.location.search);
+
     this.state = {
       settings: new Settings(),
+      redirect: (queryParams["redirect"] as string) || "/t/texts",
     };
-    this.completeFtue = this.completeFtue.bind(this);
   }
 
   setTranslationDirection(translationDirection: string) {
@@ -49,7 +55,7 @@ class FtuePage extends React.Component<
     user.completedMainFtue = true;
     this.setTranslationDirection(this.state.settings.translationDirection);
     DAO.setUser(user).then(() => {
-      this.props.history.push("/t/texts");
+      this.props.history.push(this.state.redirect);
     });
   }
 

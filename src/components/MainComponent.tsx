@@ -60,7 +60,15 @@ class MainCompinent extends React.Component<
       !DAO.globalUser.completedMainFtue &&
       !matchPath(this.props.location.pathname, "/ftue")
     ) {
-      return <Redirect to={"/ftue"} />;
+      let currentSearchParams = new URLSearchParams(this.props.location.search);
+      let currentUrl = `${
+        this.props.location.pathname
+      }?${currentSearchParams.toString()}`;
+
+      let ftueSearchParams = new URLSearchParams();
+      ftueSearchParams.set("redirect", currentUrl);
+      var ftueUrl = `/ftue?${ftueSearchParams.toString()}`;
+      return <Redirect to={ftueUrl} />;
     }
     return (
       <IonRouterOutlet>

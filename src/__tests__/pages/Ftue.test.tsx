@@ -13,20 +13,45 @@ test("Auto redirects to FTUE", async () => {
   await screen.findByText("Setup");
 });
 
-test("Completing FTUE", async () => {
+test("Completing FTUE - from About page", async () => {
   DAO.globalUser.completedMainFtue = false;
-  renderWithRoute("/r/about");
+
+  renderWithRoute("/t/about?foo=bar");
+
+  // Check we are on the FTUE page
   await screen.findByText("Setup");
   let startButton = await screen.findByText("Start");
+  expect(screen.queryByText("About LangFlipFlop")).toBeFalsy();
 
-  expect(screen.queryByText(TEST_FIXTURES.TEST_TEXT_TITLE_EN)).toBeFalsy();
-
+  // Complete FTUE
   startButton.click();
 
-  await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
-  await screen.queryByText(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
+  // Check we are back to About page
+  await screen.findByText("About LangFlipFlop");
+  expect(screen.queryByText("Setup")).toBeFalsy();
+  // TODO: somehow test that it preserves query params.
+  // Something like
+  // expect(window.location.toString()).toEqual('/t/about?foo=bar');
 
   // No longer redirects to FTUE
-  renderWithRoute("/");
-  await screen.queryByText(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
+  renderWithRoute("/t/about");
+  await screen.findByText("About LangFlipFlop");
+  expect(screen.queryByText("Setup")).toBeFalsy();
+});
+
+test("Went to FTUE directly - completing FTUE", async () => {
+  DAO.globalUser.completedMainFtue = false;
+
+  renderWithRoute("/ftue");
+
+  // Check we are on the FTUE page
+  await screen.findByText("Setup");
+  let startButton = await screen.findByText("Start");
+  expect(screen.queryByText("About LangFlipFlop")).toBeFalsy();
+
+  // Complete FTUE
+  startButton.click();
+
+  // Check we are on the Texts page
+  await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
 });
