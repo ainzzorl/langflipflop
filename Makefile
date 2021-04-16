@@ -84,14 +84,20 @@ clean:
 deploy-website-cfn-alpha :
 			 python aws/deploy-cfn.py alpha
 
-.PHONY: deploy-website-cfn-prod
-deploy-website-cfn-prod :
-			 python aws/deploy-cfn.py prod
-
 .PHONY: deploy-website-content-alpha
 deploy-website-content-alpha :
 			 python aws/deploy-content.py alpha
 
+.PHONY: deploy-website-alpha
+deploy-website-alpha : deploy-website-cfn-alpha deploy-website-content-alpha
+
+.PHONY: deploy-website-cfn-prod
+deploy-website-cfn-prod :
+			 python aws/deploy-cfn.py prod
+
 .PHONY: deploy-website-content-prod
 deploy-website-content-prod :
 			 python aws/deploy-content.py prod
+
+.PHONY: deploy-website-prod
+deploy-website-prod : deploy-website-cfn-prod deploy-website-content-prod

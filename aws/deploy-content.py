@@ -36,8 +36,7 @@ if __name__ == "__main__":
     if stage == 'alpha':
         bucket = 'langflipflop-alpha-s3stack-1jneqo1lb-s3bucketroot-1qgvrdtmog0pc'
     else:
-        # TODO
-        pass
+        bucket = 'langflipflop-prod-s3stack-ml3y9la3ww-s3bucketroot-1c9t0bjieas5p'
 
     sync_cmd = f"aws --region us-east-1 s3 sync \
             build/ \

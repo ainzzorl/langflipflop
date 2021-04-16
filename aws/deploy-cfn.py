@@ -48,14 +48,16 @@ if __name__ == "__main__":
     domain_name = 'langflipflop.com'
     if stage == 'prod':
         subdomain_name = 'www'
+        apex = 'yes'
     else:
         subdomain_name = 'alpha'
+        apex = 'no'
 
     deploy_cmd = f"aws --region us-east-1 cloudformation deploy \
                      --stack-name {stack_name} \
                      --template-file {packaged_template} \
                      --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
-                     --parameter-overrides  DomainName={domain_name} SubDomain={subdomain_name}"
+                     --parameter-overrides  DomainName={domain_name} SubDomain={subdomain_name} CreateApex={apex}"
     print("Running deploy command")
     print(deploy_cmd)
     run_and_print(deploy_cmd)
