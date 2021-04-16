@@ -1,6 +1,10 @@
 .PHONY: verify
 verify : lint test
 			 
+.PHONY: build-website
+build-website :
+			 ionic build --engine=browser
+
 .PHONY: fix
 fix :
 			 npx prettier --write .
