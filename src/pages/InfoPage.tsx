@@ -6,10 +6,40 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
+  IonGrid,
+  IonCol,
+  IonRow,
+  isPlatform,
 } from "@ionic/react";
+
+import "./InfoPage.css";
 
 class InfoPage extends React.Component<{}, {}> {
   render() {
+    let links;
+    if (
+      process.env.JEST_WORKER_ID ||
+      isPlatform("desktop") ||
+      isPlatform("mobileweb")
+    ) {
+      links = (
+        <IonGrid>
+          <IonRow className="ion-align-items-center">
+            <IonCol size="6">
+              <a href="https://play.google.com/store/apps/details?id=com.langflipflop">
+                <img
+                  alt="Get it on Google Play"
+                  src="assets/google-play-badge.png"
+                />
+              </a>
+            </IonCol>
+            <IonCol col-6>Coming soon on App Store.</IonCol>
+          </IonRow>
+        </IonGrid>
+      );
+    } else {
+      links = <div />;
+    }
     return (
       <IonPage id="info-page">
         <IonHeader>
@@ -17,7 +47,7 @@ class InfoPage extends React.Component<{}, {}> {
             <IonTitle>About LangFlipFlop</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent>
+        <IonContent id="info-page-content">
           <p className="content-text">
             LangFlipFlop is a lightweight app to practice translating from one
             language to another. Select a text from the list and read it one
@@ -37,6 +67,8 @@ class InfoPage extends React.Component<{}, {}> {
             won't collect any personal information, and won't bother you with
             notifications. Enjoy practicing your favorite language!
           </p>
+
+          {links}
         </IonContent>
       </IonPage>
     );
