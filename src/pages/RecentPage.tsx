@@ -1,5 +1,4 @@
 import React from "react";
-import "./RecentPage.css";
 
 import {
   IonContent,
@@ -141,7 +140,7 @@ class RecentPage extends React.Component<
         );
       });
     } else {
-      content = <p id="no-recent-texts">No recently opened texts.</p>;
+      content = <p className="content-text">No recently opened texts.</p>;
     }
 
     return (

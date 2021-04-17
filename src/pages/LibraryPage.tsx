@@ -1,5 +1,4 @@
 import React from "react";
-import "./LibraryPage.css";
 
 import TextMeta from "../common/TextMeta";
 
@@ -169,7 +168,7 @@ class LibraryPage extends React.Component<
       });
     let textCardsContent;
     if (!textCards.length) {
-      textCardsContent = <p id="no-matching-texts">No matches.</p>;
+      textCardsContent = <p className="content-text">No matches.</p>;
     } else {
       textCardsContent = textCards;
     }

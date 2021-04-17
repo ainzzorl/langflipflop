@@ -8,8 +8,6 @@ import {
   IonTitle,
 } from "@ionic/react";
 
-import "./InfoPage.css";
-
 class InfoPage extends React.Component<{}, {}> {
   render() {
     return (
@@ -20,7 +18,7 @@ class InfoPage extends React.Component<{}, {}> {
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <p>
+          <p className="content-text">
             LangFlipFlop is a lightweight app to practice translating from one
             language to another. Select a text from the list and read it one
             small fragment at a time. Try translating it in your head and then
@@ -28,13 +26,13 @@ class InfoPage extends React.Component<{}, {}> {
             translation you had in mind doesn't match the suggestion - there can
             be more than one correct translation.
           </p>
-          <p>
+          <p className="content-text">
             LangFlipFlop doesn't exactly <i>teach</i> you the language, but lets
             you practice it on real-life examples. It works best for language
             learners who are somewhat comfortable with the language, but
             struggling to apply it when talking about certain topics.
           </p>
-          <p>
+          <p className="content-text">
             LangFlipFlop won't gamify your practice, won't ask you to register,
             won't collect any personal information, and won't bother you with
             notifications. Enjoy practicing your favorite language!
