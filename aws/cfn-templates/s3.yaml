@@ -1,11 +1,11 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Description: S3 buckets for LangFlipFlop website
 Transform: AWS::Serverless-2016-10-31
 
 Parameters:
   Region:
     Type: String
-    Default: 'us-east-1'
+    Default: "us-east-1"
 
 Resources:
   LambdaPermission:
@@ -22,7 +22,7 @@ Resources:
     Properties:
       PolicyName: CFNCertificateDomainResourceRecordProvider
       PolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Action:
@@ -31,7 +31,7 @@ Resources:
               - acm:UpdateCertificateOptions
               - acm:DeleteCertificate
             Resource:
-            - '*'
+              - "*"
           - Effect: Allow
             Action:
               - logs:*
@@ -43,7 +43,7 @@ Resources:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
           - Action:
               - sts:AssumeRole
@@ -56,7 +56,7 @@ Resources:
     Type: AWS::Logs::LogGroup
     Properties:
       RetentionInDays: 7
-      LogGroupName: !Sub '/aws/lambda/${CFNCustomProvider}'
+      LogGroupName: !Sub "/aws/lambda/${CFNCustomProvider}"
     DependsOn:
       - CFNCustomProvider
 
@@ -64,7 +64,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       # TODO: grab from params
-      CodeUri: 's3://langflipflop-external-us-east-1/cfn-certificate-provider-0.2.4.zip'
+      CodeUri: "s3://langflipflop-external-us-east-1/cfn-certificate-provider-0.2.4.zip"
       Description: CFN Certificate Domain Resource Record Provider
       MemorySize: 128
       Handler: provider.handler
@@ -91,9 +91,9 @@ Resources:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
       LoggingConfiguration:
-        DestinationBucketName: !Ref 'S3BucketLogs'
-        LogFilePrefix: 'origin/'
-  
+        DestinationBucketName: !Ref "S3BucketLogs"
+        LogFilePrefix: "origin/"
+
 Outputs:
   S3BucketRoot:
     Description: Website bucket

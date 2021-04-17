@@ -1,6 +1,6 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Description: ACFS3 - CloudFront with Header Security and site content
-Transform: 'AWS::Serverless-2016-10-31'
+Transform: "AWS::Serverless-2016-10-31"
 
 Parameters:
   CertificateArn:
@@ -27,26 +27,26 @@ Parameters:
   S3BucketRootArn:
     Description: Content Bucket locator
     Type: String
-  CreateApex: 
+  CreateApex:
     Type: String
 
 Conditions:
-  CreateApexConfig:  !Equals
+  CreateApexConfig: !Equals
     - !Ref CreateApex
-    - 'yes'
+    - "yes"
 
 Resources:
   S3BucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
-      Bucket: !Ref 'S3BucketRoot'
+      Bucket: !Ref "S3BucketRoot"
       PolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
           - Action:
               - s3:GetObject
             Effect: Allow
-            Resource: !Sub '${S3BucketRootArn}/*'
+            Resource: !Sub "${S3BucketRootArn}/*"
             Principal:
               CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
 
@@ -55,77 +55,83 @@ Resources:
     Properties:
       DistributionConfig:
         Aliases:
-          - !Sub '${SubDomain}.${DomainName}'
-          - !If [ CreateApexConfig, !Ref DomainName, !Ref 'AWS::NoValue' ]
+          - !Sub "${SubDomain}.${DomainName}"
+          - !If [CreateApexConfig, !Ref DomainName, !Ref "AWS::NoValue"]
         DefaultCacheBehavior:
           Compress: true
           DefaultTTL: 86400
           ForwardedValues:
             QueryString: true
           MaxTTL: 31536000
-          TargetOriginId: !Sub 'S3-${AWS::StackName}-root'
-          ViewerProtocolPolicy: 'redirect-to-https'
+          TargetOriginId: !Sub "S3-${AWS::StackName}-root"
+          ViewerProtocolPolicy: "redirect-to-https"
         CustomErrorResponses:
           - ErrorCachingMinTTL: 60
             ErrorCode: 404
             ResponseCode: 200
-            ResponsePagePath: '/index.html'
+            ResponsePagePath: "/index.html"
           - ErrorCachingMinTTL: 60
             ErrorCode: 403
             ResponseCode: 200
-            ResponsePagePath: '/index.html'
+            ResponsePagePath: "/index.html"
         Enabled: true
-        HttpVersion: 'http2'
-        DefaultRootObject: 'index.html'
+        HttpVersion: "http2"
+        DefaultRootObject: "index.html"
         IPV6Enabled: true
         Logging:
-          Bucket: !Ref 'S3BucketLogsName'
+          Bucket: !Ref "S3BucketLogsName"
           IncludeCookies: false
-          Prefix: 'cdn/'
+          Prefix: "cdn/"
         Origins:
-          - DomainName: !Ref 'S3BucketRootName'
-            Id: !Sub 'S3-${AWS::StackName}-root'
+          - DomainName: !Ref "S3BucketRootName"
+            Id: !Sub "S3-${AWS::StackName}-root"
             S3OriginConfig:
               OriginAccessIdentity:
-                !Join ['', ['origin-access-identity/cloudfront/', !Ref CloudFrontOriginAccessIdentity]]
-        PriceClass: 'PriceClass_All'
+                !Join [
+                  "",
+                  [
+                    "origin-access-identity/cloudfront/",
+                    !Ref CloudFrontOriginAccessIdentity,
+                  ],
+                ]
+        PriceClass: "PriceClass_All"
         ViewerCertificate:
-          AcmCertificateArn: !Ref 'CertificateArn'
-          MinimumProtocolVersion: 'TLSv1.1_2016'
-          SslSupportMethod: 'sni-only'
+          AcmCertificateArn: !Ref "CertificateArn"
+          MinimumProtocolVersion: "TLSv1.1_2016"
+          SslSupportMethod: "sni-only"
 
   CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
-        Comment: !Sub 'CloudFront OAI for ${SubDomain}.${DomainName}'
+        Comment: !Sub "CloudFront OAI for ${SubDomain}.${DomainName}"
 
   Route53RecordSetGroup:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneName: !Sub '${DomainName}.'
+      HostedZoneName: !Sub "${DomainName}."
       RecordSets:
-      - Name: !Sub '${SubDomain}.${DomainName}'
-        Type: 'A'
-        AliasTarget:
-          DNSName: !GetAtt 'CloudFrontDistribution.DomainName'
-          EvaluateTargetHealth: false
-          # The following HosteZoneId is always used for alias records pointing to CF.
-          HostedZoneId: 'Z2FDTNDATAQYW2'
+        - Name: !Sub "${SubDomain}.${DomainName}"
+          Type: "A"
+          AliasTarget:
+            DNSName: !GetAtt "CloudFrontDistribution.DomainName"
+            EvaluateTargetHealth: false
+            # The following HosteZoneId is always used for alias records pointing to CF.
+            HostedZoneId: "Z2FDTNDATAQYW2"
 
   ApexRoute53RecordSetGroup:
     Condition: CreateApexConfig
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneName: !Sub '${DomainName}.'
+      HostedZoneName: !Sub "${DomainName}."
       RecordSets:
-      - Name: !Ref 'DomainName'
-        Type: 'A'
-        AliasTarget:
-          DNSName: !GetAtt 'CloudFrontDistribution.DomainName'
-          EvaluateTargetHealth: false
-          # The following HosteZoneId is always used for alias records pointing to CF.
-          HostedZoneId: 'Z2FDTNDATAQYW2'
+        - Name: !Ref "DomainName"
+          Type: "A"
+          AliasTarget:
+            DNSName: !GetAtt "CloudFrontDistribution.DomainName"
+            EvaluateTargetHealth: false
+            # The following HosteZoneId is always used for alias records pointing to CF.
+            HostedZoneId: "Z2FDTNDATAQYW2"
 
 Outputs:
   CloudFrontDistribution:
@@ -134,4 +140,4 @@ Outputs:
 
   CloudFrontDomainName:
     Description: Website address
-    Value: !Sub '${SubDomain}.${DomainName}'
+    Value: !Sub "${SubDomain}.${DomainName}"

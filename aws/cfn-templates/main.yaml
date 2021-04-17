@@ -22,13 +22,13 @@ Parameters:
   CreateApex:
     Description: Create an Apex Alias in CloudFront distribution - yes/no
     Type: String
-    Default: 'no'
-    AllowedValues: ['yes','no']
+    Default: "no"
+    AllowedValues: ["yes", "no"]
   Stage:
     Description: Stage - alpha/prod
     Type: String
-    Default: 'alpha'
-    AllowedValues: ['alpha','prod']
+    Default: "alpha"
+    AllowedValues: ["alpha", "prod"]
 
 Resources:
   S3Stack:
@@ -75,7 +75,7 @@ Outputs:
     Description: Website bucket name
     Value: !GetAtt S3Stack.Outputs.S3BucketRootName
   CertificateArn:
-    Description: Issued certificate 
+    Description: Issued certificate
     Value: !GetAtt AcmCertificateStack.Outputs.CertificateArn
   CFDistributionName:
     Description: CloudFront distribution
