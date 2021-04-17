@@ -21,8 +21,10 @@ import deepEqual from "fast-deep-equal/es6";
 
 import queryString from "query-string";
 
+import { RouteComponentProps, StaticContext } from "react-router";
+
 class LibraryPage extends React.Component<
-  {},
+  RouteComponentProps<any, StaticContext, unknown>,
   {
     texts?: Array<TextMeta>;
     categoryFilter?: string;
@@ -34,7 +36,7 @@ class LibraryPage extends React.Component<
   constructor(props: any) {
     super(props);
 
-    let queryParams = queryString.parse(window.location.search);
+    let queryParams = queryString.parse(this.props.location.search);
 
     this.state = {
       texts: undefined,
@@ -165,6 +167,13 @@ class LibraryPage extends React.Component<
           />
         );
       });
+    let textCardsContent;
+    if (!textCards.length) {
+      textCardsContent = <p id="no-matching-texts">No matches.</p>;
+    } else {
+      textCardsContent = textCards;
+    }
+
     let categoryOptions = CATEGORIES.map((category, _idx) => {
       return (
         <IonSelectOption value={category} key={"selector-category-" + category}>
@@ -218,7 +227,7 @@ class LibraryPage extends React.Component<
               </IonSelect>
             </IonItem>
           </IonList>
-          {textCards}
+          {textCardsContent}
         </IonContent>
       </IonPage>
     );

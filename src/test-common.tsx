@@ -74,6 +74,19 @@ export namespace TEST_FIXTURES {
         "Hasta ahora, no hay indicativos de quién pudo haber colocado el monolito de 3 a 3.6 metros en esa ubicación.",
     },
   ];
+
+  export const FILTER_NO_MATCHES = {
+    category: "children",
+    difficulty: "Hard",
+  };
+
+  export const FILTER_WITH_MATCHES = {
+    category: "children",
+    difficulty: "Medium",
+
+    match: "The Adventures of Tom Sawyer (Chapter 1)",
+    noMatch: "Casual Phrases - Weather",
+  };
 }
 
 export class MyTextPageActions {

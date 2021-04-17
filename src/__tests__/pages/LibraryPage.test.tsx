@@ -65,3 +65,34 @@ test("FTUE", async () => {
   renderWithRoute("/");
   await screen.findByText("Setup");
 });
+
+test("Filtering - with matches", async () => {
+  await setCompletedFtue();
+
+  // Sanity check that the texts that are supposed to be filtered exist at all.
+  renderWithRoute("/t/texts");
+  await findTextCard(TEST_FIXTURES.FILTER_WITH_MATCHES.match);
+  await findTextCard(TEST_FIXTURES.FILTER_WITH_MATCHES.noMatch);
+
+  // Do filter.
+  renderWithRoute(
+    `/t/texts?category=${TEST_FIXTURES.FILTER_WITH_MATCHES.category}&difficulty=${TEST_FIXTURES.FILTER_WITH_MATCHES.difficulty}`
+  );
+
+  await findTextCard(TEST_FIXTURES.FILTER_WITH_MATCHES.match);
+  expect(
+    screen.queryByText(TEST_FIXTURES.FILTER_WITH_MATCHES.noMatch)
+  ).toBeFalsy();
+});
+
+test("Filtering - no matches", async () => {
+  await setCompletedFtue();
+
+  // Do filter.
+  renderWithRoute(
+    `/t/texts?category=${TEST_FIXTURES.FILTER_NO_MATCHES.category}&difficulty=${TEST_FIXTURES.FILTER_NO_MATCHES.difficulty}`
+  );
+
+  await screen.findByText("No matches.");
+  expect(screen.queryByText(TEST_FIXTURES.TEST_TEXT_TITLE_EN)).toBeFalsy();
+});
