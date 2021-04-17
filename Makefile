@@ -16,7 +16,7 @@ lint :
 
 .PHONY: serve
 serve :
-			 ionic serve
+			 ionic serve --no-open
 
 .PHONY: generate-data
 generate-data :
