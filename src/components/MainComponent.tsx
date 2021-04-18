@@ -51,6 +51,24 @@ class MainCompinent extends React.Component<
     DAO.getUser().then((user) => this.setState({ user: user }));
   }
 
+  componentDidUpdate() {
+    if (matchPath(this.props.location.pathname, "/ftue")) {
+      document.title = "Setup";
+    }
+    if (matchPath(this.props.location.pathname, "/t/texts")) {
+      document.title = "Home";
+    }
+    if (matchPath(this.props.location.pathname, "/t/recent")) {
+      document.title = "Recent";
+    }
+    if (matchPath(this.props.location.pathname, "/t/settings")) {
+      document.title = "Settings";
+    }
+    if (matchPath(this.props.location.pathname, "/t/about")) {
+      document.title = "About";
+    }
+  }
+
   render() {
     if (!this.state.user) {
       return <IonRouterOutlet></IonRouterOutlet>;
@@ -70,6 +88,7 @@ class MainCompinent extends React.Component<
       var ftueUrl = `/ftue?${ftueSearchParams.toString()}`;
       return <Redirect to={ftueUrl} />;
     }
+
     return (
       <IonRouterOutlet>
         <Route exact path="/" render={() => <Redirect to={"/t/texts"} />} />

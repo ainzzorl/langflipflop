@@ -38,6 +38,10 @@ class TextInfoPage extends React.Component<
       });
   }
 
+  componentDidUpdate() {
+    document.title = this.state.text["en"]["title"];
+  }
+
   render() {
     if (!this.state?.text) {
       return (
