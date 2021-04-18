@@ -1,4 +1,7 @@
 #info-page-content ion-grid {
   float: left;
+}
+
+#info-page-content ion-grid .store-links {
   text-align: center;
 }

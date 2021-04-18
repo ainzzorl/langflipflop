@@ -24,7 +24,7 @@ class InfoPage extends React.Component<{}, {}> {
     ) {
       links = (
         <IonGrid>
-          <IonRow className="ion-align-items-center">
+          <IonRow className="ion-align-items-center store-links">
             <IonCol size="6">
               <a href="https://play.google.com/store/apps/details?id=com.langflipflop">
                 <img
@@ -34,6 +34,13 @@ class InfoPage extends React.Component<{}, {}> {
               </a>
             </IonCol>
             <IonCol col-6>Coming soon on App Store.</IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol size="12">
+              <p className="content-text">
+                <a href="mailto:langflipflop@gmail.com">Contact</a>
+              </p>
+            </IonCol>
           </IonRow>
         </IonGrid>
       );
