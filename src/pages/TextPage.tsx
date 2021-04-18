@@ -25,6 +25,12 @@ import { information, help } from "ionicons/icons";
 import ReactCardFlip from "react-card-flip";
 import { DAO } from "../common/DAO";
 
+import {
+  isBrowser,
+  BROWSER_CLICK_VERB,
+  DEVICE_CLICK_VERB,
+} from "../common/Common";
+
 import queryString from "query-string";
 
 interface MyTextProps
@@ -197,18 +203,34 @@ class RecentPage extends React.Component<
       return <div>Loading...</div>;
     }
 
-    let ftueMessage = new IonicSafeString(
-      ReactDOMServer.renderToString(
-        <div>
-          <p>
-            Try translating the text you see on the screen and then tap the text
-            to see a possible translation.
-          </p>
-          <p>Swipe left or tap NEXT to go to the next screen.</p>
-          <p>Swipe right or tap PREVIOUS to go to the previous screen.</p>
-        </div>
-      )
-    );
+    let ftueMessage;
+    if (isBrowser()) {
+      ftueMessage = new IonicSafeString(
+        ReactDOMServer.renderToString(
+          <div>
+            <p>
+              Try translating the text you see on the screen and then click the
+              text to see a possible translation.
+            </p>
+            <p>Click NEXT to go to the next screen.</p>
+            <p>Click PREVIOUS to go to the previous screen.</p>
+          </div>
+        )
+      );
+    } else {
+      ftueMessage = new IonicSafeString(
+        ReactDOMServer.renderToString(
+          <div>
+            <p>
+              Try translating the text you see on the screen and then tap the
+              text to see a possible translation.
+            </p>
+            <p>Swipe left or tap NEXT to go to the next screen.</p>
+            <p>Swipe right or tap PREVIOUS to go to the previous screen.</p>
+          </div>
+        )
+      );
+    }
 
     return (
       <IonPage className="text-page">

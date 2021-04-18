@@ -8,3 +8,6 @@ export function isBrowser(): boolean {
     isPlatform("mobileweb")
   );
 }
+
+export const BROWSER_CLICK_VERB = "click";
+export const DEVICE_CLICK_VERB = "tap";

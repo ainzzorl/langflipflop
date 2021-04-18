@@ -11,13 +11,18 @@ import {
   IonRow,
 } from "@ionic/react";
 
-import { isBrowser } from "../common/Common";
+import {
+  isBrowser,
+  BROWSER_CLICK_VERB,
+  DEVICE_CLICK_VERB,
+} from "../common/Common";
 
 import "./InfoPage.css";
 
 class InfoPage extends React.Component<{}, {}> {
   render() {
     let links;
+    let clickVerb;
     if (isBrowser()) {
       links = (
         <IonGrid>
@@ -41,8 +46,10 @@ class InfoPage extends React.Component<{}, {}> {
           </IonRow>
         </IonGrid>
       );
+      clickVerb = BROWSER_CLICK_VERB;
     } else {
       links = <div />;
+      clickVerb = DEVICE_CLICK_VERB;
     }
     return (
       <IonPage id="info-page">
@@ -55,10 +62,10 @@ class InfoPage extends React.Component<{}, {}> {
           <p className="content-text">
             LangFlipFlop is a lightweight app to practice translating from one
             language to another. Select a text from the list and read it one
-            small fragment at a time. Try translating it in your head and then
-            tap the text to compare your translation to ours. It's OK if the
-            translation you had in mind doesn't match the suggestion - there can
-            be more than one correct translation.
+            small fragment at a time. Try translating it in your head and then{" "}
+            {clickVerb} the text to compare your translation to ours. It's OK if
+            the translation you had in mind doesn't match the suggestion - there
+            can be more than one correct translation.
           </p>
           <p className="content-text">
             LangFlipFlop doesn't exactly <i>teach</i> you the language, but lets
