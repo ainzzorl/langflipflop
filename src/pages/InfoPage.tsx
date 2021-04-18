@@ -9,19 +9,16 @@ import {
   IonGrid,
   IonCol,
   IonRow,
-  isPlatform,
 } from "@ionic/react";
+
+import { isBrowser } from "../common/Common";
 
 import "./InfoPage.css";
 
 class InfoPage extends React.Component<{}, {}> {
   render() {
     let links;
-    if (
-      process.env.JEST_WORKER_ID ||
-      isPlatform("desktop") ||
-      isPlatform("mobileweb")
-    ) {
+    if (isBrowser()) {
       links = (
         <IonGrid>
           <IonRow className="ion-align-items-center store-links">
