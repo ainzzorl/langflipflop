@@ -25,11 +25,7 @@ import { information, help } from "ionicons/icons";
 import ReactCardFlip from "react-card-flip";
 import { DAO } from "../common/DAO";
 
-import {
-  isBrowser,
-  BROWSER_CLICK_VERB,
-  DEVICE_CLICK_VERB,
-} from "../common/Common";
+import { isBrowser } from "../common/Common";
 
 import queryString from "query-string";
 
