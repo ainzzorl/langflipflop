@@ -41,6 +41,9 @@ import FtuePage from "../pages/FtuePage";
 
 import { DAO, User } from "../common/DAO";
 
+//@ts-ignore
+import MetaTags from "react-meta-tags";
+
 class MainCompinent extends React.Component<
   RouteComponentProps<{}>,
   { user?: User }
@@ -89,50 +92,74 @@ class MainCompinent extends React.Component<
       return <Redirect to={ftueUrl} />;
     }
 
+    // Hide alpha and anything else besides prod from search engines.
+    let shouldNoIndex =
+      window.location.hostname !== "langflipflop.com" &&
+      window.location.hostname !== "www.langflipflop.com";
+    let metaTags = null;
+    if (shouldNoIndex) {
+      metaTags = (
+        <MetaTags>
+          <meta property="robots" content="noindex" />
+        </MetaTags>
+      );
+    }
+
     return (
-      <IonRouterOutlet>
-        <Route exact path="/" render={() => <Redirect to={"/t/texts"} />} />
-        <Route path="/texts/:id/info" component={TextInfoPage} exact={true} />
-        <Route path="/texts/:id" component={TextPage} exact={true} />
-        <Route path="/ftue" component={FtuePage} />
-        <Route
-          path="/t"
-          render={() => {
-            return (
-              <IonTabs>
-                <IonRouterOutlet>
-                  <Route path="/t/texts" component={LibraryPage} exact={true} />
-                  <Route path="/t/recent" component={RecentPage} exact={true} />
-                  <Route
-                    path="/t/settings"
-                    component={SettingsPage}
-                    exact={true}
-                  />
-                  <Route path="/t/about" component={InfoPage} exact={true} />
-                </IonRouterOutlet>
-                <IonTabBar slot="bottom">
-                  <IonTabButton tab="library" href="/t/texts">
-                    <IonIcon icon={home} />
-                    <IonLabel>Home</IonLabel>
-                  </IonTabButton>
-                  <IonTabButton tab="recent" href="/t/recent">
-                    <IonIcon icon={time} />
-                    <IonLabel>Recent</IonLabel>
-                  </IonTabButton>
-                  <IonTabButton tab="settings" href="/t/settings">
-                    <IonIcon icon={settings} />
-                    <IonLabel>Settings</IonLabel>
-                  </IonTabButton>
-                  <IonTabButton tab="about" href="/t/about">
-                    <IonIcon icon={informationCircle} />
-                    <IonLabel>About</IonLabel>
-                  </IonTabButton>
-                </IonTabBar>
-              </IonTabs>
-            );
-          }}
-        />
-      </IonRouterOutlet>
+      <div>
+        {metaTags}
+        <IonRouterOutlet>
+          <Route exact path="/" render={() => <Redirect to={"/t/texts"} />} />
+          <Route path="/texts/:id/info" component={TextInfoPage} exact={true} />
+          <Route path="/texts/:id" component={TextPage} exact={true} />
+          <Route path="/ftue" component={FtuePage} />
+          <Route
+            path="/t"
+            render={() => {
+              return (
+                <IonTabs>
+                  <IonRouterOutlet>
+                    <Route
+                      path="/t/texts"
+                      component={LibraryPage}
+                      exact={true}
+                    />
+                    <Route
+                      path="/t/recent"
+                      component={RecentPage}
+                      exact={true}
+                    />
+                    <Route
+                      path="/t/settings"
+                      component={SettingsPage}
+                      exact={true}
+                    />
+                    <Route path="/t/about" component={InfoPage} exact={true} />
+                  </IonRouterOutlet>
+                  <IonTabBar slot="bottom">
+                    <IonTabButton tab="library" href="/t/texts">
+                      <IonIcon icon={home} />
+                      <IonLabel>Home</IonLabel>
+                    </IonTabButton>
+                    <IonTabButton tab="recent" href="/t/recent">
+                      <IonIcon icon={time} />
+                      <IonLabel>Recent</IonLabel>
+                    </IonTabButton>
+                    <IonTabButton tab="settings" href="/t/settings">
+                      <IonIcon icon={settings} />
+                      <IonLabel>Settings</IonLabel>
+                    </IonTabButton>
+                    <IonTabButton tab="about" href="/t/about">
+                      <IonIcon icon={informationCircle} />
+                      <IonLabel>About</IonLabel>
+                    </IonTabButton>
+                  </IonTabBar>
+                </IonTabs>
+              );
+            }}
+          />
+        </IonRouterOutlet>
+      </div>
     );
   }
 }
