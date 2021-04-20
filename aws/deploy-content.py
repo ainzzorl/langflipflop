@@ -1,6 +1,7 @@
 import sys
 import os
-from subprocess import Popen, PIPE, STDOUT
+from subprocess import Popen, PIPE, STDOUT, check_output
+import json
 
 def run(command):
     process = Popen(command, stdout=PIPE, stderr=STDOUT, shell=True)
@@ -46,4 +47,33 @@ if __name__ == "__main__":
     run_and_print(sync_cmd)
     print()
 
-    # TODO: invalidate
+    print("Getting distribution")
+    distributions_str = check_output(['aws', 'cloudfront', 'list-distributions'])
+    distributions = json.loads(distributions_str)
+
+    distribution = None
+    for d in distributions['DistributionList']['Items']:
+        if stage == 'alpha' and 'alpha.langflipflop.com' in d['Aliases']['Items']:
+            if distribution is None:
+                distribution = d
+            else:
+                print('Duplicate distribution')
+                print(distributions)
+                exit(1)
+        if stage == 'prod' and 'langflipflop.com' in d['Aliases']['Items']:
+            if distribution is None:
+                distribution = d
+            else:
+                print('Duplicate distribution')
+                print(distributions)
+                exit(1)
+    if distribution is None:
+        print('Distribution not found')
+        print(distributions)
+        exit(1)
+
+    invalidation_cmd = f'aws cloudfront create-invalidation --distribution-id {distribution["Id"]} --paths "/*"'
+    print("Running invalidation command")
+    print(invalidation_cmd)
+    run_and_print(invalidation_cmd)
+    print()
