@@ -72,15 +72,28 @@ class MainCompinent extends React.Component<
     }
   }
 
+  shouldRedirectToFtue(): boolean {
+    if (
+      this.state.user!.completedMainFtue ||
+      DAO.globalUser.completedMainFtue
+    ) {
+      return false;
+    }
+    if (matchPath(this.props.location.pathname, "/ftue")) {
+      return false;
+    }
+    // To make it indexable by search engines.
+    if (matchPath(this.props.location.pathname, "/t/about")) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
     if (!this.state.user) {
       return <IonRouterOutlet></IonRouterOutlet>;
     }
-    if (
-      !this.state.user!.completedMainFtue &&
-      !DAO.globalUser.completedMainFtue &&
-      !matchPath(this.props.location.pathname, "/ftue")
-    ) {
+    if (this.shouldRedirectToFtue()) {
       let currentSearchParams = new URLSearchParams(this.props.location.search);
       let currentUrl = `${
         this.props.location.pathname
