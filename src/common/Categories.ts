@@ -6,6 +6,7 @@ export const CATEGORY_MAP: Map<string, string> = new Map([
   ["classics", "Classics"],
   ["culture", "Culture"],
   ["politics", "Politics"],
+  ["science-and-technology", "Science & Technology"],
 ]);
 
 // ORDERED list of categories.

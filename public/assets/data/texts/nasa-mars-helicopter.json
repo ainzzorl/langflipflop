@@ -1,0 +1,45 @@
+{
+  "en": {
+    "title": "NASA's Mars Helicopter Takes First Successful Test Flight",
+    "description": "NASA's Mars Helicopter Takes First Successful Test Flight.",
+    "sentences": [
+      "The U.S. space agency, NASA, Monday received images and data confirming its small helicopter, Ingenuity, successfully performed the first controlled powered flight of an aircraft on a planet other than Earth.",
+      "Scientists in the control room at NASA\u2019s Jet Propulsion Laboratory (JPL) at the California Institute of Technology burst into applause and cheers when data confirmed Ingenuity had successfully spun its rotors, lifted off to a height of three meters and landed safely back on the surface of Mars.",
+      "A picture taken by the small craft of its own shadow on the ground below it arrived seconds later, as did video of the flight taken by NASA\u2019s Perseverance rover probe several meters away.",
+      "Ingenuity, weighing a mere 1.8 kilograms, was stowed away on the Perseverance when it landed on Mars in February.",
+      "It was unfolded and dropped from the rover about two weeks ago to prepare its launch.",
+      "The first test of the helicopter had been scheduled for more than a week ago, but a software problem was discovered that required an update.",
+      "The helicopter is considered by NASA to be a technology demonstration, designed to test a new capability \u2014 in this case, flight in the thin Martian atmosphere \u2014 for the first time.",
+      "It has specially designed rotors that spin much faster than they would have to on Earth to achieve flight.",
+      "It also has innovative batteries and solar cells for recharging.",
+      "Aside from cameras, Ingenuity carries no scientific instruments."
+    ]
+  },
+  "es": {
+    "title": "El Helic\u00f3ptero de NASA en Marte Hace Su Primer Vuelo de Prueba Exitoso",
+    "description": "El Helic\u00f3ptero de NASA en Marte Hace Su Primer Vuelo de Prueba Exitoso.",
+    "sentences": [
+      "La Agencia de Viaje Espacial estadounidense, NASA, el lunes recibi\u00f3 im\u00e1genes y datos confirmando que su peque\u00f1o helic\u00f3ptero, Ingenuity, realiz\u00f3 exitosamente su primero vuelo controlado en un planeta distinto a la Tierra.",
+      "Los cient\u00edficos en la habitaci\u00f3n de control en el Laboratorio de Propulsi\u00f3n Jet (JPL) de NASA en el Instituto de Tecnolog\u00eda de California erupcion\u00f3 en aplausos y alegr\u00eda cuando los datos confirmaron que Ingenuity logr\u00f3 exitosamente girar sus h\u00e9lices, despeg\u00f3 a una altura de tres metros y aterriz\u00f3 de nuevo en la superficie de Marte.",
+      "Una foto tomada por la nave peque\u00f1a de su propia sobra en el suelo debajo lleg\u00f3 segundos despu\u00e9s, al igual que el video del vuelo tomado por el robot investigador de NASA Perseverance a unos metros de distancia.",
+      "Ingenuity, pesando unos mejor 1.8kilogramos, fue llevado por el Perseverance cuando lleg\u00f3 a Marte en Febrero.",
+      "Fue desplegado y sacado del robot hace unas dos semanas para preparar su lanzamiento.",
+      "La primera prueba del helic\u00f3ptero hab\u00eda sido programada para hace m\u00e1s de una semana, pero un problema de software fue descubierto que requer\u00eda una actualizaci\u00f3n.",
+      "El helic\u00f3ptero es considerado por NASA como una demostraci\u00f3n de tecnolog\u00eda, dise\u00f1ado para probar una nueva capacidad \u2013 en este caso, vuelo en la delgada atm\u00f3sfera Marciana \u2013 por primera vez.",
+      "Tiene h\u00e9lices especialmente dise\u00f1adas que giran mucho m\u00e1s r\u00e1pido de lo que lo har\u00edan en la tierra para tomar vuelo.",
+      "Tiene bater\u00edas innovadoras y paneles solares para recargarse.",
+      "Adem\u00e1s de c\u00e1maras, Ingenuity no lleva instrumentos cient\u00edficos."
+    ]
+  },
+  "meta": {
+    "difficulty": "Hard",
+    "categories": [
+      "news",
+      "science-and-technology"
+    ],
+    "sourceLink": "https://www.voanews.com/science-health/nasas-mars-helicopter-takes-first-successful-test-flight",
+    "sourceText": "Voice of America (VOA)",
+    "id": "nasa-mars-helicopter",
+    "numSentences": 10
+  }
+}
