@@ -54,6 +54,9 @@ class RecentPage extends React.Component<
     super(props);
 
     let url = this.props.location.search;
+    if (!url) {
+      url = window.location.search;
+    }
     let params = queryString.parse(url);
 
     this.state = {
@@ -102,7 +105,9 @@ class RecentPage extends React.Component<
   }
 
   componentDidUpdate() {
-    document.title = this.state.texts["en"].title;
+    if (this.state?.texts?.["en"]?.title) {
+      document.title = this.state.texts["en"].title;
+    }
 
     const element = document.getElementById("my-div");
     if (element !== null && !this.state.gesturesInitialized) {
