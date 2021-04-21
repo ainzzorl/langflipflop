@@ -1,0 +1,43 @@
+{
+  "en": {
+    "title": "Poet Louise Gluck Wins Nobel Prize in Literature",
+    "description": "Poet Louise Gluck Wins Nobel Prize in Literature.",
+    "sentences": [
+      "American poet Louise Gl\u00fcck has won this year\u2019s Nobel Prize in literature.",
+      "The Swedish Academy praised Gl\u00fcck\u2019s \u201cunmistakable poetic voice that with austere beauty makes individual existence universal.\u201d",
+      "Gl\u00fcck has published 12 poetry collections, and her previous honors include the Pulitzer Prize and the National Book Award.",
+      "The literature prize is just one of a group given out this week.",
+      "Each comes with a $1.1 million cash award.",
+      "Friday brings the announcement of the Nobel Peace Prize.",
+      "The prize in chemistry was awarded to two scientists for developing a method of gene editing.",
+      "Three scientists won the physics prize Wednesday for their discoveries related to black holes.",
+      "Three scientists also shared the medicine prize for the discovery of the Hepatitis C virus."
+    ]
+  },
+  "es": {
+    "title": "La Poeta Louise Gluck Gana el Premio Nobel de Literatura",
+    "description": "La Poeta Louise Gluck Gana el Premio Nobel de Literatura.",
+    "sentences": [
+      "La poeta Americana Louise Gl\u00fcck gan\u00f3 el Premio Nobel de Literatura de este a\u00f1o.",
+      "La Academia Sueca elogi\u00f3 la \u201cvoz po\u00e9tica inconfundible que con belleza austera que hace la existencia individual universal\u201d de Gl\u00fcck.",
+      "Gl\u00fcck ha publicado 12 colecciones de poes\u00eda, y sus previos honores incluyen el Premio Pulitzer y el Premio Nacional de Libros.",
+      "El premio de literatura es solo uno de un grupo dado esta semana.",
+      "Cada uno viene con un premio en efectivo de 1.1 millones de d\u00f3lares.",
+      "El viernes se har\u00e1 el anuncio del Premio Nobel de la Paz.",
+      "El precio en qu\u00edmica fue otorgado a dos cient\u00edficos por desarrollar un m\u00e9todo de edici\u00f3n de genes.",
+      "Tres cient\u00edficos ganaron el premio de f\u00edsica el mi\u00e9rcoles por sus descubrimientos relacionados a hoyos negros.",
+      "Tres cient\u00edficos tambi\u00e9n compartieron el premio de medicina por el descubrimiento del virus de Hepatitis C."
+    ]
+  },
+  "meta": {
+    "difficulty": "Medium",
+    "categories": [
+      "news",
+      "culture"
+    ],
+    "sourceLink": "https://www.voanews.com/arts-culture/poet-louise-gluck-wins-nobel-prize-literature",
+    "sourceText": "Voice of America (VOA)",
+    "id": "gluck-nobel-prize",
+    "numSentences": 9
+  }
+}
