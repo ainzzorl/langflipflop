@@ -39,7 +39,9 @@ class TextInfoPage extends React.Component<
   }
 
   componentDidUpdate() {
-    document.title = this.state.text["en"]["title"];
+    if (this.state && this.state.text) {
+      document.title = this.state.text["en"]["title"];
+    }
   }
 
   render() {
