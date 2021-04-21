@@ -85,7 +85,7 @@ deploy-website-cfn-alpha :
 			 python aws/deploy-cfn.py alpha
 
 .PHONY: deploy-website-content-alpha
-deploy-website-content-alpha :
+deploy-website-content-alpha : build-website
 			 python aws/deploy-content.py alpha
 
 .PHONY: deploy-website-alpha
@@ -96,7 +96,7 @@ deploy-website-cfn-prod :
 			 python aws/deploy-cfn.py prod
 
 .PHONY: deploy-website-content-prod
-deploy-website-content-prod :
+deploy-website-content-prod : build-website
 			 python aws/deploy-content.py prod
 
 .PHONY: deploy-website-prod
