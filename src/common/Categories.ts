@@ -3,7 +3,7 @@ export const CATEGORY_MAP: Map<string, string> = new Map([
   ["sports", "Sports"],
   ["news", "News"],
   ["casual-phrases", "Casual Phrases"],
-  ["classics", "Classics"],
+  ["classics", "Classical Literature"],
   ["culture", "Culture"],
   ["politics", "Politics"],
   ["science-and-technology", "Science & Technology"],
@@ -18,4 +18,5 @@ export const CATEGORIES = [
   "sports",
   "politics",
   "classics",
+  "science-and-technology",
 ];
