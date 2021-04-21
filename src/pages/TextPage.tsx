@@ -60,11 +60,14 @@ class RecentPage extends React.Component<
     let params = queryString.parse(url);
 
     this.state = {
-      lang: (params["lang1"] as string) || "",
-      lang1: (params["lang1"] as string) || "",
-      lang2: (params["lang2"] as string) || "",
+      // TODO: the defaults take place sometimes when user clicks back and forward.
+      // This is not good generally.
+      // If it happens somehow, we should default to the persistent state/prefs.
+      lang: (params["lang1"] as string) || "en",
+      lang1: (params["lang1"] as string) || "en",
+      lang2: (params["lang2"] as string) || "es",
+      sentenceIndex: parseInt((params["i"] as string) || "1") - 1,
       texts: {},
-      sentenceIndex: parseInt(params["i"] as string) - 1,
       gesturesInitialized: false,
       sideOneText: "",
       sideTwoText: "",
