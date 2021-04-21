@@ -1,0 +1,82 @@
+{
+  "en": {
+    "title": "Casual Phrases - Pets",
+    "description": "Casual Phrases about Pets.",
+    "sentences": [
+      "I always dreamed of having a cat.",
+      "My cat purrs when I pet her.",
+      "What a lovely kitten! What is his name?",
+      "My cat loves ice-cream, but I\u2019m not sure if it\u2019s good for him.",
+      "Cats like to play with yarn.",
+      "This kitten\u2019s paws are so soft; it\u2019s unbelievable.",
+      "When a cat wags its tail, it\u2019s not a good sign and you should back off.",
+      "What breed is your dog?",
+      "What a cute puppy! He is adorable. Can I pet him?",
+      "My dog was a stray before I brought him home.",
+      "I need to take my dog for a walk.",
+      "No, you can\u2019t give chocolate to dogs.",
+      "This dog may look scary, but he would never hurt a fly.",
+      "Our dog destroyed all our furniture, but we love him no matter what.",
+      "Is it possible to travel by plane with a dog?",
+      "Are dogs allowed inside?",
+      "He barks every time he hears noise outside.",
+      "The dog smells. We need to give him a bath.",
+      "Do you need to brush dog\u2019s teeth?",
+      "Loosen up the collar - it\u2019s too tight.",
+      "Do you have any pets?",
+      "Sorry, pets are not allowed here.",
+      "I have an emerald lizard at home.",
+      "I have a fresh water fish tank with tropical fish.",
+      "I have a parrot who can talk. It took me years to teach him!",
+      "Can you keep a turtle as a pet?",
+      "Rodents make perfect pets.",
+      "Pets require constant care, and you may need to take them to a vet when they are sick.",
+      "My son almost cried of excitement when he saw this puppy.",
+      "My kids take care of the dog. It\u2019s their responsibility."
+    ]
+  },
+  "es": {
+    "title": "Frases casuales - Mascotas",
+    "description": "Frases casuales - Mascotas.",
+    "sentences": [
+      "Siempre so\u00f1\u00e9 en tener un gato.",
+      "Mi gato ronronea cuando la acaricio.",
+      "\u00a1Qu\u00e9 gato tan lindo! \u00bfCu\u00e1l es su nombre?",
+      "Mi gato adora el helado, pero no estoy seguro si es bueno para \u00e9l.",
+      "A los gatos les gusta jugar con el estambre.",
+      "Las patas de este gato son muy suaves; es incre\u00edble.",
+      "Cuando un gato mueve su cola, no es una buena se\u00f1al y debes retroceder.",
+      "\u00bfQu\u00e9 raza es tu perro?",
+      "\u00a1Que cachorro tan lindo! \u00c9l es adorable. \u00bfPuedo tocarlo?",
+      "Mi perro era callejero. Me lo traje a casa.",
+      "Debo llevar a mi perro a pasear.",
+      "No, no puedes darles chocolate a los perros.",
+      "Este perro puede parecer aterrador, pero \u00e9l no le har\u00eda da\u00f1o ni a una mosca.",
+      "Nuestro perro destruy\u00f3 todos nuestros muebles, pero lo seguimos amando.",
+      "\u00bfEs posible viajar en avi\u00f3n con un perro?",
+      "\u00bfEst\u00e1n permitidos los perros adentro?",
+      "\u00c9l ladra cada vez que escucha un sonido.",
+      "El perro apesta. Necesitamos darle un ba\u00f1o.",
+      "\u00bfNecesitas cepillar los dientes de tu perro?",
+      "Libera un poco el collar \u2013 est\u00e1 demasiado apretado.",
+      "\u00bfTienes alguna mascota?",
+      "Lo siento, no se permiten mascotas aqu\u00ed.",
+      "Tengo un lagarto esmeralda en casa.",
+      "Tengo un tanque de peces con agua fresca con peces tropicales.",
+      "Tengo un perico que puede hablar. \u00a1Me tom\u00f3 a\u00f1os ense\u00f1arle!",
+      "\u00bfPuedes mantener una tortuga como mascota?",
+      "Los roedores son mascotas perfectas.",
+      "Las mascotas requieren de cuidado constante, y necesitar\u00e1s llevarlas al veterinario si se enferman.",
+      "Mi hijo casi llora de emoci\u00f3n cuando vio a este cachorrito.",
+      "Mis hijos cuidan del perro. Es su responsabilidad."
+    ]
+  },
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases"
+    ],
+    "id": "casual-phrases-pets",
+    "numSentences": 30
+  }
+}
