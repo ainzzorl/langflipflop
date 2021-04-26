@@ -15,20 +15,15 @@ import {
 } from "@ionic/react";
 import { DAO, Settings } from "../common/DAO";
 
-class SettingsPage extends React.Component<
-  {},
-  { settings?: Settings; isUpdating: boolean }
-> {
+class SettingsPage extends React.Component<{}, { settings?: Settings }> {
   constructor(props: any) {
     super(props);
     this.state = {
       settings: undefined,
-      isUpdating: true,
     };
     DAO.getSettings().then((settings) => {
       this.setState(() => ({
         settings: settings,
-        isUpdating: false,
       }));
     });
 
@@ -47,18 +42,7 @@ class SettingsPage extends React.Component<
   }
 
   onChange() {
-    this.setState(
-      () => ({
-        isUpdating: true,
-      }),
-      () => {
-        DAO.setSettings(this.state.settings!).then(() =>
-          this.setState(() => ({
-            isUpdating: false,
-          }))
-        );
-      }
-    );
+    DAO.setSettings(this.state.settings!);
   }
 
   render() {
@@ -112,7 +96,6 @@ class SettingsPage extends React.Component<
               </IonItem>
             </IonRadioGroup>
           </IonList>
-          {!this.state.isUpdating && <div data-testid="ready-indicator"></div>}
         </IonContent>
       </IonPage>
     );
