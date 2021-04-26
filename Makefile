@@ -9,10 +9,17 @@ build-website :
 fix :
 			 npx prettier --write .
 
-.PHONY: lint
-lint :
+.PHONY: lint-ts
+lint-ts :
 			 npx eslint src/
 			 npx prettier -c src/
+
+.PHONY: lint-python
+lint-python :
+			 pylint data
+
+.PHONY: lint
+lint : lint-ts lint-python
 
 .PHONY: serve
 serve :

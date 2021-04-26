@@ -1,3 +1,7 @@
+"""
+Translate a text with Google Translate.
+"""
+
 import sys
 from google.cloud import translate
 
@@ -25,17 +29,20 @@ def translate_text(text, project_id="supple-walker-299218"):
 
     return [t.translated_text for t in response.translations]
 
-if len(sys.argv) != 2:
-    sys.stderr.write("Usage: translate.py TEXT-ID\n")
-    exit(1)
+def main():
+    if len(sys.argv) != 2:
+        sys.stderr.write("Usage: translate.py TEXT-ID\n")
+        sys.exit(1)
 
-text_id = sys.argv[1]
+    text_id = sys.argv[1]
 
-with open(f"./data/in/{text_id}/en.txt") as file:
-    source_text = file.read()
+    with open(f"./data/in/{text_id}/en.txt") as file:
+        source_text = file.read()
 
-translated_texts = translate_text(text=source_text)
-translated_text = '\n'.join(translated_texts)
+    translated_texts = translate_text(text=source_text)
+    translated_text = '\n'.join(translated_texts)
 
-with open(f"./data/in/{text_id}/es.txt", 'w') as f:
-    f.write(translated_text)
+    with open(f"./data/in/{text_id}/es.txt", 'w') as f:
+        f.write(translated_text)
+
+main()

@@ -1,0 +1,5 @@
+[MASTER]
+disable=
+    C0116, # missing-function-docstring
+
+good-names=en,es,i,j,f,a,b
