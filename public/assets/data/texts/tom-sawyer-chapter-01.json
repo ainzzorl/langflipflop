@@ -2,7 +2,7 @@
   "en": {
     "title": "The Adventures of Tom Sawyer (Chapter 1)",
     "description": "The Adventures of Tom Sawyer is an 1876 novel by Mark Twain about a young boy growing up along the Mississippi River. It is set in the 1840s in the town of St. Petersburg, which is based on Hannibal, Missouri, where Twain lived as a boy.",
-    "sentences": [
+    "segments": [
       "\u201cTOM!\u201d",
       "No answer.",
       "\u201cTOM!\u201d",
@@ -182,7 +182,7 @@
   "es": {
     "title": "Las aventuras de Tom Sawyer (Cap\u00edtulo 1)",
     "description": "Las aventuras de Tom Sawyer es una novela del autor estadounidense Mark Twain publicada entre 1876 y 1878,1\u200b2\u200b actualmente considerada una obra maestra de la literatura. Relata las aventuras de la infancia de Tom Sawyer, un ni\u00f1o que crece durante el antebellum de la Guerra de Secesi\u00f3n en \u00abSt. Petersburg\u00bb, una poblaci\u00f3n ficticia, de la costa del r\u00edo Misisipi inspirada en Hannibal, donde creci\u00f3 el autor. ",
-    "sentences": [
+    "segments": [
       "-\u00a1Tom!",
       "Silencio.",
       "-\u00a1Tom!",
@@ -369,6 +369,6 @@
     "sourceLink": "https://www.gutenberg.org/files/74/74-h/74-h.htm#c1",
     "sourceText": "Project Gutenberg",
     "id": "tom-sawyer-chapter-01",
-    "numSentences": 174
+    "numSegments": 174
   }
 }

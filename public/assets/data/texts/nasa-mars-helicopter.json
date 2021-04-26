@@ -2,7 +2,7 @@
   "en": {
     "title": "NASA's Mars Helicopter Takes First Successful Test Flight",
     "description": "NASA's Mars Helicopter Takes First Successful Test Flight.",
-    "sentences": [
+    "segments": [
       "The U.S. space agency, NASA, Monday received images and data confirming its small helicopter, Ingenuity, successfully performed the first controlled powered flight of an aircraft on a planet other than Earth.",
       "Scientists in the control room at NASA\u2019s Jet Propulsion Laboratory (JPL) at the California Institute of Technology burst into applause and cheers when data confirmed Ingenuity had successfully spun its rotors, lifted off to a height of three meters and landed safely back on the surface of Mars.",
       "A picture taken by the small craft of its own shadow on the ground below it arrived seconds later, as did video of the flight taken by NASA\u2019s Perseverance rover probe several meters away.",
@@ -18,7 +18,7 @@
   "es": {
     "title": "El Helic\u00f3ptero de NASA en Marte Hace Su Primer Vuelo de Prueba Exitoso",
     "description": "El Helic\u00f3ptero de NASA en Marte Hace Su Primer Vuelo de Prueba Exitoso.",
-    "sentences": [
+    "segments": [
       "La Agencia de Viaje Espacial estadounidense, NASA, el lunes recibi\u00f3 im\u00e1genes y datos confirmando que su peque\u00f1o helic\u00f3ptero, Ingenuity, realiz\u00f3 exitosamente su primero vuelo controlado en un planeta distinto a la Tierra.",
       "Los cient\u00edficos en la habitaci\u00f3n de control en el Laboratorio de Propulsi\u00f3n Jet (JPL) de NASA en el Instituto de Tecnolog\u00eda de California erupcion\u00f3 en aplausos y alegr\u00eda cuando los datos confirmaron que Ingenuity logr\u00f3 exitosamente girar sus h\u00e9lices, despeg\u00f3 a una altura de tres metros y aterriz\u00f3 de nuevo en la superficie de Marte.",
       "Una foto tomada por la nave peque\u00f1a de su propia sobra en el suelo debajo lleg\u00f3 segundos despu\u00e9s, al igual que el video del vuelo tomado por el robot investigador de NASA Perseverance a unos metros de distancia.",
@@ -40,6 +40,6 @@
     "sourceLink": "https://www.voanews.com/science-health/nasas-mars-helicopter-takes-first-successful-test-flight",
     "sourceText": "Voice of America (VOA)",
     "id": "nasa-mars-helicopter",
-    "numSentences": 10
+    "numSegments": 10
   }
 }

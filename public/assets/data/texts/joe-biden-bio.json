@@ -2,7 +2,7 @@
   "en": {
     "title": "Joe Biden: The President",
     "description": "Joe Biden's biography from the official website of the White House.",
-    "sentences": [
+    "segments": [
       "President Biden represented Delaware for 36 years in the U.S. Senate before becoming the 47th Vice President of the United States.",
       "As President, Biden will restore America\u2019s leadership and build our communities back better.",
       "Joseph Robinette Biden, Jr. was born in Scranton, Pennsylvania, the first of four children of Catherine Eugenia Finnegan Biden and Joseph Robinette Biden, Sr.",
@@ -41,7 +41,7 @@
   "es": {
     "title": "Joe Biden: El Presidente",
     "description": "Biograf\u00eda de Joe Biden del sitio web oficial de la Casa Blanca. ",
-    "sentences": [
+    "segments": [
       "El presidente Biden represent\u00f3 a Delaware por 36 a\u00f1os en el Senado de los EE. UU. antes de convertirse en el vicepresidente n\u00famero 47 de los Estados Unidos.",
       "Como presidente, Biden restaurar\u00e1 el liderazgo de nuestra naci\u00f3n y reconstruir\u00e1 mejor nuestras comunidades.",
       "Joseph Robinette Biden, hijo, naci\u00f3 en Scranton (Pensilvania), el primero de cuatro hijos de Catherine Eugenia Finnegan Biden y Joseph Robinette Biden.",
@@ -85,6 +85,6 @@
     "sourceLink": "https://www.whitehouse.gov/administration/president-biden/",
     "sourceText": "The White House",
     "id": "joe-biden-bio",
-    "numSentences": 33
+    "numSegments": 33
   }
 }

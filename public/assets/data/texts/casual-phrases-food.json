@@ -2,7 +2,7 @@
   "en": {
     "title": "Casual Phrases - Food",
     "description": "Casual phrases about food.",
-    "sentences": [
+    "segments": [
       "Let\u2019s eat out today.",
       "This cafe is not available for dining in, but you can order a take out.",
       "I reserved a table for four people at 7pm today.",
@@ -58,7 +58,7 @@
   "es": {
     "title": "Comida",
     "description": "Frases casuales sobre comida.",
-    "sentences": [
+    "segments": [
       "Vamos a comer hoy.",
       "Este caf\u00e9 no est\u00e1 disponible para comer dentro, pero puedes pedir para llevar.",
       "Yo reserv\u00e9 una mesa para cuatro personas hoy a las 7pm.",
@@ -117,6 +117,6 @@
       "casual-phrases"
     ],
     "id": "casual-phrases-food",
-    "numSentences": 50
+    "numSegments": 50
   }
 }

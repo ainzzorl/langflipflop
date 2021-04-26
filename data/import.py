@@ -7,14 +7,14 @@ def process(lang, id):
 
     title, description, body = data.split("\n", maxsplit=2)
 
-    sentences = body.split("\n")
-    sentences = [s.strip() for s in sentences]
-    sentences = [s.strip() for s in sentences if s]
+    segments = body.split("\n")
+    segments = [s.strip() for s in segments]
+    segments = [s.strip() for s in segments if s]
 
   return {
     'title': title,
     'description': description,
-    'sentences': sentences
+    'segments': segments
   }
 
 def printdiff(lh, rh):
@@ -53,11 +53,11 @@ for id in os.listdir('./data/in/'):
   with open(f"./data/in/{id}/meta.json") as f:
     meta = json.load(f)
   meta['id'] = id
-  meta['numSentences'] = len(en['sentences'])
+  meta['numSegments'] = len(en['segments'])
 
-  if len(en['sentences']) != len(es['sentences']):
-    printdiff(en['sentences'], es['sentences'])
-    raise Exception(f"Length mismatch: en={len(en['sentences'])} vs es={len(es['sentences'])}")
+  if len(en['segments']) != len(es['segments']):
+    printdiff(en['segments'], es['segments'])
+    raise Exception(f"Length mismatch: en={len(en['segments'])} vs es={len(es['segments'])}")
   else:
     print("Everything's fine")
 

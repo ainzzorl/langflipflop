@@ -5,7 +5,7 @@ export default class TextMeta {
   title: string;
   difficulty: string;
   categories: Array<string>;
-  numSentences: number;
+  numSegments: number;
   sourceLink?: string;
   sourceText?: string;
 
@@ -14,7 +14,7 @@ export default class TextMeta {
     this.id = data["meta"]["id"];
     this.difficulty = data["meta"]["difficulty"];
     this.categories = data["meta"]["categories"];
-    this.numSentences = data["meta"]["numSentences"];
+    this.numSegments = data["meta"]["numSegments"];
     this.sourceLink = data["meta"]["sourceLink"];
     this.sourceText = data["meta"]["sourceText"];
   }

@@ -2,7 +2,7 @@
   "en": {
     "title": "Casual Phrases - Work",
     "description": "Casual Phrases about Work.",
-    "sentences": [
+    "segments": [
       "I\u2019m a lawyer. I love my job, but it\u2019s a little stressful.",
       "My brother is an architect. He finds it very interesting.",
       "My uncle is a professor. He teaches economy.",
@@ -39,7 +39,7 @@
   "es": {
     "title": "Frases casuales - Trabajo",
     "description": "Frases casuales - Trabajo.",
-    "sentences": [
+    "segments": [
       "Soy un abogado. Me encanta mi trabajo, pero es un poco estresante.",
       "Mi hermano es un arquitecto. A \u00e9l le parece muy interesante.",
       "Mi t\u00edo es un profesor. \u00c9l ense\u00f1a econom\u00eda.",
@@ -79,6 +79,6 @@
       "casual-phrases"
     ],
     "id": "casual-phrases-work",
-    "numSentences": 31
+    "numSegments": 31
   }
 }

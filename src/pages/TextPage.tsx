@@ -41,7 +41,7 @@ class RecentPage extends React.Component<
     lang1: string;
     lang2: string;
     texts: any;
-    sentenceIndex: number;
+    segmentIndex: number;
     gesturesInitialized: boolean;
     sideOneText: string;
     sideTwoText: string;
@@ -66,7 +66,7 @@ class RecentPage extends React.Component<
       lang: (params["lang1"] as string) || "en",
       lang1: (params["lang1"] as string) || "en",
       lang2: (params["lang2"] as string) || "es",
-      sentenceIndex: parseInt((params["i"] as string) || "1") - 1,
+      segmentIndex: parseInt((params["i"] as string) || "1") - 1,
       texts: {},
       gesturesInitialized: false,
       sideOneText: "",
@@ -89,8 +89,8 @@ class RecentPage extends React.Component<
       .then((texts) => {
         this.setState((state) => ({
           texts: texts,
-          sideOneText: texts[state.lang1].sentences[state.sentenceIndex],
-          sideTwoText: texts[state.lang2].sentences[state.sentenceIndex],
+          sideOneText: texts[state.lang1].segments[state.segmentIndex],
+          sideTwoText: texts[state.lang2].segments[state.segmentIndex],
         }));
         this.updateTextStamps();
         return DAO.getUser();
@@ -129,7 +129,7 @@ class RecentPage extends React.Component<
 
   updateTextStamps() {
     let textId = this.props.match.params.id;
-    DAO.updateTextStamps(textId, this.state.sentenceIndex);
+    DAO.updateTextStamps(textId, this.state.segmentIndex);
   }
 
   onFlip() {
@@ -140,11 +140,11 @@ class RecentPage extends React.Component<
   }
 
   goToNext() {
-    this.goToIndex(this.state.sentenceIndex + 1);
+    this.goToIndex(this.state.segmentIndex + 1);
   }
 
   goToPrevious() {
-    this.goToIndex(this.state.sentenceIndex - 1);
+    this.goToIndex(this.state.segmentIndex - 1);
   }
 
   completeFtue() {
@@ -173,20 +173,20 @@ class RecentPage extends React.Component<
     if (index < 0) {
       return;
     }
-    if (index >= this.state.texts["en"].sentences.length) {
+    if (index >= this.state.texts["en"].segments.length) {
       this.setShowEndOfTextAlert(true);
       return;
     }
     this.setState(
       (state) => ({
         lang: state.lang1,
-        sentenceIndex: index,
+        segmentIndex: index,
         sideOneText: state.flipped
-          ? state.texts[state.lang2].sentences[index]
-          : state.texts[state.lang1].sentences[index],
+          ? state.texts[state.lang2].segments[index]
+          : state.texts[state.lang1].segments[index],
         sideTwoText: state.flipped
-          ? state.texts[state.lang1].sentences[index]
-          : state.texts[state.lang2].sentences[index],
+          ? state.texts[state.lang1].segments[index]
+          : state.texts[state.lang2].segments[index],
       }),
       this.updateTextStamps
     );
@@ -203,7 +203,7 @@ class RecentPage extends React.Component<
   }
 
   render() {
-    if (!this.state.texts["en"] || this.state.sentenceIndex < 0) {
+    if (!this.state.texts["en"] || this.state.segmentIndex < 0) {
       return <div>Loading...</div>;
     }
 
@@ -245,8 +245,8 @@ class RecentPage extends React.Component<
               <IonTitle color="medium">
                 <div className="my-wrap">
                   {this.state.texts[this.state.lang].title} (
-                  {this.state.sentenceIndex + 1}/
-                  {this.state.texts["en"].sentences.length})
+                  {this.state.segmentIndex + 1}/
+                  {this.state.texts["en"].segments.length})
                 </div>
               </IonTitle>
             </IonButtons>
@@ -305,7 +305,7 @@ class RecentPage extends React.Component<
           <IonToolbar>
             <IonButtons slot="start">
               <IonButton
-                disabled={this.state.sentenceIndex === 0}
+                disabled={this.state.segmentIndex === 0}
                 color="primary"
                 onClick={this.goToPrevious}
               >
@@ -313,8 +313,8 @@ class RecentPage extends React.Component<
               </IonButton>
               <IonButton
                 disabled={
-                  this.state.sentenceIndex ===
-                  this.state.texts["en"].sentences.length - 1
+                  this.state.segmentIndex ===
+                  this.state.texts["en"].segments.length - 1
                 }
                 color="secondary"
                 onClick={this.goToNext}

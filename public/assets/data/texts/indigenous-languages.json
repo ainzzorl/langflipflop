@@ -2,7 +2,7 @@
   "en": {
     "title": "Australia Showcases Diverse Indigenous Languages",
     "description": "An article about \"The 50 Words Project\" aiming to provide fifty words in every Indigenous language of Australia.",
-    "sentences": [
+    "segments": [
       "A new project is celebrating the linguistic culture of Australia's Aboriginal communities by working to introduce Australians to everyday words and phrases from hundreds of Indigenous languages.",
       "The 50 Words Project is an interactive online language map.",
       "Words and phrases from across the continent are brought to life with recordings from Indigenous speakers.",
@@ -22,7 +22,7 @@
   "es": {
     "title": "Australia muestra sus diversas lenguas ind\u00edgenas",
     "description": "Australia muestra sus diversas lenguas ind\u00edgenas.",
-    "sentences": [
+    "segments": [
       "Un nuevo proyecto celebra la cultura ling\u00fc\u00edstica de las comunidades abor\u00edgenes de Australia con el fin de presentar a los australianos palabras y frases cotidianas de cientos de lenguas ind\u00edgenas.",
       "El Proyecto 50 Palabras es un mapa ling\u00fc\u00edstico interactivo en l\u00ednea.",
       "Palabras y frases de todo el continente cobran vida con grabaciones de hablantes ind\u00edgenas.",
@@ -48,6 +48,6 @@
     "sourceLink": "https://www.voanews.com/east-asia-pacific/australia-showcases-diverse-indigenous-languages",
     "sourceText": "Voice of America (VOA)",
     "id": "indigenous-languages",
-    "numSentences": 14
+    "numSegments": 14
   }
 }

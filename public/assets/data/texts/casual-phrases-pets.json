@@ -2,7 +2,7 @@
   "en": {
     "title": "Casual Phrases - Pets",
     "description": "Casual Phrases about Pets.",
-    "sentences": [
+    "segments": [
       "I always dreamed of having a cat.",
       "My cat purrs when I pet her.",
       "What a lovely kitten! What is his name?",
@@ -38,7 +38,7 @@
   "es": {
     "title": "Frases casuales - Mascotas",
     "description": "Frases casuales - Mascotas.",
-    "sentences": [
+    "segments": [
       "Siempre so\u00f1\u00e9 en tener un gato.",
       "Mi gato ronronea cuando la acaricio.",
       "\u00a1Qu\u00e9 gato tan lindo! \u00bfCu\u00e1l es su nombre?",
@@ -77,6 +77,6 @@
       "casual-phrases"
     ],
     "id": "casual-phrases-pets",
-    "numSentences": 30
+    "numSegments": 30
   }
 }

@@ -2,7 +2,7 @@
   "en": {
     "title": "Casual Phrases - Weather",
     "description": "Casual phrases about weather.",
-    "sentences": [
+    "segments": [
       "They lost their house in the flood last year.",
       "It rains a lot here - it reminds me of London.",
       "Storm is coming. Expect heavy rain, strong wind, and possibility of hail.",
@@ -46,7 +46,7 @@
   "es": {
     "title": "Frases casuales - Clima",
     "description": "Frases casuales sobre el clima.",
-    "sentences": [
+    "segments": [
       "Ellos perdieron su casa en la inundaci\u00f3n del a\u00f1o pasado.",
       "Llueve mucho aqu\u00ed \u2013 me recuerda a Londres.",
       "La tormenta se aproxima. Esperen lluvias pesadas, vientos fuertes y posibilidad de granizo.",
@@ -93,6 +93,6 @@
       "casual-phrases"
     ],
     "id": "casual-phrases-weather",
-    "numSentences": 38
+    "numSegments": 38
   }
 }

@@ -2,7 +2,7 @@
   "en": {
     "title": "Casual Phrases - Hobbies and Sports",
     "description": "Casual phrases about hobbies and sports.",
-    "sentences": [
+    "segments": [
       "What do you do in your spare time?",
       "What\u2019s your favorite hobby?",
       "What do you do outside of work?",
@@ -58,7 +58,7 @@
   "es": {
     "title": "Pasatiempos y Deportes",
     "description": "Frases casuales sobre pasatiempos y deportes.",
-    "sentences": [
+    "segments": [
       "\u00bfQu\u00e9 haces en tu tiempo libre?",
       "\u00bfCu\u00e1l es tu pasatiempo favorito?",
       "\u00bfQu\u00e9 haces cuando sales del trabajo?",
@@ -118,6 +118,6 @@
       "sports"
     ],
     "id": "casual-phrases-hobbies-and-sports",
-    "numSentences": 50
+    "numSegments": 50
   }
 }

@@ -2,7 +2,7 @@
   "en": {
     "title": "Poet Louise Gluck Wins Nobel Prize in Literature",
     "description": "Poet Louise Gluck Wins Nobel Prize in Literature.",
-    "sentences": [
+    "segments": [
       "American poet Louise Gl\u00fcck has won this year\u2019s Nobel Prize in literature.",
       "The Swedish Academy praised Gl\u00fcck\u2019s \u201cunmistakable poetic voice that with austere beauty makes individual existence universal.\u201d",
       "Gl\u00fcck has published 12 poetry collections, and her previous honors include the Pulitzer Prize and the National Book Award.",
@@ -17,7 +17,7 @@
   "es": {
     "title": "La Poeta Louise Gluck Gana el Premio Nobel de Literatura",
     "description": "La Poeta Louise Gluck Gana el Premio Nobel de Literatura.",
-    "sentences": [
+    "segments": [
       "La poeta Americana Louise Gl\u00fcck gan\u00f3 el Premio Nobel de Literatura de este a\u00f1o.",
       "La Academia Sueca elogi\u00f3 la \u201cvoz po\u00e9tica inconfundible que con belleza austera que hace la existencia individual universal\u201d de Gl\u00fcck.",
       "Gl\u00fcck ha publicado 12 colecciones de poes\u00eda, y sus previos honores incluyen el Premio Pulitzer y el Premio Nacional de Libros.",
@@ -38,6 +38,6 @@
     "sourceLink": "https://www.voanews.com/arts-culture/poet-louise-gluck-wins-nobel-prize-literature",
     "sourceText": "Voice of America (VOA)",
     "id": "gluck-nobel-prize",
-    "numSentences": 9
+    "numSegments": 9
   }
 }

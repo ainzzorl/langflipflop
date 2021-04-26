@@ -2,7 +2,7 @@
   "en": {
     "title": "Millennial Life: Eat, Sleep, Work, Screens",
     "description": "An article about the life of the millennial generation.",
-    "sentences": [
+    "segments": [
       "Would you give up nearly a decade of your life looking at your cellphone?",
       "Calculated by today\u2019s usage, the average person spends a little over 76,500 hours \u2013 or 8.74 years \u2013 on a smartphone over a lifetime, according to a recent study by a mobile device comparison site, WhistleOut.",
       "Unsurprisingly, millennials (born 1981 to 1996) spend the most time on their phones with an average of about 3.7 hours per day.",
@@ -23,7 +23,7 @@
   "es": {
     "title": "La vida de los millennials: Comer, dormir, trabajar, pantallas.",
     "description": "La vida de los millennials: Comer, dormir, trabajar, pantallas.",
-    "sentences": [
+    "segments": [
       "\u00bfRenunciar\u00edas a casi una d\u00e9cada de tu vida mirando el m\u00f3vil?",
       "Calculado seg\u00fan el uso actual, la persona media pasa algo m\u00e1s de 76.500 horas - o 8,74 a\u00f1os - con un smartphone a lo largo de su vida, seg\u00fan un estudio reciente de un sitio de comparaci\u00f3n de dispositivos m\u00f3viles, WhistleOut.",
       "Como es l\u00f3gico, los millennials (nacidos entre 1981 y 1996) son los que m\u00e1s tiempo pasan con sus tel\u00e9fonos, con una media de unas 3,7 horas al d\u00eda.",
@@ -49,6 +49,6 @@
     "sourceLink": "https://www.voanews.com/student-union/millennial-life-eat-sleep-work-screens",
     "sourceText": "Voice of America (VOA)",
     "id": "millenials",
-    "numSentences": 15
+    "numSegments": 15
   }
 }

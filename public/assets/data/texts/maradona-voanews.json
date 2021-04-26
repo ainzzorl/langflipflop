@@ -2,7 +2,7 @@
   "en": {
     "title": "Diego Maradona's Career Had Its Share of Highs, Lows ",
     "description": "An article about Diego Maradona, who's widely regarded as one of the greatest football player in the history of the sport.",
-    "sentences": [
+    "segments": [
       "BUENOS AIRES - Diego Maradona was football's archetypal troubled genius, a world-beating player whose life and career scaled the most dazzling heights but also plumbed the darkest depths.",
       "Maradona, who died Wednesday at the age of 60, became a global icon after leading Argentina to the 1986 World Cup, but he was not a squeaky-clean idol like Pele, and made little attempt to hide his fiery personality and many vices.",
       "\"I am black or white, I'll never be gray in my life,\" he once said.",
@@ -64,7 +64,7 @@
   "es": {
     "title": "La Carrera de Diego Maradona Tuvo Sus Altas y Bajas",
     "description": "Un art\u00edculo sobre Diego Maradona, quien es ampliamente reconocido como uno de los m\u00e1s grandes futbolistas en la historia del deporte.",
-    "sentences": [
+    "segments": [
       "BUENOS AIRES - Diego Maradona fue el arquetipo del genio complicado del f\u00fatbol, un jugador que le derrot\u00f3 al mundo cuya vida y carrera escalaron los altos m\u00e1s dif\u00edciles pero tambi\u00e9n tuvo sus bajos m\u00e1s oscuros.",
       "Maradona, quien muri\u00f3 el Mi\u00e9rcoles a la edad de 60, se convirti\u00f3 en un \u00edcono global despu\u00e9s de llevar a Argentina a la Copa del Mundo de 1986, pero \u00e9l no fue un \u00eddolo perfecto como Pel\u00e9, e hizo pocos intentos de esconder su aguerrida personalidad y muchos vicios.",
       "\"Soy blanco o negro, nunca ser\u00e9 gris en mi vida\u201d, dijo \u00e9l una vez.",
@@ -132,6 +132,6 @@
     "sourceLink": "https://www.voanews.com/americas/diego-maradonas-career-had-its-share-highs-lows",
     "sourceText": "Voice of America (VOA)",
     "id": "maradona-voanews",
-    "numSentences": 56
+    "numSegments": 56
   }
 }

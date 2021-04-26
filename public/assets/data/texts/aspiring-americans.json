@@ -2,7 +2,7 @@
   "en": {
     "title": "Aspiring Americans Face Tougher Citizenship Test",
     "description": "An article about American citizenship tests.",
-    "sentences": [
+    "segments": [
       "WASHINGTON - U.S. legal permanent residents on the path to naturalization will now be required to take a longer and more complex citizenship test.",
       "The new civics test is drawn from 128 questions test takers must be prepared to answer about American history and government, up from 100 questions previously.",
       "Anyone who applies for U.S. naturalization after December 1, 2020, must take the new version.",
@@ -46,7 +46,7 @@
   "es": {
     "title": "Aspirantes a Ser Ciudadanos Americanos Enfrentan Pruebas de Ciudadan\u00eda m\u00e1s Fuertes",
     "description": "Aspirantes a Ser Ciudadanos Americanos Enfrentan Pruebas de Ciudadan\u00eda m\u00e1s Fuertes.",
-    "sentences": [
+    "segments": [
       "WASHINGTON \u2013 Residentes permanentes legales de los EEUU en camino a la naturalizaci\u00f3n ahora tendr\u00e1n que tomar una prueba de ciudadan\u00eda m\u00e1s larga y m\u00e1s compleja.",
       "La nueva prueba c\u00edvica se compone de 128 preguntas que los aspirantes deben estar preparados a responder sobre la historia Americana y el gobierno, en comparaci\u00f3n a las 100 preguntas que sol\u00edan ser.",
       "Cualquiera que aplique para la naturalizaci\u00f3n en EEUU despu\u00e9s del 1er de Diciembre del 2020, deber\u00e1n tomar la nueva versi\u00f3n.",
@@ -95,6 +95,6 @@
     "sourceLink": "https://www.voanews.com/usa/immigration/aspiring-americans-face-tougher-citizenship-test",
     "sourceText": "Voice of America (VOA)",
     "id": "aspiring-americans",
-    "numSentences": 38
+    "numSegments": 38
   }
 }

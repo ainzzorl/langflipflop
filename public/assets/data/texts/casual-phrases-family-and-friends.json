@@ -2,7 +2,7 @@
   "en": {
     "title": "Casual Phrases - Family and Friends",
     "description": "Casual phrases about family and friends.",
-    "sentences": [
+    "segments": [
       "My family consists of five people: my wife, daughter, two sons, and me.",
       "I have twelve cousins.",
       "The kids love their grandparents.",
@@ -33,7 +33,7 @@
   "es": {
     "title": "Familia y amigos",
     "description": "Frases casuales sobre familia y amigos.",
-    "sentences": [
+    "segments": [
       "Mi familia est\u00e1 formada por cinco personas: mi mujer, mi hija, mis dos hijos y yo.",
       "Tengo doce primos.",
       "Los ni\u00f1os adoran a sus abuelos.",
@@ -67,6 +67,6 @@
       "casual-phrases"
     ],
     "id": "casual-phrases-family-and-friends",
-    "numSentences": 25
+    "numSegments": 25
   }
 }

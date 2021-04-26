@@ -2,7 +2,7 @@
   "en": {
     "title": "Mysterious Metallic Monolith Found in Remote Utah",
     "description": "An article about a mysterious monolith found in remote Utah.",
-    "sentences": [
+    "segments": [
       "In a scene that could have been taken from the science fiction classic \u201c2001: A Space Odyssey,\u201d officials in Utah have discovered a mysterious metallic monolith in the remote southeastern part of the state.",
       "Public safety workers spotted the object November 18 from a helicopter while conducting a count of bighorn sheep, according to a news statement.",
       "So far, there is no indication of who could have placed the 3- to 3.6-meter-tall monolith in that location.",
@@ -15,7 +15,7 @@
   "es": {
     "title": "Misterioso Monolito Met\u00e1lico Encontrado en Partes Remotas de Utah",
     "description": "Misterioso monolito met\u00e1lico encontrado en partes remotas de Utah.",
-    "sentences": [
+    "segments": [
       "En una escena que podr\u00eda ser tomada del cl\u00e1sico de ciencia ficci\u00f3n \u201c2001: Una Odisea Espacial\u201d, los oficiales en Utah han descubierto un monolito met\u00e1lico misterioso en la parte m\u00e1s remota del sureste del estado.",
       "Los trabajadores de la seguridad p\u00fablica detectaron el objeto el 18 de Noviembre desde un helic\u00f3ptero mientras conduc\u00edan un conteo de carneros, seg\u00fan una declaraci\u00f3n de las noticias.",
       "Hasta ahora, no hay indicativos de qui\u00e9n pudo haber colocado el monolito de 3 a 3.6 metros en esa ubicaci\u00f3n.",
@@ -33,6 +33,6 @@
     "sourceLink": "https://www.voanews.com/usa/mysterious-metallic-monolith-found-remote-utah",
     "sourceText": "Voice of America (VOA)",
     "id": "mysterious-monolith",
-    "numSentences": 7
+    "numSegments": 7
   }
 }

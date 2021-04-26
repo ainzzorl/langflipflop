@@ -2,7 +2,7 @@
   "en": {
     "title": "Casual Phrases - House",
     "description": "Casual Phrases - House.",
-    "sentences": [
+    "segments": [
       "My apartment is small, but cozy.",
       "My brother has a big house with three bedrooms and three bathrooms.",
       "This is my kitchen where I cook.",
@@ -44,7 +44,7 @@
   "es": {
     "title": "Frases casuales - Casa",
     "description": "Frases casuales - Casa.",
-    "sentences": [
+    "segments": [
       "Mi apartamento es peque\u00f1o, pero acogedor.",
       "Mi hermano tiene una casa grande con tres cuartos y tres ba\u00f1os.",
       "Esta es mi cocina donde yo cocino.",
@@ -89,6 +89,6 @@
       "casual-phrases"
     ],
     "id": "casual-phrases-house",
-    "numSentences": 36
+    "numSegments": 36
   }
 }

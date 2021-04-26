@@ -2,7 +2,7 @@
   "en": {
     "title": "Casual Phrases - Holidays and Travel",
     "description": "Casual phrases about holidays and travel.",
-    "sentences": [
+    "segments": [
       "What holidays do you have in Spain?",
       "It\u2019s my sister\u2019s birthday today! She\u2019s turning six.",
       "I\u2019ll buy a present for my brother and you can buy a cake.",
@@ -60,7 +60,7 @@
   "es": {
     "title": "Vacaciones y viajes",
     "description": "Frases casuales sobre vacaciones y viajes.",
-    "sentences": [
+    "segments": [
       "\u00bfQu\u00e9 d\u00edas festivos hay en Espa\u00f1a?",
       "Hoy es el cumplea\u00f1os de mi hermana. Cumple seis a\u00f1os.",
       "Comprar\u00e9 un regalo para mi hermano y t\u00fa puedes comprar una tarta.",
@@ -121,6 +121,6 @@
       "casual-phrases"
     ],
     "id": "casual-phrases-holidays-and-travel",
-    "numSentences": 52
+    "numSegments": 52
   }
 }
