@@ -1,9 +1,8 @@
 import { screen } from "@testing-library/react";
-
 import {
+  MyTextPageActions,
   renderWithRoute,
   TEST_FIXTURES,
-  MyTextPageActions,
 } from "../../test-common";
 
 test("Rendering Text Info", async () => {

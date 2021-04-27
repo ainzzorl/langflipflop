@@ -1,8 +1,7 @@
 import { fireEvent, screen } from "@testing-library/react";
-
 import {
-  renderWithRoute,
   MyTextPageActions,
+  renderWithRoute,
   TEST_FIXTURES,
 } from "../../test-common";
 

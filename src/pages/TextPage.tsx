@@ -1,35 +1,28 @@
-import React from "react";
-import ReactDOMServer from "react-dom/server";
-import "./TextPage.css";
 import {
+  IonAlert,
   IonBackButton,
   IonButton,
+  IonButtons,
   IonContent,
   IonFooter,
-  IonPage,
   IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonTitle,
   IonIcon,
-  IonAlert,
   IonicSafeString,
+  IonPage,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-
-import { RouteComponentProps } from "react-router-dom";
-
 import Hammer from "hammerjs";
-
-import { information, help } from "ionicons/icons";
-
-import ReactCardFlip from "react-card-flip";
-import { DAO } from "../common/DAO";
-
-import { isBrowser } from "../common/Common";
-
-import queryString from "query-string";
-
+import { help, information } from "ionicons/icons";
 import Mousetrap from "mousetrap";
+import queryString from "query-string";
+import React from "react";
+import ReactCardFlip from "react-card-flip";
+import ReactDOMServer from "react-dom/server";
+import { RouteComponentProps } from "react-router-dom";
+import { isBrowser } from "../common/Common";
+import { DAO } from "../common/DAO";
+import "./TextPage.css";
 
 interface MyTextProps
   extends RouteComponentProps<{

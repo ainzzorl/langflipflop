@@ -1,10 +1,9 @@
-import { within, screen } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import { DAO, User } from "../../common/DAO";
-
 import {
-  renderWithRoute,
   findTextCard,
   MyTextPageActions,
+  renderWithRoute,
   TEST_FIXTURES,
 } from "../../test-common";
 

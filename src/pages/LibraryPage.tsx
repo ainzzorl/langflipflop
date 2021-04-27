@@ -1,26 +1,20 @@
-import React from "react";
-
-import TextMeta from "../common/TextMeta";
-
-import TextCard from "../components/TextCard";
-import { CATEGORIES, CATEGORY_MAP } from "../common/Categories";
-
 import {
   IonContent,
-  IonLabel,
-  IonPage,
-  IonList,
   IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
   IonSelect,
   IonSelectOption,
 } from "@ionic/react";
-import { DAO, PersistentTextData, Settings } from "../common/DAO";
-
 import deepEqual from "fast-deep-equal/es6";
-
 import queryString from "query-string";
-
+import React from "react";
 import { RouteComponentProps, StaticContext } from "react-router";
+import { CATEGORIES, CATEGORY_MAP } from "../common/Categories";
+import { DAO, PersistentTextData, Settings } from "../common/DAO";
+import TextMeta from "../common/TextMeta";
+import TextCard from "../components/TextCard";
 
 class LibraryPage extends React.Component<
   RouteComponentProps<any, StaticContext, unknown>,

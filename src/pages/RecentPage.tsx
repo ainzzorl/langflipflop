@@ -1,20 +1,15 @@
-import React from "react";
-
 import {
   IonContent,
-  IonPage,
   IonHeader,
-  IonToolbar,
+  IonPage,
   IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-
-import TextMeta from "../common/TextMeta";
-
-import TextCard from "../components/TextCard";
-
-import { DAO, PersistentTextData, Settings } from "../common/DAO";
-
 import deepEqual from "fast-deep-equal/es6";
+import React from "react";
+import { DAO, PersistentTextData, Settings } from "../common/DAO";
+import TextMeta from "../common/TextMeta";
+import TextCard from "../components/TextCard";
 
 class RecentPage extends React.Component<
   {},

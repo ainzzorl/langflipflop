@@ -1,22 +1,19 @@
-import React from "react";
-
 import {
-  IonContent,
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonGrid,
   IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonPage,
   IonRow,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-
+import React from "react";
 import {
-  isBrowser,
   BROWSER_CLICK_VERB,
   DEVICE_CLICK_VERB,
+  isBrowser,
 } from "../common/Common";
-
 import "./InfoPage.css";
 
 class InfoPage extends React.Component<{}, {}> {

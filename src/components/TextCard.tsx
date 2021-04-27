@@ -1,14 +1,13 @@
-import React from "react";
 import {
-  IonLabel,
   IonCard,
+  IonCardContent,
   IonCardHeader,
   IonCardTitle,
-  IonCardContent,
+  IonLabel,
 } from "@ionic/react";
-
-import TextMeta from "../common/TextMeta";
+import React from "react";
 import { PersistentTextData, Settings } from "../common/DAO";
+import TextMeta from "../common/TextMeta";
 
 class TextCard extends React.Component<
   {

@@ -1,17 +1,15 @@
-import React from "react";
 import {
   IonBackButton,
-  IonContent,
-  IonPage,
-  IonHeader,
-  IonToolbar,
   IonButtons,
-  IonTitle,
+  IonContent,
+  IonHeader,
+  IonPage,
   IonText,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-
+import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-
 import TextMeta from "../common/TextMeta";
 
 interface TextInfoProps

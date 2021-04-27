@@ -1,9 +1,8 @@
 import { screen } from "@testing-library/react";
 import { DAO } from "../../common/DAO";
-
 import {
-  renderWithRoute,
   findTextCard,
+  renderWithRoute,
   TEST_FIXTURES,
 } from "../../test-common";
 

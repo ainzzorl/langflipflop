@@ -1,7 +1,7 @@
 // https://github.com/ionic-team/ionic-react-test-utils/blob/master/src/mocks/mockController.tsx
 
-import React, { useState, useEffect } from "react";
 import { AlertButton } from "@ionic/react";
+import React, { useEffect, useState } from "react";
 
 const MockControllerInner: React.FC<{
   backdropDismiss?: boolean;

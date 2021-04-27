@@ -1,18 +1,17 @@
-import React from "react";
-
 import {
   IonContent,
-  IonPage,
   IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonList,
-  IonRadioGroup,
-  IonRadio,
-  IonListHeader,
-  IonLabel,
   IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonPage,
+  IonRadio,
+  IonRadioGroup,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
+import React from "react";
 import { DAO, Settings } from "../common/DAO";
 
 class SettingsPage extends React.Component<{}, { settings?: Settings }> {

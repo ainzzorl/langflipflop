@@ -1,5 +1,4 @@
 import { screen } from "@testing-library/react";
-
 import { renderWithRoute } from "../../test-common";
 
 // TODO: test changing settings.

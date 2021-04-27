@@ -2,14 +2,11 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
-import "@testing-library/jest-dom/extend-expect";
-
-import fs from "fs";
-
 import { Plugins } from "@capacitor/core";
-
-import { mockController } from "./mocks/mockController";
+import "@testing-library/jest-dom/extend-expect";
+import fs from "fs";
 import { DAO } from "./common/DAO";
+import { mockController } from "./mocks/mockController";
 
 const { Storage } = Plugins;
 

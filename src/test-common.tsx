@@ -1,5 +1,5 @@
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
-import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import MainComponent from "./components/MainComponent";
 

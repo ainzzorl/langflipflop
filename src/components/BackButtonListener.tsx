@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
 import { Plugins } from "@capacitor/core";
 import { useIonRouter } from "@ionic/react";
+import React, { useEffect } from "react";
 const { App } = Plugins;
 
 interface BackButtonListenerProps {}

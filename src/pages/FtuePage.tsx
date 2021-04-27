@@ -1,26 +1,23 @@
-import React from "react";
-import "./FtuePage.css";
-
 import {
-  IonContent,
-  IonLabel,
-  IonPage,
-  IonList,
-  IonItem,
-  IonHeader,
-  IonToolbar,
-  IonRadioGroup,
-  IonRadio,
-  IonListHeader,
-  IonFooter,
   IonButton,
   IonButtons,
+  IonContent,
+  IonFooter,
+  IonHeader,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonPage,
+  IonRadio,
+  IonRadioGroup,
+  IonToolbar,
 } from "@ionic/react";
-import { DAO, Settings, User } from "../common/DAO";
-
-import { RouteComponentProps, StaticContext, withRouter } from "react-router";
-
 import queryString from "query-string";
+import React from "react";
+import { RouteComponentProps, StaticContext, withRouter } from "react-router";
+import { DAO, Settings, User } from "../common/DAO";
+import "./FtuePage.css";
 
 class FtuePage extends React.Component<
   RouteComponentProps<any, StaticContext, unknown>,

@@ -1,12 +1,10 @@
 import { screen, within } from "@testing-library/react";
-
+import { DAO } from "../../common/DAO";
 import {
-  renderWithRoute,
   findTextCard,
+  renderWithRoute,
   TEST_FIXTURES,
 } from "../../test-common";
-
-import { DAO } from "../../common/DAO";
 
 test("Rendering Recent", async () => {
   renderWithRoute("/t/recent");
