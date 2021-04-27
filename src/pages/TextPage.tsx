@@ -48,11 +48,7 @@ class RecentPage extends React.Component<
   constructor(props: any) {
     super(props);
 
-    let url = this.props.location.search;
-    if (!url) {
-      url = window.location.search;
-    }
-    let params = queryString.parse(url);
+    let params = queryString.parse(this.getSearch());
 
     this.state = {
       // TODO: the defaults take place sometimes when user clicks back and forward.
@@ -96,6 +92,14 @@ class RecentPage extends React.Component<
           showFtue: !user.completedTextFtue,
         });
       });
+  }
+
+  getSearch() {
+    if (this.props.location.search) {
+      return this.props.location.search;
+    } else {
+      return window.location.search;
+    }
   }
 
   // TODO: generalize
@@ -157,7 +161,7 @@ class RecentPage extends React.Component<
 
   onGoToTextInfoClicked() {
     this.props.history.push(
-      `/texts/${this.props.match.params.id}/info${window.location.search}`
+      `/texts/${this.props.match.params.id}/info${this.getSearch()}`
     );
   }
 

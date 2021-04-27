@@ -108,7 +108,19 @@ test("Back button", async () => {
   await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
 });
 
-// TODO: persistence
-// TODO: info page and back to text page
+test("Going to the info page and then back", async () => {
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=2`);
+  await MyTextPageActions.assertOnPage(1, "en");
+
+  await MyTextPageActions.goToTextInfo();
+  await TextInfoPageActions.assertOnPage();
+
+  stubLocation();
+
+  await TextInfoPageActions.clickBack();
+  // The key thing is that it goes back to the same segment.
+  await MyTextPageActions.assertOnPage(1, "en");
+});
+
 // TODO: FTUE popup (at launch)
 // TODO: FTUE popup (on request)
