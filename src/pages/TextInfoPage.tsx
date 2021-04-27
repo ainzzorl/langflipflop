@@ -28,7 +28,7 @@ class TextInfoPage extends React.Component<
 > {
   constructor(props: any) {
     super(props);
-    fetch("assets/data/texts/" + this.props.match.params.id + ".json")
+    fetch(`assets/data/texts/${this.props.match.params.id}.json`)
       .then((res) => res.json())
       .then((res) => {
         this.setState(() => ({
