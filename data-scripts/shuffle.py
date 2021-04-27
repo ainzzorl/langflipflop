@@ -5,36 +5,6 @@ Shuffle segments in a text.
 import sys
 import random
 
-# from google.cloud import translate
-
-
-# def translate_text(text, project_id="supple-walker-299218"):
-#     """Translating Text."""
-
-#     client = translate.TranslationServiceClient.from_service_account_file('gcp.json')
-
-#     location = "global"
-
-#     parent = f"projects/{project_id}/locations/{location}"
-
-#     # Detail on supported types can be found here:
-#     # https://cloud.google.com/translate/docs/supported-formats
-#     response = client.translate_text(
-#         request={
-#             "parent": parent,
-#             "contents": [text],
-#             "mime_type": "text/plain",  # mime types: text/plain, text/html
-#             "source_language_code": "en-US",
-#             "target_language_code": "es",
-#         }
-#     )
-
-#     return [t.translated_text for t in response.translations]
-
-if len(sys.argv) != 2:
-    sys.stderr.write("Usage: shuffle.py TEXT-ID\n")
-    sys.exit(1)
-
 def clean_lines(lines):
     return [l.strip() for l in lines if l.strip()]
 
@@ -44,6 +14,10 @@ def joined_shuffle(a, b):
     return zip(*temp)
 
 def main():
+    if len(sys.argv) != 2:
+        sys.stderr.write("Usage: shuffle.py TEXT-ID\n")
+        sys.exit(1)
+
     text_id = sys.argv[1]
 
     with open(f"./data/texts/{text_id}/en.txt") as file:
@@ -51,15 +25,10 @@ def main():
     with open(f"./data/texts/{text_id}/es.txt") as file:
         es_text = clean_lines(file.read().split("\n"))
 
-    title_en = en_text[0]
-    description_en = en_text[1]
-    lines_en = en_text[2:]
+    title_en, description_en, segments_en = en_text[0], en_text[1], en_text[2:]
+    title_es, description_es, segments_es = es_text[0], es_text[1], es_text[2:]
 
-    title_es = es_text[0]
-    description_es = es_text[1]
-    lines_es = es_text[2:]
-
-    shuffled_en, shuffled_es = joined_shuffle(lines_en, lines_es)
+    shuffled_en, shuffled_es = joined_shuffle(segments_en, segments_es)
 
     shuffled_en = "\n".join(shuffled_en)
     shuffled_es = "\n".join(shuffled_es)
@@ -75,4 +44,5 @@ def main():
     with open(f"./data/texts/{text_id}/es.txt", 'w') as f:
         f.write(out_text_es)
 
-main()
+if __name__ == "__main__":
+    main()
