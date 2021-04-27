@@ -3,6 +3,7 @@ import {
   findTextCard,
   MyTextPageActions,
   renderWithRoute,
+  stubLocation,
   TEST_FIXTURES,
   TextInfoPageActions,
 } from "../../test-common";
@@ -96,34 +97,10 @@ test("Going to the info page", async () => {
 });
 
 test("Back button", async () => {
+  stubLocation();
+
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=2`);
   await MyTextPageActions.assertOnPage(1, "en");
-
-  // Stubbing navigation.
-  // TODO: extract
-  Object.defineProperty(window, "location", {
-    value: {
-      _href: "foo",
-      set href(val: string) {
-        this._href = val;
-      },
-      get href() {
-        return this._href;
-      },
-
-      host: "foo",
-      hostname: "foo",
-      path: "foo",
-      port: 123,
-      protocol: "http",
-      pathname: "foo",
-    },
-    writable: true,
-    configurable: true,
-  });
-  jest.spyOn(window.location, "href", "set").mockImplementation((val) => {
-    renderWithRoute(val);
-  });
 
   await MyTextPageActions.clickBack();
 
@@ -135,4 +112,3 @@ test("Back button", async () => {
 // TODO: info page and back to text page
 // TODO: FTUE popup (at launch)
 // TODO: FTUE popup (on request)
-// TODO: back button

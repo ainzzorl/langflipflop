@@ -17,6 +17,28 @@ export async function findTextCard(text: string) {
   return (await screen.findByText(text)).closest("ion-card");
 }
 
+// Stub location methods to rerender the page when window.location.href is changed.
+export function stubLocation() {
+  // Stub navigation.
+  Object.defineProperty(window, "location", {
+    value: {
+      _href: "foo",
+      set href(val: string) {
+        this._href = val;
+      },
+      get href() {
+        return this._href;
+      },
+      pathname: "foo",
+    },
+    writable: true,
+    configurable: true,
+  });
+  jest.spyOn(window.location, "href", "set").mockImplementation((val) => {
+    renderWithRoute(val);
+  });
+}
+
 declare global {
   namespace jest {
     // eslint-disable-next-line
