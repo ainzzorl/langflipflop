@@ -27,6 +27,9 @@ TEXT_WIDTH = int(SCREEN_WIDTH / 2) - 1 - PADDING
 PSTR = ' ' * PADDING
 
 def printdiff(lefthand, righthand):
+    """
+    Print human-readable diff between two languages if they don't match.
+    """
 
     def tochunks(val):
         return [val[i:i+TEXT_WIDTH] for i in range(0, len(val), TEXT_WIDTH)]
@@ -77,4 +80,5 @@ def main():
         with open(f"public/assets/data/texts/{textid}.json", 'w') as outfile:
             json.dump(final, outfile, indent=2)
 
-main()
+if __name__ == "__main__":
+    main()
