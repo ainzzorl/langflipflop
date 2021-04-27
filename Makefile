@@ -27,7 +27,7 @@ serve :
 
 .PHONY: generate-data
 generate-data :
-			 python data/import.py
+			 python data-scripts/import.py
 
 .PHONY: android
 android :
@@ -55,12 +55,12 @@ android-release-unsigned :
 
 .PHONY: translate
 translate :
-			 python data/translate.py $(ARGS)
+			 python data-scripts/translate.py $(ARGS)
 
 # make shuffle ARGS=text-id
 .PHONY: shuffle
 shuffle :
-			 python data/shuffle.py $(ARGS)
+			 python data-scripts/shuffle.py $(ARGS)
 
 .PHONY: test
 test :
