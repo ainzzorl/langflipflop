@@ -29,6 +29,8 @@ import { isBrowser } from "../common/Common";
 
 import queryString from "query-string";
 
+import Mousetrap from "mousetrap";
+
 interface MyTextProps
   extends RouteComponentProps<{
     id: string;
@@ -125,6 +127,18 @@ class RecentPage extends React.Component<
         gesturesInitialized: true,
       }));
     }
+  }
+
+  componentDidMount() {
+    Mousetrap.bind("space", () => this.onFlip());
+    Mousetrap.bind("right", () => this.goToNext());
+    Mousetrap.bind("left", () => this.goToPrevious());
+  }
+
+  componentWillUnmount() {
+    Mousetrap.unbind("space");
+    Mousetrap.unbind("right");
+    Mousetrap.unbind("left");
   }
 
   updateTextStamps() {
