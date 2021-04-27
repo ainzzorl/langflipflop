@@ -3,6 +3,7 @@ import {
   MyTextPageActions,
   renderWithRoute,
   TEST_FIXTURES,
+  TextInfoPageActions,
 } from "../../test-common";
 
 async function flip() {
@@ -84,3 +85,17 @@ test("End-of-text", async () => {
   await MyTextPageActions.goToNext();
   await screen.findByText("End of Text");
 });
+
+test("Going to the info page", async () => {
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=2`);
+  await MyTextPageActions.assertOnPage(1, "en");
+
+  await MyTextPageActions.goToTextInfo();
+  await TextInfoPageActions.assertOnPage();
+});
+
+// TODO: persistence
+// TODO: info page and back to text page
+// TODO: FTUE popup (at launch)
+// TODO: FTUE popup (on request)
+// TODO: back button

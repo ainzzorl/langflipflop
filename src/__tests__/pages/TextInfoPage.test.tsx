@@ -1,19 +1,14 @@
-import { screen } from "@testing-library/react";
 import {
   MyTextPageActions,
   renderWithRoute,
   TEST_FIXTURES,
+  TextInfoPageActions,
 } from "../../test-common";
 
 test("Rendering Text Info", async () => {
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}/info`);
 
-  await screen.findByText(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
-  await screen.findByText(TEST_FIXTURES.TEST_TEXT_DESCRIPTION);
-  await screen.findByText("Difficulty:");
-  await screen.findByText("Medium");
-  await screen.findByText("Categories:");
-  await screen.findByText("News");
+  await TextInfoPageActions.assertOnPage();
 });
 
 test("Back button", async () => {
@@ -38,10 +33,9 @@ test("Back button", async () => {
   renderWithRoute(
     `/texts/${TEST_FIXTURES.TEST_TEXT_ID}/info?lang1=en&lang2=es&i=2`
   );
+  await TextInfoPageActions.assertOnPage();
 
-  let backButton = await screen.findByTestId("back-button");
-  backButton.click();
-
+  await TextInfoPageActions.clickBack();
   // Expect to go to the text page.
   await MyTextPageActions.assertOnPage(1, "en");
 });

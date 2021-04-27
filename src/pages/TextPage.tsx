@@ -77,6 +77,7 @@ class RecentPage extends React.Component<
     this.updateTextStamps = this.updateTextStamps.bind(this);
     this.completeFtue = this.completeFtue.bind(this);
     this.onHelpClicked = this.onHelpClicked.bind(this);
+    this.onGoToTextInfoClicked = this.onGoToTextInfoClicked.bind(this);
     this.setShowEndOfTextAlert = this.setShowEndOfTextAlert.bind(this);
 
     fetch("assets/data/texts/" + this.props.match.params.id + ".json")
@@ -152,6 +153,12 @@ class RecentPage extends React.Component<
 
   goToPrevious() {
     this.goToIndex(this.state.segmentIndex - 1);
+  }
+
+  onGoToTextInfoClicked() {
+    this.props.history.push(
+      `/texts/${this.props.match.params.id}/info${window.location.search}`
+    );
   }
 
   completeFtue() {
@@ -279,11 +286,7 @@ class RecentPage extends React.Component<
               {
                 text: "About Text",
                 cssClass: "secondary",
-                handler: () => {
-                  this.props.history.push(
-                    `/texts/${this.props.match.params.id}/info${window.location.search}`
-                  );
-                },
+                handler: this.onGoToTextInfoClicked,
               },
               {
                 text: "Close",
@@ -331,7 +334,8 @@ class RecentPage extends React.Component<
             </IonButtons>
             <IonButtons slot="end">
               <IonButton
-                href={`/texts/${this.props.match.params.id}/info${window.location.search}`}
+                data-testid="go-to-text-info-button"
+                onClick={this.onGoToTextInfoClicked}
               >
                 <IonIcon icon={information} size="large" />
               </IonButton>
