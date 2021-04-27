@@ -5,7 +5,6 @@ Translate a text with Google Translate.
 import sys
 from google.cloud import translate
 
-
 def translate_text(text, project_id="supple-walker-299218"):
     """Translating Text."""
 
@@ -21,7 +20,7 @@ def translate_text(text, project_id="supple-walker-299218"):
         request={
             "parent": parent,
             "contents": [text],
-            "mime_type": "text/plain",  # mime types: text/plain, text/html
+            "mime_type": "text/plain",
             "source_language_code": "en-US",
             "target_language_code": "es",
         }
