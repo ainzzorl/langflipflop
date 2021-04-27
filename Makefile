@@ -16,7 +16,7 @@ lint-ts :
 
 .PHONY: lint-python
 lint-python :
-			 pylint data
+			 pylint data-scripts
 
 .PHONY: lint
 lint : lint-ts lint-python
