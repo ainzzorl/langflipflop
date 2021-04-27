@@ -58,6 +58,7 @@ class TextInfoPage extends React.Component<
           <IonToolbar>
             <IonButtons slot="start">
               <IonBackButton
+                data-testid="back-button"
                 defaultHref={`/texts/${this.props.match.params.id}${this.props.location.search}`}
               />
               <IonTitle color="medium">

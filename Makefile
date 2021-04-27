@@ -72,6 +72,10 @@ test :
 test-args :
 			 npm test -- --watchAll=false $(ARGS)
 
+.PHONY: test-info-page
+test-info-page :
+			 npm test -- --watchAll=false src/__tests__/pages/TextInfoPage.test.tsx
+
 .PHONY: test-settings
 test-settings :
 			 npm test -- --watchAll=false src/__tests__/pages/SettingsPage.test.tsx
