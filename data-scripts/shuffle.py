@@ -46,9 +46,9 @@ def joined_shuffle(a, b):
 def main():
     text_id = sys.argv[1]
 
-    with open(f"./data/in/{text_id}/en.txt") as file:
+    with open(f"./data/texts/{text_id}/en.txt") as file:
         en_text = clean_lines(file.read().split("\n"))
-    with open(f"./data/in/{text_id}/es.txt") as file:
+    with open(f"./data/texts/{text_id}/es.txt") as file:
         es_text = clean_lines(file.read().split("\n"))
 
     title_en = en_text[0]
@@ -70,9 +70,9 @@ def main():
     out_text_en = f"{title_en}\n{description_en}\n{shuffled_en}"
     out_text_es = f"{title_es}\n{description_es}\n{shuffled_es}"
 
-    with open(f"./data/in/{text_id}/en.txt", 'w') as f:
+    with open(f"./data/texts/{text_id}/en.txt", 'w') as f:
         f.write(out_text_en)
-    with open(f"./data/in/{text_id}/es.txt", 'w') as f:
+    with open(f"./data/texts/{text_id}/es.txt", 'w') as f:
         f.write(out_text_es)
 
 main()

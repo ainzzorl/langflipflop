@@ -6,7 +6,7 @@ import os
 import json
 
 def process(lang, txtid):
-    with open(f"./data/in/{txtid}/{lang}.txt") as file:
+    with open(f"./data/texts/{txtid}/{lang}.txt") as file:
         data = file.read()
 
         title, description, body = data.split("\n", maxsplit=2)
@@ -53,11 +53,11 @@ def main():
         file_path = os.path.join(TARGET_DIR, filename)
         os.unlink(file_path)
 
-    for textid in os.listdir('./data/in/'):
+    for textid in os.listdir('./data/texts/'):
         print(textid)
         en = process('en', textid)
         es = process('es', textid)
-        with open(f"./data/in/{textid}/meta.json") as f:
+        with open(f"./data/texts/{textid}/meta.json") as f:
             meta = json.load(f)
         meta['id'] = textid
         meta['numSegments'] = len(en['segments'])
