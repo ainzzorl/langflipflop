@@ -25,8 +25,8 @@ lint : lint-ts lint-python
 serve :
 			 ionic serve --no-open
 
-.PHONY: generate-data
-generate-data :
+.PHONY: import-texts
+import-texts :
 			 python data-scripts/import.py
 
 .PHONY: android
