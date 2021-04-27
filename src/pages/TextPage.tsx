@@ -255,7 +255,7 @@ class RecentPage extends React.Component<
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/" />
+              <IonBackButton defaultHref="/" data-testid="back-button" />
               <IonTitle color="medium">
                 <div className="my-wrap">
                   {this.state.texts[this.state.lang].title} (

@@ -1,5 +1,6 @@
 import { fireEvent, screen } from "@testing-library/react";
 import {
+  findTextCard,
   MyTextPageActions,
   renderWithRoute,
   TEST_FIXTURES,
@@ -92,6 +93,42 @@ test("Going to the info page", async () => {
 
   await MyTextPageActions.goToTextInfo();
   await TextInfoPageActions.assertOnPage();
+});
+
+test("Back button", async () => {
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=2`);
+  await MyTextPageActions.assertOnPage(1, "en");
+
+  // Stubbing navigation.
+  // TODO: extract
+  Object.defineProperty(window, "location", {
+    value: {
+      _href: "foo",
+      set href(val: string) {
+        this._href = val;
+      },
+      get href() {
+        return this._href;
+      },
+
+      host: "foo",
+      hostname: "foo",
+      path: "foo",
+      port: 123,
+      protocol: "http",
+      pathname: "foo",
+    },
+    writable: true,
+    configurable: true,
+  });
+  jest.spyOn(window.location, "href", "set").mockImplementation((val) => {
+    renderWithRoute(val);
+  });
+
+  await MyTextPageActions.clickBack();
+
+  // Expect to go to the home page.
+  await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
 });
 
 // TODO: persistence

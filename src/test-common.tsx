@@ -3,8 +3,9 @@ import React from "react";
 import { MemoryRouter } from "react-router";
 import MainComponent from "./components/MainComponent";
 
-export function renderWithRoute(route: string) {
+export async function renderWithRoute(route: string) {
   cleanup();
+
   render(
     <MemoryRouter initialEntries={[route]}>
       <MainComponent />
@@ -141,6 +142,11 @@ export class MyTextPageActions {
 
   private static async getCardByText(text: string) {
     return await screen.findByText(text);
+  }
+
+  static async clickBack() {
+    let backButton = await screen.findByTestId("back-button");
+    backButton.click();
   }
 }
 
