@@ -23,6 +23,8 @@ class FtuePage extends React.Component<
   RouteComponentProps<any, StaticContext, unknown>,
   { settings: Settings; redirect: string }
 > {
+  static readonly DEFAULT_REDIRECT = "/t/texts";
+
   constructor(props: any) {
     super(props);
     this.completeFtue = this.completeFtue.bind(this);
@@ -31,11 +33,21 @@ class FtuePage extends React.Component<
 
     this.state = {
       settings: new Settings(),
-      redirect: (queryParams["redirect"] as string) || "/t/texts",
+      redirect:
+        (queryParams["redirect"] as string) || FtuePage.DEFAULT_REDIRECT,
     };
   }
 
-  setTranslationDirection(translationDirection: string) {
+  private completeFtue() {
+    let user = new User();
+    user.completedMainFtue = true;
+    this.setTranslationDirection(this.state.settings.translationDirection);
+    DAO.setUser(user).then(() => {
+      this.props.history.push(this.state.redirect);
+    });
+  }
+
+  private setTranslationDirection(translationDirection: string) {
     this.setState(
       (state) => {
         state.settings.translationDirection = translationDirection;
@@ -45,15 +57,6 @@ class FtuePage extends React.Component<
         DAO.setSettings(this.state.settings);
       }
     );
-  }
-
-  completeFtue() {
-    let user = new User();
-    user.completedMainFtue = true;
-    this.setTranslationDirection(this.state.settings.translationDirection);
-    DAO.setUser(user).then(() => {
-      this.props.history.push(this.state.redirect);
-    });
   }
 
   render() {

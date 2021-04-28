@@ -92,6 +92,10 @@ test-text-page :
 test-settings :
 			 npm test -- --watchAll=false src/__tests__/pages/SettingsPage.test.tsx
 
+.PHONY: test-ftue
+test-ftue :
+			 npm test -- --watchAll=false src/__tests__/pages/Ftue.test.tsx
+
 .PHONY: export-android-to-dropbox
 export-android-to-dropbox :
 			 cp android/app/build/outputs/apk/debug/app-debug.apk ~/Dropbox/tmp/
