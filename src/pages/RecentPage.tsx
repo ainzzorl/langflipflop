@@ -17,7 +17,7 @@ class RecentPage extends React.Component<
   {
     texts?: Array<TextMeta>;
     textsPersistentData?: Map<string, PersistentTextData>;
-    sortedTexts?: Array<TextMeta>;
+    recentTexts?: Array<TextMeta>;
     settings?: Settings;
   }
 > {
@@ -26,17 +26,11 @@ class RecentPage extends React.Component<
     this.state = {
       texts: undefined,
       textsPersistentData: undefined,
-      sortedTexts: undefined,
+      recentTexts: undefined,
       settings: undefined,
     };
 
     loadAllTextMetadata().then((metadata) => {
-      let allc = new Set<string>();
-      metadata.forEach((metadata) => {
-        metadata.categories.forEach((c) => {
-          allc.add(c);
-        });
-      });
       this.setState(() => ({
         texts: metadata,
       }));
@@ -53,59 +47,24 @@ class RecentPage extends React.Component<
     this.loadPersistentData();
   }
 
-  loadPersistentData() {
-    if (!this.state.texts) {
-      return;
-    }
-    DAO.getSettings().then((settings) => {
-      DAO.getAllTextData().then((textsData) => {
-        let openedTexts: Array<TextMeta> = this.state.texts!.filter(
-          (textMeta) => {
-            return (
-              textsData.has(textMeta.id) &&
-              textsData.get(textMeta.id)?.lastOpenedTimestamp
-            );
-          }
-        );
-        openedTexts.sort(
-          (t1: TextMeta, t2: TextMeta) =>
-            textsData.get(t2.id)!.lastOpenedTimestamp! -
-            textsData.get(t1.id)!.lastOpenedTimestamp!
-        );
-
-        if (
-          !deepEqual(this.state.textsPersistentData, textsData) ||
-          !deepEqual(this.state.sortedTexts, openedTexts) ||
-          !deepEqual(this.state.settings, settings)
-        ) {
-          this.setState(() => ({
-            textsPersistentData: textsData,
-            sortedTexts: openedTexts,
-            settings: settings,
-          }));
-        }
-      });
-    });
-  }
-
   render() {
     if (
       !this.state.texts ||
       !this.state.textsPersistentData ||
-      !this.state.sortedTexts ||
+      !this.state.recentTexts ||
       !this.state.settings
     ) {
       return (
         <IonPage>
-          <IonContent></IonContent>{" "}
+          <IonContent></IonContent>
         </IonPage>
       );
     }
 
     let content;
 
-    if (this.state.sortedTexts!.length > 0) {
-      content = this.state.sortedTexts.map((textMeta, idx) => {
+    if (this.state.recentTexts!.length > 0) {
+      content = this.state.recentTexts.map((textMeta, idx) => {
         return (
           <TextCard
             textMeta={textMeta}
@@ -136,6 +95,46 @@ class RecentPage extends React.Component<
         </IonContent>
       </IonPage>
     );
+  }
+
+  private loadPersistentData() {
+    if (!this.state.texts) {
+      return;
+    }
+    DAO.getSettings().then((settings) => {
+      DAO.getAllTextData().then((textsData) => {
+        let recentTexts = this.getRecentTexts(textsData);
+
+        // Update state only if something actually changed,
+        // otherwise it can get stuck updating itself indefinitely.
+        if (
+          !deepEqual(this.state.textsPersistentData, textsData) ||
+          !deepEqual(this.state.recentTexts, recentTexts) ||
+          !deepEqual(this.state.settings, settings)
+        ) {
+          this.setState(() => ({
+            textsPersistentData: textsData,
+            recentTexts: recentTexts,
+            settings: settings,
+          }));
+        }
+      });
+    });
+  }
+
+  private getRecentTexts(allTextData: Map<String, PersistentTextData>) {
+    let openedTexts: Array<TextMeta> = this.state.texts!.filter((textMeta) => {
+      return (
+        allTextData.has(textMeta.id) &&
+        allTextData.get(textMeta.id)?.lastOpenedTimestamp
+      );
+    });
+    openedTexts.sort(
+      (t1: TextMeta, t2: TextMeta) =>
+        allTextData.get(t2.id)!.lastOpenedTimestamp! -
+        allTextData.get(t1.id)!.lastOpenedTimestamp!
+    );
+    return openedTexts;
   }
 }
 
