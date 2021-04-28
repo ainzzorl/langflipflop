@@ -17,32 +17,15 @@ import {
 import "./AboutPage.css";
 
 class AboutPage extends React.Component<{}, {}> {
+  static readonly PLAYSTORE_LINK =
+    "https://play.google.com/store/apps/details?id=com.langflipflop";
+  static readonly CONTACT_LINK = "mailto:langflipflop@gmail.com";
+
   render() {
     let links;
     let clickVerb;
     if (isBrowser()) {
-      links = (
-        <IonGrid>
-          <IonRow className="ion-align-items-center store-links">
-            <IonCol size="6">
-              <a href="https://play.google.com/store/apps/details?id=com.langflipflop">
-                <img
-                  alt="Get it on Google Play"
-                  src="assets/google-play-badge.png"
-                />
-              </a>
-            </IonCol>
-            <IonCol col-6>Coming soon on App Store.</IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="12">
-              <p className="content-text">
-                <a href="mailto:langflipflop@gmail.com">Contact</a>
-              </p>
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-      );
+      links = this.getLinks();
       clickVerb = BROWSER_CLICK_VERB;
     } else {
       links = <div />;
@@ -79,6 +62,31 @@ class AboutPage extends React.Component<{}, {}> {
           {links}
         </IonContent>
       </IonPage>
+    );
+  }
+
+  private getLinks() {
+    return (
+      <IonGrid>
+        <IonRow className="ion-align-items-center store-links">
+          <IonCol size="6">
+            <a href={AboutPage.PLAYSTORE_LINK}>
+              <img
+                alt="Get it on Google Play"
+                src="assets/google-play-badge.png"
+              />
+            </a>
+          </IonCol>
+          <IonCol col-6>Coming soon on App Store.</IonCol>
+        </IonRow>
+        <IonRow>
+          <IonCol size="12">
+            <p className="content-text">
+              <a href={AboutPage.CONTACT_LINK}>Contact</a>
+            </p>
+          </IonCol>
+        </IonRow>
+      </IonGrid>
     );
   }
 }
