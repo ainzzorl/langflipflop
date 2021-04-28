@@ -15,27 +15,33 @@ import {
 import Hammer from "hammerjs";
 import { help, information } from "ionicons/icons";
 import Mousetrap from "mousetrap";
-import queryString from "query-string";
 import React from "react";
 import ReactCardFlip from "react-card-flip";
 import ReactDOMServer from "react-dom/server";
 import { RouteComponentProps } from "react-router-dom";
-import { isBrowser } from "../common/Common";
+import { getQueryParams, getSearch, isBrowser } from "../common/Common";
 import { DAO } from "../common/DAO";
 import "./TextPage.css";
 
-interface MyTextProps
+interface TextPageProps
   extends RouteComponentProps<{
     id: string;
   }> {}
 
-class RecentPage extends React.Component<
-  MyTextProps,
+class Text {
+  title: string = "";
+  description: string = "";
+  segments: Array<string> = [];
+}
+
+class TextPage extends React.Component<
+  TextPageProps,
   {
-    lang: string;
-    lang1: string;
-    lang2: string;
-    texts: any;
+    currentLang: string; // the language of the side we are currently showing
+    lang1: string; // aka "from" lang
+    lang2: string; // aka "to" lang
+    // Map lang -> Text
+    texts: Map<string, Text>;
     segmentIndex: number;
     gesturesInitialized: boolean;
     sideOneText: string;
@@ -48,17 +54,17 @@ class RecentPage extends React.Component<
   constructor(props: any) {
     super(props);
 
-    let params = queryString.parse(this.getSearch());
+    let params = getQueryParams(props);
 
     this.state = {
       // TODO: the defaults take place sometimes when user clicks back and forward.
       // This is not good generally.
       // If it happens somehow, we should default to the persistent state/prefs.
-      lang: (params["lang1"] as string) || "en",
+      currentLang: (params["lang1"] as string) || "en",
       lang1: (params["lang1"] as string) || "en",
       lang2: (params["lang2"] as string) || "es",
       segmentIndex: parseInt((params["i"] as string) || "1") - 1,
-      texts: {},
+      texts: new Map<string, Text>(),
       gesturesInitialized: false,
       sideOneText: "",
       sideTwoText: "",
@@ -76,55 +82,15 @@ class RecentPage extends React.Component<
     this.onGoToTextInfoClicked = this.onGoToTextInfoClicked.bind(this);
     this.setShowEndOfTextAlert = this.setShowEndOfTextAlert.bind(this);
 
-    fetch("assets/data/texts/" + this.props.match.params.id + ".json")
-      .then((res) => res.json())
-      .then((texts) => {
-        this.setState((state) => ({
-          texts: texts,
-          sideOneText: texts[state.lang1].segments[state.segmentIndex],
-          sideTwoText: texts[state.lang2].segments[state.segmentIndex],
-        }));
-        this.updateTextStamps();
-        return DAO.getUser();
-      })
-      .then((user) => {
-        this.setState({
-          showFtue: !user.completedTextFtue,
-        });
-      });
-  }
-
-  getSearch() {
-    if (this.props.location.search) {
-      return this.props.location.search;
-    } else {
-      return window.location.search;
-    }
-  }
-
-  // TODO: generalize
-  otherLang(lang: string): string {
-    return lang === "en" ? "es" : "en";
+    this.load();
   }
 
   componentDidUpdate() {
-    if (this.state?.texts?.["en"]?.title) {
-      document.title = this.state.texts["en"].title;
+    if (this.state?.texts?.has("en")) {
+      document.title = this.state.texts.get("en")!.title;
     }
 
-    const element = document.getElementById("my-div");
-    if (element !== null && !this.state.gesturesInitialized) {
-      const hammertime = new Hammer(element);
-      hammertime.on("swipeleft", (e) => {
-        this.goToNext();
-      });
-      hammertime.on("swiperight", (e) => {
-        this.goToPrevious();
-      });
-      this.setState((state) => ({
-        gesturesInitialized: true,
-      }));
-    }
+    this.initGestures();
   }
 
   componentDidMount() {
@@ -139,89 +105,8 @@ class RecentPage extends React.Component<
     Mousetrap.unbind("left");
   }
 
-  updateTextStamps() {
-    let textId = this.props.match.params.id;
-    DAO.updateTextStamps(textId, this.state.segmentIndex);
-  }
-
-  onFlip() {
-    this.setState((state) => ({
-      lang: this.otherLang(this.state.lang),
-      flipped: !this.state.flipped,
-    }));
-  }
-
-  goToNext() {
-    this.goToIndex(this.state.segmentIndex + 1);
-  }
-
-  goToPrevious() {
-    this.goToIndex(this.state.segmentIndex - 1);
-  }
-
-  onGoToTextInfoClicked() {
-    this.props.history.push(
-      `/texts/${this.props.match.params.id}/info${this.getSearch()}`
-    );
-  }
-
-  completeFtue() {
-    this.setState(() => ({
-      showFtue: false,
-    }));
-    DAO.getUser().then((user) => {
-      user.completedTextFtue = true;
-      DAO.setUser(user);
-    });
-  }
-
-  setShowEndOfTextAlert(value: boolean) {
-    this.setState(() => ({
-      showEndOfTextAlert: value,
-    }));
-  }
-
-  onHelpClicked() {
-    this.setState(() => ({
-      showFtue: true,
-    }));
-  }
-
-  goToIndex(index: number) {
-    if (index < 0) {
-      return;
-    }
-    if (index >= this.state.texts["en"].segments.length) {
-      this.setShowEndOfTextAlert(true);
-      return;
-    }
-    this.setState(
-      (state) => ({
-        lang: state.lang1,
-        segmentIndex: index,
-        sideOneText: state.flipped
-          ? state.texts[state.lang2].segments[index]
-          : state.texts[state.lang1].segments[index],
-        sideTwoText: state.flipped
-          ? state.texts[state.lang1].segments[index]
-          : state.texts[state.lang2].segments[index],
-      }),
-      this.updateTextStamps
-    );
-    if (window.history.replaceState) {
-      let searchParams = new URLSearchParams(window.location.search);
-      searchParams.set("i", (index + 1).toString());
-      var newURL =
-        window.location.origin +
-        window.location.pathname +
-        "?" +
-        searchParams.toString();
-      window.history.replaceState({ path: newURL }, "", newURL);
-    }
-  }
-
   render() {
-    if (!this.state.texts["en"] || this.state.segmentIndex < 0) {
+    if (!this.state.texts.has("en") || this.state.segmentIndex < 0) {
       return <div>Loading...</div>;
     }
 
@@ -262,16 +147,16 @@ class RecentPage extends React.Component<
               <IonBackButton defaultHref="/" data-testid="back-button" />
               <IonTitle color="medium">
                 <div className="my-wrap">
-                  {this.state.texts[this.state.lang].title} (
+                  {this.state.texts.get(this.state.currentLang)!.title} (
                   {this.state.segmentIndex + 1}/
-                  {this.state.texts["en"].segments.length})
+                  {this.state.texts.get("en")!.segments.length})
                 </div>
               </IonTitle>
             </IonButtons>
           </IonToolbar>
         </IonHeader>
         <IonContent
-          id="my-div"
+          id="text-content"
           class="ion-padding"
           onClick={() => this.onFlip()}
         >
@@ -335,7 +220,7 @@ class RecentPage extends React.Component<
               <IonButton
                 disabled={
                   this.state.segmentIndex ===
-                  this.state.texts["en"].segments.length - 1
+                  this.state.texts.get("en")!.segments.length - 1
                 }
                 color="secondary"
                 onClick={this.goToNext}
@@ -359,6 +244,146 @@ class RecentPage extends React.Component<
       </IonPage>
     );
   }
+
+  private initGestures() {
+    const element = document.getElementById("text-content");
+    if (element !== null && !this.state.gesturesInitialized) {
+      const hammertime = new Hammer(element);
+      hammertime.on("swipeleft", (e) => {
+        this.goToNext();
+      });
+      hammertime.on("swiperight", (e) => {
+        this.goToPrevious();
+      });
+      this.setState(() => ({
+        gesturesInitialized: true,
+      }));
+    }
+  }
+
+  private load() {
+    this.loadTexts()
+      .then((texts) => {
+        this.setState((state) => ({
+          texts: texts,
+          sideOneText: texts.get(state.lang1)!.segments[state.segmentIndex],
+          sideTwoText: texts.get(state.lang2)!.segments[state.segmentIndex],
+        }));
+        return DAO.getUser();
+      })
+      .then((user) => {
+        this.setState({
+          showFtue: !user.completedTextFtue,
+        });
+      })
+      .then(() => {
+        this.updateTextStamps();
+      });
+  }
+
+  private async loadTexts() {
+    const res = await fetch(
+      `assets/data/texts/${this.props.match.params.id}.json`
+    );
+    const textsRaw = await res.json();
+    let texts = new Map<string, Text>();
+    Object.keys(textsRaw).forEach((lang) => {
+      if (lang !== "meta") {
+        let text = new Text();
+        text.title = textsRaw[lang]["title"];
+        text.description = textsRaw[lang]["description"];
+        text.segments = textsRaw[lang]["segments"];
+        texts.set(lang, text);
+      }
+    });
+    return texts;
+  }
+
+  // TODO: generalize
+  private otherLang(lang: string): string {
+    return lang === "en" ? "es" : "en";
+  }
+
+  private updateTextStamps() {
+    let textId = this.props.match.params.id;
+    DAO.updateTextStamps(textId, this.state.segmentIndex);
+  }
+
+  private onFlip() {
+    this.setState((state) => ({
+      currentLang: this.otherLang(this.state.currentLang),
+      flipped: !this.state.flipped,
+    }));
+  }
+
+  private goToNext() {
+    this.goToIndex(this.state.segmentIndex + 1);
+  }
+
+  private goToPrevious() {
+    this.goToIndex(this.state.segmentIndex - 1);
+  }
+
+  private onGoToTextInfoClicked() {
+    this.props.history.push(
+      `/texts/${this.props.match.params.id}/info${getSearch(this.props)}`
+    );
+  }
+
+  private completeFtue() {
+    this.setState(() => ({
+      showFtue: false,
+    }));
+    DAO.getUser().then((user) => {
+      user.completedTextFtue = true;
+      DAO.setUser(user);
+    });
+  }
+
+  private setShowEndOfTextAlert(value: boolean) {
+    this.setState(() => ({
+      showEndOfTextAlert: value,
+    }));
+  }
+
+  private onHelpClicked() {
+    this.setState(() => ({
+      showFtue: true,
+    }));
+  }
+
+  private goToIndex(index: number) {
+    if (index < 0) {
+      return;
+    }
+    if (index >= this.state.texts.get("en")!.segments.length) {
+      this.setShowEndOfTextAlert(true);
+      return;
+    }
+    this.setState(
+      (state) => ({
+        currentLang: state.lang1,
+        segmentIndex: index,
+        sideOneText: state.flipped
+          ? state.texts.get(state.lang2)!.segments[index]
+          : state.texts.get(state.lang1)!.segments[index],
+        sideTwoText: state.flipped
+          ? state.texts.get(state.lang1)!.segments[index]
+          : state.texts.get(state.lang2)!.segments[index],
+      }),
+      this.updateTextStamps
+    );
+    if (window.history.replaceState) {
+      let searchParams = new URLSearchParams(getSearch(this.props));
+      searchParams.set("i", (index + 1).toString());
+      var newURL =
+        window.location.origin +
+        window.location.pathname +
+        "?" +
+        searchParams.toString();
+      window.history.replaceState({ path: newURL }, "", newURL);
+    }
+  }
 }
 
-export default RecentPage;
+export default TextPage;
