@@ -4,6 +4,7 @@ import {
   MyTextPageActions,
   renderWithRoute,
   setCompletedMainFtue,
+  setCompletedTextFtue,
   stubLocation,
   TEST_FIXTURES,
   TextInfoPageActions,
@@ -123,7 +124,7 @@ test("Going to the info page and then back", async () => {
   await MyTextPageActions.assertOnPage(1, "en");
 });
 
-test("Text FTUE", async () => {
+test("Text FTUE - first time", async () => {
   setCompletedMainFtue();
 
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
@@ -139,7 +140,7 @@ test("Text FTUE", async () => {
   okButton.click();
 
   // FTUE popup must not be visible anymore
-  expect(screen.queryByTestId("text-ftue-alert")).toBeFalsy();
+  expect(MyTextPageActions.getTextFtueElement()).toBeFalsy();
 
   // Reload the page
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
@@ -149,4 +150,20 @@ test("Text FTUE", async () => {
   expect(MyTextPageActions.getTextFtueElement()).toBeFalsy();
 });
 
-// TODO: FTUE popup (on request)
+test("Text FTUE - on request", async () => {
+  await setCompletedMainFtue();
+  await setCompletedTextFtue();
+
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
+  await MyTextPageActions.assertOnPage(0, "en");
+
+  // FTUE popup must not be visible
+  expect(MyTextPageActions.getTextFtueElement()).toBeFalsy();
+
+  // Click the help button
+  let helpButton = await screen.findByTestId("help-button");
+  helpButton.click();
+
+  // FTUE popup must show
+  await MyTextPageActions.waitForTextFtueElement();
+});

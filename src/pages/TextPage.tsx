@@ -350,7 +350,7 @@ class RecentPage extends React.Component<
               >
                 <IonIcon icon={information} size="large" />
               </IonButton>
-              <IonButton onClick={this.onHelpClicked}>
+              <IonButton onClick={this.onHelpClicked} data-testid="help-button">
                 <IonIcon icon={help} size="large" />
               </IonButton>
             </IonButtons>

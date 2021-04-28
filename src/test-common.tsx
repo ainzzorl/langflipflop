@@ -165,13 +165,11 @@ export class MyTextPageActions {
   }
 
   static getTextFtueElement() {
-    //return screen.queryByText('Try translating the text you see on the screen and then click the text to see a possible translation.');
     return screen.queryByTestId("text-ftue-alert");
   }
 
   static async waitForTextFtueElement() {
     return screen.findByTestId("text-ftue-alert");
-    //return screen.findByText('Try translating the text you see on the screen and then click the text to see a possible translation.');
   }
 
   private static otherLang(lang: string): string {
@@ -202,6 +200,13 @@ export class TextInfoPageActions {
 export async function setCompletedMainFtue() {
   return DAO.getUser().then((user) => {
     user.completedMainFtue = true;
-    DAO.setUser(user);
+    return DAO.setUser(user);
+  });
+}
+
+export async function setCompletedTextFtue() {
+  return DAO.getUser().then((user) => {
+    user.completedTextFtue = true;
+    return DAO.setUser(user);
   });
 }
