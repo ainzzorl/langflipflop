@@ -1,6 +1,7 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { MemoryRouter } from "react-router";
+import { DAO } from "./common/DAO";
 import MainComponent from "./components/MainComponent";
 
 export async function renderWithRoute(route: string) {
@@ -158,17 +159,27 @@ export class MyTextPageActions {
     (await screen.findByTestId("go-to-text-info-button")).click();
   }
 
+  static async clickBack() {
+    let backButton = await screen.findByTestId("back-button");
+    backButton.click();
+  }
+
+  static getTextFtueElement() {
+    //return screen.queryByText('Try translating the text you see on the screen and then click the text to see a possible translation.');
+    return screen.queryByTestId("text-ftue-alert");
+  }
+
+  static async waitForTextFtueElement() {
+    return screen.findByTestId("text-ftue-alert");
+    //return screen.findByText('Try translating the text you see on the screen and then click the text to see a possible translation.');
+  }
+
   private static otherLang(lang: string): string {
     return lang === "en" ? "es" : "en";
   }
 
   private static async getCardByText(text: string) {
     return await screen.findByText(text);
-  }
-
-  static async clickBack() {
-    let backButton = await screen.findByTestId("back-button");
-    backButton.click();
   }
 }
 
@@ -186,4 +197,11 @@ export class TextInfoPageActions {
     let backButton = await screen.findByTestId("back-button");
     backButton.click();
   }
+}
+
+export async function setCompletedMainFtue() {
+  return DAO.getUser().then((user) => {
+    user.completedMainFtue = true;
+    DAO.setUser(user);
+  });
 }

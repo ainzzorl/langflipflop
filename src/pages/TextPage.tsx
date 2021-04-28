@@ -312,7 +312,14 @@ class RecentPage extends React.Component<
             isOpen={this.state.showFtue}
             onDidDismiss={() => this.completeFtue()}
             message={ftueMessage}
-            buttons={["OK"]}
+            data-testid="text-ftue-alert"
+            buttons={[
+              {
+                text: "OK",
+                role: "cancel",
+                handler: this.completeFtue,
+              },
+            ]}
           />
         </IonContent>
         <IonFooter>

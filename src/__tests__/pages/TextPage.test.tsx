@@ -3,6 +3,7 @@ import {
   findTextCard,
   MyTextPageActions,
   renderWithRoute,
+  setCompletedMainFtue,
   stubLocation,
   TEST_FIXTURES,
   TextInfoPageActions,
@@ -122,5 +123,30 @@ test("Going to the info page and then back", async () => {
   await MyTextPageActions.assertOnPage(1, "en");
 });
 
-// TODO: FTUE popup (at launch)
+test("Text FTUE", async () => {
+  setCompletedMainFtue();
+
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
+  await MyTextPageActions.assertOnPage(0, "en");
+
+  // Must see FTUE when opening it for the first time.
+  await MyTextPageActions.waitForTextFtueElement();
+
+  // Close FTUE
+  let okButton = (await screen.findByTestId("text-ftue-alert")).querySelector(
+    "button"
+  )!;
+  okButton.click();
+
+  // FTUE popup must not be visible anymore
+  expect(screen.queryByTestId("text-ftue-alert")).toBeFalsy();
+
+  // Reload the page
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
+  await MyTextPageActions.assertOnPage(0, "en");
+
+  // FTUE popup must not be visible
+  expect(MyTextPageActions.getTextFtueElement()).toBeFalsy();
+});
+
 // TODO: FTUE popup (on request)
