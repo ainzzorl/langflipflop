@@ -14,9 +14,9 @@ import {
   DEVICE_CLICK_VERB,
   isBrowser,
 } from "../common/Common";
-import "./InfoPage.css";
+import "./AboutPage.css";
 
-class InfoPage extends React.Component<{}, {}> {
+class AboutPage extends React.Component<{}, {}> {
   render() {
     let links;
     let clickVerb;
@@ -83,4 +83,4 @@ class InfoPage extends React.Component<{}, {}> {
   }
 }
 
-export default InfoPage;
+export default AboutPage;

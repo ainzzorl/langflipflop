@@ -26,8 +26,8 @@ import MetaTags from "react-meta-tags";
 import { matchPath, withRouter } from "react-router";
 import { Redirect, Route, RouteComponentProps } from "react-router-dom";
 import { DAO, User } from "../common/DAO";
+import AboutPage from "../pages/AboutPage";
 import FtuePage from "../pages/FtuePage";
-import InfoPage from "../pages/InfoPage";
 import LibraryPage from "../pages/LibraryPage";
 import RecentPage from "../pages/RecentPage";
 import SettingsPage from "../pages/SettingsPage";
@@ -139,7 +139,7 @@ class MainCompinent extends React.Component<
                       component={SettingsPage}
                       exact={true}
                     />
-                    <Route path="/t/about" component={InfoPage} exact={true} />
+                    <Route path="/t/about" component={AboutPage} exact={true} />
                   </IonRouterOutlet>
                   <IonTabBar slot="bottom">
                     <IonTabButton tab="library" href="/t/texts">

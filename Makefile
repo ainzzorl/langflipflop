@@ -88,9 +88,13 @@ test-text-info-page :
 test-text-page :
 			 npm test -- --watchAll=false src/__tests__/pages/TextPage.test.tsx
 
-.PHONY: test-settings
-test-settings :
+.PHONY: test-settings-page
+test-settings-page :
 			 npm test -- --watchAll=false src/__tests__/pages/SettingsPage.test.tsx
+
+.PHONY: test-about-page
+test-about-page :
+			 npm test -- --watchAll=false src/__tests__/pages/AboutPage.test.tsx
 
 .PHONY: test-ftue
 test-ftue :
