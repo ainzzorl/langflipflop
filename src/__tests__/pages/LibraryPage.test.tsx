@@ -1,20 +1,14 @@
 import { screen, within } from "@testing-library/react";
-import { DAO, User } from "../../common/DAO";
 import {
   findTextCard,
   MyTextPageActions,
   renderWithRoute,
+  setCompletedMainFtue,
   TEST_FIXTURES,
 } from "../../test-common";
 
-async function setCompletedFtue() {
-  let user = new User();
-  user.completedMainFtue = true;
-  DAO.setUser(user);
-}
-
 test("Rendering Library Menu", async () => {
-  await setCompletedFtue();
+  await setCompletedMainFtue();
 
   renderWithRoute("/");
 
@@ -26,7 +20,7 @@ test("Rendering Library Menu", async () => {
 });
 
 test("Showing Progress", async () => {
-  await setCompletedFtue();
+  await setCompletedMainFtue();
 
   renderWithRoute("/");
   let card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
@@ -60,7 +54,7 @@ test("Showing Progress", async () => {
 });
 
 test("Filtering - with matches", async () => {
-  await setCompletedFtue();
+  await setCompletedMainFtue();
 
   // Sanity check that the texts that are supposed to be filtered exist at all.
   renderWithRoute("/t/texts");
@@ -79,7 +73,7 @@ test("Filtering - with matches", async () => {
 });
 
 test("Filtering - no matches", async () => {
-  await setCompletedFtue();
+  await setCompletedMainFtue();
 
   // Do filter.
   renderWithRoute(
@@ -89,3 +83,5 @@ test("Filtering - no matches", async () => {
   await screen.findByText("No matches.");
   expect(screen.queryByText(TEST_FIXTURES.TEST_TEXT_TITLE_EN)).toBeFalsy();
 });
+
+// TODO: test navigation to texts
