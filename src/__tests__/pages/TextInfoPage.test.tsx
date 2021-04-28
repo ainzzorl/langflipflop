@@ -1,9 +1,9 @@
 import {
-  MyTextPageActions,
   renderWithRoute,
   stubLocation,
   TEST_FIXTURES,
   TextInfoPageActions,
+  TextPageActions,
 } from "../../test-common";
 
 test("Rendering Text Info", async () => {
@@ -22,5 +22,5 @@ test("Back button", async () => {
 
   await TextInfoPageActions.clickBack();
   // Expect to go to the text page.
-  await MyTextPageActions.assertOnPage(1, "en");
+  await TextPageActions.assertOnPage(1, "en");
 });

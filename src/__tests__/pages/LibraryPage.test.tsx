@@ -1,10 +1,10 @@
 import { screen, within } from "@testing-library/react";
 import {
   findTextCard,
-  MyTextPageActions,
   renderWithRoute,
   setCompletedMainFtue,
   TEST_FIXTURES,
+  TextPageActions,
 } from "../../test-common";
 
 test("Rendering Library Menu", async () => {
@@ -27,7 +27,7 @@ test("Showing Progress", async () => {
   await within(card!).findByText(TEST_FIXTURES.TEST_TEXT_LENGTH_STR);
 
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
-  await MyTextPageActions.assertOnPage(0, "en");
+  await TextPageActions.assertOnPage(0, "en");
 
   renderWithRoute("/");
   card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
@@ -38,11 +38,11 @@ test("Showing Progress", async () => {
   );
 
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
-  await MyTextPageActions.assertOnPage(0, "en");
-  await MyTextPageActions.goToNext();
-  await MyTextPageActions.assertOnPage(1, "en");
-  await MyTextPageActions.goToNext();
-  await MyTextPageActions.assertOnPage(2, "en");
+  await TextPageActions.assertOnPage(0, "en");
+  await TextPageActions.goToNext();
+  await TextPageActions.assertOnPage(1, "en");
+  await TextPageActions.goToNext();
+  await TextPageActions.assertOnPage(2, "en");
 
   renderWithRoute("/");
   card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);

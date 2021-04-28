@@ -113,7 +113,7 @@ export namespace TEST_FIXTURES {
   };
 }
 
-export class MyTextPageActions {
+export class TextPageActions {
   static async goToNext() {
     fireEvent(
       (await screen.findByText("Next"))!,

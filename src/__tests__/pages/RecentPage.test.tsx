@@ -1,9 +1,9 @@
 import { screen, within } from "@testing-library/react";
 import {
   findTextCard,
-  MyTextPageActions,
   renderWithRoute,
   TEST_FIXTURES,
+  TextPageActions,
 } from "../../test-common";
 
 test("Rendering Recent", async () => {
@@ -17,7 +17,7 @@ test("Rendering Recent", async () => {
   await renderWithRoute(
     `/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`
   );
-  await MyTextPageActions.assertOnPage(0, "en");
+  await TextPageActions.assertOnPage(0, "en");
 
   // Go back to Recent
   await renderWithRoute("/t/recent");
