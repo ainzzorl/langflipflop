@@ -76,6 +76,10 @@ test-args :
 test-library-page :
 			 npm test -- --watchAll=false src/__tests__/pages/LibraryPage.test.tsx
 
+.PHONY: test-recent-page
+test-recent-page :
+			 npm test -- --watchAll=false src/__tests__/pages/RecentPage.test.tsx
+
 .PHONY: test-text-info-page
 test-text-info-page :
 			 npm test -- --watchAll=false src/__tests__/pages/TextInfoPage.test.tsx

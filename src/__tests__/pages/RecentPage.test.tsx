@@ -1,21 +1,26 @@
 import { screen, within } from "@testing-library/react";
-import { DAO } from "../../common/DAO";
 import {
   findTextCard,
+  MyTextPageActions,
   renderWithRoute,
   TEST_FIXTURES,
 } from "../../test-common";
 
 test("Rendering Recent", async () => {
-  renderWithRoute("/t/recent");
+  await renderWithRoute("/t/recent");
 
-  await screen.findByTestId("rendered-indicator");
+  // Open Recent page, expect no texts at first.
   await screen.findByText("No recently opened texts.");
   expect(screen.queryByText(TEST_FIXTURES.TEST_TEXT_TITLE_EN)).toBeFalsy();
 
-  // Update timestamp and re-render.
-  await DAO.updateTextStamps(TEST_FIXTURES.TEST_TEXT_ID, 0);
-  renderWithRoute("/t/recent");
+  // Open text
+  await renderWithRoute(
+    `/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`
+  );
+  await MyTextPageActions.assertOnPage(0, "en");
+
+  // Go back to Recent
+  await renderWithRoute("/t/recent");
 
   let card = await findTextCard(TEST_FIXTURES.TEST_TEXT_TITLE_EN);
 
