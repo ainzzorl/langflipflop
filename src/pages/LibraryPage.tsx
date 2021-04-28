@@ -11,7 +11,11 @@ import deepEqual from "fast-deep-equal/es6";
 import React from "react";
 import { RouteComponentProps, StaticContext } from "react-router";
 import { CATEGORIES, CATEGORY_MAP } from "../common/Categories";
-import { getQueryParams, getSearch } from "../common/Common";
+import {
+  getQueryParams,
+  getSearch,
+  loadAllTextMetadata,
+} from "../common/Common";
 import { DAO, PersistentTextData, Settings } from "../common/DAO";
 import TextMeta from "../common/TextMeta";
 import TextCard from "../components/TextCard";
@@ -166,28 +170,11 @@ class LibraryPage extends React.Component<
   }
 
   private loadTextMetadata() {
-    fetch("assets/data/texts.json")
-      .then((res) => res.json())
-      .then((res) => {
-        // TODO: consider packing all text metadata into a single json.
-        let textList = res["texts"];
-        return Promise.all(
-          textList.map(async (textId: string) => {
-            const textMetaContent = await fetch(
-              `assets/data/texts/${textId}.json`
-            );
-            return await textMetaContent.json();
-          })
-        );
-      })
-      .then((textDatas: Array<any>) => {
-        let textMetas = textDatas.map((data) => {
-          return new TextMeta(data);
-        });
-        this.setState(() => ({
-          texts: textMetas,
-        }));
-      });
+    loadAllTextMetadata().then((metadata) => {
+      this.setState(() => ({
+        texts: metadata,
+      }));
+    });
   }
 
   private setCategoryFilter(value: string) {

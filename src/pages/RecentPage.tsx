@@ -7,6 +7,7 @@ import {
 } from "@ionic/react";
 import deepEqual from "fast-deep-equal/es6";
 import React from "react";
+import { loadAllTextMetadata } from "../common/Common";
 import { DAO, PersistentTextData, Settings } from "../common/DAO";
 import TextMeta from "../common/TextMeta";
 import TextCard from "../components/TextCard";
@@ -29,33 +30,17 @@ class RecentPage extends React.Component<
       settings: undefined,
     };
 
-    // TODO: refactor duplication with LibraryMenu
-    fetch("assets/data/texts.json")
-      .then((res) => res.json())
-      .then((res) => {
-        let textList = res["texts"];
-        return Promise.all(
-          textList.map((textId: string) => {
-            return fetch(
-              "assets/data/texts/" + textId + ".json"
-            ).then((value) => value.json());
-          })
-        );
-      })
-      .then((textDatas: Array<any>) => {
-        let textMetas = textDatas.map((data) => {
-          return new TextMeta(data);
+    loadAllTextMetadata().then((metadata) => {
+      let allc = new Set<string>();
+      metadata.forEach((metadata) => {
+        metadata.categories.forEach((c) => {
+          allc.add(c);
         });
-        let allc = new Set<string>();
-        textMetas.forEach((textMeta) => {
-          textMeta.categories.forEach((c) => {
-            allc.add(c);
-          });
-        });
-        this.setState((state) => ({
-          texts: textMetas,
-        }));
       });
+      this.setState(() => ({
+        texts: metadata,
+      }));
+    });
 
     this.loadPersistentData = this.loadPersistentData.bind(this);
   }
