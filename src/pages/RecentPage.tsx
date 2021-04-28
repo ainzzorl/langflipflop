@@ -89,10 +89,7 @@ class RecentPage extends React.Component<
             <IonTitle>Recent</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent>
-          {content}
-          <div data-testid="rendered-indicator" />
-        </IonContent>
+        <IonContent>{content}</IonContent>
       </IonPage>
     );
   }
