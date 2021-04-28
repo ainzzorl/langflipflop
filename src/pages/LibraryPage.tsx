@@ -8,10 +8,10 @@ import {
   IonSelectOption,
 } from "@ionic/react";
 import deepEqual from "fast-deep-equal/es6";
-import queryString from "query-string";
 import React from "react";
 import { RouteComponentProps, StaticContext } from "react-router";
 import { CATEGORIES, CATEGORY_MAP } from "../common/Categories";
+import { getQueryParams, getSearch } from "../common/Common";
 import { DAO, PersistentTextData, Settings } from "../common/DAO";
 import TextMeta from "../common/TextMeta";
 import TextCard from "../components/TextCard";
@@ -22,79 +22,28 @@ class LibraryPage extends React.Component<
     texts?: Array<TextMeta>;
     categoryFilter?: string;
     difficultyFilter?: string;
-    persistentData?: Map<string, PersistentTextData>;
+    persistentTextData?: Map<string, PersistentTextData>;
     settings?: Settings;
   }
 > {
   constructor(props: any) {
     super(props);
 
-    let queryParams = queryString.parse(this.props.location.search);
+    let queryParams = getQueryParams(props);
 
     this.state = {
       texts: undefined,
       categoryFilter: (queryParams["category"] as string) || undefined,
       difficultyFilter: (queryParams["difficulty"] as string) || undefined,
-      persistentData: undefined,
+      persistentTextData: undefined,
       settings: undefined,
     };
 
-    fetch("assets/data/texts.json")
-      .then((res) => res.json())
-      .then((res) => {
-        let textList = res["texts"];
-        return Promise.all(
-          textList.map((textId: string) => {
-            return fetch(
-              "assets/data/texts/" + textId + ".json"
-            ).then((value) => value.json());
-          })
-        );
-      })
-      .then((textDatas: Array<any>) => {
-        let textMetas = textDatas.map((data) => {
-          return new TextMeta(data);
-        });
-        this.setState((state) => ({
-          texts: textMetas,
-        }));
-      });
+    this.loadTextMetadata();
 
     this.setCategoryFilter = this.setCategoryFilter.bind(this);
     this.setDifficultyFilter = this.setDifficultyFilter.bind(this);
     this.loadPersistentData = this.loadPersistentData.bind(this);
-  }
-
-  setCategoryFilter(value: string) {
-    this.setState((state) => ({
-      categoryFilter: value,
-    }));
-    if (window.history.replaceState) {
-      let searchParams = new URLSearchParams(window.location.search);
-      searchParams.set("category", value);
-      var newURL =
-        window.location.origin +
-        window.location.pathname +
-        "?" +
-        searchParams.toString();
-      window.history.replaceState({ path: newURL }, "", newURL);
-    }
-  }
-
-  setDifficultyFilter(value: string) {
-    this.setState((state) => ({
-      difficultyFilter: value,
-    }));
-    if (window.history.replaceState) {
-      let searchParams = new URLSearchParams(window.location.search);
-      searchParams.set("difficulty", value);
-      var newURL =
-        window.location.origin +
-        window.location.pathname +
-        "?" +
-        searchParams.toString();
-      window.history.replaceState({ path: newURL }, "", newURL);
-    }
   }
 
   componentDidMount() {
@@ -105,26 +54,10 @@ class LibraryPage extends React.Component<
     this.loadPersistentData();
   }
 
-  loadPersistentData() {
-    DAO.getAllTextData().then((persistentData) => {
-      DAO.getSettings().then((settings) => {
-        if (
-          !deepEqual(this.state.persistentData, persistentData) ||
-          !deepEqual(this.state.settings, settings)
-        ) {
-          this.setState(() => ({
-            persistentData: persistentData,
-            settings: settings,
-          }));
-        }
-      });
-    });
-  }
-
   render() {
     if (
       !this.state.texts ||
-      !this.state.persistentData ||
+      !this.state.persistentTextData ||
       !this.state.settings
     ) {
       return (
@@ -133,8 +66,50 @@ class LibraryPage extends React.Component<
         </IonContent>
       );
     }
-    let textCards = this.state.texts
-      .filter((textMeta, _idx) => {
+
+    return (
+      <IonPage>
+        <IonContent>
+          <IonList>
+            <IonItem>
+              <IonLabel>Category</IonLabel>
+              <IonSelect
+                value={this.state.categoryFilter}
+                placeholder="Any"
+                interface="popover"
+                onIonChange={(e) => this.setCategoryFilter(e.detail.value)}
+              >
+                <IonSelectOption value="" key={"selector-category-any"}>
+                  Any
+                </IonSelectOption>
+                {this.getCategoryOptions()}
+              </IonSelect>
+            </IonItem>
+            <IonItem>
+              <IonLabel>Difficulty</IonLabel>
+              <IonSelect
+                value={this.state.difficultyFilter}
+                placeholder="Any"
+                interface="popover"
+                onIonChange={(e) => this.setDifficultyFilter(e.detail.value)}
+              >
+                <IonSelectOption value="" key={"selector-category-any"}>
+                  Any
+                </IonSelectOption>
+                {this.getDifficultyOptions()}
+              </IonSelect>
+            </IonItem>
+          </IonList>
+
+          {this.renderTextCards()}
+        </IonContent>
+      </IonPage>
+    );
+  }
+
+  private renderTextCards() {
+    let textCards = this.state
+      .texts!.filter((textMeta, _idx) => {
         return (
           !this.state.categoryFilter ||
           textMeta.categories.includes(this.state.categoryFilter)
@@ -152,78 +127,112 @@ class LibraryPage extends React.Component<
             textMeta={textMeta}
             key={idx}
             persistentData={
-              this.state.persistentData!.has(textMeta.id)
-                ? this.state.persistentData!.get(textMeta.id)!
+              this.state.persistentTextData!.has(textMeta.id)
+                ? this.state.persistentTextData!.get(textMeta.id)!
                 : new PersistentTextData(textMeta.id)
             }
             settings={this.state.settings!}
           />
         );
       });
-    let textCardsContent;
     if (!textCards.length) {
-      textCardsContent = <p className="content-text">No matches.</p>;
+      return <p className="content-text">No matches.</p>;
     } else {
-      textCardsContent = textCards;
+      return textCards;
     }
+  }
 
-    let categoryOptions = CATEGORIES.map((category, _idx) => {
+  private getCategoryOptions() {
+    return CATEGORIES.map((category, _idx) => {
       return (
         <IonSelectOption value={category} key={"selector-category-" + category}>
           {CATEGORY_MAP.get(category)}
         </IonSelectOption>
       );
     });
-    let difficultyOptions = ["Easy", "Medium", "Hard"].map(
-      (difficulty, _idx) => {
-        return (
-          <IonSelectOption
-            value={difficulty}
-            key={"selector-difficulty-" + difficulty}
-          >
-            {difficulty}
-          </IonSelectOption>
-        );
-      }
-    );
+  }
 
-    return (
-      <IonPage>
-        <IonContent>
-          <IonList>
-            <IonItem>
-              <IonLabel>Category</IonLabel>
-              <IonSelect
-                value={this.state.categoryFilter}
-                placeholder="Any"
-                interface="popover"
-                onIonChange={(e) => this.setCategoryFilter(e.detail.value)}
-              >
-                <IonSelectOption value="" key={"selector-category-any"}>
-                  Any
-                </IonSelectOption>
-                {categoryOptions}
-              </IonSelect>
-            </IonItem>
-            <IonItem>
-              <IonLabel>Difficulty</IonLabel>
-              <IonSelect
-                value={this.state.difficultyFilter}
-                placeholder="Any"
-                interface="popover"
-                onIonChange={(e) => this.setDifficultyFilter(e.detail.value)}
-              >
-                <IonSelectOption value="" key={"selector-category-any"}>
-                  Any
-                </IonSelectOption>
-                {difficultyOptions}
-              </IonSelect>
-            </IonItem>
-          </IonList>
-          {textCardsContent}
-        </IonContent>
-      </IonPage>
-    );
+  private getDifficultyOptions() {
+    return ["Easy", "Medium", "Hard"].map((difficulty, _idx) => {
+      return (
+        <IonSelectOption
+          value={difficulty}
+          key={"selector-difficulty-" + difficulty}
+        >
+          {difficulty}
+        </IonSelectOption>
+      );
+    });
+  }
+
+  private loadTextMetadata() {
+    fetch("assets/data/texts.json")
+      .then((res) => res.json())
+      .then((res) => {
+        // TODO: consider packing all text metadata into a single json.
+        let textList = res["texts"];
+        return Promise.all(
+          textList.map(async (textId: string) => {
+            const textMetaContent = await fetch(
+              `assets/data/texts/${textId}.json`
+            );
+            return await textMetaContent.json();
+          })
+        );
+      })
+      .then((textDatas: Array<any>) => {
+        let textMetas = textDatas.map((data) => {
+          return new TextMeta(data);
+        });
+        this.setState(() => ({
+          texts: textMetas,
+        }));
+      });
+  }
+
+  private setCategoryFilter(value: string) {
+    this.setState(() => ({
+      categoryFilter: value,
+    }));
+    this.addQueryParam("category", value);
+  }
+
+  private setDifficultyFilter(value: string) {
+    this.setState((state) => ({
+      difficultyFilter: value,
+    }));
+    this.addQueryParam("difficulty", value);
+  }
+
+  private addQueryParam(key: string, value: string) {
+    if (window.history.replaceState) {
+      let searchParams = new URLSearchParams(getSearch(this.props));
+      searchParams.set(key, value);
+      var newURL =
+        window.location.origin +
+        window.location.pathname +
+        "?" +
+        searchParams.toString();
+      window.history.replaceState({ path: newURL }, "", newURL);
+    }
+  }
+
+  private loadPersistentData() {
+    DAO.getAllTextData().then((persistentData) => {
+      DAO.getSettings().then((settings) => {
+        // Update state only if something actually changed,
+        // otherwise it can get stuck updating itself indefinitely.
+        if (
+          !deepEqual(this.state.persistentTextData, persistentData) ||
+          !deepEqual(this.state.settings, settings)
+        ) {
+          this.setState(() => ({
+            persistentTextData: persistentData,
+            settings: settings,
+          }));
+        }
+      });
+    });
   }
 }
 
