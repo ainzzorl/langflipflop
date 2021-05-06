@@ -21,11 +21,15 @@ import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/typography.css";
 import { home, informationCircle, settings, time } from "ionicons/icons";
 import React from "react";
+import { IntlProvider } from "react-intl";
 //@ts-ignore
 import MetaTags from "react-meta-tags";
 import { matchPath, withRouter } from "react-router";
 import { Redirect, Route, RouteComponentProps } from "react-router-dom";
 import { DAO, User } from "../common/DAO";
+import English from "../lang/en.json";
+import Spanish from "../lang/es.json";
+import Russian from "../lang/ru.json";
 import AboutPage from "../pages/AboutPage";
 import FtuePage from "../pages/FtuePage";
 import LibraryPage from "../pages/LibraryPage";
@@ -35,6 +39,12 @@ import TextInfoPage from "../pages/TextInfoPage";
 import TextPage from "../pages/TextPage";
 /* Theme variables */
 import "../theme/variables.css";
+
+const messages: any = {
+  en: English,
+  ru: Russian,
+  es: Spanish,
+};
 
 class MainCompinent extends React.Component<
   RouteComponentProps<{}>,
@@ -110,61 +120,74 @@ class MainCompinent extends React.Component<
       );
     }
 
+    let locale = "en";
+    let localeMessages: any = messages[locale];
+
     return (
-      <div>
-        {metaTags}
-        <IonRouterOutlet>
-          <Route exact path="/" render={() => <Redirect to={"/t/texts"} />} />
-          <Route path="/texts/:id/info" component={TextInfoPage} exact={true} />
-          <Route path="/texts/:id" component={TextPage} exact={true} />
-          <Route path="/ftue" component={FtuePage} />
-          <Route
-            path="/t"
-            render={() => {
-              return (
-                <IonTabs>
-                  <IonRouterOutlet>
-                    <Route
-                      path="/t/texts"
-                      component={LibraryPage}
-                      exact={true}
-                    />
-                    <Route
-                      path="/t/recent"
-                      component={RecentPage}
-                      exact={true}
-                    />
-                    <Route
-                      path="/t/settings"
-                      component={SettingsPage}
-                      exact={true}
-                    />
-                    <Route path="/t/about" component={AboutPage} exact={true} />
-                  </IonRouterOutlet>
-                  <IonTabBar slot="bottom">
-                    <IonTabButton tab="library" href="/t/texts">
-                      <IonIcon icon={home} />
-                      <IonLabel>Home</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="recent" href="/t/recent">
-                      <IonIcon icon={time} />
-                      <IonLabel>Recent</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="settings" href="/t/settings">
-                      <IonIcon icon={settings} />
-                      <IonLabel>Settings</IonLabel>
-                    </IonTabButton>
-                    <IonTabButton tab="about" href="/t/about">
-                      <IonIcon icon={informationCircle} />
-                      <IonLabel>About</IonLabel>
-                    </IonTabButton>
-                  </IonTabBar>
-                </IonTabs>
-              );
-            }}
-          />
-        </IonRouterOutlet>
-      </div>
+      <IntlProvider locale={locale} messages={localeMessages}>
+        <div>
+          {metaTags}
+          <IonRouterOutlet>
+            <Route exact path="/" render={() => <Redirect to={"/t/texts"} />} />
+            <Route
+              path="/texts/:id/info"
+              component={TextInfoPage}
+              exact={true}
+            />
+            <Route path="/texts/:id" component={TextPage} exact={true} />
+            <Route path="/ftue" component={FtuePage} />
+            <Route
+              path="/t"
+              render={() => {
+                return (
+                  <IonTabs>
+                    <IonRouterOutlet>
+                      <Route
+                        path="/t/texts"
+                        component={LibraryPage}
+                        exact={true}
+                      />
+                      <Route
+                        path="/t/recent"
+                        component={RecentPage}
+                        exact={true}
+                      />
+                      <Route
+                        path="/t/settings"
+                        component={SettingsPage}
+                        exact={true}
+                      />
+                      <Route
+                        path="/t/about"
+                        component={AboutPage}
+                        exact={true}
+                      />
+                    </IonRouterOutlet>
+                    <IonTabBar slot="bottom">
+                      <IonTabButton tab="library" href="/t/texts">
+                        <IonIcon icon={home} />
+                        <IonLabel>Home</IonLabel>
+                      </IonTabButton>
+                      <IonTabButton tab="recent" href="/t/recent">
+                        <IonIcon icon={time} />
+                        <IonLabel>Recent</IonLabel>
+                      </IonTabButton>
+                      <IonTabButton tab="settings" href="/t/settings">
+                        <IonIcon icon={settings} />
+                        <IonLabel>Settings</IonLabel>
+                      </IonTabButton>
+                      <IonTabButton tab="about" href="/t/about">
+                        <IonIcon icon={informationCircle} />
+                        <IonLabel>About</IonLabel>
+                      </IonTabButton>
+                    </IonTabBar>
+                  </IonTabs>
+                );
+              }}
+            />
+          </IonRouterOutlet>
+        </div>
+      </IntlProvider>
     );
   }
 }

@@ -9,6 +9,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import {
   BROWSER_CLICK_VERB,
   DEVICE_CLICK_VERB,
@@ -35,7 +36,9 @@ class AboutPage extends React.Component<{}, {}> {
       <IonPage id="info-page">
         <IonHeader>
           <IonToolbar>
-            <IonTitle>About LangFlipFlop</IonTitle>
+            <IonTitle>
+              <FormattedMessage id="about.header" defaultMessage="Def Mes" />
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent id="info-page-content">

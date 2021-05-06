@@ -60,6 +60,7 @@
     "node-fetch": "^2.6.1",
     "prettier": "2.1.1",
     "prettier-plugin-organize-imports": "^1.1.1",
+    "react-intl": "^5.17.4",
     "react-scripts": "^4.0.1"
   },
   "description": "An Ionic project"
