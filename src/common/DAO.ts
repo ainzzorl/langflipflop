@@ -78,7 +78,6 @@ export class DAO {
   static async getSettings(): Promise<Settings> {
     const value = await Storage.get({ key: "settings" });
     const s = value.value;
-    const interfaceLanguage = "en";
     let settings;
     if (s !== null) {
       settings = JSON.parse(s);
@@ -89,7 +88,7 @@ export class DAO {
       settings.theme = "dark";
     }
     if (!settings.interfaceLanguage) {
-      settings.interfaceLanguage = interfaceLanguage;
+      settings.interfaceLanguage = getDefaultInterfaceLanguage();
     }
     return settings;
   }
@@ -120,4 +119,20 @@ export class DAO {
   }
 
   static globalUser: User = new User();
+}
+
+export function getDefaultInterfaceLanguage(): string {
+  let browserLocale =
+    (navigator.languages && navigator.languages[0]) || navigator.language;
+  let parts = browserLocale.split("-");
+  let browserLanguage = parts[0];
+  if (
+    browserLanguage !== "en" &&
+    browserLanguage !== "es" &&
+    browserLanguage !== "ru"
+  ) {
+    return "en";
+  } else {
+    return browserLanguage;
+  }
 }
