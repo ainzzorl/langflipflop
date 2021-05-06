@@ -17,10 +17,12 @@ export class PersistentTextData {
 export class Settings {
   translationDirection: string;
   theme: string;
+  interfaceLanguage: string;
 
   constructor() {
     this.translationDirection = "en-es";
     this.theme = "dark";
+    this.interfaceLanguage = "";
   }
 }
 
@@ -76,15 +78,20 @@ export class DAO {
   static async getSettings(): Promise<Settings> {
     const value = await Storage.get({ key: "settings" });
     const s = value.value;
+    const interfaceLanguage = "en";
+    let settings;
     if (s !== null) {
-      let settings: Settings = JSON.parse(s);
-      if (!settings.theme) {
-        settings.theme = "dark";
-      }
-      return settings;
+      settings = JSON.parse(s);
     } else {
-      return new Settings();
+      settings = new Settings();
     }
+    if (!settings.theme) {
+      settings.theme = "dark";
+    }
+    if (!settings.interfaceLanguage) {
+      settings.interfaceLanguage = interfaceLanguage;
+    }
+    return settings;
   }
 
   static async setSettings(settings: Settings): Promise<void> {

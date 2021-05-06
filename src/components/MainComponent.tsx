@@ -26,7 +26,7 @@ import { IntlProvider } from "react-intl";
 import MetaTags from "react-meta-tags";
 import { matchPath, withRouter } from "react-router";
 import { Redirect, Route, RouteComponentProps } from "react-router-dom";
-import { DAO, User } from "../common/DAO";
+import { DAO, Settings, User } from "../common/DAO";
 import English from "../lang/en.json";
 import Spanish from "../lang/es.json";
 import Russian from "../lang/ru.json";
@@ -48,12 +48,19 @@ const messages: any = {
 
 class MainCompinent extends React.Component<
   RouteComponentProps<{}>,
-  { user?: User }
+  { user?: User; settings?: Settings }
 > {
   constructor(props: any) {
     super(props);
-    this.state = { user: undefined };
-    DAO.getUser().then((user) => this.setState({ user: user }));
+    this.state = { user: undefined, settings: undefined };
+    DAO.getUser()
+      .then((user) => {
+        this.setState({ user: user });
+        return DAO.getSettings();
+      })
+      .then((settings) => {
+        this.setState({ settings: settings });
+      });
   }
 
   componentDidUpdate() {
@@ -92,7 +99,7 @@ class MainCompinent extends React.Component<
   }
 
   render() {
-    if (!this.state.user) {
+    if (!this.state.user || !this.state.settings) {
       return <IonRouterOutlet></IonRouterOutlet>;
     }
     if (this.shouldRedirectToFtue()) {
@@ -120,7 +127,7 @@ class MainCompinent extends React.Component<
       );
     }
 
-    let locale = "en";
+    let locale = this.state.settings.interfaceLanguage;
     let localeMessages: any = messages[locale];
 
     return (
