@@ -12,9 +12,13 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { DAO, Settings } from "../common/DAO";
 
-class SettingsPage extends React.Component<{}, { settings?: Settings }> {
+class SettingsPage extends React.Component<
+  { reloadMainSettings: () => void },
+  { settings?: Settings }
+> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -34,6 +38,13 @@ class SettingsPage extends React.Component<{}, { settings?: Settings }> {
     this.onChange();
   }
 
+  setInterfaceLanguage(interfaceLanguage: string) {
+    this.state.settings!.interfaceLanguage = interfaceLanguage;
+    this.onChange().then(() => {
+      this.props.reloadMainSettings();
+    });
+  }
+
   setTheme(theme: string) {
     this.state.settings!.theme = theme;
     document.body.classList.toggle("dark", theme === "dark");
@@ -41,7 +52,7 @@ class SettingsPage extends React.Component<{}, { settings?: Settings }> {
   }
 
   onChange() {
-    DAO.setSettings(this.state.settings!);
+    return DAO.setSettings(this.state.settings!);
   }
 
   render() {
@@ -53,7 +64,9 @@ class SettingsPage extends React.Component<{}, { settings?: Settings }> {
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Settings</IonTitle>
+            <IonTitle>
+              <FormattedMessage id="settings.header" />
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
@@ -74,6 +87,29 @@ class SettingsPage extends React.Component<{}, { settings?: Settings }> {
               <IonItem>
                 <IonLabel>Spanish &#8594; English</IonLabel>
                 <IonRadio slot="start" value="es-en" />
+              </IonItem>
+            </IonRadioGroup>
+            <IonRadioGroup
+              value={this.state.settings.interfaceLanguage}
+              onIonChange={(e) => this.setInterfaceLanguage(e.detail.value)}
+            >
+              <IonListHeader>
+                <IonLabel>Interface Language</IonLabel>
+              </IonListHeader>
+
+              <IonItem>
+                <IonLabel>English</IonLabel>
+                <IonRadio slot="start" value="en" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>Spanish</IonLabel>
+                <IonRadio slot="start" value="es" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>Russian</IonLabel>
+                <IonRadio slot="start" value="ru" />
               </IonItem>
             </IonRadioGroup>
             <IonRadioGroup

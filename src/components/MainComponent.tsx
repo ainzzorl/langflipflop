@@ -19,6 +19,7 @@ import "@ionic/react/css/structure.css";
 import "@ionic/react/css/text-alignment.css";
 import "@ionic/react/css/text-transformation.css";
 import "@ionic/react/css/typography.css";
+import deepEqual from "fast-deep-equal/es6";
 import { home, informationCircle, settings, time } from "ionicons/icons";
 import React from "react";
 import { IntlProvider } from "react-intl";
@@ -53,6 +54,7 @@ class MainCompinent extends React.Component<
   constructor(props: any) {
     super(props);
     this.state = { user: undefined, settings: undefined };
+    this.reloadSettings = this.reloadSettings.bind(this);
     DAO.getUser()
       .then((user) => {
         this.setState({ user: user });
@@ -96,6 +98,18 @@ class MainCompinent extends React.Component<
       return false;
     }
     return true;
+  }
+
+  reloadSettings() {
+    DAO.getSettings().then((settings) => {
+      // Update state only if something actually changed,
+      // otherwise it can get stuck updating itself indefinitely.
+      if (!deepEqual(this.state.settings, settings)) {
+        this.setState(() => ({
+          settings: settings,
+        }));
+      }
+    });
   }
 
   render() {
@@ -161,8 +175,13 @@ class MainCompinent extends React.Component<
                       />
                       <Route
                         path="/t/settings"
-                        component={SettingsPage}
                         exact={true}
+                        render={(props) => (
+                          <SettingsPage
+                            {...props}
+                            reloadMainSettings={this.reloadSettings}
+                          />
+                        )}
                       />
                       <Route
                         path="/t/about"
