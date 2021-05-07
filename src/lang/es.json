@@ -6,5 +6,12 @@
   "about.coming-soon-on-apple": "PLACEHOLDER - es.about.coming-soon-on-apple",
   "about.contact": "PLACEHOLDER - es.about.contact",
   "settings.header": "Ajustes",
+  "settings.select-translation-direction": "PLACEHOLDER - es.settings.select-translation-direction",
+  "settings.english-spanish": "PLACEHOLDER - es.settings.english-spanish",
+  "settings.spanish-english": "PLACEHOLDER - es.settings.spanish-english",
+  "settings.interface-language": "PLACEHOLDER - es.settings.interface-language",
+  "settings.theme": "PLACEHOLDER - es.settings.theme",
+  "settings.light": "PLACEHOLDER - es.settings.light",
+  "settings.dark": "PLACEHOLDER - es.settings.dark",
   "ftue.header": "Configuración"
 }

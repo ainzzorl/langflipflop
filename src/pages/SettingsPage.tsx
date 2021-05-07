@@ -76,16 +76,22 @@ class SettingsPage extends React.Component<
               onIonChange={(e) => this.setTranslationDirection(e.detail.value)}
             >
               <IonListHeader>
-                <IonLabel>Languages</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="settings.select-translation-direction" />
+                </IonLabel>
               </IonListHeader>
 
               <IonItem>
-                <IonLabel>English &#8594; Spanish</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="settings.english-spanish" />
+                </IonLabel>
                 <IonRadio slot="start" value="en-es" />
               </IonItem>
 
               <IonItem>
-                <IonLabel>Spanish &#8594; English</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="settings.spanish-english" />
+                </IonLabel>
                 <IonRadio slot="start" value="es-en" />
               </IonItem>
             </IonRadioGroup>
@@ -95,7 +101,9 @@ class SettingsPage extends React.Component<
               data-testid="select-interface-language"
             >
               <IonListHeader>
-                <IonLabel>Interface Language</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="settings.interface-language" />
+                </IonLabel>
               </IonListHeader>
 
               <IonItem>
@@ -118,16 +126,22 @@ class SettingsPage extends React.Component<
               onIonChange={(e) => this.setTheme(e.detail.value)}
             >
               <IonListHeader>
-                <IonLabel>Theme</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="settings.theme" />
+                </IonLabel>
               </IonListHeader>
 
               <IonItem>
-                <IonLabel>Light</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="settings.light" />
+                </IonLabel>
                 <IonRadio slot="start" value="light" />
               </IonItem>
 
               <IonItem>
-                <IonLabel>Dark</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="settings.dark" />
+                </IonLabel>
                 <IonRadio slot="start" value="dark" />
               </IonItem>
             </IonRadioGroup>

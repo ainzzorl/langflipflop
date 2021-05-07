@@ -16,5 +16,12 @@
   "library.any": "Any",
   "library.difficulty": "Difficulty",
   "recent.header": "Recent",
-  "recent.no-texts": "No recently opened texts."
+  "recent.no-texts": "No recently opened texts.",
+  "settings.select-translation-direction": "Languages",
+  "settings.english-spanish": "English → Spanish",
+  "settings.spanish-english": "Spanish → English",
+  "settings.interface-language": "Interface Language",
+  "settings.theme": "Theme",
+  "settings.light": "Light",
+  "settings.dark": "Dark"
 }
