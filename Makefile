@@ -100,6 +100,10 @@ test-about-page :
 test-ftue :
 			 npm test -- --watchAll=false src/__tests__/pages/Ftue.test.tsx
 
+.PHONY: test-interface-language
+test-interface-language :
+			 npm test -- --watchAll=false src/__tests__/InterfaceLanguage.test.tsx
+
 .PHONY: export-android-to-dropbox
 export-android-to-dropbox :
 			 cp android/app/build/outputs/apk/debug/app-debug.apk ~/Dropbox/tmp/

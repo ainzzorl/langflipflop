@@ -11,3 +11,5 @@ test("Rendering Settings Page", async () => {
   await screen.findByText("English → Spanish");
   await screen.findByText("Spanish → English");
 });
+
+// Changing interface language is tested in a separate file.

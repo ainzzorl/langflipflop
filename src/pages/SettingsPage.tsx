@@ -92,6 +92,7 @@ class SettingsPage extends React.Component<
             <IonRadioGroup
               value={this.state.settings.interfaceLanguage}
               onIonChange={(e) => this.setInterfaceLanguage(e.detail.value)}
+              data-testid="select-interface-language"
             >
               <IonListHeader>
                 <IonLabel>Interface Language</IonLabel>
