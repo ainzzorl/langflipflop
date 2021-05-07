@@ -13,5 +13,9 @@
   "settings.theme": "PLACEHOLDER - es.settings.theme",
   "settings.light": "PLACEHOLDER - es.settings.light",
   "settings.dark": "PLACEHOLDER - es.settings.dark",
-  "ftue.header": "Configuración"
+  "ftue.header": "Configuración",
+  "tab.library": "PLACEHOLDER - es.tab.library",
+  "tab.recent": "PLACEHOLDER - es.tab.recent",
+  "tab.settings": "PLACEHOLDER - es.tab.settings",
+  "tab.about": "PLACEHOLDER - es.tab.about"
 }

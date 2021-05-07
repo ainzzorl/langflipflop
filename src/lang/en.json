@@ -34,5 +34,9 @@
   "text.device-ftue-p2": "Swipe left or tap NEXT to go to the next screen.",
   "text.device-ftue-p3": "Swipe right or tap PREVIOUS to go to the previous screen.",
   "text.previous": "Previous",
-  "text.next": "Next"
+  "text.next": "Next",
+  "tab.library": "Home",
+  "tab.recent": "Recent",
+  "tab.settings": "Settings",
+  "tab.about": "About"
 }

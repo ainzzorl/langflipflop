@@ -22,7 +22,7 @@ import "@ionic/react/css/typography.css";
 import deepEqual from "fast-deep-equal/es6";
 import { home, informationCircle, settings, time } from "ionicons/icons";
 import React from "react";
-import { IntlProvider } from "react-intl";
+import { FormattedMessage, IntlProvider } from "react-intl";
 //@ts-ignore
 import MetaTags from "react-meta-tags";
 import { matchPath, withRouter } from "react-router";
@@ -197,19 +197,27 @@ class MainCompinent extends React.Component<
                     <IonTabBar slot="bottom">
                       <IonTabButton tab="library" href="/t/texts">
                         <IonIcon icon={home} />
-                        <IonLabel>Home</IonLabel>
+                        <IonLabel>
+                          <FormattedMessage id="tab.library" />
+                        </IonLabel>
                       </IonTabButton>
                       <IonTabButton tab="recent" href="/t/recent">
                         <IonIcon icon={time} />
-                        <IonLabel>Recent</IonLabel>
+                        <IonLabel>
+                          <FormattedMessage id="tab.recent" />
+                        </IonLabel>
                       </IonTabButton>
                       <IonTabButton tab="settings" href="/t/settings">
                         <IonIcon icon={settings} />
-                        <IonLabel>Settings</IonLabel>
+                        <IonLabel>
+                          <FormattedMessage id="tab.settings" />
+                        </IonLabel>
                       </IonTabButton>
                       <IonTabButton tab="about" href="/t/about">
                         <IonIcon icon={informationCircle} />
-                        <IonLabel>About</IonLabel>
+                        <IonLabel>
+                          <FormattedMessage id="tab.about" />
+                        </IonLabel>
                       </IonTabButton>
                     </IonTabBar>
                   </IonTabs>
