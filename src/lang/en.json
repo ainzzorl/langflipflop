@@ -26,5 +26,13 @@
   "settings.dark": "Dark",
   "text-info.difficulty": "Difficulty: ",
   "text-info.categories": "Categories: ",
-  "text-info.source": "Source: "
+  "text-info.source": "Source: ",
+  "text.browser-ftue-p1": "Try translating the text you see on the screen and then click the text to see a possible translation.",
+  "text.browser-ftue-p2": "Click NEXT to go to the next screen.",
+  "text.browser-ftue-p3": "Click PREVIOUS to go to the previous screen.",
+  "text.device-ftue-p1": "Try translating the text you see on the screen and then tap the text to see a possible translation.",
+  "text.device-ftue-p2": "Swipe left or tap NEXT to go to the next screen.",
+  "text.device-ftue-p3": "Swipe right or tap PREVIOUS to go to the previous screen.",
+  "text.previous": "Previous",
+  "text.next": "Next"
 }

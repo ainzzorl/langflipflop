@@ -18,6 +18,7 @@ import Mousetrap from "mousetrap";
 import React from "react";
 import ReactCardFlip from "react-card-flip";
 import ReactDOMServer from "react-dom/server";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "react-router-dom";
 import { getQueryParams, getSearch, isBrowser } from "../common/Common";
 import { DAO } from "../common/DAO";
@@ -107,12 +108,13 @@ class TextPage extends React.Component<
 
   render() {
     if (!this.state.texts.has("en") || this.state.segmentIndex < 0) {
-      return <div>Loading...</div>;
+      return <IonPage></IonPage>;
     }
 
     let ftueMessage;
     if (isBrowser()) {
       ftueMessage = new IonicSafeString(
+        // TODO: internationalize
         ReactDOMServer.renderToString(
           <div>
             <p>
@@ -120,11 +122,12 @@ class TextPage extends React.Component<
               text to see a possible translation.
             </p>
             <p>Click NEXT to go to the next screen.</p>
-            <p>Click PREVIOUS to go to the previous screen.</p>
+            <p>PREVIOUS to go to the previous screen.</p>
           </div>
         )
       );
     } else {
+      // TODO: internationalize
       ftueMessage = new IonicSafeString(
         ReactDOMServer.renderToString(
           <div>
@@ -163,22 +166,22 @@ class TextPage extends React.Component<
           <IonAlert
             isOpen={this.state.showEndOfTextAlert}
             onDidDismiss={() => this.setShowEndOfTextAlert(false)}
-            header="End of Text"
+            header="End of Text" // TODO: internationalize
             buttons={[
               {
-                text: "Home",
+                text: "Home", // TODO: internationalize
                 cssClass: "primary",
                 handler: () => {
                   this.props.history.push("/t/texts");
                 },
               },
               {
-                text: "About Text",
+                text: "About Text", // TODO: internationalize
                 cssClass: "secondary",
                 handler: this.onGoToTextInfoClicked,
               },
               {
-                text: "Close",
+                text: "Close", // TODO: internationalize
                 role: "cancel",
                 cssClass: "secondary",
               },
@@ -215,7 +218,7 @@ class TextPage extends React.Component<
                 color="primary"
                 onClick={this.goToPrevious}
               >
-                Previous
+                <FormattedMessage id="text.previous" />
               </IonButton>
               <IonButton
                 disabled={
@@ -225,7 +228,7 @@ class TextPage extends React.Component<
                 color="secondary"
                 onClick={this.goToNext}
               >
-                Next
+                <FormattedMessage id="text.next" />
               </IonButton>
             </IonButtons>
             <IonButtons slot="end">
