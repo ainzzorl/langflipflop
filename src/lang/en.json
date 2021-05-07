@@ -14,5 +14,7 @@
   "ftue.start": "Start",
   "library.category": "Category",
   "library.any": "Any",
-  "library.difficulty": "Difficulty"
+  "library.difficulty": "Difficulty",
+  "recent.header": "Recent",
+  "recent.no-texts": "No recently opened texts."
 }

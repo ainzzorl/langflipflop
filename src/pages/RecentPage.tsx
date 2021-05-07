@@ -7,6 +7,7 @@ import {
 } from "@ionic/react";
 import deepEqual from "fast-deep-equal/es6";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { loadAllTextMetadata } from "../common/Common";
 import { DAO, PersistentTextData, Settings } from "../common/DAO";
 import TextMeta from "../common/TextMeta";
@@ -79,14 +80,20 @@ class RecentPage extends React.Component<
         );
       });
     } else {
-      content = <p className="content-text">No recently opened texts.</p>;
+      content = (
+        <p className="content-text">
+          <FormattedMessage id="recent.no-texts" />
+        </p>
+      );
     }
 
     return (
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Recent</IonTitle>
+            <IonTitle>
+              <FormattedMessage id="recent.header" />
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>{content}</IonContent>
