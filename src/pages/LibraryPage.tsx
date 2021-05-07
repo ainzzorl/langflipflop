@@ -9,6 +9,7 @@ import {
 } from "@ionic/react";
 import deepEqual from "fast-deep-equal/es6";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps, StaticContext } from "react-router";
 import { CATEGORIES, CATEGORY_MAP } from "../common/Categories";
 import {
@@ -76,29 +77,33 @@ class LibraryPage extends React.Component<
         <IonContent>
           <IonList>
             <IonItem>
-              <IonLabel>Category</IonLabel>
+              <IonLabel>
+                <FormattedMessage id="library.category" />
+              </IonLabel>
               <IonSelect
                 value={this.state.categoryFilter}
-                placeholder="Any"
+                placeholder="Any" // TODO: internationalize
                 interface="popover"
                 onIonChange={(e) => this.setCategoryFilter(e.detail.value)}
               >
                 <IonSelectOption value="" key={"selector-category-any"}>
-                  Any
+                  <FormattedMessage id="library.any" />
                 </IonSelectOption>
                 {this.getCategoryOptions()}
               </IonSelect>
             </IonItem>
             <IonItem>
-              <IonLabel>Difficulty</IonLabel>
+              <IonLabel>
+                <FormattedMessage id="library.difficulty" />
+              </IonLabel>
               <IonSelect
                 value={this.state.difficultyFilter}
-                placeholder="Any"
+                placeholder="Any" // TODO: internationalize
                 interface="popover"
                 onIonChange={(e) => this.setDifficultyFilter(e.detail.value)}
               >
                 <IonSelectOption value="" key={"selector-category-any"}>
-                  Any
+                  <FormattedMessage id="library.any" />
                 </IonSelectOption>
                 {this.getDifficultyOptions()}
               </IonSelect>

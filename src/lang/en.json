@@ -11,5 +11,8 @@
   "ftue.english-spanish": "English → Spanish",
   "ftue.spanish-english": "Spanish → English",
   "ftue.interface-language": "Interface Language",
-  "ftue.start": "Start"
+  "ftue.start": "Start",
+  "library.category": "Category",
+  "library.any": "Any",
+  "library.difficulty": "Difficulty"
 }
