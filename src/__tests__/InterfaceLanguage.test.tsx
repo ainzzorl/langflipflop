@@ -9,7 +9,7 @@ test("Changing Interface Language", async () => {
 
   renderWithRoute("/t/settings");
   await screen.findByText("Settings");
-  await screen.findByText("Spanish");
+  await screen.findByText("Español");
 
   // Switch to Spanish
   ionFireEvent.ionChange(

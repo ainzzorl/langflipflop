@@ -104,12 +104,12 @@ class SettingsPage extends React.Component<
               </IonItem>
 
               <IonItem>
-                <IonLabel>Spanish</IonLabel>
+                <IonLabel>Español</IonLabel>
                 <IonRadio slot="start" value="es" />
               </IonItem>
 
               <IonItem>
-                <IonLabel>Russian</IonLabel>
+                <IonLabel>Русский</IonLabel>
                 <IonRadio slot="start" value="ru" />
               </IonItem>
             </IonRadioGroup>
