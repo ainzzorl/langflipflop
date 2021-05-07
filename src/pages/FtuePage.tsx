@@ -15,13 +15,18 @@ import {
 } from "@ionic/react";
 import queryString from "query-string";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps, StaticContext, withRouter } from "react-router";
 import { DAO, Settings, User } from "../common/DAO";
 import "./FtuePage.css";
 
+interface FtueProps extends RouteComponentProps<any, StaticContext, unknown> {
+  reloadMainSettings: () => void;
+}
+
 class FtuePage extends React.Component<
-  RouteComponentProps<any, StaticContext, unknown>,
-  { settings: Settings; redirect: string }
+  FtueProps,
+  { settings?: Settings; redirect: string }
 > {
   static readonly DEFAULT_REDIRECT = "/t/texts";
 
@@ -32,16 +37,21 @@ class FtuePage extends React.Component<
     let queryParams = queryString.parse(this.props.location.search);
 
     this.state = {
-      settings: new Settings(),
+      settings: undefined,
       redirect:
         (queryParams["redirect"] as string) || FtuePage.DEFAULT_REDIRECT,
     };
+    DAO.getSettings().then((settings) => {
+      this.setState(() => ({
+        settings: settings,
+      }));
+    });
   }
 
   private completeFtue() {
     let user = new User();
     user.completedMainFtue = true;
-    this.setTranslationDirection(this.state.settings.translationDirection);
+    this.setTranslationDirection(this.state.settings!.translationDirection);
     DAO.setUser(user).then(() => {
       this.props.history.push(this.state.redirect);
     });
@@ -50,21 +60,40 @@ class FtuePage extends React.Component<
   private setTranslationDirection(translationDirection: string) {
     this.setState(
       (state) => {
-        state.settings.translationDirection = translationDirection;
+        state.settings!.translationDirection = translationDirection;
         return { settings: state.settings };
       },
       () => {
-        DAO.setSettings(this.state.settings);
+        DAO.setSettings(this.state.settings!);
+      }
+    );
+  }
+
+  setInterfaceLanguage(interfaceLanguage: string) {
+    this.setState(
+      (state) => {
+        state.settings!.interfaceLanguage = interfaceLanguage;
+        return { settings: state.settings };
+      },
+      () => {
+        DAO.setSettings(this.state.settings!).then(() => {
+          this.props.reloadMainSettings();
+        });
       }
     );
   }
 
   render() {
+    if (!this.state.settings) {
+      return <IonContent></IonContent>;
+    }
     return (
       <IonPage id="ftue-page">
         <IonHeader>
           <IonToolbar>
-            <IonHeader>Setup</IonHeader>
+            <IonHeader>
+              <FormattedMessage id="ftue.header" />
+            </IonHeader>
           </IonToolbar>
         </IonHeader>
         <IonContent>
@@ -87,6 +116,31 @@ class FtuePage extends React.Component<
               <IonItem>
                 <IonLabel>Spanish &#8594; English</IonLabel>
                 <IonRadio slot="start" value="es-en" />
+              </IonItem>
+            </IonRadioGroup>
+
+            <IonRadioGroup
+              value={this.state.settings.interfaceLanguage}
+              onIonChange={(e) => this.setInterfaceLanguage(e.detail.value)}
+              data-testid="select-interface-language"
+            >
+              <IonListHeader>
+                <IonLabel>Interface Language</IonLabel>
+              </IonListHeader>
+
+              <IonItem>
+                <IonLabel>English</IonLabel>
+                <IonRadio slot="start" value="en" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>Español</IonLabel>
+                <IonRadio slot="start" value="es" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>Русский</IonLabel>
+                <IonRadio slot="start" value="ru" />
               </IonItem>
             </IonRadioGroup>
           </IonList>

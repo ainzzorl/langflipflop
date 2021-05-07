@@ -156,7 +156,12 @@ class MainCompinent extends React.Component<
               exact={true}
             />
             <Route path="/texts/:id" component={TextPage} exact={true} />
-            <Route path="/ftue" component={FtuePage} />
+            <Route
+              path="/ftue"
+              render={(props) => (
+                <FtuePage {...props} reloadMainSettings={this.reloadSettings} />
+              )}
+            />
             <Route
               path="/t"
               render={() => {
