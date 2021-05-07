@@ -23,5 +23,8 @@
   "settings.interface-language": "Interface Language",
   "settings.theme": "Theme",
   "settings.light": "Light",
-  "settings.dark": "Dark"
+  "settings.dark": "Dark",
+  "text-info.difficulty": "Difficulty: ",
+  "text-info.categories": "Categories: ",
+  "text-info.source": "Source: "
 }

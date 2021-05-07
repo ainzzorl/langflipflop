@@ -9,6 +9,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "react-router-dom";
 import TextMeta from "../common/TextMeta";
 
@@ -68,16 +69,22 @@ class TextInfoPage extends React.Component<
         <IonContent class="ion-padding">
           <p>{this.state.text["en"]["description"]}</p>
           <p>
-            <IonText color="medium">Difficulty: </IonText>
+            <IonText color="medium">
+              <FormattedMessage id="text-info.difficulty" />
+            </IonText>
             <IonText>{this.state.text.meta.difficulty}</IonText>
           </p>
           <p>
-            <IonText color="medium">Categories: </IonText>
+            <IonText color="medium">
+              <FormattedMessage id="text-info.categories" />
+            </IonText>
             <IonText>{this.state.meta.prettyCategories()}</IonText>
           </p>
           {this.state.meta.sourceLink && this.state.meta.sourceText && (
             <p>
-              <IonText color="medium">Source: </IonText>
+              <IonText color="medium">
+                <FormattedMessage id="text-info.source" />
+              </IonText>
               <a href={this.state.meta.sourceLink}>
                 {this.state.meta.sourceText}
               </a>
