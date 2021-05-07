@@ -6,5 +6,10 @@
   "about.coming-soon-on-apple": "Coming soon on App Store.",
   "about.contact": "Contact",
   "settings.header": "Settings",
-  "ftue.header": "Setup"
+  "ftue.header": "Setup",
+  "ftue.select-translation-direction": "Please select the translation you'd like to practice.",
+  "ftue.english-spanish": "English → Spanish",
+  "ftue.spanish-english": "Spanish → English",
+  "ftue.interface-language": "Interface Language",
+  "ftue.start": "Start"
 }

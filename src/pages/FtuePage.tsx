@@ -104,17 +104,21 @@ class FtuePage extends React.Component<
             >
               <IonListHeader>
                 <IonLabel>
-                  Please select the translation you'd like to practice.
+                  <FormattedMessage id="ftue.select-translation-direction" />
                 </IonLabel>
               </IonListHeader>
 
               <IonItem>
-                <IonLabel>English &#8594; Spanish</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="ftue.english-spanish" />
+                </IonLabel>
                 <IonRadio slot="start" value="en-es" />
               </IonItem>
 
               <IonItem>
-                <IonLabel>Spanish &#8594; English</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="ftue.spanish-english" />
+                </IonLabel>
                 <IonRadio slot="start" value="es-en" />
               </IonItem>
             </IonRadioGroup>
@@ -125,7 +129,9 @@ class FtuePage extends React.Component<
               data-testid="select-interface-language"
             >
               <IonListHeader>
-                <IonLabel>Interface Language</IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="ftue.interface-language" />
+                </IonLabel>
               </IonListHeader>
 
               <IonItem>
@@ -149,7 +155,7 @@ class FtuePage extends React.Component<
           <IonToolbar>
             <IonButtons slot="start">
               <IonButton color="primary" onClick={this.completeFtue}>
-                Start
+                <FormattedMessage id="ftue.start" />
               </IonButton>
             </IonButtons>
           </IonToolbar>
