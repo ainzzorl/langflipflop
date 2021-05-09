@@ -4,6 +4,7 @@ Import texts into the distribution format.
 
 import os
 import json
+import sys
 
 def process(lang, txtid):
     with open(f"./data/texts/{txtid}/{lang}.txt") as file:
@@ -50,11 +51,20 @@ def printdiff(lefthand, righthand):
 
 TARGET_DIR = 'public/assets/data/texts'
 
+def validate_categories(categories, all_categories):
+    for category in categories:
+        if category not in all_categories:
+            print(f"Unknown category: {category}")
+            sys.exit(1)
+
 def main():
     print(f"Cleaning up old texts under {TARGET_DIR}")
     for filename in os.listdir(TARGET_DIR):
         file_path = os.path.join(TARGET_DIR, filename)
         os.unlink(file_path)
+
+    with open("src/common/categories.json") as f:
+        all_categories = json.load(f)['categories']
 
     for textid in os.listdir('./data/texts/'):
         print(textid)
@@ -62,6 +72,8 @@ def main():
         es = process('es', textid)
         with open(f"./data/texts/{textid}/meta.json") as f:
             meta = json.load(f)
+        validate_categories(meta['categories'], all_categories)
+
         meta['id'] = textid
         meta['numSegments'] = len(en['segments'])
 
