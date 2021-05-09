@@ -142,10 +142,10 @@ class MainCompinent extends React.Component<
     }
 
     let locale = this.state.settings.interfaceLanguage;
-    let localeMessages: any = messages[locale];
+    (window as any).LOCALE_MESSAGES = messages[locale];
 
     return (
-      <IntlProvider locale={locale} messages={localeMessages}>
+      <IntlProvider locale={locale} messages={messages[locale]}>
         <div>
           {metaTags}
           <IonRouterOutlet>

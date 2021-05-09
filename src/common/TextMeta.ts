@@ -1,4 +1,5 @@
-import { CATEGORIES, CATEGORY_MAP } from "./Categories";
+import { categories as allCategories } from "./categories.json";
+import { getLocaleMessages } from "./Common";
 
 export default class TextMeta {
   id: string;
@@ -20,8 +21,10 @@ export default class TextMeta {
   }
 
   public prettyCategories(): string {
-    return CATEGORIES.filter((c) => this.categories.includes(c))
-      .map((c) => CATEGORY_MAP.get(c))
+    let localeMessages = getLocaleMessages();
+    return allCategories
+      .filter((c) => this.categories.includes(c))
+      .map((c) => localeMessages[`category.${c}`])
       .join(", ");
   }
 }

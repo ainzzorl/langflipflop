@@ -45,5 +45,11 @@ export async function loadAllTextMetadata(): Promise<Array<TextMeta>> {
     });
 }
 
+export function getLocaleMessages(): any {
+  return window.hasOwnProperty("LOCALE_MESSAGES")
+    ? (window as any).LOCALE_MESSAGES
+    : {};
+}
+
 export const BROWSER_CLICK_VERB = "click";
 export const DEVICE_CLICK_VERB = "tap";

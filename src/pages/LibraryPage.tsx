@@ -11,7 +11,7 @@ import deepEqual from "fast-deep-equal/es6";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { RouteComponentProps, StaticContext } from "react-router";
-import { CATEGORIES, CATEGORY_MAP } from "../common/Categories";
+import { categories } from "../common/categories.json";
 import {
   getQueryParams,
   getSearch,
@@ -152,10 +152,10 @@ class LibraryPage extends React.Component<
   }
 
   private getCategoryOptions() {
-    return CATEGORIES.map((category, _idx) => {
+    return categories.map((category, _idx) => {
       return (
         <IonSelectOption value={category} key={"selector-category-" + category}>
-          {CATEGORY_MAP.get(category)}
+          <FormattedMessage id={`category.${category}`} />
         </IonSelectOption>
       );
     });

@@ -41,5 +41,13 @@
   "tab.about": "About",
   "text-card.difficulty": "Difficulty: ",
   "text-card.categories": "Categories: ",
-  "text-card.length": "Length: "
+  "text-card.length": "Length: ",
+  "category.children": "Children's",
+  "category.sports": "Sports",
+  "category.news": "News",
+  "category.casual-phrases": "Casual Phrases",
+  "category.classics": "Classical Literature",
+  "category.culture": "Culture",
+  "category.politics": "Politics",
+  "category.science-and-technology": "Science & Technology"
 }
