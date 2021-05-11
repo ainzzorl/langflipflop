@@ -164,22 +164,22 @@ class TextPage extends React.Component<
           <IonAlert
             isOpen={this.state.showEndOfTextAlert}
             onDidDismiss={() => this.setShowEndOfTextAlert(false)}
-            header="End of Text" // TODO: internationalize
+            header={localeMessages["text.end-of-text-alert-header"]}
             buttons={[
               {
-                text: "Home", // TODO: internationalize
+                text: localeMessages["text.end-of-text-alert-home"],
                 cssClass: "primary",
                 handler: () => {
                   this.props.history.push("/t/texts");
                 },
               },
               {
-                text: "About Text", // TODO: internationalize
+                text: localeMessages["text.end-of-text-alert-about-text"],
                 cssClass: "secondary",
                 handler: this.onGoToTextInfoClicked,
               },
               {
-                text: "Close", // TODO: internationalize
+                text: localeMessages["text.end-of-text-alert-close"],
                 role: "cancel",
                 cssClass: "secondary",
               },
