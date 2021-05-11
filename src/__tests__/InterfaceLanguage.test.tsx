@@ -18,7 +18,7 @@ test("Changing Interface Language", async () => {
   );
 
   // Settings page is changed to Spanish right away
-  await screen.findByText("Ajustes");
+  await screen.findAllByText("Ajustes");
 
   // Reload About page, it should be in Spanish too
   renderWithRoute("/t/about");
