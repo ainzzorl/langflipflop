@@ -52,5 +52,10 @@
   "category.science-and-technology": "Science & Technology",
   "difficulty.Easy": "Easy",
   "difficulty.Medium": "Medium",
-  "difficulty.Hard": "Hard"
+  "difficulty.Hard": "Hard",
+  "document-title.ftue": "Setup",
+  "document-title.texts": "Home",
+  "document-title.recent": "Recent",
+  "document-title.settings": "Settings",
+  "document-title.about": "About"
 }

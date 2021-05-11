@@ -27,6 +27,7 @@ import { FormattedMessage, IntlProvider } from "react-intl";
 import MetaTags from "react-meta-tags";
 import { matchPath, withRouter } from "react-router";
 import { Redirect, Route, RouteComponentProps } from "react-router-dom";
+import { getLocaleMessages } from "../common/Common";
 import { DAO, Settings, User } from "../common/DAO";
 import English from "../lang/en.json";
 import Spanish from "../lang/es.json";
@@ -66,20 +67,21 @@ class MainCompinent extends React.Component<
   }
 
   componentDidUpdate() {
+    let localeMessages = getLocaleMessages();
     if (matchPath(this.props.location.pathname, "/ftue")) {
-      document.title = "Setup";
+      document.title = localeMessages["document-title.ftue"];
     }
     if (matchPath(this.props.location.pathname, "/t/texts")) {
-      document.title = "Home";
+      document.title = localeMessages["document-title.texts"];
     }
     if (matchPath(this.props.location.pathname, "/t/recent")) {
-      document.title = "Recent";
+      document.title = localeMessages["document-title.recent"];
     }
     if (matchPath(this.props.location.pathname, "/t/settings")) {
-      document.title = "Settings";
+      document.title = localeMessages["document-title.settings"];
     }
     if (matchPath(this.props.location.pathname, "/t/about")) {
-      document.title = "About";
+      document.title = localeMessages["document-title.about"];
     }
   }
 
