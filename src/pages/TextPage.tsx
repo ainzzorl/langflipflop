@@ -20,7 +20,12 @@ import ReactCardFlip from "react-card-flip";
 import ReactDOMServer from "react-dom/server";
 import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "react-router-dom";
-import { getQueryParams, getSearch, isBrowser } from "../common/Common";
+import {
+  getLocaleMessages,
+  getQueryParams,
+  getSearch,
+  isBrowser,
+} from "../common/Common";
 import { DAO } from "../common/DAO";
 import "./TextPage.css";
 
@@ -112,31 +117,24 @@ class TextPage extends React.Component<
     }
 
     let ftueMessage;
+    let localeMessages = getLocaleMessages();
     if (isBrowser()) {
       ftueMessage = new IonicSafeString(
-        // TODO: internationalize
         ReactDOMServer.renderToString(
           <div>
-            <p>
-              Try translating the text you see on the screen and then click the
-              text to see a possible translation.
-            </p>
-            <p>Click NEXT to go to the next screen.</p>
-            <p>PREVIOUS to go to the previous screen.</p>
+            <p>{localeMessages["text.browser-ftue-p1"]}</p>
+            <p>{localeMessages["text.browser-ftue-p2"]}</p>
+            <p>{localeMessages["text.browser-ftue-p3"]}</p>
           </div>
         )
       );
     } else {
-      // TODO: internationalize
       ftueMessage = new IonicSafeString(
         ReactDOMServer.renderToString(
           <div>
-            <p>
-              Try translating the text you see on the screen and then tap the
-              text to see a possible translation.
-            </p>
-            <p>Swipe left or tap NEXT to go to the next screen.</p>
-            <p>Swipe right or tap PREVIOUS to go to the previous screen.</p>
+            <p>{localeMessages["text.device-ftue-p1"]}</p>
+            <p>{localeMessages["text.device-ftue-p2"]}</p>
+            <p>{localeMessages["text.device-ftue-p3"]}</p>
           </div>
         )
       );
