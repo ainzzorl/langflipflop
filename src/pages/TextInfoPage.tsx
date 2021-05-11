@@ -72,7 +72,11 @@ class TextInfoPage extends React.Component<
             <IonText color="medium">
               <FormattedMessage id="text-info.difficulty" />
             </IonText>
-            <IonText>{this.state.text.meta.difficulty}</IonText>
+            <IonText>
+              <FormattedMessage
+                id={`difficulty.${this.state.text.meta.difficulty}`}
+              />
+            </IonText>
           </p>
           <p>
             <IonText color="medium">

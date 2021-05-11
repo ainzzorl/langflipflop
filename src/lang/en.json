@@ -49,5 +49,8 @@
   "category.classics": "Classical Literature",
   "category.culture": "Culture",
   "category.politics": "Politics",
-  "category.science-and-technology": "Science & Technology"
+  "category.science-and-technology": "Science & Technology",
+  "difficulty.Easy": "Easy",
+  "difficulty.Medium": "Medium",
+  "difficulty.Hard": "Hard"
 }

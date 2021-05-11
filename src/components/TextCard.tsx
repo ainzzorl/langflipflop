@@ -44,7 +44,9 @@ class TextCard extends React.Component<
         <IonCardContent>
           <p>
             <FormattedMessage id="text-card.difficulty" />
-            {this.props.textMeta.difficulty}
+            <FormattedMessage
+              id={`difficulty.${this.props.textMeta.difficulty}`}
+            />
           </p>
           <p>
             <FormattedMessage id="text-card.categories" />

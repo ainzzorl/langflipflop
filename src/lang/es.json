@@ -17,5 +17,8 @@
   "tab.library": "PLACEHOLDER - es.tab.library",
   "tab.recent": "PLACEHOLDER - es.tab.recent",
   "tab.settings": "PLACEHOLDER - es.tab.settings",
-  "tab.about": "PLACEHOLDER - es.tab.about"
+  "tab.about": "PLACEHOLDER - es.tab.about",
+  "difficulty.Easy": "PLACEHOLDER - es.difficulty.Easy",
+  "difficulty.Medium": "PLACEHOLDER - es.difficulty.Medium",
+  "difficulty.Hard": "PLACEHOLDER - es.difficulty.Hard"
 }
