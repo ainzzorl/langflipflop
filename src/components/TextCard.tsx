@@ -7,6 +7,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { FormattedMessage } from "react-intl";
+import { getLocaleMessages } from "../common/Common";
 import { PersistentTextData, Settings } from "../common/DAO";
 import TextMeta from "../common/TextMeta";
 
@@ -30,7 +31,7 @@ class TextCard extends React.Component<
         (100 * (this.props.persistentData.maxOpenedIndex + 1)) /
           this.props.textMeta.numSegments
       );
-      lengthStr += ` (Read: ${percent}%)`; // TODO: internationalize
+      lengthStr += ` (${getLocaleMessages()["text-card.read"]}: ${percent}%)`;
     }
 
     return (
