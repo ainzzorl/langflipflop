@@ -3,7 +3,8 @@ import { getLocaleMessages } from "./Common";
 
 export default class TextMeta {
   id: string;
-  title: string;
+  // language -> title
+  titles: Map<string, string>;
   difficulty: string;
   categories: Array<string>;
   numSegments: number;
@@ -11,7 +12,12 @@ export default class TextMeta {
   sourceText?: string;
 
   constructor(data: any) {
-    this.title = data["en"]["title"];
+    this.titles = new Map<string, string>();
+    Object.keys(data).forEach((key) => {
+      if (key !== "meta") {
+        this.titles.set(key, data[key]["title"]);
+      }
+    });
     this.id = data["meta"]["id"];
     this.difficulty = data["meta"]["difficulty"];
     this.categories = data["meta"]["categories"];

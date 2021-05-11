@@ -38,7 +38,7 @@ class TextCard extends React.Component<
       <IonCard button routerLink={routerLink}>
         <IonCardHeader>
           <IonCardTitle>
-            <IonLabel>{this.props.textMeta.title}</IonLabel>
+            <IonLabel>{this.props.textMeta.titles.get(lang1)}</IonLabel>
           </IonCardTitle>
         </IonCardHeader>
 
