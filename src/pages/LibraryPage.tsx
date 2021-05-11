@@ -13,6 +13,7 @@ import { FormattedMessage } from "react-intl";
 import { RouteComponentProps, StaticContext } from "react-router";
 import { categories } from "../common/categories.json";
 import {
+  getLocaleMessages,
   getQueryParams,
   getSearch,
   loadAllTextMetadata,
@@ -72,6 +73,8 @@ class LibraryPage extends React.Component<
       );
     }
 
+    let anyText = getLocaleMessages()["library.any"];
+
     return (
       <IonPage>
         <IonContent>
@@ -82,7 +85,7 @@ class LibraryPage extends React.Component<
               </IonLabel>
               <IonSelect
                 value={this.state.categoryFilter}
-                placeholder="Any" // TODO: internationalize
+                placeholder={anyText}
                 interface="popover"
                 onIonChange={(e) => this.setCategoryFilter(e.detail.value)}
               >
@@ -98,7 +101,7 @@ class LibraryPage extends React.Component<
               </IonLabel>
               <IonSelect
                 value={this.state.difficultyFilter}
-                placeholder="Any" // TODO: internationalize
+                placeholder={anyText}
                 interface="popover"
                 onIonChange={(e) => this.setDifficultyFilter(e.detail.value)}
               >
