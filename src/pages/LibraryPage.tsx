@@ -171,7 +171,7 @@ class LibraryPage extends React.Component<
           value={difficulty}
           key={"selector-difficulty-" + difficulty}
         >
-          {difficulty}
+          <FormattedMessage id={`difficulty.${difficulty}`} />
         </IonSelectOption>
       );
     });
