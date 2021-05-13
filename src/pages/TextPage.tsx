@@ -146,14 +146,14 @@ class TextPage extends React.Component<
           <IonToolbar>
             <IonButtons slot="start">
               <IonBackButton defaultHref="/" data-testid="back-button" />
-              <IonTitle color="medium">
-                <div className="my-wrap">
-                  {this.state.texts.get(this.state.currentLang)!.title} (
-                  {this.state.segmentIndex + 1}/
-                  {this.state.texts.get("en")!.segments.length})
-                </div>
-              </IonTitle>
             </IonButtons>
+            <IonTitle color="medium">
+              <div className="my-wrap">
+                {this.state.texts.get(this.state.currentLang)!.title} (
+                {this.state.segmentIndex + 1}/
+                {this.state.texts.get("en")!.segments.length})
+              </div>
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent

@@ -65,12 +65,12 @@ class TextInfoPage extends React.Component<
                 data-testid="back-button"
                 defaultHref={`/texts/${this.props.match.params.id}${this.props.location.search}`}
               />
-              <IonTitle color="medium">
-                <div className="my-wrap">
-                  {this.state.text[this.state.lang1]["title"]}
-                </div>
-              </IonTitle>
             </IonButtons>
+            <IonTitle color="medium">
+              <div className="my-wrap">
+                {this.state.text[this.state.lang1]["title"]}
+              </div>
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent class="ion-padding">
