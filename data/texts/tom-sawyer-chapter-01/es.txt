@@ -72,9 +72,7 @@ Sid, el hermano menor de Tom -o mejor dicho, hermanastro-, ya había dado fin a 
 
 Mientras Tom cenaba y escamoteaba terrones de azúcar cuando la ocasión se le ofrecía, su tía le hacía preguntas llenas de malicia y trastienda, con el intento de hacerle picar el anzuelo y sonsacarle reveladoras confesiones.
 Como otras muchas personas, igualmente sencillas y candorosas, se envanecía de poseer un talento especial para la diplomacia tortuosa y sutil, y se complacía en mirar sus más obvios y transparentes artificios como maravillas de artera astucia.
-Así, le dijo:
-
--Hacía bastante calor en la escuela, Tom, ¿no es cierto?
+Así, le dijo: -Hacía bastante calor en la escuela, Tom, ¿no es cierto?
 
 -Sí, señora.
 
@@ -256,7 +254,8 @@ Cuando la confusión tomó forma, a través de la polvareda de la batalla, apare
 
 -¡Date por vencido!
 
-El forastero no hacía sino luchar para libertarse. Estaba llorando, sobre todo de rabia.
+El forastero no hacía sino luchar para libertarse.
+Estaba llorando, sobre todo de rabia.
 
 -¡Date por vencido! -y siguió el machacamiento.
 
