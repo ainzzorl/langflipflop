@@ -1,5 +1,6 @@
 [MASTER]
 disable=
     C0116, # missing-function-docstring
+    W0511, # fixme
 
-good-names=en,es,i,j,f,a,b
+good-names=en,es,i,j,f,a,b,l1,l2

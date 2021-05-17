@@ -1,4 +1,18 @@
 {
+  "meta": {
+    "difficulty": "Medium",
+    "categories": [
+      "news"
+    ],
+    "sourceLink": "https://www.voanews.com/usa/mysterious-metallic-monolith-found-remote-utah",
+    "sourceText": "Voice of America (VOA)",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "mysterious-monolith",
+    "numSegments": 7
+  },
   "en": {
     "title": "Mysterious Metallic Monolith Found in Remote Utah",
     "description": "An article about a mysterious monolith found in remote Utah.",
@@ -24,15 +38,5 @@
       "\u00c9l a\u00f1adi\u00f3 que el objeto parec\u00eda ser hecho por hombre y no tienen ning\u00fan prop\u00f3sito cient\u00edfico, llam\u00e1ndolo \u201cm\u00e1s una forma de arte que cualquier tipo de forma alien\u00edgena\u201d.",
       "Por ahora, los oficiales no han revelado la ubicaci\u00f3n exacta del monolito y est\u00e1n tratando de determinar si es necesaria una futura investigaci\u00f3n."
     ]
-  },
-  "meta": {
-    "difficulty": "Medium",
-    "categories": [
-      "news"
-    ],
-    "sourceLink": "https://www.voanews.com/usa/mysterious-metallic-monolith-found-remote-utah",
-    "sourceText": "Voice of America (VOA)",
-    "id": "mysterious-monolith",
-    "numSegments": 7
   }
 }

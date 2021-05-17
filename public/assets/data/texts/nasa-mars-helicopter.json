@@ -1,4 +1,19 @@
 {
+  "meta": {
+    "difficulty": "Hard",
+    "categories": [
+      "news",
+      "science-and-technology"
+    ],
+    "sourceLink": "https://www.voanews.com/science-health/nasas-mars-helicopter-takes-first-successful-test-flight",
+    "sourceText": "Voice of America (VOA)",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "nasa-mars-helicopter",
+    "numSegments": 10
+  },
   "en": {
     "title": "NASA's Mars Helicopter Takes First Successful Test Flight",
     "description": "NASA's Mars Helicopter Takes First Successful Test Flight.",
@@ -30,16 +45,5 @@
       "Tiene bater\u00edas innovadoras y paneles solares para recargarse.",
       "Adem\u00e1s de c\u00e1maras, Ingenuity no lleva instrumentos cient\u00edficos."
     ]
-  },
-  "meta": {
-    "difficulty": "Hard",
-    "categories": [
-      "news",
-      "science-and-technology"
-    ],
-    "sourceLink": "https://www.voanews.com/science-health/nasas-mars-helicopter-takes-first-successful-test-flight",
-    "sourceText": "Voice of America (VOA)",
-    "id": "nasa-mars-helicopter",
-    "numSegments": 10
   }
 }

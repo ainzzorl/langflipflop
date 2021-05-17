@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases"
+    ],
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "casual-phrases-weather",
+    "numSegments": 38
+  },
   "en": {
     "title": "Casual Phrases - Weather",
     "description": "Casual phrases about weather.",
@@ -86,13 +98,5 @@
       "No puedo esperar a que llegue el invierno. Ir\u00e9 a esquiar y a hacer snowboarding.",
       "Mis hijos aman la nieve. Siempre construyen un mu\u00f1eco de nieve frente a nuestra casa."
     ]
-  },
-  "meta": {
-    "difficulty": "Easy",
-    "categories": [
-      "casual-phrases"
-    ],
-    "id": "casual-phrases-weather",
-    "numSegments": 38
   }
 }

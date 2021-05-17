@@ -1,4 +1,19 @@
 {
+  "meta": {
+    "difficulty": "Medium",
+    "categories": [
+      "news",
+      "culture"
+    ],
+    "sourceLink": "https://www.voanews.com/arts-culture/poet-louise-gluck-wins-nobel-prize-literature",
+    "sourceText": "Voice of America (VOA)",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "gluck-nobel-prize",
+    "numSegments": 9
+  },
   "en": {
     "title": "Poet Louise Gluck Wins Nobel Prize in Literature",
     "description": "Poet Louise Gluck Wins Nobel Prize in Literature.",
@@ -28,16 +43,5 @@
       "Tres cient\u00edficos ganaron el premio de f\u00edsica el mi\u00e9rcoles por sus descubrimientos relacionados a hoyos negros.",
       "Tres cient\u00edficos tambi\u00e9n compartieron el premio de medicina por el descubrimiento del virus de Hepatitis C."
     ]
-  },
-  "meta": {
-    "difficulty": "Medium",
-    "categories": [
-      "news",
-      "culture"
-    ],
-    "sourceLink": "https://www.voanews.com/arts-culture/poet-louise-gluck-wins-nobel-prize-literature",
-    "sourceText": "Voice of America (VOA)",
-    "id": "gluck-nobel-prize",
-    "numSegments": 9
   }
 }

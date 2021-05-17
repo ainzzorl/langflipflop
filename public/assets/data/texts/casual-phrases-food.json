@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases"
+    ],
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "casual-phrases-food",
+    "numSegments": 50
+  },
   "en": {
     "title": "Casual Phrases - Food",
     "description": "Casual phrases about food.",
@@ -110,13 +122,5 @@
       "Tenemos helado de vainilla casero.",
       "Para esta sopa de vegetales necesitas papas, cebollas, ajo, calabac\u00edn y berenjena."
     ]
-  },
-  "meta": {
-    "difficulty": "Easy",
-    "categories": [
-      "casual-phrases"
-    ],
-    "id": "casual-phrases-food",
-    "numSegments": 50
   }
 }

@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases"
+    ],
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "casual-phrases-work",
+    "numSegments": 31
+  },
   "en": {
     "title": "Casual Phrases - Work",
     "description": "Casual Phrases about Work.",
@@ -72,13 +84,5 @@
       "\u00bfTienes tiempo para una llamada r\u00e1pida?",
       "Eso fue bastante \u00fatil, gracias."
     ]
-  },
-  "meta": {
-    "difficulty": "Easy",
-    "categories": [
-      "casual-phrases"
-    ],
-    "id": "casual-phrases-work",
-    "numSegments": 31
   }
 }

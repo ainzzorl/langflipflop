@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases"
+    ],
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "casual-phrases-holidays-and-travel",
+    "numSegments": 52
+  },
   "en": {
     "title": "Casual Phrases - Holidays and Travel",
     "description": "Casual phrases about holidays and travel.",
@@ -114,13 +126,5 @@
       "Aqu\u00ed est\u00e1n nuestros pasaportes con los visados, nuestras tarjetas de embarque, el itinerario y las confirmaciones de las reservas. \u00bfQu\u00e9 m\u00e1s necesitamos?",
       "Van a cerrar las puertas en cinco minutos, \u00a1Hay que darse prisa!"
     ]
-  },
-  "meta": {
-    "difficulty": "Easy",
-    "categories": [
-      "casual-phrases"
-    ],
-    "id": "casual-phrases-holidays-and-travel",
-    "numSegments": 52
   }
 }

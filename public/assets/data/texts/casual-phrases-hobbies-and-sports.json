@@ -1,4 +1,17 @@
 {
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases",
+      "sports"
+    ],
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "casual-phrases-hobbies-and-sports",
+    "numSegments": 50
+  },
   "en": {
     "title": "Casual Phrases - Hobbies and Sports",
     "description": "Casual phrases about hobbies and sports.",
@@ -110,14 +123,5 @@
       "Observ\u00e9 el primer episodio y no me gust\u00f3.",
       "El cambio en la trama fue realmente inesperado."
     ]
-  },
-  "meta": {
-    "difficulty": "Easy",
-    "categories": [
-      "casual-phrases",
-      "sports"
-    ],
-    "id": "casual-phrases-hobbies-and-sports",
-    "numSegments": 50
   }
 }

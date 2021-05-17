@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases"
+    ],
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "casual-phrases-pets",
+    "numSegments": 30
+  },
   "en": {
     "title": "Casual Phrases - Pets",
     "description": "Casual Phrases about Pets.",
@@ -70,13 +82,5 @@
       "Mi hijo casi llora de emoci\u00f3n cuando vio a este cachorrito.",
       "Mis hijos cuidan del perro. Es su responsabilidad."
     ]
-  },
-  "meta": {
-    "difficulty": "Easy",
-    "categories": [
-      "casual-phrases"
-    ],
-    "id": "casual-phrases-pets",
-    "numSegments": 30
   }
 }

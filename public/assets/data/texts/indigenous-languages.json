@@ -1,4 +1,19 @@
 {
+  "meta": {
+    "difficulty": "Medium",
+    "categories": [
+      "news",
+      "culture"
+    ],
+    "sourceLink": "https://www.voanews.com/east-asia-pacific/australia-showcases-diverse-indigenous-languages",
+    "sourceText": "Voice of America (VOA)",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "indigenous-languages",
+    "numSegments": 14
+  },
   "en": {
     "title": "Australia Showcases Diverse Indigenous Languages",
     "description": "An article about \"The 50 Words Project\" aiming to provide fifty words in every Indigenous language of Australia.",
@@ -38,16 +53,5 @@
       "La historia de los abor\u00edgenes en Australia se remonta a 65.000 a\u00f1os.",
       "Los ind\u00edgenas representan alrededor del 3% de la poblaci\u00f3n nacional, que asciende a 25 millones de personas."
     ]
-  },
-  "meta": {
-    "difficulty": "Medium",
-    "categories": [
-      "news",
-      "culture"
-    ],
-    "sourceLink": "https://www.voanews.com/east-asia-pacific/australia-showcases-diverse-indigenous-languages",
-    "sourceText": "Voice of America (VOA)",
-    "id": "indigenous-languages",
-    "numSegments": 14
   }
 }

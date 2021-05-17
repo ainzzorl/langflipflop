@@ -1,4 +1,18 @@
 {
+  "meta": {
+    "difficulty": "Hard",
+    "categories": [
+      "politics"
+    ],
+    "sourceLink": "https://www.whitehouse.gov/administration/president-biden/",
+    "sourceText": "The White House",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "joe-biden-bio",
+    "numSegments": 33
+  },
   "en": {
     "title": "Joe Biden: The President",
     "description": "Joe Biden's biography from the official website of the White House.",
@@ -76,15 +90,5 @@
       "La candidatura de Biden se bas\u00f3, desde el principio, en tres pilares: la batalla por el alma de nuestra naci\u00f3n; la necesidad de reconstruir nuestra clase media, la columna vertebral de nuestro pa\u00eds; y un llamado a la unidad, para actuar como un solo Estados Unidos.",
       "Fue un mensaje que s\u00f3lo ganar\u00eda m\u00e1s resonancia en 2020 cuando nos enfrent\u00e1bamos a una pandemia, una crisis econ\u00f3mica, llamados urgentes a la justicia racial y la amenaza existencial del cambio clim\u00e1tico."
     ]
-  },
-  "meta": {
-    "difficulty": "Hard",
-    "categories": [
-      "politics"
-    ],
-    "sourceLink": "https://www.whitehouse.gov/administration/president-biden/",
-    "sourceText": "The White House",
-    "id": "joe-biden-bio",
-    "numSegments": 33
   }
 }

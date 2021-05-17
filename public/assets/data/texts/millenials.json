@@ -1,4 +1,18 @@
 {
+  "meta": {
+    "difficulty": "Medium",
+    "categories": [
+      "news"
+    ],
+    "sourceLink": "https://www.voanews.com/student-union/millennial-life-eat-sleep-work-screens",
+    "sourceText": "Voice of America (VOA)",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "millenials",
+    "numSegments": 15
+  },
   "en": {
     "title": "Millennial Life: Eat, Sleep, Work, Screens",
     "description": "An article about the life of the millennial generation.",
@@ -40,15 +54,5 @@
       "En un estudio de 3.826 adolescentes, los investigadores encontraron una asociaci\u00f3n entre el uso de las redes sociales y la televisi\u00f3n con s\u00edntomas de depresi\u00f3n, seg\u00fan JAMA Pediatrics.",
       "El aumento del tiempo de pantalla tambi\u00e9n se ha relacionado con un mayor riesgo de obesidad y diabetes."
     ]
-  },
-  "meta": {
-    "difficulty": "Medium",
-    "categories": [
-      "news"
-    ],
-    "sourceLink": "https://www.voanews.com/student-union/millennial-life-eat-sleep-work-screens",
-    "sourceText": "Voice of America (VOA)",
-    "id": "millenials",
-    "numSegments": 15
   }
 }

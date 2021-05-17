@@ -1,4 +1,19 @@
 {
+  "meta": {
+    "difficulty": "Hard",
+    "categories": [
+      "sports",
+      "news"
+    ],
+    "sourceLink": "https://www.voanews.com/americas/diego-maradonas-career-had-its-share-highs-lows",
+    "sourceText": "Voice of America (VOA)",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "maradona-voanews",
+    "numSegments": 56
+  },
   "en": {
     "title": "Diego Maradona's Career Had Its Share of Highs, Lows ",
     "description": "An article about Diego Maradona, who's widely regarded as one of the greatest football player in the history of the sport.",
@@ -122,16 +137,5 @@
       "Ellos tuvieron dos hijas, Dalma y Gianinna, y se divorciaron en el 2004.",
       "\u00c9l tambi\u00e9n tuvo un hijo, Diego Junior, nacido en N\u00e1poles en 1986, aunque solo reconoci\u00f3 la paternidad en el 2004."
     ]
-  },
-  "meta": {
-    "difficulty": "Hard",
-    "categories": [
-      "sports",
-      "news"
-    ],
-    "sourceLink": "https://www.voanews.com/americas/diego-maradonas-career-had-its-share-highs-lows",
-    "sourceText": "Voice of America (VOA)",
-    "id": "maradona-voanews",
-    "numSegments": 56
   }
 }

@@ -68,26 +68,35 @@ def main():
 
     for textid in os.listdir('./data/texts/'):
         print(textid)
-        en = process('en', textid)
-        es = process('es', textid)
         with open(f"./data/texts/{textid}/meta.json") as f:
             meta = json.load(f)
+        if 'languages' not in meta:
+            # TODO: make this field required
+            meta['languages'] = ['en', 'es']
+
+        lang_texts = {}
+        for lang in meta['languages']:
+            lang_texts[lang] = process(lang, textid)
+
         validate_categories(meta['categories'], all_categories)
 
         meta['id'] = textid
-        meta['numSegments'] = len(en['segments'])
+        meta['numSegments'] = len(lang_texts[meta['languages'][0]]['segments'])
 
-        if len(en['segments']) != len(es['segments']):
-            printdiff(en['segments'], es['segments'])
-            raise Exception(
-              f"Length mismatch: en={len(en['segments'])} vs es={len(es['segments'])}")
+        for l1 in meta['languages']:
+            for l2 in meta['languages']:
+                if len(lang_texts[l1]['segments']) != len(lang_texts[l2]['segments']):
+                    printdiff(lang_texts[l1]['segments'], lang_texts[l2]['segments'])
+                    raise Exception(
+                    f"Length mismatch: {l1}={len(lang_texts[l1]['segments'])} \
+vs {l2}={len(lang_texts[l2]['segments'])}")
         print("Everything's fine")
 
         final = {
-            'en': en,
-            'es': es,
             'meta': meta
         }
+        for lang in meta['languages']:
+            final[lang] = lang_texts[lang]
 
         with open(f"public/assets/data/texts/{textid}.json", 'w') as outfile:
             json.dump(final, outfile, indent=2)

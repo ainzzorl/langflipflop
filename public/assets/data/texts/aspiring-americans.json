@@ -1,4 +1,18 @@
 {
+  "meta": {
+    "difficulty": "Medium",
+    "categories": [
+      "news"
+    ],
+    "sourceLink": "https://www.voanews.com/usa/immigration/aspiring-americans-face-tougher-citizenship-test",
+    "sourceText": "Voice of America (VOA)",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "aspiring-americans",
+    "numSegments": 38
+  },
   "en": {
     "title": "Aspiring Americans Face Tougher Citizenship Test",
     "description": "An article about American citizenship tests.",
@@ -86,15 +100,5 @@
       "Superaremos esto.",
       "Superaremos esto juntos como una comunidad,\u201d dijo Newton."
     ]
-  },
-  "meta": {
-    "difficulty": "Medium",
-    "categories": [
-      "news"
-    ],
-    "sourceLink": "https://www.voanews.com/usa/immigration/aspiring-americans-face-tougher-citizenship-test",
-    "sourceText": "Voice of America (VOA)",
-    "id": "aspiring-americans",
-    "numSegments": 38
   }
 }

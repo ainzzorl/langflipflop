@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases"
+    ],
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "casual-phrases-family-and-friends",
+    "numSegments": 25
+  },
   "en": {
     "title": "Casual Phrases - Family and Friends",
     "description": "Casual phrases about family and friends.",
@@ -60,13 +72,5 @@
       "Llevamos tres a\u00f1os saliendo.",
       "\u00bfRecuerdas c\u00f3mo nos conocimos?"
     ]
-  },
-  "meta": {
-    "difficulty": "Easy",
-    "categories": [
-      "casual-phrases"
-    ],
-    "id": "casual-phrases-family-and-friends",
-    "numSegments": 25
   }
 }

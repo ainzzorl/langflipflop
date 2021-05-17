@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "difficulty": "Easy",
+    "categories": [
+      "casual-phrases"
+    ],
+    "languages": [
+      "en",
+      "es"
+    ],
+    "id": "casual-phrases-house",
+    "numSegments": 36
+  },
   "en": {
     "title": "Casual Phrases - House",
     "description": "Casual Phrases - House.",
@@ -82,13 +94,5 @@
       "\u00bfHay una aspiradora? Esta alfombra necesita ser limpiada.",
       "Escucho a alguien tocando la puerta."
     ]
-  },
-  "meta": {
-    "difficulty": "Easy",
-    "categories": [
-      "casual-phrases"
-    ],
-    "id": "casual-phrases-house",
-    "numSegments": 36
   }
 }
