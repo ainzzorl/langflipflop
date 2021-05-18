@@ -107,7 +107,7 @@ class RecentPage extends React.Component<
     }
     DAO.getSettings().then((settings) => {
       DAO.getAllTextData().then((textsData) => {
-        let recentTexts = this.getRecentTexts(textsData);
+        let recentTexts = this.getRecentTexts(textsData, settings);
 
         // Update state only if something actually changed,
         // otherwise it can get stuck updating itself indefinitely.
@@ -126,9 +126,18 @@ class RecentPage extends React.Component<
     });
   }
 
-  private getRecentTexts(allTextData: Map<String, PersistentTextData>) {
+  private getRecentTexts(
+    allTextData: Map<String, PersistentTextData>,
+    settings: Settings
+  ) {
     let openedTexts: Array<TextMeta> = this.state.texts!.filter((textMeta) => {
+      let directionParts = settings.translationDirection.split("-");
+      let lang1 = directionParts[0];
+      let lang2 = directionParts[1];
+
       return (
+        textMeta.languages.indexOf(lang1) >= 0 &&
+        textMeta.languages.indexOf(lang2) >= 0 &&
         allTextData.has(textMeta.id) &&
         allTextData.get(textMeta.id)?.lastOpenedTimestamp
       );

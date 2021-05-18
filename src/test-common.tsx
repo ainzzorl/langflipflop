@@ -111,6 +111,23 @@ export namespace TEST_FIXTURES {
     match: "The Adventures of Tom Sawyer (Chapter 1)",
     noMatch: "Casual Phrases - Weather",
   };
+
+  export const TEXT_NOT_IN_ALL_LANGUAGES = {
+    titles: {
+      en: "Joe Biden: The President",
+      es: "Joe Biden: El Presidente",
+    },
+    in: ["en", "es"],
+    notIn: ["ru"],
+  };
+
+  export const TEXT_IN_ALL_LANGUAGES = {
+    titles: {
+      en: "The Adventures of Tom Sawyer (Chapter 1)",
+      es: "Las aventuras de Tom Sawyer (Capítulo 1)",
+      ru: "Приключения Тома Сойера (Глава 1)",
+    },
+  };
 }
 
 export class TextPageActions {
@@ -208,5 +225,12 @@ export async function setCompletedTextFtue() {
   return DAO.getUser().then((user) => {
     user.completedTextFtue = true;
     return DAO.setUser(user);
+  });
+}
+
+export async function setTranslationLanguages(lang1: string, lang2: string) {
+  return DAO.getSettings().then((settings) => {
+    settings.translationDirection = `${lang1}-${lang2}`;
+    return DAO.setSettings(settings);
   });
 }

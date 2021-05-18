@@ -10,6 +10,7 @@ export default class TextMeta {
   numSegments: number;
   sourceLink?: string;
   sourceText?: string;
+  languages: Array<string>;
 
   constructor(data: any) {
     this.titles = new Map<string, string>();
@@ -24,6 +25,7 @@ export default class TextMeta {
     this.numSegments = data["meta"]["numSegments"];
     this.sourceLink = data["meta"]["sourceLink"];
     this.sourceText = data["meta"]["sourceText"];
+    this.languages = data["meta"]["languages"];
   }
 
   public prettyCategories(): string {

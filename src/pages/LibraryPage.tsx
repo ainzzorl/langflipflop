@@ -133,6 +133,17 @@ class LibraryPage extends React.Component<
           textMeta.difficulty.includes(this.state.difficultyFilter)
         );
       })
+      .filter((textMeta, _idx) => {
+        let directionParts = this.state.settings!.translationDirection.split(
+          "-"
+        );
+        let lang1 = directionParts[0];
+        let lang2 = directionParts[1];
+        return (
+          textMeta.languages.indexOf(lang1) >= 0 &&
+          textMeta.languages.indexOf(lang2) >= 0
+        );
+      })
       .map((textMeta, idx) => {
         return (
           <TextCard
