@@ -83,16 +83,44 @@ class SettingsPage extends React.Component<
 
               <IonItem>
                 <IonLabel>
-                  <FormattedMessage id="settings.english-spanish" />
+                  <FormattedMessage id="languages.english-spanish" />
                 </IonLabel>
                 <IonRadio slot="start" value="en-es" />
               </IonItem>
 
               <IonItem>
                 <IonLabel>
-                  <FormattedMessage id="settings.spanish-english" />
+                  <FormattedMessage id="languages.english-russian" />
+                </IonLabel>
+                <IonRadio slot="start" value="en-ru" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>
+                  <FormattedMessage id="languages.spanish-english" />
                 </IonLabel>
                 <IonRadio slot="start" value="es-en" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>
+                  <FormattedMessage id="languages.spanish-russian" />
+                </IonLabel>
+                <IonRadio slot="start" value="es-ru" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>
+                  <FormattedMessage id="languages.russian-english" />
+                </IonLabel>
+                <IonRadio slot="start" value="ru-en" />
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>
+                  <FormattedMessage id="languages.russian-spanish" />
+                </IonLabel>
+                <IonRadio slot="start" value="ru-es" />
               </IonItem>
             </IonRadioGroup>
             <IonRadioGroup
