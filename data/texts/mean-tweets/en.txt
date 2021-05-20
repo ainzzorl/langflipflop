@@ -1,0 +1,16 @@
+Twitter to Point Out Mean Tweets Before They Are Sent
+News article about a new feature of Twitter.
+
+Twitter wants to curb what the company calls "potentially harmful or offensive" tweets.
+
+The social media company announced Wednesday it has released a feature that can detect a mean tweet and prompt a user to be sure they really want to send it.
+
+"People come to Twitter to talk about what's happening, and sometimes conversations about things we care about can get intense, and people say things in the moment they might regret later," the company said in a blog post.
+
+"That's why in 2020, we tested prompts that encouraged people to pause and reconsider a potentially harmful or offensive reply before they hit send."
+
+The prompt says: "Want to review this before tweeting?"
+
+Users can then decide whether to send, edit or delete the tweet.
+
+Twitter did not specify what would be considered "potentially harmful or offensive."
