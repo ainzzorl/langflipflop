@@ -25,7 +25,7 @@ import React from "react";
 import { FormattedMessage, IntlProvider } from "react-intl";
 //@ts-ignore
 import MetaTags from "react-meta-tags";
-import { matchPath, withRouter } from "react-router";
+import { matchPath, Switch, withRouter } from "react-router";
 import { Redirect, Route, RouteComponentProps } from "react-router-dom";
 import { getLocaleMessages } from "../common/Common";
 import { DAO, Settings, User } from "../common/DAO";
@@ -35,6 +35,7 @@ import Russian from "../lang/ru.json";
 import AboutPage from "../pages/AboutPage";
 import FtuePage from "../pages/FtuePage";
 import LibraryPage from "../pages/LibraryPage";
+import PageNotFoundPage from "../pages/PageNotFoundPage";
 import RecentPage from "../pages/RecentPage";
 import SettingsPage from "../pages/SettingsPage";
 import TextInfoPage from "../pages/TextInfoPage";
@@ -99,6 +100,16 @@ class MainCompinent extends React.Component<
     if (matchPath(this.props.location.pathname, "/t/about")) {
       return false;
     }
+
+    if (
+      !matchPath(this.props.location.pathname, "/t/settings") &&
+      !matchPath(this.props.location.pathname, "/t/recent") &&
+      !matchPath(this.props.location.pathname, "/t/texts") &&
+      !matchPath(this.props.location.pathname, "/t/settings")
+    ) {
+      // Unknown route
+      return false;
+    }
     return true;
   }
 
@@ -151,81 +162,96 @@ class MainCompinent extends React.Component<
         <div>
           {metaTags}
           <IonRouterOutlet>
-            <Route exact path="/" render={() => <Redirect to={"/t/texts"} />} />
-            <Route
-              path="/texts/:id/info"
-              component={TextInfoPage}
-              exact={true}
-            />
-            <Route path="/texts/:id" component={TextPage} exact={true} />
-            <Route
-              path="/ftue"
-              render={(props) => (
-                <FtuePage {...props} reloadMainSettings={this.reloadSettings} />
-              )}
-            />
-            <Route
-              path="/t"
-              render={() => {
-                return (
-                  <IonTabs>
-                    <IonRouterOutlet>
-                      <Route
-                        path="/t/texts"
-                        component={LibraryPage}
-                        exact={true}
-                      />
-                      <Route
-                        path="/t/recent"
-                        component={RecentPage}
-                        exact={true}
-                      />
-                      <Route
-                        path="/t/settings"
-                        exact={true}
-                        render={(props) => (
-                          <SettingsPage
-                            {...props}
-                            reloadMainSettings={this.reloadSettings}
-                          />
-                        )}
-                      />
-                      <Route
-                        path="/t/about"
-                        component={AboutPage}
-                        exact={true}
-                      />
-                    </IonRouterOutlet>
-                    <IonTabBar slot="bottom">
-                      <IonTabButton tab="library" href="/t/texts">
-                        <IonIcon icon={home} />
-                        <IonLabel>
-                          <FormattedMessage id="tab.library" />
-                        </IonLabel>
-                      </IonTabButton>
-                      <IonTabButton tab="recent" href="/t/recent">
-                        <IonIcon icon={time} />
-                        <IonLabel>
-                          <FormattedMessage id="tab.recent" />
-                        </IonLabel>
-                      </IonTabButton>
-                      <IonTabButton tab="settings" href="/t/settings">
-                        <IonIcon icon={settings} />
-                        <IonLabel>
-                          <FormattedMessage id="tab.settings" />
-                        </IonLabel>
-                      </IonTabButton>
-                      <IonTabButton tab="about" href="/t/about">
-                        <IonIcon icon={informationCircle} />
-                        <IonLabel>
-                          <FormattedMessage id="tab.about" />
-                        </IonLabel>
-                      </IonTabButton>
-                    </IonTabBar>
-                  </IonTabs>
-                );
-              }}
-            />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => <Redirect to={"/t/texts"} />}
+              />
+              <Route
+                path="/texts/:id/info"
+                component={TextInfoPage}
+                exact={true}
+              />
+              <Route path="/texts/:id" component={TextPage} exact={true} />
+              <Route
+                path="/ftue"
+                render={(props) => (
+                  <FtuePage
+                    {...props}
+                    reloadMainSettings={this.reloadSettings}
+                  />
+                )}
+              />
+              <Route
+                path="/t"
+                render={() => {
+                  return (
+                    <IonTabs>
+                      <IonRouterOutlet>
+                        <Route
+                          path="/t/texts"
+                          component={LibraryPage}
+                          exact={true}
+                        />
+                        <Route
+                          path="/t/recent"
+                          component={RecentPage}
+                          exact={true}
+                        />
+                        <Route
+                          path="/t/settings"
+                          exact={true}
+                          render={(props) => (
+                            <SettingsPage
+                              {...props}
+                              reloadMainSettings={this.reloadSettings}
+                            />
+                          )}
+                        />
+                        <Route
+                          path="/t/about"
+                          component={AboutPage}
+                          exact={true}
+                        />
+                      </IonRouterOutlet>
+                      <IonTabBar slot="bottom">
+                        <IonTabButton tab="library" href="/t/texts">
+                          <IonIcon icon={home} />
+                          <IonLabel>
+                            <FormattedMessage id="tab.library" />
+                          </IonLabel>
+                        </IonTabButton>
+                        <IonTabButton tab="recent" href="/t/recent">
+                          <IonIcon icon={time} />
+                          <IonLabel>
+                            <FormattedMessage id="tab.recent" />
+                          </IonLabel>
+                        </IonTabButton>
+                        <IonTabButton tab="settings" href="/t/settings">
+                          <IonIcon icon={settings} />
+                          <IonLabel>
+                            <FormattedMessage id="tab.settings" />
+                          </IonLabel>
+                        </IonTabButton>
+                        <IonTabButton tab="about" href="/t/about">
+                          <IonIcon icon={informationCircle} />
+                          <IonLabel>
+                            <FormattedMessage id="tab.about" />
+                          </IonLabel>
+                        </IonTabButton>
+                      </IonTabBar>
+                    </IonTabs>
+                  );
+                }}
+              />
+              <Route
+                path="/404.html"
+                exact={true}
+                component={PageNotFoundPage}
+              />
+              <Redirect to="/404.html" />
+            </Switch>
           </IonRouterOutlet>
         </div>
       </IntlProvider>
