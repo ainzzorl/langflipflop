@@ -300,9 +300,8 @@ class TextPage extends React.Component<
     return texts;
   }
 
-  // TODO: generalize
   private otherLang(lang: string): string {
-    return lang === "en" ? "es" : "en";
+    return lang === this.state.lang1 ? this.state.lang2 : this.state.lang1;
   }
 
   private updateTextStamps() {
