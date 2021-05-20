@@ -20,7 +20,7 @@ export class Settings {
   interfaceLanguage: string;
 
   constructor() {
-    this.translationDirection = "en-es";
+    this.translationDirection = "";
     this.theme = "dark";
     this.interfaceLanguage = "";
   }
@@ -90,6 +90,11 @@ export class DAO {
     if (!settings.interfaceLanguage) {
       settings.interfaceLanguage = getDefaultInterfaceLanguage();
     }
+    if (!settings.translationDirection) {
+      settings.translationDirection = getDefaultTranslationDirection(
+        settings.interfaceLanguage
+      );
+    }
     return settings;
   }
 
@@ -134,5 +139,17 @@ export function getDefaultInterfaceLanguage(): string {
     return "en";
   } else {
     return browserLanguage;
+  }
+}
+
+export function getDefaultTranslationDirection(
+  interfaceLanguage: string
+): string {
+  if (interfaceLanguage === "es") {
+    return "es-en";
+  } else if (interfaceLanguage === "ru") {
+    return "ru-en";
+  } else {
+    return "en-es";
   }
 }
