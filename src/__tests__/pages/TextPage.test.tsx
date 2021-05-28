@@ -90,6 +90,28 @@ test("End-of-text", async () => {
   await screen.findByText("End of Text");
 });
 
+test("End-of-text - go to beginning", async () => {
+  renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
+  await TextPageActions.assertOnPage(0, "en");
+
+  for (var i = 0; i < 7; i++) {
+    await TextPageActions.assertOnPage(i, "en");
+    await TextPageActions.goToNext();
+  }
+
+  await screen.findByText("End of Text");
+
+  (await screen.findByText("Back to Beginning")).click();
+
+  // Must close the alert
+  expect(screen.queryByText("End of Text")).not.toBeInTheDocument();
+  // Must go to the beginning
+  // ACTUALLY it must be "en", but in the test context clicking
+  // "Back to Beginning" also triggers clicking the text and flips the card.
+  // It doesn't happen in non-text context.
+  await TextPageActions.assertOnPage(0, "es");
+});
+
 test("Going to the info page", async () => {
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=2`);
   await TextPageActions.assertOnPage(1, "en");

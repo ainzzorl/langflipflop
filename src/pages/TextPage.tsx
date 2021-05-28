@@ -87,6 +87,7 @@ class TextPage extends React.Component<
     this.onHelpClicked = this.onHelpClicked.bind(this);
     this.onGoToTextInfoClicked = this.onGoToTextInfoClicked.bind(this);
     this.setShowEndOfTextAlert = this.setShowEndOfTextAlert.bind(this);
+    this.onGoToBeginningClicked = this.onGoToBeginningClicked.bind(this);
 
     this.load();
   }
@@ -161,6 +162,7 @@ class TextPage extends React.Component<
           class="ion-padding"
           onClick={() => this.onFlip()}
         >
+          <div className="my-wrap">{this.state.currentLang}</div>{" "}
           <IonAlert
             isOpen={this.state.showEndOfTextAlert}
             onDidDismiss={() => this.setShowEndOfTextAlert(false)}
@@ -179,13 +181,17 @@ class TextPage extends React.Component<
                 handler: this.onGoToTextInfoClicked,
               },
               {
+                text: localeMessages["text.end-of-text-alert-go-to-beginning"],
+                cssClass: "secondary",
+                handler: this.onGoToBeginningClicked,
+              },
+              {
                 text: localeMessages["text.end-of-text-alert-close"],
                 role: "cancel",
                 cssClass: "secondary",
               },
             ]}
           />
-
           <ReactCardFlip
             isFlipped={this.state.flipped}
             flipDirection="horizontal"
@@ -193,7 +199,6 @@ class TextPage extends React.Component<
             <p>{this.state.sideOneText}</p>
             <p>{this.state.sideTwoText}</p>
           </ReactCardFlip>
-
           <IonAlert
             isOpen={this.state.showFtue}
             onDidDismiss={() => this.completeFtue()}
@@ -328,6 +333,11 @@ class TextPage extends React.Component<
     this.props.history.push(
       `/texts/${this.props.match.params.id}/info${getSearch(this.props)}`
     );
+  }
+
+  private onGoToBeginningClicked() {
+    this.setShowEndOfTextAlert(false);
+    this.goToIndex(0);
   }
 
   private completeFtue() {
