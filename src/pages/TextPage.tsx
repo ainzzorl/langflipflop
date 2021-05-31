@@ -162,7 +162,6 @@ class TextPage extends React.Component<
           class="ion-padding"
           onClick={() => this.onFlip()}
         >
-          <div className="my-wrap">{this.state.currentLang}</div>{" "}
           <IonAlert
             isOpen={this.state.showEndOfTextAlert}
             onDidDismiss={() => this.setShowEndOfTextAlert(false)}
