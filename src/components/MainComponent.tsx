@@ -22,12 +22,13 @@ import "@ionic/react/css/typography.css";
 import deepEqual from "fast-deep-equal/es6";
 import { home, informationCircle, settings, time } from "ionicons/icons";
 import React from "react";
+import ReactGA from "react-ga";
 import { FormattedMessage, IntlProvider } from "react-intl";
 //@ts-ignore
 import MetaTags from "react-meta-tags";
 import { matchPath, Switch, withRouter } from "react-router";
 import { Redirect, Route, RouteComponentProps } from "react-router-dom";
-import { getLocaleMessages } from "../common/Common";
+import { getLocaleMessages, isLocalhost } from "../common/Common";
 import { DAO, Settings, User } from "../common/DAO";
 import English from "../lang/en.json";
 import Spanish from "../lang/es.json";
@@ -129,6 +130,12 @@ class MainCompinent extends React.Component<
     if (!this.state.user || !this.state.settings) {
       return <IonRouterOutlet></IonRouterOutlet>;
     }
+
+    if (!isLocalhost) {
+      ReactGA.initialize("G-MVZE73X7Y5");
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
     if (this.shouldRedirectToFtue()) {
       let currentSearchParams = new URLSearchParams(this.props.location.search);
       let currentUrl = `${

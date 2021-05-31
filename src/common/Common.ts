@@ -51,5 +51,12 @@ export function getLocaleMessages(): any {
     : {};
 }
 
+export function isLocalhost(): boolean {
+  return (
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+  );
+}
+
 export const BROWSER_CLICK_VERB = "click";
 export const DEVICE_CLICK_VERB = "tap";

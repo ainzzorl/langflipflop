@@ -18,6 +18,7 @@ import Mousetrap from "mousetrap";
 import React from "react";
 import ReactCardFlip from "react-card-flip";
 import ReactDOMServer from "react-dom/server";
+import ReactGA from "react-ga";
 import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "react-router-dom";
 import {
@@ -25,6 +26,7 @@ import {
   getQueryParams,
   getSearch,
   isBrowser,
+  isLocalhost,
 } from "../common/Common";
 import { DAO } from "../common/DAO";
 import "./TextPage.css";
@@ -382,6 +384,9 @@ class TextPage extends React.Component<
       }),
       this.updateTextStamps
     );
+    if (!isLocalhost) {
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
     if (window.history.replaceState) {
       let searchParams = new URLSearchParams(getSearch(this.props));
       searchParams.set("i", (index + 1).toString());
