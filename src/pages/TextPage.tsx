@@ -384,7 +384,7 @@ class TextPage extends React.Component<
       }),
       this.updateTextStamps
     );
-    if (!isLocalhost) {
+    if (!isLocalhost()) {
       ReactGA.pageview(window.location.pathname + window.location.search);
     }
     if (window.history.replaceState) {

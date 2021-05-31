@@ -131,7 +131,7 @@ class MainCompinent extends React.Component<
       return <IonRouterOutlet></IonRouterOutlet>;
     }
 
-    if (!isLocalhost) {
+    if (!isLocalhost()) {
       ReactGA.initialize("G-MVZE73X7Y5");
       ReactGA.pageview(window.location.pathname + window.location.search);
     }
