@@ -132,7 +132,7 @@ class MainCompinent extends React.Component<
     }
 
     if (!isLocalhost()) {
-      ReactGA.initialize("G-MVZE73X7Y5");
+      ReactGA.initialize("UA-198267472-1");
       ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
