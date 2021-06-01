@@ -57,7 +57,7 @@ if __name__ == "__main__":
                      --stack-name {stack_name} \
                      --template-file {packaged_template} \
                      --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
-                     --parameter-overrides  DomainName={domain_name} SubDomain={subdomain_name} CreateApex={apex}"
+                     --parameter-overrides  DomainName={domain_name} SubDomain={subdomain_name} CreateApex={apex} Stage={stage}"
     print("Running deploy command")
     print(deploy_cmd)
     run_and_print(deploy_cmd)

@@ -1,0 +1,120 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Feedback infra for LangFlipFlop website
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  Region:
+    Type: String
+    Default: "us-east-1"
+  Stage:
+    Description: Stage
+    Type: String
+
+Resources:
+  FeedbackTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "FeedbackId"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "FeedbackId"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: "25"
+        WriteCapacityUnits: "25"
+      TableName: !Sub "Feedback-${Stage}"
+
+  FeedbackAPIRole:
+    Type: AWS::IAM::Role
+    Properties:
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ["apigateway.amazonaws.com"]
+            Action: "sts:AssumeRole"
+      Path: "/"
+      Policies:
+        - PolicyName: DynamoApiPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action:
+                  - "logs:*"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "dynamodb:PutItem"
+                  - "dynamodb:Query"
+                Resource:
+                  "Fn::Sub": "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/*"
+
+  FeedbackApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref Stage
+      DefinitionBody:
+        swagger: 2.0
+        info:
+          title: !Join ["", ["FeedbackAPI-", !Ref "Stage"]]
+        basePath: /
+        schemes:
+          - https
+        components:
+          schemas:
+            Empty:
+              title: "Empty Schema"
+              type: "object"
+        paths:
+          /feedbacks:
+            post:
+              produces:
+                - application/json
+              responses:
+                "200":
+                  description: "200 response"
+                  content:
+                    application/json:
+                      schema:
+                        $ref: "#/components/schemas/Empty"
+              x-amazon-apigateway-integration:
+                description: Add a new feedback to the database
+                credentials: { "Fn::GetAtt": FeedbackAPIRole.Arn }
+                uri:
+                  {
+                    "Fn::Sub": "arn:aws:apigateway:${AWS::Region}:dynamodb:action/PutItem",
+                  }
+                # TODO: don't hard-code table name
+                requestTemplates:
+                  application/json:
+                    Fn::Sub:
+                      - |-
+                        #set($inputRoot = $input.path('$'))
+                        {
+                          "TableName": "Feedback-prod",
+                          "Item": {
+                            #foreach($fieldName in $inputRoot.keySet())
+                            "$fieldName" : { "S": "$util.escapeJavaScript($inputRoot.get($fieldName))" },
+                            #end
+                            "FeedbackId": {
+                              "S": "$context.requestId"
+                            }
+                          }
+                        }
+                      - { tableName: { Ref: FeedbackTable } }
+                responses:
+                  default:
+                    statusCode: 200
+                    responseTemplates:
+                      application/json: '#set($inputRoot = $input.path("$"))
+                        {
+                        "FeedbackId": "$context.requestId"
+                        }'
+                passthroughBehavior: "when_no_match"
+                httpMethod: POST
+                type: AWS

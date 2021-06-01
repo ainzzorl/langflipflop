@@ -30,6 +30,11 @@ Parameters:
     Default: "alpha"
     AllowedValues: ["alpha", "prod"]
 
+Conditions:
+  CreateFeedbackInfra: !Equals
+    - !Ref Stage
+    - "prod"
+
 Resources:
   S3Stack:
     Type: AWS::CloudFormation::Stack
@@ -60,6 +65,14 @@ Resources:
         S3BucketRootArn: !GetAtt S3Stack.Outputs.S3BucketRootArn
         S3BucketLogs: !GetAtt S3Stack.Outputs.S3BucketLogs
         S3BucketLogsName: !GetAtt S3Stack.Outputs.S3BucketLogsName
+
+  FeedbackStack:
+    Type: AWS::CloudFormation::Stack
+    Condition: CreateFeedbackInfra
+    Properties:
+      TemplateURL: ./feedback.yaml
+      Parameters:
+        Stage: !Ref Stage
 
 Outputs:
   S3BucketLogs:
