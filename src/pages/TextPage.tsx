@@ -3,17 +3,30 @@ import {
   IonBackButton,
   IonButton,
   IonButtons,
+  IonCheckbox,
   IonContent,
   IonFooter,
   IonHeader,
   IonIcon,
   IonicSafeString,
+  IonItem,
+  IonItemDivider,
+  IonLabel,
+  IonList,
+  IonModal,
   IonPage,
+  IonText,
+  IonTextarea,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
 import Hammer from "hammerjs";
-import { help, information, thumbsDownOutline, thumbsUpOutline } from "ionicons/icons";
+import {
+  help,
+  information,
+  thumbsDownOutline,
+  thumbsUpOutline,
+} from "ionicons/icons";
 import Mousetrap from "mousetrap";
 import React from "react";
 import ReactCardFlip from "react-card-flip";
@@ -57,6 +70,7 @@ class TextPage extends React.Component<
     flipped: boolean;
     showFtue: boolean;
     showEndOfTextAlert: boolean;
+    showFeedbackModal: boolean;
   }
 > {
   constructor(props: any) {
@@ -79,6 +93,7 @@ class TextPage extends React.Component<
       flipped: false,
       showFtue: false,
       showEndOfTextAlert: false,
+      showFeedbackModal: false,
     };
 
     this.goToNext = this.goToNext.bind(this);
@@ -92,6 +107,7 @@ class TextPage extends React.Component<
     this.onGoToBeginningClicked = this.onGoToBeginningClicked.bind(this);
     this.onFeedbackUpClicked = this.onFeedbackUpClicked.bind(this);
     this.onFeedbackDownClicked = this.onFeedbackDownClicked.bind(this);
+    this.onFeedbackModalDismissed = this.onFeedbackModalDismissed.bind(this);
 
     this.load();
   }
@@ -161,40 +177,104 @@ class TextPage extends React.Component<
             </IonTitle>
           </IonToolbar>
         </IonHeader>
+        <IonAlert
+          isOpen={this.state.showEndOfTextAlert}
+          onDidDismiss={() => this.setShowEndOfTextAlert(false)}
+          header={localeMessages["text.end-of-text-alert-header"]}
+          buttons={[
+            {
+              text: localeMessages["text.end-of-text-alert-home"],
+              cssClass: "primary",
+              handler: () => {
+                this.props.history.push("/t/texts");
+              },
+            },
+            {
+              text: localeMessages["text.end-of-text-alert-about-text"],
+              cssClass: "secondary",
+              handler: this.onGoToTextInfoClicked,
+            },
+            {
+              text: localeMessages["text.end-of-text-alert-go-to-beginning"],
+              cssClass: "secondary",
+              handler: this.onGoToBeginningClicked,
+            },
+            {
+              text: localeMessages["text.end-of-text-alert-close"],
+              role: "cancel",
+              cssClass: "secondary",
+            },
+          ]}
+        />
+
+        <IonModal
+          isOpen={this.state.showFeedbackModal}
+          onDidDismiss={this.onFeedbackModalDismissed}
+        >
+          <IonContent>
+            <IonToolbar>
+              <IonTitle>
+                <IonText>What was wrong?</IonText>
+              </IonTitle>
+            </IonToolbar>
+            <IonList>
+              <IonItemDivider></IonItemDivider>
+              <IonItem>
+                <IonLabel>The proposed translation is bad/incorrect</IonLabel>
+                <IonCheckbox checked={false} />
+              </IonItem>
+              <IonItem>
+                <IonLabel>Text is not interesting</IonLabel>
+                <IonCheckbox checked={false} />
+              </IonItem>
+              <IonItemDivider></IonItemDivider>
+              <IonItem>
+                <IonTextarea placeholder={"Your feedback here"} />
+              </IonItem>
+            </IonList>
+          </IonContent>
+          <IonFooter>
+            <IonToolbar>
+              <IonButtons>
+                <IonButton
+                  onClick={() => this.onFeedbackModalDismissed()}
+                  slot="primary"
+                  color="primary"
+                  size="large"
+                >
+                  Send
+                </IonButton>
+                <IonButton
+                  onClick={() => this.onFeedbackModalDismissed()}
+                  slot="secondary"
+                  color="secondary"
+                  size="large"
+                >
+                  Cancel
+                </IonButton>
+              </IonButtons>
+            </IonToolbar>
+          </IonFooter>
+        </IonModal>
+
+        <IonAlert
+          isOpen={this.state.showFtue}
+          onDidDismiss={() => this.completeFtue()}
+          message={ftueMessage}
+          data-testid="text-ftue-alert"
+          buttons={[
+            {
+              text: "OK",
+              role: "cancel",
+              handler: this.completeFtue,
+            },
+          ]}
+        />
         <IonContent
           id="text-content"
           class="ion-padding"
           onClick={() => this.onFlip()}
         >
-          <IonAlert
-            isOpen={this.state.showEndOfTextAlert}
-            onDidDismiss={() => this.setShowEndOfTextAlert(false)}
-            header={localeMessages["text.end-of-text-alert-header"]}
-            buttons={[
-              {
-                text: localeMessages["text.end-of-text-alert-home"],
-                cssClass: "primary",
-                handler: () => {
-                  this.props.history.push("/t/texts");
-                },
-              },
-              {
-                text: localeMessages["text.end-of-text-alert-about-text"],
-                cssClass: "secondary",
-                handler: this.onGoToTextInfoClicked,
-              },
-              {
-                text: localeMessages["text.end-of-text-alert-go-to-beginning"],
-                cssClass: "secondary",
-                handler: this.onGoToBeginningClicked,
-              },
-              {
-                text: localeMessages["text.end-of-text-alert-close"],
-                role: "cancel",
-                cssClass: "secondary",
-              },
-            ]}
-          />
           <ReactCardFlip
             isFlipped={this.state.flipped}
             flipDirection="horizontal"
@@ -202,19 +282,6 @@ class TextPage extends React.Component<
             <p>{this.state.sideOneText}</p>
             <p>{this.state.sideTwoText}</p>
           </ReactCardFlip>
-          <IonAlert
-            isOpen={this.state.showFtue}
-            onDidDismiss={() => this.completeFtue()}
-            message={ftueMessage}
-            data-testid="text-ftue-alert"
-            buttons={[
-              {
-                text: "OK",
-                role: "cancel",
-                handler: this.completeFtue,
-              },
-            ]}
-          />
         </IonContent>
         <IonFooter>
           <IonToolbar>
@@ -238,7 +305,7 @@ class TextPage extends React.Component<
               </IonButton>
             </IonButtons>
             <IonButtons slot="end">
-            <IonButton
+              <IonButton
                 data-testid="feedback-up"
                 onClick={this.onFeedbackUpClicked}
               >
@@ -352,10 +419,22 @@ class TextPage extends React.Component<
 
   private onFeedbackUpClicked() {
     // TODO
+    this.setState(() => ({
+      showFeedbackModal: true,
+    }));
   }
 
   private onFeedbackDownClicked() {
     // TODO
+    this.setState(() => ({
+      showFeedbackModal: true,
+    }));
+  }
+
+  private onFeedbackModalDismissed() {
+    this.setState(() => ({
+      showFeedbackModal: false,
+    }));
   }
 
   private onGoToBeginningClicked() {
@@ -403,6 +482,7 @@ class TextPage extends React.Component<
         sideTwoText: state.flipped
           ? state.texts.get(state.lang1)!.segments[index]
           : state.texts.get(state.lang2)!.segments[index],
+        showFeedbackModal: false,
       }),
       this.updateTextStamps
     );

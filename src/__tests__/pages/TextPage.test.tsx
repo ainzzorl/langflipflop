@@ -106,10 +106,7 @@ test("End-of-text - go to beginning", async () => {
   // Must close the alert
   expect(screen.queryByText("End of Text")).not.toBeInTheDocument();
   // Must go to the beginning
-  // ACTUALLY it must be "en", but in the test context clicking
-  // "Back to Beginning" also triggers clicking the text and flips the card.
-  // It doesn't happen in non-text context.
-  await TextPageActions.assertOnPage(0, "es");
+  await TextPageActions.assertOnPage(0, "en");
 });
 
 test("Going to the info page", async () => {
