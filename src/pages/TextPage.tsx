@@ -13,7 +13,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import Hammer from "hammerjs";
-import { help, information } from "ionicons/icons";
+import { help, information, thumbsDownOutline, thumbsUpOutline } from "ionicons/icons";
 import Mousetrap from "mousetrap";
 import React from "react";
 import ReactCardFlip from "react-card-flip";
@@ -90,6 +90,8 @@ class TextPage extends React.Component<
     this.onGoToTextInfoClicked = this.onGoToTextInfoClicked.bind(this);
     this.setShowEndOfTextAlert = this.setShowEndOfTextAlert.bind(this);
     this.onGoToBeginningClicked = this.onGoToBeginningClicked.bind(this);
+    this.onFeedbackUpClicked = this.onFeedbackUpClicked.bind(this);
+    this.onFeedbackDownClicked = this.onFeedbackDownClicked.bind(this);
 
     this.load();
   }
@@ -236,6 +238,18 @@ class TextPage extends React.Component<
               </IonButton>
             </IonButtons>
             <IonButtons slot="end">
+            <IonButton
+                data-testid="feedback-up"
+                onClick={this.onFeedbackUpClicked}
+              >
+                <IonIcon icon={thumbsUpOutline} size="large" />
+              </IonButton>
+              <IonButton
+                data-testid="feedback-down"
+                onClick={this.onFeedbackDownClicked}
+              >
+                <IonIcon icon={thumbsDownOutline} size="large" />
+              </IonButton>
               <IonButton
                 data-testid="go-to-text-info-button"
                 onClick={this.onGoToTextInfoClicked}
@@ -334,6 +348,14 @@ class TextPage extends React.Component<
     this.props.history.push(
       `/texts/${this.props.match.params.id}/info${getSearch(this.props)}`
     );
+  }
+
+  private onFeedbackUpClicked() {
+    // TODO
+  }
+
+  private onFeedbackDownClicked() {
+    // TODO
   }
 
   private onGoToBeginningClicked() {
