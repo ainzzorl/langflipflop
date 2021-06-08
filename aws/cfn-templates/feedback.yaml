@@ -110,6 +110,15 @@ Resources:
                             #end
                             "FeedbackId": {
                               "S": "$context.requestId"
+                            },
+                            "SourceIp": {
+                              "S": "$context.identity.sourceIp"
+                            },
+                            "SourceUserAgent": {
+                              "S": "$context.identity.userAgent"
+                            },
+                            "RequestTime": {
+                              "S": "$context.requestTime"
                             }
                           }
                         }
