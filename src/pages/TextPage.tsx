@@ -220,13 +220,13 @@ class TextPage extends React.Component<
           <IonContent>
             <IonToolbar>
               <IonTitle>
-                <IonText>What was wrong?</IonText>
+                <IonText><FormattedMessage id="text.feedback-header" /></IonText>
               </IonTitle>
             </IonToolbar>
             <IonList>
               <IonItemDivider></IonItemDivider>
               <IonItem>
-                <IonLabel>The proposed translation is bad/incorrect</IonLabel>
+                <IonLabel><FormattedMessage id="text.feedback-bad-translation" /></IonLabel>
                 <IonCheckbox
                   checked={this.getFeedback().checkboxes["bad-translation"]}
                   onIonChange={(e) =>
@@ -238,7 +238,7 @@ class TextPage extends React.Component<
                 />
               </IonItem>
               <IonItem>
-                <IonLabel>Text is not interesting</IonLabel>
+                <IonLabel><FormattedMessage id="text.feedback-not-interesting" /></IonLabel>
                 <IonCheckbox
                   checked={
                     this.getFeedback().checkboxes["text-not-interesting"]
@@ -254,7 +254,7 @@ class TextPage extends React.Component<
               <IonItemDivider></IonItemDivider>
               <IonItem>
                 <IonTextarea
-                  placeholder={"Your feedback here"}
+                  placeholder={localeMessages['text.feedback-text-area-placeholder']}
                   value={this.getFeedback().text}
                   onIonChange={(e) => this.setFeedbackText(e.detail.value!)}
                 ></IonTextarea>
@@ -273,7 +273,7 @@ class TextPage extends React.Component<
                   color="primary"
                   size="large"
                 >
-                  Send
+                  <FormattedMessage id="text.feedback-send" />
                 </IonButton>
                 <IonButton
                   onClick={() => this.onFeedbackModalDismissed()}
@@ -281,7 +281,7 @@ class TextPage extends React.Component<
                   color="secondary"
                   size="large"
                 >
-                  Cancel
+                  <FormattedMessage id="text.feedback-cancel" />
                 </IonButton>
               </IonButtons>
             </IonToolbar>
