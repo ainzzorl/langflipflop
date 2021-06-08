@@ -265,7 +265,10 @@ class TextPage extends React.Component<
             <IonToolbar>
               <IonButtons>
                 <IonButton
-                  onClick={() => this.onFeedbackModalDismissed()}
+                  onClick={async () => {
+                    this.onFeedbackModalDismissed();
+                    await this.submitFeedback();
+                  }}
                   slot="primary"
                   color="primary"
                   size="large"
@@ -466,46 +469,54 @@ class TextPage extends React.Component<
   }
 
   private onFeedbackUpClicked() {
-    this.setState((state) => {
-      let feedback = this.getFeedback();
-      if (feedback.rating === SegmentFeedback.RATING_UP) {
-        feedback.rating = SegmentFeedback.RATING_UNDEFINED;
-      } else {
-        feedback.rating = SegmentFeedback.RATING_UP;
+    this.setState(
+      (state) => {
+        let feedback = this.getFeedback();
+        if (feedback.rating === SegmentFeedback.RATING_UP) {
+          feedback.rating = SegmentFeedback.RATING_UNDEFINED;
+        } else {
+          feedback.rating = SegmentFeedback.RATING_UP;
+        }
+        state.feedbacks[state.segmentIndex] = feedback;
+        return {
+          feedbacks: state.feedbacks,
+        };
+      },
+      async () => {
+        await DAO.updateSegmentFeedback(
+          this.props.match.params.id,
+          this.state.segmentIndex,
+          this.getFeedback()
+        );
+        this.submitFeedback();
       }
-      state.feedbacks[state.segmentIndex] = feedback;
-      DAO.updateSegmentFeedback(
-        this.props.match.params.id,
-        state.segmentIndex,
-        feedback
-      );
-      // TODO: send
-      return {
-        feedbacks: state.feedbacks,
-      };
-    });
+    );
   }
 
   private onFeedbackDownClicked() {
-    this.setState((state) => {
-      let feedback = this.getFeedback();
-      if (feedback.rating === SegmentFeedback.RATING_DOWN) {
-        feedback.rating = SegmentFeedback.RATING_UNDEFINED;
-      } else {
-        feedback.rating = SegmentFeedback.RATING_DOWN;
+    this.setState(
+      (state) => {
+        let feedback = this.getFeedback();
+        if (feedback.rating === SegmentFeedback.RATING_DOWN) {
+          feedback.rating = SegmentFeedback.RATING_UNDEFINED;
+        } else {
+          feedback.rating = SegmentFeedback.RATING_DOWN;
+        }
+        state.feedbacks[state.segmentIndex] = feedback;
+        return {
+          feedbacks: state.feedbacks,
+          showFeedbackModal: feedback.rating === SegmentFeedback.RATING_DOWN,
+        };
+      },
+      async () => {
+        await DAO.updateSegmentFeedback(
+          this.props.match.params.id,
+          this.state.segmentIndex,
+          this.getFeedback()
+        );
+        this.submitFeedback();
       }
-      state.feedbacks[state.segmentIndex] = feedback;
-      DAO.updateSegmentFeedback(
-        this.props.match.params.id,
-        state.segmentIndex,
-        feedback
-      );
-      // TODO: send
-      return {
-        feedbacks: state.feedbacks,
-        showFeedbackModal: feedback.rating === SegmentFeedback.RATING_DOWN,
-      };
-    });
+    );
   }
 
   private onFeedbackModalDismissed() {
@@ -571,6 +582,25 @@ class TextPage extends React.Component<
         feedbacks: feedbacks,
       };
     });
+  }
+
+  private async submitFeedback(): Promise<void> {
+    let data = {
+      feedback: this.getFeedback(),
+      url: window.location.href,
+    };
+    let response = await fetch(
+      "https://7s5luj1r8f.execute-api.us-east-1.amazonaws.com/prod/feedbacks",
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    return response.json();
   }
 
   private getFeedback(): SegmentFeedback {
