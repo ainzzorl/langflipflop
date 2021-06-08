@@ -82,6 +82,13 @@ Resources:
                     application/json:
                       schema:
                         $ref: "#/components/schemas/Empty"
+                  headers:
+                    Access-Control-Allow-Headers:
+                      type: "string"
+                    Access-Control-Allow-Methods:
+                      type: "string"
+                    Access-Control-Allow-Origin:
+                      type: "string"
               x-amazon-apigateway-integration:
                 description: Add a new feedback to the database
                 credentials: { "Fn::GetAtt": FeedbackAPIRole.Arn }
@@ -115,6 +122,45 @@ Resources:
                         {
                         "FeedbackId": "$context.requestId"
                         }'
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+                      method.response.header.Access-Control-Allow-Methods: "'POST'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+
                 passthroughBehavior: "when_no_match"
                 httpMethod: POST
                 type: AWS
+            options:
+              summary: CORS support
+              description: |
+                Enable CORS by returning correct headers
+              tags:
+                - CORS
+              responses:
+                "200":
+                  description: Default response for CORS method
+                  headers:
+                    Access-Control-Allow-Origin:
+                      type: string
+                    Access-Control-Allow-Methods:
+                      type: string
+                    Access-Control-Allow-Headers:
+                      type: string
+                  content: {}
+              x-amazon-apigateway-integration:
+                type: mock
+                requestTemplates:
+                  application/json: |
+                    {
+                      "statusCode" : 200
+                    }
+                responses:
+                  default:
+                    statusCode: 200
+                    responseParameters:
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+                      method.response.header.Access-Control-Allow-Methods: "'POST'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                    responseTemplates:
+                      application/json: |
+                        {}
