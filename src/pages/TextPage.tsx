@@ -220,13 +220,17 @@ class TextPage extends React.Component<
           <IonContent>
             <IonToolbar>
               <IonTitle>
-                <IonText><FormattedMessage id="text.feedback-header" /></IonText>
+                <IonText>
+                  <FormattedMessage id="text.feedback-header" />
+                </IonText>
               </IonTitle>
             </IonToolbar>
             <IonList>
               <IonItemDivider></IonItemDivider>
               <IonItem>
-                <IonLabel><FormattedMessage id="text.feedback-bad-translation" /></IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="text.feedback-bad-translation" />
+                </IonLabel>
                 <IonCheckbox
                   checked={this.getFeedback().checkboxes["bad-translation"]}
                   onIonChange={(e) =>
@@ -238,7 +242,9 @@ class TextPage extends React.Component<
                 />
               </IonItem>
               <IonItem>
-                <IonLabel><FormattedMessage id="text.feedback-not-interesting" /></IonLabel>
+                <IonLabel>
+                  <FormattedMessage id="text.feedback-not-interesting" />
+                </IonLabel>
                 <IonCheckbox
                   checked={
                     this.getFeedback().checkboxes["text-not-interesting"]
@@ -254,7 +260,9 @@ class TextPage extends React.Component<
               <IonItemDivider></IonItemDivider>
               <IonItem>
                 <IonTextarea
-                  placeholder={localeMessages['text.feedback-text-area-placeholder']}
+                  placeholder={
+                    localeMessages["text.feedback-text-area-placeholder"]
+                  }
                   value={this.getFeedback().text}
                   onIonChange={(e) => this.setFeedbackText(e.detail.value!)}
                 ></IonTextarea>
