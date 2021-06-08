@@ -1,4 +1,5 @@
 {
     "difficulty": "Easy",
-    "categories": ["casual-phrases", "sports"]
+    "categories": ["casual-phrases", "sports"],
+    "languages": ["en", "es", "ru"]
 }
