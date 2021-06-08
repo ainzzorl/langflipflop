@@ -24,7 +24,9 @@ import Hammer from "hammerjs";
 import {
   help,
   information,
+  thumbsDown,
   thumbsDownOutline,
+  thumbsUp,
   thumbsUpOutline,
 } from "ionicons/icons";
 import Mousetrap from "mousetrap";
@@ -41,7 +43,7 @@ import {
   isBrowser,
   isLocalhost,
 } from "../common/Common";
-import { DAO } from "../common/DAO";
+import { DAO, SegmentFeedback } from "../common/DAO";
 import "./TextPage.css";
 
 interface TextPageProps
@@ -71,6 +73,8 @@ class TextPage extends React.Component<
     showFtue: boolean;
     showEndOfTextAlert: boolean;
     showFeedbackModal: boolean;
+    // Map segmentIndex -> SegmentFeedback
+    feedbacks: any;
   }
 > {
   constructor(props: any) {
@@ -94,6 +98,7 @@ class TextPage extends React.Component<
       showFtue: false,
       showEndOfTextAlert: false,
       showFeedbackModal: false,
+      feedbacks: {},
     };
 
     this.goToNext = this.goToNext.bind(this);
@@ -309,13 +314,29 @@ class TextPage extends React.Component<
                 data-testid="feedback-up"
                 onClick={this.onFeedbackUpClicked}
               >
-                <IonIcon icon={thumbsUpOutline} size="large" />
+                <IonIcon
+                  icon={
+                    this.state.feedbacks[this.state.segmentIndex]?.rating ===
+                    SegmentFeedback.RATING_UP
+                      ? thumbsUp
+                      : thumbsUpOutline
+                  }
+                  size="large"
+                />
               </IonButton>
               <IonButton
                 data-testid="feedback-down"
                 onClick={this.onFeedbackDownClicked}
               >
-                <IonIcon icon={thumbsDownOutline} size="large" />
+                <IonIcon
+                  icon={
+                    this.state.feedbacks[this.state.segmentIndex]?.rating ===
+                    SegmentFeedback.RATING_DOWN
+                      ? thumbsDown
+                      : thumbsDownOutline
+                  }
+                  size="large"
+                />
               </IonButton>
               <IonButton
                 data-testid="go-to-text-info-button"
@@ -363,8 +384,12 @@ class TextPage extends React.Component<
         this.setState({
           showFtue: !user.completedTextFtue,
         });
+        return DAO.getTextData(this.props.match.params.id);
       })
-      .then(() => {
+      .then((textData) => {
+        this.setState(() => ({
+          feedbacks: textData && textData.feedbacks ? textData.feedbacks : {},
+        }));
         this.updateTextStamps();
       });
   }
@@ -418,17 +443,50 @@ class TextPage extends React.Component<
   }
 
   private onFeedbackUpClicked() {
-    // TODO
-    this.setState(() => ({
-      showFeedbackModal: true,
-    }));
+    this.setState((state) => {
+      let feedback = state.feedbacks[state.segmentIndex]
+        ? state.feedbacks[state.segmentIndex]!
+        : {};
+      if (feedback.rating === SegmentFeedback.RATING_UP) {
+        feedback.rating = SegmentFeedback.RATING_UNDEFINED;
+      } else {
+        feedback.rating = SegmentFeedback.RATING_UP;
+      }
+      state.feedbacks[state.segmentIndex] = feedback;
+      DAO.updateSegmentFeedback(
+        this.props.match.params.id,
+        state.segmentIndex,
+        feedback
+      );
+      // TODO: send
+      return {
+        feedbacks: state.feedbacks,
+      };
+    });
   }
 
   private onFeedbackDownClicked() {
-    // TODO
-    this.setState(() => ({
-      showFeedbackModal: true,
-    }));
+    this.setState((state) => {
+      let feedback = state.feedbacks[state.segmentIndex]
+        ? state.feedbacks[state.segmentIndex]!
+        : {};
+      if (feedback.rating === SegmentFeedback.RATING_DOWN) {
+        feedback.rating = SegmentFeedback.RATING_UNDEFINED;
+      } else {
+        feedback.rating = SegmentFeedback.RATING_DOWN;
+      }
+      state.feedbacks[state.segmentIndex] = feedback;
+      DAO.updateSegmentFeedback(
+        this.props.match.params.id,
+        state.segmentIndex,
+        feedback
+      );
+      // TODO: send
+      return {
+        feedbacks: state.feedbacks,
+        showFeedbackModal: true,
+      };
+    });
   }
 
   private onFeedbackModalDismissed() {

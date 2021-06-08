@@ -2,15 +2,26 @@ import { Plugins } from "@capacitor/core";
 
 const { Storage } = Plugins;
 
+export class SegmentFeedback {
+  public static readonly RATING_UNDEFINED = 0;
+  public static readonly RATING_DOWN = 1;
+  public static readonly RATING_UP = 2;
+
+  rating?: number;
+}
+
 export class PersistentTextData {
   id: string;
   lastOpenedTimestamp?: number;
   maxOpenedIndex?: number;
   currentIndex: number;
+  // Map segmentId -> SegmentFeedback
+  feedbacks?: any;
 
   constructor(id: string) {
     this.id = id;
     this.currentIndex = 0;
+    this.feedbacks = {};
   }
 }
 
@@ -47,6 +58,14 @@ export class DAO {
     }
   }
 
+  static async getTextData(textId: string): Promise<PersistentTextData> {
+    return this.getAllTextData().then((allData) => {
+      return allData.has(textId)
+        ? allData.get(textId)!
+        : new PersistentTextData(textId);
+    });
+  }
+
   static async updateTextStamps(textId: string, index: number): Promise<void> {
     let data = await this.getAllTextData();
     let textData: PersistentTextData;
@@ -65,13 +84,32 @@ export class DAO {
     textData.currentIndex = index;
 
     data.set(textId, textData);
-    let jsonObject: any = {};
-    data.forEach((value, key) => {
-      jsonObject[key] = value;
-    });
     return await Storage.set({
       key: "text-data",
-      value: JSON.stringify(jsonObject),
+      value: JSON.stringify(this.mapToObject(data)),
+    });
+  }
+
+  static async updateSegmentFeedback(
+    textId: string,
+    index: number,
+    segmentFeedback: SegmentFeedback
+  ): Promise<void> {
+    let data = await this.getAllTextData();
+    let textData: PersistentTextData;
+    if (data.has(textId)) {
+      textData = data.get(textId)!;
+    } else {
+      textData = new PersistentTextData(textId);
+    }
+    if (!textData.feedbacks) {
+      textData.feedbacks = {};
+    }
+    textData.feedbacks[index] = segmentFeedback;
+    data.set(textId, textData);
+    return await Storage.set({
+      key: "text-data",
+      value: JSON.stringify(this.mapToObject(data)),
     });
   }
 
@@ -121,6 +159,14 @@ export class DAO {
       key: "user",
       value: JSON.stringify(user),
     });
+  }
+
+  private static mapToObject(map: Map<any, any>): object {
+    let jsonObject: any = {};
+    map.forEach((value, key) => {
+      jsonObject[key] = value;
+    });
+    return jsonObject;
   }
 
   static globalUser: User = new User();
