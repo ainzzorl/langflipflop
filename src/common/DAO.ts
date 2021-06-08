@@ -7,7 +7,9 @@ export class SegmentFeedback {
   public static readonly RATING_DOWN = 1;
   public static readonly RATING_UP = 2;
 
-  rating?: number;
+  rating: number = SegmentFeedback.RATING_UNDEFINED;
+  checkboxes: any = {};
+  text: string = "";
 }
 
 export class PersistentTextData {

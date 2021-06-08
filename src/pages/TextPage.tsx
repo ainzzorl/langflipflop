@@ -113,6 +113,7 @@ class TextPage extends React.Component<
     this.onFeedbackUpClicked = this.onFeedbackUpClicked.bind(this);
     this.onFeedbackDownClicked = this.onFeedbackDownClicked.bind(this);
     this.onFeedbackModalDismissed = this.onFeedbackModalDismissed.bind(this);
+    this.getFeedback = this.getFeedback.bind(this);
 
     this.load();
   }
@@ -226,15 +227,37 @@ class TextPage extends React.Component<
               <IonItemDivider></IonItemDivider>
               <IonItem>
                 <IonLabel>The proposed translation is bad/incorrect</IonLabel>
-                <IonCheckbox checked={false} />
+                <IonCheckbox
+                  checked={this.getFeedback().checkboxes["bad-translation"]}
+                  onIonChange={(e) =>
+                    this.setFeedbackCheckbox(
+                      "bad-translation",
+                      e.detail.checked
+                    )
+                  }
+                />
               </IonItem>
               <IonItem>
                 <IonLabel>Text is not interesting</IonLabel>
-                <IonCheckbox checked={false} />
+                <IonCheckbox
+                  checked={
+                    this.getFeedback().checkboxes["text-not-interesting"]
+                  }
+                  onIonChange={(e) =>
+                    this.setFeedbackCheckbox(
+                      "text-not-interesting",
+                      e.detail.checked
+                    )
+                  }
+                />
               </IonItem>
               <IonItemDivider></IonItemDivider>
               <IonItem>
-                <IonTextarea placeholder={"Your feedback here"} />
+                <IonTextarea
+                  placeholder={"Your feedback here"}
+                  value={this.getFeedback().text}
+                  onIonChange={(e) => this.setFeedbackText(e.detail.value!)}
+                ></IonTextarea>
               </IonItem>
             </IonList>
           </IonContent>
@@ -444,9 +467,7 @@ class TextPage extends React.Component<
 
   private onFeedbackUpClicked() {
     this.setState((state) => {
-      let feedback = state.feedbacks[state.segmentIndex]
-        ? state.feedbacks[state.segmentIndex]!
-        : {};
+      let feedback = this.getFeedback();
       if (feedback.rating === SegmentFeedback.RATING_UP) {
         feedback.rating = SegmentFeedback.RATING_UNDEFINED;
       } else {
@@ -467,9 +488,7 @@ class TextPage extends React.Component<
 
   private onFeedbackDownClicked() {
     this.setState((state) => {
-      let feedback = state.feedbacks[state.segmentIndex]
-        ? state.feedbacks[state.segmentIndex]!
-        : {};
+      let feedback = this.getFeedback();
       if (feedback.rating === SegmentFeedback.RATING_DOWN) {
         feedback.rating = SegmentFeedback.RATING_UNDEFINED;
       } else {
@@ -484,7 +503,7 @@ class TextPage extends React.Component<
       // TODO: send
       return {
         feedbacks: state.feedbacks,
-        showFeedbackModal: true,
+        showFeedbackModal: feedback.rating === SegmentFeedback.RATING_DOWN,
       };
     });
   }
@@ -520,6 +539,45 @@ class TextPage extends React.Component<
     this.setState(() => ({
       showFtue: true,
     }));
+  }
+
+  private setFeedbackText(text: string) {
+    let feedback = this.getFeedback();
+    feedback.text = text;
+    this.saveFeedback(feedback);
+    DAO.updateSegmentFeedback(
+      this.props.match.params.id,
+      this.state.segmentIndex,
+      feedback
+    );
+  }
+
+  private setFeedbackCheckbox(checkboxId: string, value: boolean) {
+    let feedback = this.getFeedback();
+    feedback.checkboxes[checkboxId] = value;
+    this.saveFeedback(feedback);
+    DAO.updateSegmentFeedback(
+      this.props.match.params.id,
+      this.state.segmentIndex,
+      feedback
+    );
+  }
+
+  private saveFeedback(feedback: SegmentFeedback) {
+    this.setState((state) => {
+      let feedbacks = state.feedbacks;
+      feedbacks[this.state.segmentIndex] = feedback;
+      return {
+        feedbacks: feedbacks,
+      };
+    });
+  }
+
+  private getFeedback(): SegmentFeedback {
+    let feedback = this.state.feedbacks[this.state.segmentIndex]
+      ? this.state.feedbacks[this.state.segmentIndex]!
+      : new SegmentFeedback();
+    return feedback;
   }
 
   private goToIndex(index: number) {
