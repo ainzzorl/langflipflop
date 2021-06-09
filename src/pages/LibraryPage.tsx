@@ -74,6 +74,9 @@ class LibraryPage extends React.Component<
     }
 
     let anyText = getLocaleMessages()["library.any"];
+    const anySelectOptions = {
+      cssClass: "texts-select",
+    };
 
     return (
       <IonPage>
@@ -88,8 +91,13 @@ class LibraryPage extends React.Component<
                 placeholder={anyText}
                 interface="popover"
                 onIonChange={(e) => this.setCategoryFilter(e.detail.value)}
+                interfaceOptions={anySelectOptions}
               >
-                <IonSelectOption value="" key={"selector-category-any"}>
+                <IonSelectOption
+                  value=""
+                  key={"selector-category-any"}
+                  class="any-option"
+                >
                   <FormattedMessage id="library.any" />
                 </IonSelectOption>
                 {this.getCategoryOptions()}
@@ -104,8 +112,13 @@ class LibraryPage extends React.Component<
                 placeholder={anyText}
                 interface="popover"
                 onIonChange={(e) => this.setDifficultyFilter(e.detail.value)}
+                interfaceOptions={anySelectOptions}
               >
-                <IonSelectOption value="" key={"selector-category-any"}>
+                <IonSelectOption
+                  value=""
+                  key={"selector-category-any"}
+                  class="any-option"
+                >
                   <FormattedMessage id="library.any" />
                 </IonSelectOption>
                 {this.getDifficultyOptions()}
