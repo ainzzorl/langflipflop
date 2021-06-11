@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "difficulty": "Medium",
+    "categories": [
+      "tv-phrases"
+    ],
+    "languages": [
+      "en",
+      "es",
+      "ru"
+    ],
+    "id": "tv-quotes-game-of-thrones",
+    "numSegments": 18
+  },
+  "en": {
+    "title": "TV Series Quotes - Game of Thrones",
+    "description": "Memorable quotes from TV series Game of Thrones.",
+    "segments": [
+      "Winter is coming.",
+      "You know nothing Jon Snow.",
+      "A Lannister always pays his debts.",
+      "The night is dark and full of terrors.",
+      "Fear cuts deeper than swords.",
+      "The man who passes the sentence should swing the sword.",
+      "When you play the game of thrones, you win or you die.",
+      "There is only one god and his name is Death, and there is only one thing we say to Death: \u2018Not today.\u2019",
+      "\u201cCan a man be brave if he\u2019s afraid?\" \u201cThat\u2019s the only time he can be brave\u201d",
+      "Everything before the word \u2018but\u2019 is horseshit.",
+      "A lion doesn\u2019t concern himself with the opinions of a sheep.",
+      "Any man who must say \u2018I am the king\u2019 is no true king.",
+      "A ruler who kills those devoted to her is not a ruler who inspires devotion.",
+      "Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you.",
+      "Chaos isn\u2019t a pit. Chaos is a ladder.",
+      "It doesn\u2019t matter what we want. Once we get it, then we want something else.",
+      "A single day of freedom is worth more than a lifetime in chains.",
+      "An unhappy wife is a wine merchant's best friend."
+    ]
+  },
+  "es": {
+    "title": "Frases Memorables de Series de Televisi\u00f3n \u2013 Juego de Tronos",
+    "description": "Frases Memorables de Series de Televisi\u00f3n \u2013 Juego de Tronos.",
+    "segments": [
+      "Se acerca el invierno.",
+      "No sabes nada, Jon Snow.",
+      "Un Lannister siempre paga sus deudas.",
+      "La noche es oscura y alberga horrores.",
+      "El miedo corta m\u00e1s que las espadas.",
+      "El hombre que dicta la condena debe blandir la espada.",
+      "Cuando se juega al Juego de Tronos, solo se puede ganar o morir.",
+      "Solo hay un dios, y se llama Muerte. Y solo hay una cosa que se le dice a la Muerte: \u201cHoy no.\u201d",
+      "\u00bfUn hombre puede ser valiente cuando tiene miedo? Es el \u00fanico momento en que puede ser valiente.",
+      "Todo lo que va despu\u00e9s de 'pero' es una mierda.",
+      "El le\u00f3n no se molesta con las opiniones de las ovejas.",
+      "Cualquier hombre que deba decir \u2018soy el rey\u2019, no es un verdadero rey.",
+      "Un gobernante que mata a aquellos que le son devotos no es un gobernante que inspire devoci\u00f3n.",
+      "Nunca olvides lo que eres, el resto del mundo no lo har\u00e1. Ll\u00e9valo como una armadura y nunca lo usar\u00e1n para herirte.",
+      "El caos no es un hoyo. El caos es una escalera.",
+      "No importa lo que queramos, una vez que lo obtenemos luego queremos algo m\u00e1s.",
+      "Solo un d\u00eda de libertad vale m\u00e1s que una vida encadenado.",
+      "Una esposa descontenta es la mejor amiga de quien vende vino."
+    ]
+  },
+  "ru": {
+    "title": "\u0426\u0438\u0442\u0430\u0442\u044b \u0438\u0437 \u0441\u0435\u0440\u0438\u0430\u043b\u043e\u0432 - \u0418\u0433\u0440\u0430 \u041f\u0440\u0435\u0441\u0442\u043e\u043b\u043e\u0432",
+    "description": "\u0426\u0438\u0442\u0430\u0442\u044b \u0438\u0437 \u0441\u0435\u0440\u0438\u0430\u043b\u0430 \u0418\u0433\u0440\u0430 \u041f\u0440\u0435\u0441\u0442\u043e\u043b\u043e\u0432.",
+    "segments": [
+      "\u0417\u0438\u043c\u0430 \u0431\u043b\u0438\u0437\u043a\u043e.",
+      "\u041d\u0438\u0447\u0435\u0433\u043e \u0442\u044b \u043d\u0435 \u0437\u043d\u0430\u0435\u0448\u044c, \u0414\u0436\u043e\u043d \u0421\u043d\u043ey.",
+      "\u041b\u0430\u043d\u043d\u0438\u0441\u0442\u0435\u0440\u044b \u0432\u0441\u0435\u0433\u0434\u0430 \u043f\u043b\u0430\u0442\u044f\u0442 \u0441\u0432\u043e\u0438 \u0434\u043e\u043b\u0433\u0438.",
+      "\u041d\u043e\u0447\u044c \u0442\u0435\u043c\u043d\u0430 \u0438 \u043f\u043e\u043b\u043d\u0430 \u0443\u0436\u0430\u0441\u043e\u0432.",
+      "\u0421\u0442\u0440\u0430\u0445 \u0440\u0430\u043d\u0438\u0442 \u0433\u043b\u0443\u0431\u0436\u0435, \u0447\u0435\u043c \u043c\u0435\u0447.",
+      "\u0422\u043e\u0442, \u043a\u0442\u043e \u0432\u044b\u043d\u043e\u0441\u0438\u0442 \u043f\u0440\u0438\u0433\u043e\u0432\u043e\u0440, \u0441\u0430\u043c \u0437\u0430\u043d\u043e\u0441\u0438\u0442 \u043c\u0435\u0447.",
+      "\u0412 \u0438\u0433\u0440\u0435 \u043f\u0440\u0435\u0441\u0442\u043e\u043b\u043e\u0432 \u043f\u043e\u0431\u0435\u0436\u0434\u0430\u044e\u0442 \u0438\u043b\u0438 \u043f\u043e\u0433\u0438\u0431\u0430\u044e\u0442.",
+      "\u0415\u0441\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043e\u0434\u0438\u043d \u0431\u043e\u0433. \u0418 \u0435\u0433\u043e \u0438\u043c\u044f \u0421\u043c\u0435\u0440\u0442\u044c. \u0410 \u0421\u043c\u0435\u0440\u0442\u0438 \u043c\u044b \u0433\u043e\u0432\u043e\u0440\u0438\u043c \u043b\u0438\u0448\u044c \u043e\u0434\u043d\u043e: \u00ab\u041d\u0435 \u0441\u0435\u0433\u043e\u0434\u043d\u044f\u00bb.",
+      "\u041c\u043e\u0436\u0435\u0442 \u043b\u0438 \u0447\u0435\u043b\u043e\u0432\u0435\u043a \u0431\u044b\u0442\u044c \u0445\u0440\u0430\u0431\u0440\u044b\u043c, \u043a\u043e\u0433\u0434\u0430 \u0431\u043e\u0438\u0442\u0441\u044f? \u042d\u0442\u043e \u0435\u0434\u0438\u043d\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u0440\u0430\u0437, \u043a\u043e\u0433\u0434\u0430 \u0447\u0435\u043b\u043e\u0432\u0435\u043a \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0445\u0440\u0430\u0431\u0440\u044b\u043c.",
+      "\u0412\u0441\u0451 \u0434\u043e \u0441\u043b\u043e\u0432\u0430 \"\u043d\u043e\" - \u043b\u043e\u0448\u0430\u0434\u0438\u043d\u043e\u0435 \u0434\u0435\u0440\u044c\u043c\u043e.",
+      "\u041b\u044c\u0432\u0430 \u043d\u0435 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u0443\u0435\u0442 \u043c\u043d\u0435\u043d\u0438\u0435 \u043e\u0432\u0435\u0446.",
+      "\u0427\u0435\u043b\u043e\u0432\u0435\u043a, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0433\u043e\u0432\u043e\u0440\u0438\u0442, \u0447\u0442\u043e \u043e\u043d \u043a\u043e\u0440\u043e\u043b\u044c \u2014 \u043d\u0435 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0438\u0439 \u043a\u043e\u0440\u043e\u043b\u044c.",
+      "\u041f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u0438\u0446\u0430, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u0443\u0431\u0438\u0432\u0430\u0435\u0442 \u0442\u0435\u0445, \u043a\u0442\u043e \u043f\u0440\u0435\u0434\u0430\u043d \u0435\u0439, \u043d\u0435 \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u043b\u044f\u0435\u0442.",
+      "\u041d\u0438\u043a\u043e\u0433\u0434\u0430 \u043d\u0435 \u0437\u0430\u0431\u044b\u0432\u0430\u0439, \u043a\u0442\u043e \u0442\u044b \u2014 \u0432\u0435\u0434\u044c \u0434\u0440\u0443\u0433\u0438\u0435 \u043d\u0435 \u0437\u0430\u0431\u0443\u0434\u0443\u0442. \u041d\u043e\u0441\u0438 \u044d\u0442\u043e \u043a\u0430\u043a \u0431\u0440\u043e\u043d\u044e, \u0438 \u0442\u043e\u0433\u0434\u0430 \u043e\u043d\u0438 \u043d\u0435 \u0441\u043c\u043e\u0433\u0443\u0442 \u0442\u0435\u0431\u044f \u0440\u0430\u043d\u0438\u0442\u044c.",
+      "\u0425\u0430\u043e\u0441 \u2013 \u044d\u0442\u043e \u043d\u0435 \u044f\u043c\u0430. \u0425\u0430\u043e\u0441 \u2013 \u044d\u0442\u043e \u043b\u0435\u0441\u0442\u043d\u0438\u0446\u0430.",
+      "\u041d\u0435\u0432\u0430\u0436\u043d\u043e, \u0447\u0435\u0433\u043e \u043c\u044b \u0445\u043e\u0442\u0438\u043c. \u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u043c\u044b \u044d\u0442\u043e \u043f\u043e\u043b\u0443\u0447\u0438\u043c, \u043c\u044b \u0437\u0430\u0445\u043e\u0442\u0438\u043c \u0447\u0442\u043e-\u0442\u043e \u0435\u0449\u0435.",
+      "\u041e\u0434\u0438\u043d \u0434\u0435\u043d\u044c \u043d\u0430 \u0441\u0432\u043e\u0431\u043e\u0434\u0435 \u0441\u0442\u043e\u0438\u0442 \u0431\u043e\u043b\u044c\u0448\u0435, \u0447\u0435\u043c \u0446\u0435\u043b\u0430\u044f \u0436\u0438\u0437\u043d\u044c \u0432 \u043e\u043a\u043e\u0432\u0430\u0445.",
+      "\u041d\u0435\u043b\u044e\u0431\u0438\u043c\u0430\u044f \u0436\u0435\u043d\u0430 \u2014 \u043b\u0443\u0447\u0448\u0438\u0439 \u0434\u0440\u0443\u0433 \u0432\u0438\u043d\u043e\u0442\u043e\u0440\u0433\u043e\u0432\u0446\u0430."
+    ]
+  }
+}
