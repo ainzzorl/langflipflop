@@ -1,4 +1,5 @@
 {
     "difficulty": "Easy",
-    "categories": ["casual-phrases"]
+    "categories": ["casual-phrases"],
+    "languages": ["en", "es", "ru"]
 }
