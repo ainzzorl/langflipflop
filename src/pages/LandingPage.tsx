@@ -47,7 +47,9 @@ class LandingPage extends React.Component<{}, {}> {
             <FormattedMessage id="about.p3" />
           </p>
 
-          <IonButton expand="block">Get Started</IonButton>
+          <IonButton expand="block" href="/setup">
+            Get Started
+          </IonButton>
 
           {links}
         </IonContent>

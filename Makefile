@@ -96,6 +96,10 @@ test-settings-page :
 test-about-page :
 			 npm test -- --watchAll=false src/__tests__/pages/AboutPage.test.tsx
 
+.PHONY: test-landing-page
+test-landing-page :
+			 npm test -- --watchAll=false src/__tests__/pages/LandingPage.test.tsx
+
 .PHONY: test-ftue
 test-ftue :
 			 npm test -- --watchAll=false src/__tests__/pages/Ftue.test.tsx
