@@ -71,7 +71,7 @@ class MainCompinent extends React.Component<
 
   componentDidUpdate() {
     let localeMessages = getLocaleMessages();
-    if (matchPath(this.props.location.pathname, "/ftue")) {
+    if (matchPath(this.props.location.pathname, "/setup")) {
       document.title = localeMessages["document-title.ftue"];
     }
     if (matchPath(this.props.location.pathname, "/t/texts")) {
@@ -164,7 +164,7 @@ class MainCompinent extends React.Component<
 
       let ftueSearchParams = new URLSearchParams();
       ftueSearchParams.set("redirect", currentUrl);
-      var ftueUrl = `/ftue?${ftueSearchParams.toString()}`;
+      var ftueUrl = `/setup?${ftueSearchParams.toString()}`;
       return <Redirect to={ftueUrl} />;
     }
 
@@ -200,7 +200,7 @@ class MainCompinent extends React.Component<
               />
               <Route path="/texts/:id" component={TextPage} exact={true} />
               <Route
-                path="/ftue"
+                path="/setup"
                 render={(props) => (
                   <FtuePage
                     {...props}

@@ -41,7 +41,7 @@ test("Completing FTUE - from Recent page", async () => {
 test("Went to FTUE directly - completing FTUE", async () => {
   DAO.globalUser.completedMainFtue = false;
 
-  renderWithRoute("/ftue");
+  renderWithRoute("/setup");
 
   // Check we are on the FTUE page
   await screen.findByText("Setup");
