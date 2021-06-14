@@ -6,10 +6,22 @@ import {
   TEST_FIXTURES,
 } from "../../test-common";
 
-test("Auto redirects to the landing page", async () => {
+test("Auto redirects / to the landing page", async () => {
   DAO.globalUser.completedMainFtue = false;
   renderWithRoute("/");
   await screen.findByText("Get Started");
+});
+
+test("Auto redirects /t/texts to FTUE", async () => {
+  DAO.globalUser.completedMainFtue = false;
+  renderWithRoute("/t/texts");
+  await screen.findByText("Setup");
+});
+
+test("Auto redirects /t/recent to FTUE", async () => {
+  DAO.globalUser.completedMainFtue = false;
+  renderWithRoute("/t/recent");
+  await screen.findByText("Setup");
 });
 
 test("Completing FTUE - from Recent page", async () => {
