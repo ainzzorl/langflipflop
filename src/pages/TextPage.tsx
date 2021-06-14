@@ -172,7 +172,7 @@ class TextPage extends React.Component<
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/" data-testid="back-button" />
+              <IonBackButton defaultHref="/t/texts" data-testid="back-button" />
             </IonButtons>
             <IonTitle color="medium">
               <div className="my-wrap">

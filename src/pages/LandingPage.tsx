@@ -1,4 +1,5 @@
 import {
+  IonButton,
   IonCol,
   IonContent,
   IonGrid,
@@ -45,6 +46,8 @@ class LandingPage extends React.Component<{}, {}> {
           <p className="content-text">
             <FormattedMessage id="about.p3" />
           </p>
+
+          <IonButton expand="block">Get Started</IonButton>
 
           {links}
         </IonContent>

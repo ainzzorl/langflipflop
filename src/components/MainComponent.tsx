@@ -88,31 +88,44 @@ class MainCompinent extends React.Component<
     }
   }
 
-  shouldRedirectToFtue(): boolean {
+  private shouldRedirectToFtue(): boolean {
+    return this.shouldRedirectNewUser() && !this.shouldRedirectToLanding();
+  }
+
+  private shouldRedirectToLanding(): boolean {
+    return (
+      this.shouldRedirectNewUser() &&
+      matchPath(this.props.location.pathname, { path: "/", exact: true }) !==
+        null
+    );
+  }
+
+  private shouldRedirectToTexts(): boolean {
+    if (
+      !this.state.user!.completedMainFtue &&
+      !DAO.globalUser.completedMainFtue
+    ) {
+      return false;
+    }
+    return (
+      matchPath(this.props.location.pathname, { path: "/", exact: true }) !==
+      null
+    );
+  }
+
+  private shouldRedirectNewUser(): boolean {
     if (
       this.state.user!.completedMainFtue ||
       DAO.globalUser.completedMainFtue
     ) {
       return false;
     }
-    if (matchPath(this.props.location.pathname, "/ftue")) {
-      return false;
-    }
-    // To make it indexable by search engines.
-    if (matchPath(this.props.location.pathname, "/t/about")) {
-      return false;
-    }
-
-    if (
-      !matchPath(this.props.location.pathname, "/t/settings") &&
-      !matchPath(this.props.location.pathname, "/t/recent") &&
-      !matchPath(this.props.location.pathname, "/t/texts") &&
-      !matchPath(this.props.location.pathname, "/t/settings")
-    ) {
-      // Unknown route
-      return false;
-    }
-    return true;
+    return (
+      matchPath(this.props.location.pathname, "/t/recent") !== null ||
+      matchPath(this.props.location.pathname, "/t/texts") !== null ||
+      matchPath(this.props.location.pathname, { path: "/", exact: true }) !==
+        null
+    );
   }
 
   reloadSettings() {
@@ -137,6 +150,12 @@ class MainCompinent extends React.Component<
       ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
+    if (this.shouldRedirectToTexts()) {
+      return <Redirect to={"/t/texts"} />;
+    }
+    if (this.shouldRedirectToLanding()) {
+      return <Redirect to={"/landing"} />;
+    }
     if (this.shouldRedirectToFtue()) {
       let currentSearchParams = new URLSearchParams(this.props.location.search);
       let currentUrl = `${
@@ -171,11 +190,9 @@ class MainCompinent extends React.Component<
           {metaTags}
           <IonRouterOutlet>
             <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <Redirect to={"/t/texts"} />}
-              />
+              {/* Any non-redirectable target will do - it will be redirected somewhere anyway. */}
+              <Route path="/" component={AboutPage} exact={true} />
+
               <Route
                 path="/texts/:id/info"
                 component={TextInfoPage}
