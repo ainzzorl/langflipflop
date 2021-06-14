@@ -31,8 +31,7 @@ class LandingPage extends React.Component<{}, {}> {
         <IonHeader>
           <IonToolbar>
             <IonTitle>
-              <p>I am landing page</p>
-              <FormattedMessage id="about.header" />
+              <FormattedMessage id="landing.header" />
             </IonTitle>
           </IonToolbar>
         </IonHeader>
@@ -47,9 +46,11 @@ class LandingPage extends React.Component<{}, {}> {
             <FormattedMessage id="about.p3" />
           </p>
 
-          <IonButton expand="block" href="/setup">
-            Get Started
-          </IonButton>
+          <p className="content-text">
+            <IonButton size="large" href="/setup">
+              <FormattedMessage id="landing.get-started" />
+            </IonButton>
+          </p>
 
           {links}
         </IonContent>
@@ -59,30 +60,26 @@ class LandingPage extends React.Component<{}, {}> {
 
   private getLinks() {
     return (
-      <IonGrid>
-        <IonRow className="ion-align-items-center store-links">
-          <IonCol size="6">
-            <a href={LandingPage.PLAYSTORE_LINK}>
-              <img
-                alt="Get it on Google Play"
-                src="assets/google-play-badge.png"
-              />
-            </a>
-          </IonCol>
-          <IonCol col-6>
-            <FormattedMessage id="about.coming-soon-on-apple" />
-          </IonCol>
-        </IonRow>
-        <IonRow>
-          <IonCol size="12">
-            <p className="content-text">
-              <a href={LandingPage.CONTACT_LINK}>
-                <FormattedMessage id="about.contact" />
+      <div>
+        <p className="content-text">
+          <FormattedMessage id="landing.download-our-app" />
+        </p>
+        <IonGrid>
+          <IonRow className="ion-align-items-center store-links">
+            <IonCol size="6">
+              <a href={LandingPage.PLAYSTORE_LINK}>
+                <img
+                  alt="Get it on Google Play"
+                  src="assets/google-play-badge.png"
+                />
               </a>
-            </p>
-          </IonCol>
-        </IonRow>
-      </IonGrid>
+            </IonCol>
+            <IonCol col-6>
+              <FormattedMessage id="about.coming-soon-on-apple" />
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+      </div>
     );
   }
 }
