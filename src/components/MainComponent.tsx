@@ -35,6 +35,7 @@ import Spanish from "../lang/es.json";
 import Russian from "../lang/ru.json";
 import AboutPage from "../pages/AboutPage";
 import FtuePage from "../pages/FtuePage";
+import LandingPage from "../pages/LandingPage";
 import LibraryPage from "../pages/LibraryPage";
 import PageNotFoundPage from "../pages/PageNotFoundPage";
 import RecentPage from "../pages/RecentPage";
@@ -190,6 +191,7 @@ class MainCompinent extends React.Component<
                   />
                 )}
               />
+              <Route path="/landing" component={LandingPage} exact={true} />
               <Route
                 path="/t"
                 render={() => {
