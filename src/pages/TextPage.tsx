@@ -15,6 +15,7 @@ import {
   IonList,
   IonModal,
   IonPage,
+  IonSpinner,
   IonText,
   IonTextarea,
   IonTitle,
@@ -140,7 +141,13 @@ class TextPage extends React.Component<
 
   render() {
     if (!this.state.texts.has("en") || this.state.segmentIndex < 0) {
-      return <IonPage></IonPage>;
+      return (
+        <IonPage>
+          <IonContent>
+            <IonSpinner />
+          </IonContent>
+        </IonPage>
+      );
     }
 
     let ftueMessage;

@@ -4,6 +4,7 @@ import {
   IonContent,
   IonHeader,
   IonPage,
+  IonSpinner,
   IonText,
   IonTitle,
   IonToolbar,
@@ -52,7 +53,9 @@ class TextInfoPage extends React.Component<
     if (!this.state?.text) {
       return (
         <IonPage>
-          <IonContent></IonContent>
+          <IonContent>
+            <IonSpinner />
+          </IonContent>
         </IonPage>
       );
     }

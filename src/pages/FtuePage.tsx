@@ -11,6 +11,7 @@ import {
   IonPage,
   IonRadio,
   IonRadioGroup,
+  IonSpinner,
   IonToolbar,
 } from "@ionic/react";
 import queryString from "query-string";
@@ -85,7 +86,11 @@ class FtuePage extends React.Component<
 
   render() {
     if (!this.state.settings) {
-      return <IonContent></IonContent>;
+      return (
+        <IonContent>
+          <IonSpinner />
+        </IonContent>
+      );
     }
     return (
       <IonPage id="ftue-page">

@@ -6,6 +6,7 @@ import {
   IonPage,
   IonSelect,
   IonSelectOption,
+  IonSpinner,
 } from "@ionic/react";
 import deepEqual from "fast-deep-equal/es6";
 import React from "react";
@@ -68,7 +69,7 @@ class LibraryPage extends React.Component<
     ) {
       return (
         <IonContent>
-          <div>Loading...</div>
+          <IonSpinner />
         </IonContent>
       );
     }

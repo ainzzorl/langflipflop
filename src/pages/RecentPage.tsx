@@ -2,6 +2,7 @@ import {
   IonContent,
   IonHeader,
   IonPage,
+  IonSpinner,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -57,7 +58,9 @@ class RecentPage extends React.Component<
     ) {
       return (
         <IonPage>
-          <IonContent></IonContent>
+          <IonContent>
+            <IonSpinner />
+          </IonContent>
         </IonPage>
       );
     }

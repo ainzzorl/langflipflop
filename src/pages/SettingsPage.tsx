@@ -8,6 +8,7 @@ import {
   IonPage,
   IonRadio,
   IonRadioGroup,
+  IonSpinner,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -57,7 +58,11 @@ class SettingsPage extends React.Component<
 
   render() {
     if (!this.state.settings) {
-      return <IonContent></IonContent>;
+      return (
+        <IonContent>
+          <IonSpinner />
+        </IonContent>
+      );
     }
 
     return (
