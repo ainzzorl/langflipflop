@@ -264,6 +264,33 @@ class TextPage extends React.Component<
                   }
                 />
               </IonItem>
+              <IonItem>
+                <IonLabel>
+                  <FormattedMessage id="text.feedback-mistakes-in-the-text" />
+                </IonLabel>
+                <IonCheckbox
+                  checked={
+                    this.getFeedback().checkboxes["mistakes-in-the-text"]
+                  }
+                  onIonChange={(e) =>
+                    this.setFeedbackCheckbox(
+                      "mistakes-in-the-text",
+                      e.detail.checked
+                    )
+                  }
+                />
+              </IonItem>
+              <IonItem>
+                <IonLabel>
+                  <FormattedMessage id="text.feedback-bugs" />
+                </IonLabel>
+                <IonCheckbox
+                  checked={this.getFeedback().checkboxes["bugs"]}
+                  onIonChange={(e) =>
+                    this.setFeedbackCheckbox("bugs", e.detail.checked)
+                  }
+                />
+              </IonItem>
               <IonItemDivider></IonItemDivider>
               <IonItem>
                 <IonTextarea

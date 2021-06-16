@@ -48,6 +48,8 @@
   "text.feedback-header": "Что не так?",
   "text.feedback-bad-translation": "Плохой/неправильный перевод",
   "text.feedback-not-interesting": "Неинтересный текст",
+  "text.feedback-mistakes-in-the-text": "Ошибки в тексте",
+  "text.feedback-bugs": "Баги",
   "text.feedback-text-area-placeholder": "Ваш комментарий",
   "text.feedback-send": "Отправить",
   "text.feedback-cancel": "Отмена",

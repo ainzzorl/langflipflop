@@ -48,6 +48,8 @@
   "text.feedback-header": "What was wrong?",
   "text.feedback-bad-translation": "The proposed translation is bad/incorrect",
   "text.feedback-not-interesting": "Text is not interesting",
+  "text.feedback-mistakes-in-the-text": "Mistakes in the text",
+  "text.feedback-bugs": "Bugs",
   "text.feedback-text-area-placeholder": "Your feedback here",
   "text.feedback-send": "Send",
   "text.feedback-cancel": "Cancel",
