@@ -3,7 +3,8 @@ News article about a new feature of Twitter.
 
 Twitter wants to curb what the company calls "potentially harmful or offensive" tweets.
 
-The social media company announced Wednesday it has released a feature that can detect a mean tweet and prompt a user to be sure they really want to send it.
+The social media company announced Wednesday it has released a feature that can detect a mean tweet
+and prompt a user to be sure they really want to send it.
 
 "People come to Twitter to talk about what's happening, and sometimes conversations about things we care about can get intense, and people say things in the moment they might regret later," the company said in a blog post.
 
