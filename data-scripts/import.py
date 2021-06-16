@@ -66,7 +66,12 @@ def main():
     with open("src/common/categories.json") as f:
         all_categories = json.load(f)['categories']
 
-    for textid in os.listdir('./data/texts/'):
+    with open("./data/texts/texts.json") as f:
+        text_ids = json.load(f)['texts']
+
+    texts_with_meta = []
+
+    for textid in text_ids:
         print(textid)
         with open(f"./data/texts/{textid}/meta.json") as f:
             meta = json.load(f)
@@ -100,6 +105,20 @@ vs {l2}={len(lang_texts[l2]['segments'])}")
 
         with open(f"public/assets/data/texts/{textid}.json", 'w') as outfile:
             json.dump(final, outfile, indent=2)
+
+        # Append to the combined list,
+        # but without expensive fields.
+        # It's used to render the list - it only needs metadata and titles.
+        for l1 in meta['languages']:
+            del final[l1]['segments']
+            del final[l1]['description']
+        texts_with_meta.append(final)
+
+    combined = {
+        'texts': texts_with_meta
+    }
+    with open("public/assets/data/texts.json", 'w') as outfile:
+        json.dump(combined, outfile, indent=2)
 
 if __name__ == "__main__":
     main()

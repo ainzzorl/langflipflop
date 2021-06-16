@@ -27,18 +27,7 @@ export async function loadAllTextMetadata(): Promise<Array<TextMeta>> {
   return fetch("assets/data/texts.json")
     .then((res) => res.json())
     .then((res) => {
-      // TODO: consider packing all text metadata into a single json.
-      let textList = res["texts"];
-      return Promise.all(
-        textList.map(async (textId: string) => {
-          const textMetaContent = await fetch(
-            `assets/data/texts/${textId}.json`
-          );
-          return await textMetaContent.json();
-        })
-      );
-    })
-    .then((textDatas: Array<any>) => {
+      let textDatas: Array<any> = res["texts"];
       return textDatas.map((data) => {
         return new TextMeta(data);
       });

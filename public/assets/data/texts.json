@@ -1,28 +1,571 @@
 {
   "texts": [
-    "tv-quotes-friends",
-    "tv-quotes-game-of-thrones",
-    "tv-quotes-breaking-bad",
-    "casual-phrases-weather",
-    "casual-phrases-hobbies-and-sports",
-    "casual-phrases-holidays-and-travel",
-    "casual-phrases-family-and-friends",
-    "casual-phrases-food",
-    "casual-phrases-house",
-    "casual-phrases-pets",
-    "casual-phrases-work",
-    "millenials",
-    "indigenous-languages",
-    "tom-sawyer-chapter-01",
-    "aspiring-americans",
-    "mysterious-monolith",
-    "gluck-nobel-prize",
-    "maradona-voanews",
-    "joe-biden-bio",
-    "nasa-mars-helicopter",
-    "mean-tweets",
-    "china-population-growth",
-    "orthodox-christians-observe-easter-sunday",
-    "eu-leader-urges-us-join-digital-rule-book"
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "tv-phrases",
+          "comedy"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "tv-quotes-friends",
+        "numSegments": 23
+      },
+      "en": {
+        "title": "TV Series Quotes - Friends"
+      },
+      "es": {
+        "title": "Frases Memorables de Series de Televisi\u00f3n \u2013 Friends/Amigos"
+      },
+      "ru": {
+        "title": "\u0426\u0438\u0442\u0430\u0442\u044b \u0438\u0437 \u0441\u0435\u0440\u0438\u0430\u043b\u043e\u0432 - \u0414\u0440\u0443\u0437\u044c\u044f"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "tv-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "tv-quotes-game-of-thrones",
+        "numSegments": 18
+      },
+      "en": {
+        "title": "TV Series Quotes - Game of Thrones"
+      },
+      "es": {
+        "title": "Frases Memorables de Series de Televisi\u00f3n \u2013 Juego de Tronos"
+      },
+      "ru": {
+        "title": "\u0426\u0438\u0442\u0430\u0442\u044b \u0438\u0437 \u0441\u0435\u0440\u0438\u0430\u043b\u043e\u0432 - \u0418\u0433\u0440\u0430 \u041f\u0440\u0435\u0441\u0442\u043e\u043b\u043e\u0432"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "tv-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "tv-quotes-breaking-bad",
+        "numSegments": 28
+      },
+      "en": {
+        "title": "TV Series Quotes - Breaking Bad"
+      },
+      "es": {
+        "title": "Frases Memorables de Series de Televisi\u00f3n \u2013 Breaking Bad"
+      },
+      "ru": {
+        "title": "\u0426\u0438\u0442\u0430\u0442\u044b \u0438\u0437 \u0441\u0435\u0440\u0438\u0430\u043b\u043e\u0432 - \u0412\u043e \u0432\u0441\u0435 \u0442\u044f\u0436\u043a\u0438\u0435"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Easy",
+        "categories": [
+          "casual-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "casual-phrases-weather",
+        "numSegments": 38
+      },
+      "en": {
+        "title": "Casual Phrases - Weather"
+      },
+      "es": {
+        "title": "Frases casuales - Clima"
+      },
+      "ru": {
+        "title": "\u0420\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0435 \u0444\u0440\u0430\u0437\u044b - \u041f\u043e\u0433\u043e\u0434\u0430"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Easy",
+        "categories": [
+          "casual-phrases",
+          "sports"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "casual-phrases-hobbies-and-sports",
+        "numSegments": 50
+      },
+      "en": {
+        "title": "Casual Phrases - Hobbies and Sports"
+      },
+      "es": {
+        "title": "Pasatiempos y Deportes"
+      },
+      "ru": {
+        "title": "\u0420\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0435 \u0444\u0440\u0430\u0437\u044b - \u0423\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u044f \u0438 \u0441\u043f\u043e\u0440\u0442"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Easy",
+        "categories": [
+          "casual-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "casual-phrases-holidays-and-travel",
+        "numSegments": 52
+      },
+      "en": {
+        "title": "Casual Phrases - Holidays and Travel"
+      },
+      "es": {
+        "title": "Vacaciones y viajes"
+      },
+      "ru": {
+        "title": "\u0420\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0435 \u0444\u0440\u0430\u0437\u044b - \u041f\u0440\u0430\u0437\u0434\u043d\u0438\u043a\u0438 \u0438 \u043f\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u044f"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Easy",
+        "categories": [
+          "casual-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "casual-phrases-family-and-friends",
+        "numSegments": 25
+      },
+      "en": {
+        "title": "Casual Phrases - Family and Friends"
+      },
+      "es": {
+        "title": "Familia y amigos"
+      },
+      "ru": {
+        "title": "\u0420\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0435 \u0444\u0440\u0430\u0437\u044b - \u0421\u0435\u043c\u044c\u044f \u0438 \u0434\u0440\u0443\u0437\u044c\u044f"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Easy",
+        "categories": [
+          "casual-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "casual-phrases-food",
+        "numSegments": 50
+      },
+      "en": {
+        "title": "Casual Phrases - Food"
+      },
+      "es": {
+        "title": "Comida"
+      },
+      "ru": {
+        "title": "\u0420\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0435 \u0444\u0440\u0430\u0437\u044b - \u0415\u0434\u0430"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Easy",
+        "categories": [
+          "casual-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "casual-phrases-house",
+        "numSegments": 36
+      },
+      "en": {
+        "title": "Casual Phrases - House"
+      },
+      "es": {
+        "title": "Frases casuales - Casa"
+      },
+      "ru": {
+        "title": "\u0420\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0435 \u0444\u0440\u0430\u0437\u044b - \u0414\u043e\u043c"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Easy",
+        "categories": [
+          "casual-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "casual-phrases-pets",
+        "numSegments": 30
+      },
+      "en": {
+        "title": "Casual Phrases - Pets"
+      },
+      "es": {
+        "title": "Frases casuales - Mascotas"
+      },
+      "ru": {
+        "title": "\u0420\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0435 \u0444\u0440\u0430\u0437\u044b - \u0414\u043e\u043c\u0430\u0448\u043d\u0438\u0435 \u0436\u0438\u0432\u043e\u0442\u043d\u044b\u0435"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Easy",
+        "categories": [
+          "casual-phrases"
+        ],
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "casual-phrases-work",
+        "numSegments": 31
+      },
+      "en": {
+        "title": "Casual Phrases - Work"
+      },
+      "es": {
+        "title": "Frases casuales - Trabajo"
+      },
+      "ru": {
+        "title": "\u0420\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0435 \u0444\u0440\u0430\u0437\u044b - \u0420\u0430\u0431\u043e\u0442\u0430"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news"
+        ],
+        "sourceLink": "https://www.voanews.com/student-union/millennial-life-eat-sleep-work-screens",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "millenials",
+        "numSegments": 18
+      },
+      "en": {
+        "title": "Millennial Life: Eat, Sleep, Work, Screens"
+      },
+      "es": {
+        "title": "La vida de los millennials: Comer, dormir, trabajar, pantallas."
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news",
+          "culture"
+        ],
+        "sourceLink": "https://www.voanews.com/east-asia-pacific/australia-showcases-diverse-indigenous-languages",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "indigenous-languages",
+        "numSegments": 14
+      },
+      "en": {
+        "title": "Australia Showcases Diverse Indigenous Languages"
+      },
+      "es": {
+        "title": "Australia muestra sus diversas lenguas ind\u00edgenas"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "classics",
+          "children"
+        ],
+        "author": "Mark Twain",
+        "sourceLink": "https://www.gutenberg.org/files/74/74-h/74-h.htm#c1",
+        "sourceText": "Project Gutenberg",
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "tom-sawyer-chapter-01",
+        "numSegments": 174
+      },
+      "en": {
+        "title": "The Adventures of Tom Sawyer (Chapter 1)"
+      },
+      "es": {
+        "title": "Las aventuras de Tom Sawyer (Cap\u00edtulo 1)"
+      },
+      "ru": {
+        "title": "\u041f\u0440\u0438\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f \u0422\u043e\u043c\u0430 \u0421\u043e\u0439\u0435\u0440\u0430 (\u0413\u043b\u0430\u0432\u0430 1)"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news"
+        ],
+        "sourceLink": "https://www.voanews.com/usa/immigration/aspiring-americans-face-tougher-citizenship-test",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "aspiring-americans",
+        "numSegments": 39
+      },
+      "en": {
+        "title": "Aspiring Americans Face Tougher Citizenship Test"
+      },
+      "es": {
+        "title": "Aspirantes a Ser Ciudadanos Americanos Enfrentan Pruebas de Ciudadan\u00eda m\u00e1s Fuertes"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news"
+        ],
+        "sourceLink": "https://www.voanews.com/usa/mysterious-metallic-monolith-found-remote-utah",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "mysterious-monolith",
+        "numSegments": 7
+      },
+      "en": {
+        "title": "Mysterious Metallic Monolith Found in Remote Utah"
+      },
+      "es": {
+        "title": "Misterioso Monolito Met\u00e1lico Encontrado en Partes Remotas de Utah"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news",
+          "culture"
+        ],
+        "sourceLink": "https://www.voanews.com/arts-culture/poet-louise-gluck-wins-nobel-prize-literature",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "gluck-nobel-prize",
+        "numSegments": 9
+      },
+      "en": {
+        "title": "Poet Louise Gluck Wins Nobel Prize in Literature"
+      },
+      "es": {
+        "title": "La Poeta Louise Gluck Gana el Premio Nobel de Literatura"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Hard",
+        "categories": [
+          "sports",
+          "news"
+        ],
+        "sourceLink": "https://www.voanews.com/americas/diego-maradonas-career-had-its-share-highs-lows",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "maradona-voanews",
+        "numSegments": 56
+      },
+      "en": {
+        "title": "Diego Maradona's Career Had Its Share of Highs, Lows "
+      },
+      "es": {
+        "title": "La Carrera de Diego Maradona Tuvo Sus Altas y Bajas"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Hard",
+        "categories": [
+          "politics"
+        ],
+        "sourceLink": "https://www.whitehouse.gov/administration/president-biden/",
+        "sourceText": "The White House",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "joe-biden-bio",
+        "numSegments": 33
+      },
+      "en": {
+        "title": "Joe Biden: The President"
+      },
+      "es": {
+        "title": "Joe Biden: El Presidente"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Hard",
+        "categories": [
+          "news",
+          "science-and-technology"
+        ],
+        "sourceLink": "https://www.voanews.com/science-health/nasas-mars-helicopter-takes-first-successful-test-flight",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "nasa-mars-helicopter",
+        "numSegments": 10
+      },
+      "en": {
+        "title": "NASA's Mars Helicopter Takes First Successful Test Flight"
+      },
+      "es": {
+        "title": "El Helic\u00f3ptero de NASA en Marte Hace Su Primer Vuelo de Prueba Exitoso"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news"
+        ],
+        "sourceLink": "https://www.voanews.com/silicon-valley-technology/twitter-point-out-mean-tweets-they-are-sent",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "ru"
+        ],
+        "id": "mean-tweets",
+        "numSegments": 8
+      },
+      "en": {
+        "title": "Twitter to Point Out Mean Tweets Before They Are Sent"
+      },
+      "ru": {
+        "title": "\u0422\u0432\u0438\u0442\u0442\u0435\u0440 \u0431\u0443\u0434\u0435\u0442 \u0443\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\u043c \u043d\u0430 \u043d\u0435\u043f\u0440\u0438\u0433\u043b\u044f\u0434\u043d\u044b\u0435 \u0442\u0432\u0438\u0442\u044b"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news"
+        ],
+        "sourceLink": "https://www.voanews.com/east-asia-pacific/voa-news-china/china-population-growth-falls-lowest-rate-decades",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "ru"
+        ],
+        "id": "china-population-growth",
+        "numSegments": 6
+      },
+      "en": {
+        "title": "China Population Growth Falls to Lowest Rate in Decades"
+      },
+      "ru": {
+        "title": "\u0422\u0435\u043c\u043f\u044b \u0440\u043e\u0441\u0442\u0430 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u0438\u044f \u041a\u0438\u0442\u0430\u044f \u043e\u043a\u0430\u0437\u0430\u043b\u0438\u0441\u044c \u0441\u0430\u043c\u044b\u043c\u0438 \u043d\u0438\u0437\u043a\u0438\u043c\u0438 \u0437\u0430 \u0434\u0435\u0441\u044f\u0442\u0438\u043b\u0435\u0442\u0438\u044f"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news",
+          "culture"
+        ],
+        "sourceLink": "https://www.voanews.com/arts-culture/orthodox-christians-observe-easter-sunday",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "orthodox-christians-observe-easter-sunday",
+        "numSegments": 16
+      },
+      "en": {
+        "title": "Orthodox Christians Observe Easter Sunday"
+      },
+      "es": {
+        "title": "Cristianos ortodoxos observan el domingo de Pascua"
+      },
+      "ru": {
+        "title": "\u041f\u0440\u0430\u0432\u043e\u0441\u043b\u0430\u0432\u043d\u044b\u0435 \u0445\u0440\u0438\u0441\u0442\u0438\u0430\u043d\u0435 \u043f\u0440\u0430\u0437\u0434\u043d\u0443\u044e\u0442 \u041f\u0430\u0441\u0445\u0443"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "news"
+        ],
+        "sourceLink": "https://www.voanews.com/usa/eu-leader-urges-us-join-digital-rule-book",
+        "sourceText": "Voice of America (VOA)",
+        "languages": [
+          "en",
+          "ru"
+        ],
+        "id": "eu-leader-urges-us-join-digital-rule-book",
+        "numSegments": 7
+      },
+      "en": {
+        "title": "EU Leader Urges US to Join Digital 'Rule Book'"
+      },
+      "ru": {
+        "title": "\u0415\u0421 \u043f\u0440\u0438\u0437\u044b\u0432\u0430\u0435\u0442 \u0421\u0428\u0410 \u0441\u043e\u0432\u043c\u0435\u0441\u0442\u043d\u043e \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0441\u0432\u043e\u0434 \u043f\u0440\u0430\u0432\u0438\u043b \u0434\u043b\u044f \u0441\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0445 \u0441\u0435\u0442\u0435\u0439"
+      }
+    }
   ]
 }
