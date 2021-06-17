@@ -315,34 +315,6 @@
       "meta": {
         "difficulty": "Medium",
         "categories": [
-          "classics",
-          "children"
-        ],
-        "author": "Mark Twain",
-        "sourceLink": "https://www.gutenberg.org/files/74/74-h/74-h.htm#c1",
-        "sourceText": "Project Gutenberg",
-        "languages": [
-          "en",
-          "es",
-          "ru"
-        ],
-        "id": "tom-sawyer-chapter-01",
-        "numSegments": 174
-      },
-      "en": {
-        "title": "The Adventures of Tom Sawyer (Chapter 1)"
-      },
-      "es": {
-        "title": "Las aventuras de Tom Sawyer (Cap\u00edtulo 1)"
-      },
-      "ru": {
-        "title": "\u041f\u0440\u0438\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f \u0422\u043e\u043c\u0430 \u0421\u043e\u0439\u0435\u0440\u0430 (\u0413\u043b\u0430\u0432\u0430 1)"
-      }
-    },
-    {
-      "meta": {
-        "difficulty": "Medium",
-        "categories": [
           "news"
         ],
         "sourceLink": "https://www.voanews.com/usa/immigration/aspiring-americans-face-tougher-citizenship-test",
@@ -427,28 +399,6 @@
       },
       "es": {
         "title": "La Carrera de Diego Maradona Tuvo Sus Altas y Bajas"
-      }
-    },
-    {
-      "meta": {
-        "difficulty": "Hard",
-        "categories": [
-          "politics"
-        ],
-        "sourceLink": "https://www.whitehouse.gov/administration/president-biden/",
-        "sourceText": "The White House",
-        "languages": [
-          "en",
-          "es"
-        ],
-        "id": "joe-biden-bio",
-        "numSegments": 33
-      },
-      "en": {
-        "title": "Joe Biden: The President"
-      },
-      "es": {
-        "title": "Joe Biden: El Presidente"
       }
     },
     {
@@ -565,6 +515,84 @@
       },
       "ru": {
         "title": "\u0415\u0421 \u043f\u0440\u0438\u0437\u044b\u0432\u0430\u0435\u0442 \u0421\u0428\u0410 \u0441\u043e\u0432\u043c\u0435\u0441\u0442\u043d\u043e \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0441\u0432\u043e\u0434 \u043f\u0440\u0430\u0432\u0438\u043b \u0434\u043b\u044f \u0441\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0445 \u0441\u0435\u0442\u0435\u0439"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Hard",
+        "categories": [
+          "politics"
+        ],
+        "sourceLink": "https://www.whitehouse.gov/administration/president-biden/",
+        "sourceText": "The White House",
+        "languages": [
+          "en",
+          "es"
+        ],
+        "id": "joe-biden-bio",
+        "numSegments": 33
+      },
+      "en": {
+        "title": "Joe Biden: The President"
+      },
+      "es": {
+        "title": "Joe Biden: El Presidente"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "classics",
+          "children"
+        ],
+        "author": "Mark Twain",
+        "sourceLink": "https://www.gutenberg.org/files/74/74-h/74-h.htm#c1",
+        "sourceText": "Project Gutenberg",
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "tom-sawyer-chapter-01",
+        "numSegments": 174
+      },
+      "en": {
+        "title": "The Adventures of Tom Sawyer (Chapter 1)"
+      },
+      "es": {
+        "title": "Las aventuras de Tom Sawyer (Cap\u00edtulo 1)"
+      },
+      "ru": {
+        "title": "\u041f\u0440\u0438\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f \u0422\u043e\u043c\u0430 \u0421\u043e\u0439\u0435\u0440\u0430 (\u0413\u043b\u0430\u0432\u0430 1)"
+      }
+    },
+    {
+      "meta": {
+        "difficulty": "Medium",
+        "categories": [
+          "classics",
+          "children"
+        ],
+        "author": "Frank Baum",
+        "sourceLink": "https://www.gutenberg.org/files/55/55-h/55-h.htm",
+        "sourceText": "Project Gutenberg",
+        "languages": [
+          "en",
+          "es",
+          "ru"
+        ],
+        "id": "wizard-of-oz-dorothy-scarecrow",
+        "numSegments": 37
+      },
+      "en": {
+        "title": "The Wonderful Wizard of Oz - Dorothy Meets Scarecrow"
+      },
+      "es": {
+        "title": "El maravilloso mago de Oz - Dorothy conoce al espantap\u00e1jaros"
+      },
+      "ru": {
+        "title": "\u0423\u0434\u0438\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0432\u043e\u043b\u0448\u0435\u0431\u043d\u0438\u043a \u0438\u0437 \u0441\u0442\u0440\u0430\u043d\u044b \u041e\u0437 - \u0414\u043e\u0440\u043e\u0442\u0438 \u0437\u043d\u0430\u043a\u043e\u043c\u0438\u0442\u0441\u044f \u0441\u043e \u0421\u0442\u0440\u0430\u0448\u0438\u043b\u043e\u0439"
       }
     }
   ]
