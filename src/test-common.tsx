@@ -73,29 +73,29 @@ export namespace TEST_FIXTURES {
   export const TEST_TEXT_DESCRIPTION =
     "An article about a mysterious monolith found in remote Utah.";
   export const TEST_TEXT_DIFFICULTY_STR = "Difficulty: Medium";
-  export const TEST_TEXT_LENGTH = 7;
+  export const TEST_TEXT_LENGTH = 9;
   export const TEST_TEXT_LENGTH_STR = `Length: ${TEST_TEXT_LENGTH}`;
-  export const TEST_TEXT_READ_AFTER_1_STR = "(Read: 15%)";
-  export const TEST_TEXT_READ_AFTER_3_STR = "(Read: 43%)";
+  export const TEST_TEXT_READ_AFTER_1_STR = "(Read: 12%)";
+  export const TEST_TEXT_READ_AFTER_3_STR = "(Read: 34%)";
   export const TEST_TEXT_CATEGORIES_STR = "Categories: News";
   export const TEST_TEXT_TEXTS: any = [
     {
       en:
-        "In a scene that could have been taken from the science fiction classic “2001: A Space Odyssey,” officials in Utah have discovered a mysterious metallic monolith in the remote southeastern part of the state.",
+        "In a scene that could have been taken from the science fiction classic “2001: A Space Odyssey,”",
       es:
-        "En una escena que podría ser tomada del clásico de ciencia ficción “2001: Una Odisea Espacial”, los oficiales en Utah han descubierto un monolito metálico misterioso en la parte más remota del sureste del estado.",
+        "En una escena que podría ser tomada del clásico de ciencia ficción “2001: Una Odisea Espacial”,",
+    },
+    {
+      en:
+        "officials in Utah have discovered a mysterious metallic monolith in the remote southeastern part of the state.",
+      es:
+        "los oficiales en Utah han descubierto un monolito metálico misterioso en la parte más remota del sureste del estado.",
     },
     {
       en:
         "Public safety workers spotted the object November 18 from a helicopter while conducting a count of bighorn sheep, according to a news statement.",
       es:
         "Los trabajadores de la seguridad pública detectaron el objeto el 18 de Noviembre desde un helicóptero mientras conducían un conteo de carneros, según una declaración de las noticias.",
-    },
-    {
-      en:
-        "So far, there is no indication of who could have placed the 3- to 3.6-meter-tall monolith in that location.",
-      es:
-        "Hasta ahora, no hay indicativos de quién pudo haber colocado el monolito de 3 a 3.6 metros en esa ubicación.",
     },
   ];
 

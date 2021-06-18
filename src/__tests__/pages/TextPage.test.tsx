@@ -35,13 +35,13 @@ test("Rendering Text and Navigating", async () => {
   await TextPageActions.goToPrevious();
   await TextPageActions.assertOnPage(0, "en");
 
-  for (var i = 0; i < 6; i++) {
+  for (var i = 0; i < TEST_FIXTURES.TEST_TEXT_LENGTH - 1; i++) {
     await TextPageActions.assertOnPage(i, "en");
     await TextPageActions.goToNext();
   }
 
   // Last page
-  await TextPageActions.assertOnPage(6, "en");
+  await TextPageActions.assertOnPage(TEST_FIXTURES.TEST_TEXT_LENGTH - 1, "en");
 });
 
 test("Different Translation Direction", async () => {
@@ -76,13 +76,13 @@ test("End-of-text", async () => {
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
   await TextPageActions.assertOnPage(0, "en");
 
-  for (var i = 0; i < 6; i++) {
+  for (var i = 0; i < TEST_FIXTURES.TEST_TEXT_LENGTH - 1; i++) {
     await TextPageActions.assertOnPage(i, "en");
     await TextPageActions.goToNext();
   }
 
   // Last page
-  await TextPageActions.assertOnPage(6, "en");
+  await TextPageActions.assertOnPage(TEST_FIXTURES.TEST_TEXT_LENGTH - 1, "en");
 
   expect(screen.queryByText("End of Text")).not.toBeInTheDocument();
 
@@ -94,7 +94,7 @@ test("End-of-text - go to beginning", async () => {
   renderWithRoute(`/texts/${TEST_FIXTURES.TEST_TEXT_ID}?lang1=en&lang2=es&i=1`);
   await TextPageActions.assertOnPage(0, "en");
 
-  for (var i = 0; i < 7; i++) {
+  for (var i = 0; i < TEST_FIXTURES.TEST_TEXT_LENGTH; i++) {
     await TextPageActions.assertOnPage(i, "en");
     await TextPageActions.goToNext();
   }
