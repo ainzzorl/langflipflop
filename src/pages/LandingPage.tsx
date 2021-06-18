@@ -27,7 +27,7 @@ class LandingPage extends React.Component<{}, {}> {
       links = <div />;
     }
     return (
-      <IonPage id="info-page">
+      <IonPage>
         <IonHeader>
           <IonToolbar>
             <IonTitle>
@@ -37,14 +37,19 @@ class LandingPage extends React.Component<{}, {}> {
         </IonHeader>
         <IonContent id="info-page-content">
           <p className="content-text">
-            <FormattedMessage id="about.p1" />
+            <b>LangFlipFlop</b> - <FormattedMessage id="landing.definition" />
           </p>
-          <p className="content-text">
-            <FormattedMessage id="about.p2" />
-          </p>
-          <p className="content-text">
-            <FormattedMessage id="about.p3" />
-          </p>
+          <ol>
+            <li>
+              <FormattedMessage id="landing.bullet-1" />
+            </li>
+            <li>
+              <FormattedMessage id="landing.bullet-2" />
+            </li>
+            <li>
+              <FormattedMessage id="landing.bullet-3" />
+            </li>
+          </ol>
 
           <p className="content-text">
             <IonButton size="large" href="/setup">
