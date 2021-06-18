@@ -206,6 +206,7 @@ export class TextInfoPageActions {
     await screen.findByText("Medium");
     await screen.findByText("Categories:");
     await screen.findByText("News");
+    await screen.findByText("Discuss on Reddit");
   }
 
   static async clickBack() {

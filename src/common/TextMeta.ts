@@ -10,6 +10,7 @@ export default class TextMeta {
   numSegments: number;
   sourceLink?: string;
   sourceText?: string;
+  redditLink?: string;
   languages: Array<string>;
 
   constructor(data: any) {
@@ -25,6 +26,7 @@ export default class TextMeta {
     this.numSegments = data["meta"]["numSegments"];
     this.sourceLink = data["meta"]["sourceLink"];
     this.sourceText = data["meta"]["sourceText"];
+    this.redditLink = data["meta"]["redditLink"];
     this.languages = data["meta"]["languages"];
   }
 

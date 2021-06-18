@@ -104,6 +104,13 @@ class TextInfoPage extends React.Component<
               </a>
             </p>
           )}
+          {this.state.meta.redditLink && (
+            <p>
+              <a href={`http://reddit.com${this.state.meta.redditLink}`}>
+                <FormattedMessage id="text-info.discuss-on-reddit" />
+              </a>
+            </p>
+          )}
         </IonContent>
       </IonPage>
     );

@@ -45,6 +45,12 @@ class AboutPage extends React.Component<{}, {}> {
             <FormattedMessage id="about.p3" />
           </p>
 
+          <p className="content-text">
+            <a href={"http://reddit.com/r/langflipflop"}>
+              <FormattedMessage id="text-info.discuss-on-reddit" />
+            </a>{" "}
+          </p>
+
           {links}
         </IonContent>
       </IonPage>
