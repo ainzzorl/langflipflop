@@ -1,9 +1,12 @@
 NASA's Mars Helicopter Takes First Successful Test Flight
 NASA's Mars Helicopter Takes First Successful Test Flight.
 
-The U.S. space agency, NASA, Monday received images and data confirming its small helicopter, Ingenuity, successfully performed the first controlled powered flight of an aircraft on a planet other than Earth.
-Scientists in the control room at NASA’s Jet Propulsion Laboratory (JPL) at the California Institute of Technology burst into applause and cheers when data confirmed Ingenuity had successfully spun its rotors, lifted off to a height of three meters and landed safely back on the surface of Mars.
-A picture taken by the small craft of its own shadow on the ground below it arrived seconds later, as did video of the flight taken by NASA’s Perseverance rover probe several meters away. 
+The U.S. space agency, NASA, Monday received images and data confirming its small helicopter, Ingenuity,
+successfully performed the first controlled powered flight of an aircraft on a planet other than Earth.
+Scientists in the control room at NASA’s Jet Propulsion Laboratory (JPL) at the California Institute of Technology burst into applause and cheers when data confirmed Ingenuity had successfully spun its rotors,
+lifted off to a height of three meters and landed safely back on the surface of Mars.
+A picture taken by the small craft of its own shadow on the ground below it arrived seconds later,
+as did video of the flight taken by NASA’s Perseverance rover probe several meters away.
 Ingenuity, weighing a mere 1.8 kilograms, was stowed away on the Perseverance when it landed on Mars in February.
 It was unfolded and dropped from the rover about two weeks ago to prepare its launch.
 The first test of the helicopter had been scheduled for more than a week ago, but a software problem was discovered that required an update.

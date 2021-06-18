@@ -1,9 +1,12 @@
 El Helicóptero de NASA en Marte Hace Su Primer Vuelo de Prueba Exitoso
 El Helicóptero de NASA en Marte Hace Su Primer Vuelo de Prueba Exitoso.
 
-La Agencia de Viaje Espacial estadounidense, NASA, el lunes recibió imágenes y datos confirmando que su pequeño helicóptero, Ingenuity, realizó exitosamente su primero vuelo controlado en un planeta distinto a la Tierra.
-Los científicos en la habitación de control en el Laboratorio de Propulsión Jet (JPL) de NASA en el Instituto de Tecnología de California erupcionó en aplausos y alegría cuando los datos confirmaron que Ingenuity logró exitosamente girar sus hélices, despegó a una altura de tres metros y aterrizó de nuevo en la superficie de Marte.
-Una foto tomada por la nave pequeña de su propia sobra en el suelo debajo llegó segundos después, al igual que el video del vuelo tomado por el robot investigador de NASA Perseverance a unos metros de distancia.
+La Agencia de Viaje Espacial estadounidense, NASA, el lunes recibió imágenes y datos confirmando que su pequeño helicóptero, Ingenuity,
+realizó exitosamente su primero vuelo controlado en un planeta distinto a la Tierra.
+Los científicos en la habitación de control en el Laboratorio de Propulsión Jet (JPL) de NASA en el Instituto de Tecnología de California erupcionó en aplausos y alegría cuando los datos confirmaron que Ingenuity logró exitosamente girar sus hélices,
+despegó a una altura de tres metros y aterrizó de nuevo en la superficie de Marte.
+Una foto tomada por la nave pequeña de su propia sobra en el suelo debajo llegó segundos después,
+al igual que el video del vuelo tomado por el robot investigador de NASA Perseverance a unos metros de distancia.
 Ingenuity, pesando unos mejor 1.8kilogramos, fue llevado por el Perseverance cuando llegó a Marte en Febrero.
 Fue desplegado y sacado del robot hace unas dos semanas para preparar su lanzamiento.
 La primera prueba del helicóptero había sido programada para hace más de una semana, pero un problema de software fue descubierto que requería una actualización.
