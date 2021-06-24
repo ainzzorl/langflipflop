@@ -1,5 +1,6 @@
 import { isPlatform } from "@ionic/react";
 import queryString from "query-string";
+import { dataVersion as version } from "../common/versions.json";
 import TextMeta from "./TextMeta";
 
 export function isBrowser(): boolean {
@@ -24,7 +25,7 @@ export function getQueryParams(props: any) {
 }
 
 export async function loadAllTextMetadata(): Promise<Array<TextMeta>> {
-  return fetch("assets/data/texts.json")
+  return fetch(`assets/data/texts-${version}.json`)
     .then((res) => res.json())
     .then((res) => {
       let textDatas: Array<any> = res["texts"];

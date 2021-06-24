@@ -45,6 +45,7 @@ import {
   isLocalhost,
 } from "../common/Common";
 import { DAO, SegmentFeedback } from "../common/DAO";
+import { dataVersion as version } from "../common/versions.json";
 import "./TextPage.css";
 
 interface TextPageProps
@@ -464,7 +465,7 @@ class TextPage extends React.Component<
 
   private async loadTexts() {
     const res = await fetch(
-      `assets/data/texts/${this.props.match.params.id}.json`
+      `assets/data/texts/${this.props.match.params.id}-${version}.json`
     );
     const textsRaw = await res.json();
     let texts = new Map<string, Text>();

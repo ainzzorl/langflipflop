@@ -50,6 +50,8 @@ def printdiff(lefthand, righthand):
         print('-' * SCREEN_WIDTH)
 
 TARGET_DIR = 'public/assets/data/texts'
+DATA_DIR = 'public/assets/data/'
+AGGREGATED_FILE_PREFIX = 'texts-'
 
 def validate_categories(categories, all_categories):
     for category in categories:
@@ -63,8 +65,18 @@ def main():
         file_path = os.path.join(TARGET_DIR, filename)
         os.unlink(file_path)
 
+    print(f'Cleaning up old aggredated texts under {DATA_DIR}'\
+            f'starting with {AGGREGATED_FILE_PREFIX}')
+    for filename in os.listdir(DATA_DIR):
+        if filename.startswith(AGGREGATED_FILE_PREFIX):
+            file_path = os.path.join(DATA_DIR, filename)
+            os.unlink(file_path)
+
     with open("src/common/categories.json") as f:
         all_categories = json.load(f)['categories']
+
+    with open("src/common/versions.json") as f:
+        version = json.load(f)['dataVersion']
 
     with open("./data/texts/texts.json") as f:
         text_ids = json.load(f)['texts']
@@ -103,7 +115,7 @@ vs {l2}={len(lang_texts[l2]['segments'])}")
         for lang in meta['languages']:
             final[lang] = lang_texts[lang]
 
-        with open(f"public/assets/data/texts/{textid}.json", 'w') as outfile:
+        with open(f"public/assets/data/texts/{textid}-{version}.json", 'w') as outfile:
             json.dump(final, outfile, indent=2)
 
         # Append to the combined list,
@@ -114,11 +126,10 @@ vs {l2}={len(lang_texts[l2]['segments'])}")
             del final[l1]['description']
         texts_with_meta.append(final)
 
-    combined = {
+    with open(f"public/assets/data/texts-{version}.json", 'w') as outfile:
+        json.dump({
         'texts': texts_with_meta
-    }
-    with open("public/assets/data/texts.json", 'w') as outfile:
-        json.dump(combined, outfile, indent=2)
+    }, outfile, indent=2)
 
 if __name__ == "__main__":
     main()

@@ -14,6 +14,7 @@ import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "react-router-dom";
 import { getQueryParams } from "../common/Common";
 import TextMeta from "../common/TextMeta";
+import { dataVersion as version } from "../common/versions.json";
 
 interface TextInfoProps
   extends RouteComponentProps<{
@@ -32,7 +33,7 @@ class TextInfoPage extends React.Component<
     super(props);
 
     let params = getQueryParams(props);
-    fetch(`assets/data/texts/${this.props.match.params.id}.json`)
+    fetch(`assets/data/texts/${this.props.match.params.id}-${version}.json`)
       .then((res) => res.json())
       .then((res) => {
         this.setState(() => ({
