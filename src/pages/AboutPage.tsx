@@ -48,7 +48,13 @@ class AboutPage extends React.Component<{}, {}> {
           <p className="content-text">
             <a href={"http://reddit.com/r/langflipflop"}>
               <FormattedMessage id="text-info.discuss-on-reddit" />
-            </a>{" "}
+            </a>
+          </p>
+
+          <p className="content-text">
+            <a href={"https://langflipflop.medium.com/"}>
+              <FormattedMessage id="about.read-out-blog" />
+            </a>
           </p>
 
           {links}
