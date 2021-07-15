@@ -6,6 +6,8 @@ LangFlipFlop doesn't exactly teach you the language, but lets you practice it on
 
 LangFlipFlop won't gamify your practice, won't ask you to register, won't collect any personal information, and won't bother you with notifications. Enjoy practicing your favorite language!
 
+It currently supports English, Spanish and Russian.
+
 # Get LangFlipFlop
 
 LangFlopFlop is available at https://langflipflop.com or as an [Android app on Google Play](https://play.google.com/store/apps/details?id=com.langflipflop).
