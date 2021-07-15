@@ -12,11 +12,13 @@ It currently supports English, Spanish and Russian.
 
 LangFlopFlop is available at https://langflipflop.com or as an [Android app on Google Play](https://play.google.com/store/apps/details?id=com.langflipflop).
 
+# Tech
+
+LangFlipFlop is built with React and [Ionic Framework](https://ionicframework.com/).
+
+The app is hosted on AWS and is fully serverless. Static content is in S3, fronted by CloudFront. The only component that interacts with the server after the app is loaded is feedback collection. The feedback is stored in DynamoDB, fronted by API Gateway.
+
 # Development
-
-LangFlipFlop is built in React with [Ionic Framework](https://ionicframework.com/).
-
-Run it locally:
 
 ```bash
 npm install
