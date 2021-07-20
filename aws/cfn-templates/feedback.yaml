@@ -119,6 +119,9 @@ Resources:
                             },
                             "RequestTime": {
                               "S": "$context.requestTime"
+                            },
+                            "RequestTimeEpoch": {
+                              "S": "$context.requestTimeEpoch"
                             }
                           }
                         }
