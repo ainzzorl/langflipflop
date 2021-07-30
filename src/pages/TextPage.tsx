@@ -491,6 +491,13 @@ class TextPage extends React.Component<
   }
 
   private onFlip() {
+    if (!isLocalhost()) {
+      ReactGA.event({
+        category: "Reading",
+        action: "Flip",
+        label: window.location.pathname + window.location.search,
+      });
+    }
     this.setState((state) => ({
       currentLang: this.otherLang(this.state.currentLang),
       flipped: !this.state.flipped,
