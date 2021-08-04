@@ -22,5 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           # $CONDA is an environment variable pointing to the root of the miniconda directory
-          $CONDA/bin/conda env update --file environment.yml --name base
-      - run: make verify-python
+          $CONDA/bin/conda env create --file environment.yml --name langflipflop
+          $CONDA/bin/conda activate langflipflop
+      - run: |
+          make verify-python
