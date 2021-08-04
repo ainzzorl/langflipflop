@@ -1,5 +1,11 @@
 .PHONY: verify
-verify : lint test
+verify : verify-python verify-ts
+
+.PHONY: verify-python
+verify-python : lint-python
+
+.PHONY: verify-ts
+verify-ts : lint-ts test
 			 
 .PHONY: build-website
 build-website :
