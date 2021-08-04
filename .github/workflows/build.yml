@@ -28,4 +28,6 @@ jobs:
           activate-environment: langflipflip
           auto-activate-base: false
       - run: |
+          conda info
+          conda list
           make verify-python
